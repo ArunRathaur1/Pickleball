@@ -6,10 +6,6 @@ const athleteSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  id:{
-    type: String,
-    required: true,
-  },
   playerid: {
     type: String,
     unique: true,
