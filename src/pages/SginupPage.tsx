@@ -10,12 +10,12 @@ export default function SignupPage() {
   return (
     <>
         <Navbar></Navbar>
-      <div className="min-h-screen bg-gray-100 py-10 px-4">
-        <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-6">
+      <div className="min-h-screen  py-10 px-4">
+        <div className="max-w-2xl mx-auto  p-6">
           <h1 className="text-2xl font-bold text-center mb-6">Signup</h1>
 
           {/* Selection Buttons */}
-          <div className="flex justify-center gap-4 mb-6">
+          <div className="flex justify-center">
             <button
               onClick={() => setSelectedType("Player")}
               className={`px-4 py-2 rounded-md font-semibold ${
