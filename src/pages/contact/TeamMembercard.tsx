@@ -21,7 +21,7 @@ const TeamMemberCard = ({ member, isFounder }) => {
         {/* Front Card */}
         <div
           className={`absolute inset-0 w-full h-full backface-hidden ${
-            isFounder ? "bg-green-50" : "bg-blue-50"
+            isFounder ? "bg-green-50" : "bg-green-50"
           } rounded-xl shadow-lg flex flex-col items-center p-6`}
         >
           <div className="relative mb-4 overflow-hidden rounded-full w-36 h-36 ring-4 ring-opacity-50 group-hover:ring-opacity-100 transition-all duration-300 ease-in-out">
@@ -33,14 +33,14 @@ const TeamMemberCard = ({ member, isFounder }) => {
           </div>
           <h3
             className={`text-xl font-bold ${
-              isFounder ? "text-green-700" : "text-blue-700"
+              isFounder ? "text-green-700" : "text-green-700"
             } mb-1`}
           >
             {member.name}
           </h3>
           <p
             className={`text-sm font-medium ${
-              isFounder ? "text-green-600" : "text-blue-600"
+              isFounder ? "text-green-600" : "text-green-600"
             } mb-3`}
           >
             {member.role}
@@ -64,7 +64,7 @@ const TeamMemberCard = ({ member, isFounder }) => {
                 rel="noopener noreferrer"
                 className="transition-transform hover:scale-125"
               >
-                <FaTwitter className="text-blue-400 text-xl" />
+                <FaTwitter className="text-green-400 text-xl" />
               </a>
             )}
             {member.github && (
@@ -91,13 +91,13 @@ const TeamMemberCard = ({ member, isFounder }) => {
         {/* Back Card */}
         <div
           className={`absolute inset-0 w-full h-full backface-hidden ${
-            isFounder ? "bg-green-100" : "bg-blue-100"
+            isFounder ? "bg-green-100" : "bg-green-100"
           } rounded-xl shadow-lg p-6 flex flex-col justify-between rotate-y-180`}
         >
           <div>
             <h3
               className={`text-xl font-bold ${
-                isFounder ? "text-green-700" : "text-blue-700"
+                isFounder ? "text-green-700" : "text-green-700"
               } mb-3`}
             >
               {member.name}

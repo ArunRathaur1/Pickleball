@@ -75,7 +75,7 @@ const ContactPage = () => {
             onClick={() => setActiveTab("developers")}
             className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
               activeTab === "developers"
-                ? "bg-blue-600 text-white shadow-md transform scale-105"
+                ? "bg-green-600 text-white shadow-md transform scale-105"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
           >
@@ -101,7 +101,7 @@ const ContactPage = () => {
 
         {activeTab === "developers" && (
           <div className="animate-fade-in">
-            <h2 className="text-3xl font-bold text-blue-700 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-green-700 mb-8 text-center">
               Our Development Team
             </h2>
             <div className="flex justify-center gap-8 flex-wrap">
