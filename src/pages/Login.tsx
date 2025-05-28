@@ -1,15 +1,89 @@
-
+import { useState } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { AuthForm } from "@/components/auth/auth-form";
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    id: "",
+    password: "",
+    userType: "Player",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Login Details:", formData);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1 py-12">
-        <div className="container max-w-md">
-          <AuthForm type="login" userType="user" />
+        <div className="container max-w-md mx-auto bg-white p-6 rounded-xl shadow-md">
+          <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="id" className="block mb-1 font-medium">
+                ID
+              </label>
+              <input
+                type="text"
+                id="id"
+                name="id"
+                value={formData.id}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block mb-1 font-medium">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="userType" className="block mb-1 font-medium">
+                Select User Type
+              </label>
+              <select
+                id="userType"
+                name="userType"
+                value={formData.userType}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border rounded-md"
+              >
+                <option value="Player">Player</option>
+                <option value="Brand">Brand</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </main>
       <Footer />
