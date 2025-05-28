@@ -8,11 +8,12 @@ const athleteSchema = new mongoose.Schema({
   },
   playerid: {
     type: String,
+    required: true,
   },
   age: {
     type: Number,
     required: true,
-    min: 10, // Minimum age validation
+    min: 10,
   },
   gender: {
     type: String,
@@ -26,11 +27,6 @@ const athleteSchema = new mongoose.Schema({
   height: {
     type: Number, // Height in cm
     required: true,
-  },
-  points: {
-    type: Number,
-    required: true,
-    default: 0, // Default points if not provided
   },
   DUPRID: {
     type: String,
@@ -49,6 +45,18 @@ const athleteSchema = new mongoose.Schema({
     type: String,
     // match: [/^https:\/\/www\.instagram\.com\/[A-Za-z0-9_.]+\/?$/, "Invalid Instagram URL format"],
   },
+  youtubeHandle: {
+    type: String,
+    // match: [/^https:\/\/(www\.)?youtube\.com\/(c|channel|@)[A-Za-z0-9_-]+\/?$/, "Invalid YouTube handle URL"],
+  },
+  twitterHandle: {
+    type: String,
+    // match: [/^https:\/\/(www\.)?twitter\.com\/[A-Za-z0-9_]+\/?$/, "Invalid Twitter handle URL"],
+  },
+  about: {
+    type: String,
+    trim: true,
+  },
   titlesWon: [
     {
       title: { type: String, required: true },
@@ -66,10 +74,12 @@ const athleteSchema = new mongoose.Schema({
       },
     },
   ],
-  imageUrl: {
-    type: String,
-    required: true,
-  },
+  imageUrl: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now,
