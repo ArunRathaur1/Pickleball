@@ -174,7 +174,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
         <div className="w-full sm:w-36 lg:w-36">
           <button
             onClick={resetFilters}
-            className="w-full px-4 py-2 h-10 text-sm font-semibold text-white rounded-md bg-gradient-to-r from-green-500 to-green-600 hover:from-blue-600 hover:to-blue-600 transition"
+            className="w-full px-4 py-2 h-10 text-sm font-semibold text-white rounded-md bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-600 transition"
           >
             Reset Filters
           </button>
@@ -183,7 +183,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
         {/* Add Tournament Button */}
         <div className="w-full sm:w-36 lg:w-36">
           <Link to="/addtournament">
-            <button className="w-full px-4 py-2 h-10 text-sm font-semibold text-white rounded-md bg-gradient-to-r from-green-500 to-green-600 hover:from-blue-600 hover:to-blue-600 transition">
+            <button className="w-full px-4 py-2 h-10 text-sm font-semibold text-white rounded-md bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-600 transition">
               Add Tournament
             </button>
           </Link>
@@ -193,7 +193,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
         <div className="w-full sm:w-auto lg:w-auto">
           <button
             onClick={toggleView}
-            className="w-full px-4 py-2 h-10 text-sm font-semibold text-white bg-green-600 hover:bg-blue-600 rounded-md transition"
+            className="w-full px-4 py-2 h-10 text-sm font-semibold text-white bg-green-600 hover:bg-green-600 rounded-md transition"
           >
             Switch to {view === "list" ? "Map" : "List"} View
           </button>
