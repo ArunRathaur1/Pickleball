@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import SignupPage from "./pages/SginupPage.tsx";
 import Tournaments from "./pages/Tournament/Tournaments.tsx";
 import TournamentSubmit from "./pages/TournamentSubmit";
 import Services from "./pages/Services";
@@ -80,7 +80,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
             <Route path="/tournaments" element={<Tournaments />} />
             <Route path="/tournaments/submit" element={<TournamentSubmit />} />
             <Route path="/courts/submit" element={<CourtSubmit />} />
@@ -94,7 +93,7 @@ const App = () => {
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/addclubs" element={<ClubForm/>} />
             <Route path="/:id" element={<PlayerProfile />} />
-            <Route path="/signup" element={<Register></Register>}></Route>
+            <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
             <Route path="/tournament/:id" element={<TournamentDetails />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
