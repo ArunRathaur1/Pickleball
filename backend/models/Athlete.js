@@ -81,10 +81,15 @@ const athleteSchema = new mongoose.Schema({
   ],
   imageUrl: [
     {
-      type: String,
-      required: true,
+      image: {
+        type: String,
+      },
+      text: {
+        type: String,
+      },
     },
   ],
+
   createdAt: {
     type: Date,
     default: Date.now,

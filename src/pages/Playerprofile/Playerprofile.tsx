@@ -21,6 +21,7 @@ const PlayerProfile = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    console.log('hello')
     axios
       .get(`http://localhost:5000/athletes/${id}`)
       .then((res) => {
@@ -31,6 +32,7 @@ const PlayerProfile = () => {
         setError("Athlete not found");
         setLoading(false);
       });
+      console.log(athlete);
   }, [id]);
 
   if (loading) return <LoadingSpinner />;
@@ -38,12 +40,10 @@ const PlayerProfile = () => {
 
   return (
     <>
-      <Navbar />
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <HeroSection athlete={athlete} />
           <TabsSection athlete={athlete} />
       </div>
-      <Footer />
+
     </>
   );
 };

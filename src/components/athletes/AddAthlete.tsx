@@ -6,7 +6,7 @@ import Sponsors from "./Sponsors";
 import Related from "./Related";
 import axios from "axios";
 import { useEffect } from "react";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import {
   Card,
   CardContent,
@@ -34,7 +34,7 @@ interface AthleteFormData {
   country: string;
   height: string;
   DUPRID: string;
-  identifier:string;
+  identifier: string;
   sponsors: { name: string; imageUrl: string }[];
   instagramPage: string;
   youtubeHandle: string;
@@ -42,7 +42,10 @@ interface AthleteFormData {
   about: string;
   titlesWon: { title: string; year: string }[];
   relatedContent: { imageUrl: string; title: string; youtubeLink: string }[];
-  imageUrl: string[];
+  imageUrl: {
+    image: string;
+    text: string;
+  }[];
 }
 
 export default function AddAthlete() {
@@ -55,7 +58,7 @@ export default function AddAthlete() {
     country: "",
     height: "",
     DUPRID: "",
-    identifier:"",
+    identifier: "",
     sponsors: [{ name: "", imageUrl: "" }],
     instagramPage: "",
     youtubeHandle: "",
@@ -63,23 +66,94 @@ export default function AddAthlete() {
     about: "",
     titlesWon: [{ title: "", year: "" }],
     relatedContent: [{ imageUrl: "", title: "", youtubeLink: "" }],
-    imageUrl: [""],
+    imageUrl: [{ image: "", text: "" }],
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [submitMessage, setSubmitMessage] = useState({ type: "", message: "" });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
   useEffect(() => {
-    const playerCookie = Cookies.get("player");
-    console.log(playerCookie)
-    if (playerCookie) {
-      const player = JSON.parse(playerCookie);
-      console.log(player._id);
-      if (player._id) {
-        setFormData((prev) => ({ ...prev, identifier: player._id }));
+    const fetchAthlete = async () => {
+      const cookieData = Cookies.get("player");
+      if (!cookieData) {
+        setLoading(false);
+        return;
       }
-    }
+
+      try {
+        const player = JSON.parse(cookieData);
+        const playerId = player._id;
+
+        if (!playerId) {
+          setLoading(false);
+          return;
+        }
+
+        const response = await axios.get(
+          `http://localhost:5000/athletes/loginid/${playerId}`
+        );
+
+        const athleteData = response.data;
+
+        // Transform the fetched data to match form structure
+        setFormData({
+          name: athleteData.name || "",
+          playerlogoimage: athleteData.playerlogoimage || "",
+          playerid: athleteData.playerid || "",
+          age: athleteData.age ? athleteData.age.toString() : "",
+          gender: athleteData.gender || "",
+          country: athleteData.country || "",
+          height: athleteData.height ? athleteData.height.toString() : "",
+          DUPRID: athleteData.DUPRID || "",
+          identifier: athleteData.identifier || playerId,
+          sponsors:
+            athleteData.sponsors && athleteData.sponsors.length > 0
+              ? athleteData.sponsors.map((sponsor: any) => ({
+                  name: sponsor.name || "",
+                  imageUrl: sponsor.imageUrl || "",
+                }))
+              : [{ name: "", imageUrl: "" }],
+          instagramPage: athleteData.instagramPage || "",
+          youtubeHandle: athleteData.youtubeHandle || "",
+          twitterHandle: athleteData.twitterHandle || "",
+          about: athleteData.about || "",
+          titlesWon:
+            athleteData.titlesWon && athleteData.titlesWon.length > 0
+              ? athleteData.titlesWon.map((title: any) => ({
+                  title: title.title || "",
+                  year: title.year ? title.year.toString() : "",
+                }))
+              : [{ title: "", year: "" }],
+          relatedContent:
+            athleteData.relatedContent && athleteData.relatedContent.length > 0
+              ? athleteData.relatedContent.map((content: any) => ({
+                  imageUrl: content.imageUrl || "",
+                  title: content.title || "",
+                  youtubeLink: content.youtubeLink || "",
+                }))
+              : [{ imageUrl: "", title: "", youtubeLink: "" }],
+          imageUrl:
+            athleteData.imageUrl && athleteData.imageUrl.length > 0
+              ? athleteData.imageUrl.map((item: any) => ({
+                  image: item.image || item || "", // Handle both old string format and new object format
+                  text: item.text || "",
+                }))
+              : [{ image: "", text: "" }],
+        });
+      } catch (err) {
+        setError("Failed to fetch athlete data");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAthlete();
   }, []);
+
   const validateForm = () => {
     const errors: Record<string, string> = {};
 
@@ -92,10 +166,20 @@ export default function AddAthlete() {
     if (!formData.height) errors.height = "Height is required";
     if (!formData.DUPRID.trim()) errors.DUPRID = "DUPRID is required";
 
-    // Validate at least one image URL
-    const validImageUrls = formData.imageUrl.filter((url) => url.trim());
+    // Validate at least one image URL with image field filled
+    const validImageUrls = formData.imageUrl.filter((item) =>
+      item.image.trim()
+    );
     if (validImageUrls.length === 0)
       errors.imageUrl = "At least one image URL is required";
+
+    // Validate individual image entries
+    formData.imageUrl.forEach((item, idx) => {
+      if (item.image.trim() && !item.text.trim()) {
+        errors[`imageUrl_${idx}_text`] =
+          "Text description is required when image is provided";
+      }
+    });
 
     // Validate sponsors
     formData.sponsors.forEach((sponsor, idx) => {
@@ -154,7 +238,7 @@ export default function AddAthlete() {
       "sponsors" | "titlesWon" | "relatedContent"
     >
   ) => {
-    const updatedArray = [...formData[key]];
+    const updatedArray = [...formData[key]] as any[];
     updatedArray[index][field] = value;
     setFormData((prev) => ({ ...prev, [key]: updatedArray }));
 
@@ -179,7 +263,10 @@ export default function AddAthlete() {
     }
   };
 
-  const handleImageUrlChange = (index: number, value: string) => {
+  const handleImageUrlChange = (
+    index: number,
+    value: { image: string; text: string }
+  ) => {
     const updatedArray = [...formData.imageUrl];
     updatedArray[index] = value;
     setFormData((prev) => ({ ...prev, imageUrl: updatedArray }));
@@ -193,7 +280,7 @@ export default function AddAthlete() {
       });
     }
   };
-
+  
   const addField = (
     key: keyof Pick<
       AthleteFormData,
@@ -205,7 +292,10 @@ export default function AddAthlete() {
   };
 
   const addImageUrl = () => {
-    setFormData((prev) => ({ ...prev, imageUrl: [...prev.imageUrl, ""] }));
+    setFormData((prev) => ({
+      ...prev,
+      imageUrl: [...prev.imageUrl, { image: "", text: "" }],
+    }));
   };
 
   const removeField = (
@@ -224,8 +314,9 @@ export default function AddAthlete() {
 
   const removeImageUrl = (index: number) => {
     if (formData.imageUrl.length <= 1) {
-      return; // Keep at least one image URL
+      return; // Ensure at least one entry remains
     }
+
     const updatedArray = formData.imageUrl.filter((_, i) => i !== index);
     setFormData((prev) => ({ ...prev, imageUrl: updatedArray }));
   };
@@ -245,8 +336,10 @@ export default function AddAthlete() {
     setSubmitMessage({ type: "", message: "" });
 
     try {
-      // Filter out empty image URLs
-      const filteredImageUrls = formData.imageUrl.filter((url) => url.trim());
+      // Filter out empty image URLs (only keep entries with image field filled)
+      const filteredImageUrls = formData.imageUrl.filter((item) =>
+        item.image.trim()
+      );
 
       // Prepare data for submission
       const submitData = {
@@ -260,65 +353,69 @@ export default function AddAthlete() {
         imageUrl: filteredImageUrls,
       };
 
-      // Simulate API call with a delay (replace with your actual API call)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // For actual API call:
+      // For actual API call (you might want to use PUT for updates):
       await axios.post("http://localhost:5000/athletes", submitData);
 
       setSubmitMessage({
         type: "success",
-        message: "Athlete added successfully!",
-      });
-
-      // Reset form data
-      setFormData({
-        name: "",
-        playerlogoimage: "",
-        playerid: "",
-        age: "",
-        gender: "",
-        country: "",
-        height: "",
-        DUPRID: "",
-        identifier:"",
-        sponsors: [{ name: "", imageUrl: "" }],
-        instagramPage: "",
-        youtubeHandle: "",
-        twitterHandle: "",
-        about: "",
-        titlesWon: [{ title: "", year: "" }],
-        relatedContent: [{ imageUrl: "", title: "", youtubeLink: "" }],
-        imageUrl: [""],
+        message: "Athlete updated successfully!",
       });
     } catch (error) {
       setSubmitMessage({
         type: "error",
-        message: "Failed to add athlete. Please try again.",
+        message: "Failed to update athlete. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  if (loading) {
+    return (
+      <div className="w-full">
+        <Card>
+          <CardHeader className="bg-blue-50">
+            <CardTitle className="text-xl font-bold text-blue-800">
+              Loading Athlete Data...
+            </CardTitle>
+          </CardHeader>
+        </Card>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="w-full">
+        <Card>
+          <CardHeader className="bg-red-50">
+            <CardTitle className="text-xl font-bold text-red-800">
+              Error: {error}
+            </CardTitle>
+          </CardHeader>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full">
       <Card>
         <CardHeader className="bg-blue-50">
           <CardTitle className="text-xl font-bold text-blue-800">
-            Add New Athlete
+            Edit Athlete Profile
           </CardTitle>
         </CardHeader>
 
         <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Basic Information */}
-
             <BasicInfo
               formData={formData}
               handleChange={handleChange}
               formErrors={formErrors}
-            ></BasicInfo>
+            />
+
             {/* Social Media Handles */}
             <Links
               formData={formData}
@@ -327,7 +424,7 @@ export default function AddAthlete() {
               removeImageUrl={removeImageUrl}
               formErrors={formErrors}
               addImageUrl={addImageUrl}
-            ></Links>
+            />
 
             {/* Sponsors Section */}
             <Sponsors
@@ -336,7 +433,7 @@ export default function AddAthlete() {
               handleNestedChange={handleNestedChange}
               formErrors={formErrors}
               addField={addField}
-            ></Sponsors>
+            />
 
             {/* Related Content Section */}
             <Related
@@ -347,7 +444,7 @@ export default function AddAthlete() {
               addField={addField}
               submitMessage={submitMessage}
               isSubmitting={isSubmitting}
-            ></Related>
+            />
           </form>
         </CardContent>
       </Card>

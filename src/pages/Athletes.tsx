@@ -3,23 +3,6 @@ import axios from "axios";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Link } from "react-router-dom";
-import Athlete_Background from "./spline/Athlete";
-
-interface Sponsor {
-  name: string;
-  imageUrl: string;
-}
-
-interface Title {
-  title: string;
-  year: number;
-}
-
-interface RelatedContent {
-  imageUrl: string;
-  title: string;
-  youtubeLink: string;
-}
 
 interface Athlete {
   _id: string;
@@ -30,11 +13,8 @@ interface Athlete {
   country: string;
   height: number;
   points: number;
-  titlesWon: Title[];
   imageUrl: string;
-  instagramPage?: string;
-  sponsors?: Sponsor[];
-  relatedContent?: RelatedContent[];
+  gameType?: string; // Single or Doubles
 }
 
 const Athletes = () => {
@@ -42,6 +22,7 @@ const Athletes = () => {
   const [filteredAthletes, setFilteredAthletes] = useState<Athlete[]>([]);
   const [genderFilter, setGenderFilter] = useState("");
   const [countryFilter, setCountryFilter] = useState("");
+  const [gameTypeFilter, setGameTypeFilter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -74,18 +55,22 @@ const Athletes = () => {
       );
     }
 
+    if (gameTypeFilter) {
+      filtered = filtered.filter(
+        (athlete) => athlete.gameType === gameTypeFilter
+      );
+    }
+
     filtered = filtered.sort((a, b) => b.points - a.points);
     setFilteredAthletes(filtered);
-  }, [genderFilter, countryFilter, searchTerm, athletes]);
+  }, [genderFilter, countryFilter, gameTypeFilter, searchTerm, athletes]);
 
   return (
     <>
       <Navbar />
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-emerald-100 dark:from-gray-900 dark:to-black text-gray-900 dark:text-gray-100 relative">
-        {/* <Athlete_Background /> */}
-
-        <div className="container mx-auto relative z-10 px-4 py-10">
-          <div className="bg-white dark:bg-gray-900 bg-opacity-90 dark:bg-opacity-90 rounded-2xl shadow-2xl p-8 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-10">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-8">
             <h1 className="text-5xl font-extrabold text-center mb-6 text-emerald-600 dark:text-emerald-400 drop-shadow-lg">
               Athlete Leaderboard
             </h1>
@@ -96,13 +81,14 @@ const Athletes = () => {
                 placeholder="🔍 Search athletes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full md:w-1/2 px-5 py-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+                className="w-full md:w-1/3 px-5 py-3 rounded-full bg-gray-100 dark:bg-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
-              <div className="flex gap-4">
+
+              <div className="flex gap-3 flex-wrap justify-center md:justify-start">
                 <select
-                  className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
                   value={genderFilter}
                   onChange={(e) => setGenderFilter(e.target.value)}
+                  className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 >
                   <option value="">All Genders</option>
                   <option value="Male">Male</option>
@@ -111,9 +97,9 @@ const Athletes = () => {
                 </select>
 
                 <select
-                  className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
                   value={countryFilter}
                   onChange={(e) => setCountryFilter(e.target.value)}
+                  className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 >
                   <option value="">All Countries</option>
                   {[...new Set(athletes.map((a) => a.country))].map(
@@ -123,6 +109,16 @@ const Athletes = () => {
                       </option>
                     )
                   )}
+                </select>
+
+                <select
+                  value={gameTypeFilter}
+                  onChange={(e) => setGameTypeFilter(e.target.value)}
+                  className="px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 shadow-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                >
+                  <option value="">All Types</option>
+                  <option value="Single">Single</option>
+                  <option value="Doubles">Doubles</option>
                 </select>
               </div>
             </div>
@@ -136,13 +132,11 @@ const Athletes = () => {
                 <table className="w-full table-auto text-sm">
                   <thead className="bg-emerald-600 dark:bg-emerald-700 text-white">
                     <tr>
-                      <th className="p-4 text-left">#</th>
-                      <th className="p-4 text-left">Athlete</th>
+                      <th className="p-4 text-left text-lg font-bold">Rank</th>
+                      <th className="p-4 text-left">Athlete Name</th>
                       <th className="p-4 text-left">Country</th>
                       <th className="p-4 text-left">Age</th>
                       <th className="p-4 text-left">Points</th>
-                      <th className="p-4 text-left">Titles</th>
-                      <th className="p-4 text-left">Sponsors</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -151,18 +145,18 @@ const Athletes = () => {
                         key={athlete._id}
                         className="hover:bg-emerald-600 hover:text-white transition duration-200 cursor-pointer"
                       >
-                        <td className="p-4 font-bold text-emerald-600 dark:text-emerald-400">
+                        <td className="p-4 text-xl font-extrabold text-emerald-700 dark:text-emerald-400">
                           {index + 1}
                         </td>
                         <td className="p-4 flex items-center gap-3">
                           <img
                             src={athlete.imageUrl}
                             alt={athlete.name}
-                            className="w-10 h-10 rounded-full object-cover border border-gray-300 dark:border-gray-600"
+                            className="w-10 h-10 rounded-full object-cover border"
                           />
                           <Link
                             to={`/${athlete.playerid}`}
-                            className="hover:underline font-semibold text-gray-900 dark:text-gray-100"
+                            className="hover:underline font-semibold"
                           >
                             {athlete.name}
                           </Link>
@@ -171,26 +165,6 @@ const Athletes = () => {
                         <td className="p-4">{athlete.age}</td>
                         <td className="p-4 font-semibold text-emerald-700 dark:text-emerald-400">
                           {athlete.points}
-                        </td>
-                        <td className="p-4">
-                          <ul>
-                            {athlete.titlesWon?.slice(0, 2).map((title, i) => (
-                              <li key={i}>
-                                {title.title} ({title.year})
-                              </li>
-                            ))}
-                          </ul>
-                        </td>
-                        <td className="p-4 flex gap-2">
-                          {athlete.sponsors?.slice(0, 2).map((sponsor, i) => (
-                            <img
-                              key={i}
-                              src={sponsor.imageUrl}
-                              alt={sponsor.name}
-                              title={sponsor.name}
-                              className="w-6 h-6 object-contain"
-                            />
-                          ))}
                         </td>
                       </tr>
                     ))}

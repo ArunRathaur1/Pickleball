@@ -51,7 +51,8 @@ router.get("/", async (req, res) => {
 });
 
 // Get a player by ID
-router.get("playerid/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
+    console.log("hello")
     try {
         const player = await PlayerLogin.findById(req.params.id);
         if (!player) return res.status(404).json({ message: "Player not found" });

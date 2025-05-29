@@ -191,7 +191,7 @@ export default function Related(props) {
           disabled={isSubmitting}
           className="w-full md:w-1/3 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium disabled:bg-blue-400"
         >
-          {isSubmitting ? "Submitting..." : "Add Athlete"}
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
       </div>
     </div>

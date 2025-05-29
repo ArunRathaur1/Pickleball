@@ -4,7 +4,6 @@ import {
   Info,
   Trash2,
   Plus,
-  Award,
   Users,
   Instagram,
   Youtube,
@@ -22,12 +21,34 @@ export default function Links(props) {
   } = props;
 
   // Handle Cloudinary upload success for specific image index
-  const handleImageUpload = (index, imageUrl) => {
-    handleImageUrlChange(index, imageUrl);
+  const handleImageUpload = (index, uploadedUrl) => {
+    const updatedImageObject = {
+      ...formData.imageUrl[index],
+      image: uploadedUrl,
+    };
+    handleImageUrlChange(index, updatedImageObject);
+  };
+
+  // Handle text input manually
+  const handleManualImageUrlInput = (index, url) => {
+    const updatedImageObject = {
+      ...formData.imageUrl[index],
+      image: url,
+    };
+    handleImageUrlChange(index, updatedImageObject);
+  };
+
+  const handleImageTextChange = (index, text) => {
+    const updatedImageObject = {
+      ...formData.imageUrl[index],
+      text,
+    };
+    handleImageUrlChange(index, updatedImageObject);
   };
 
   return (
     <div>
+      {/* Social Media */}
       <div className="space-y-4 pt-2 border-t border-gray-200">
         <h3 className="text-lg font-semibold flex items-center gap-2 text-blue-700 pt-2">
           <Users size={18} />
@@ -35,73 +56,57 @@ export default function Links(props) {
         </h3>
 
         <div className="grid grid-cols-1 gap-4">
-          <div>
-            <label className="block text-sm font-medium mb-1">
-              Instagram Page
-            </label>
-            <div className="flex items-center">
-              <span className="bg-gray-100 p-2 rounded-l-md border border-r-0 border-gray-300">
-                <Instagram size={18} className="text-pink-500" />
-              </span>
-              <input
-                type="text"
-                name="instagramPage"
-                value={formData.instagramPage}
-                onChange={handleChange}
-                placeholder="https://www.instagram.com/username"
-                className="w-full p-2 border border-gray-300 rounded-r-md"
-              />
-            </div>
-          </div>
+          {["instagramPage", "youtubeHandle", "twitterHandle"].map((field) => {
+            const labelMap = {
+              instagramPage: "Instagram Page",
+              youtubeHandle: "YouTube Handle",
+              twitterHandle: "Twitter Handle",
+            };
 
-          <div>
-            <label className="block text-sm font-medium mb-1">
-              YouTube Handle
-            </label>
-            <div className="flex items-center">
-              <span className="bg-gray-100 p-2 rounded-l-md border border-r-0 border-gray-300">
-                <Youtube size={18} className="text-red-500" />
-              </span>
-              <input
-                type="text"
-                name="youtubeHandle"
-                value={formData.youtubeHandle}
-                onChange={handleChange}
-                placeholder="https://www.youtube.com/@username"
-                className="w-full p-2 border border-gray-300 rounded-r-md"
-              />
-            </div>
-          </div>
+            const iconMap = {
+              instagramPage: <Instagram size={18} className="text-pink-500" />,
+              youtubeHandle: <Youtube size={18} className="text-red-500" />,
+              twitterHandle: <Twitter size={18} className="text-blue-400" />,
+            };
 
-          <div>
-            <label className="block text-sm font-medium mb-1">
-              Twitter Handle
-            </label>
-            <div className="flex items-center">
-              <span className="bg-gray-100 p-2 rounded-l-md border border-r-0 border-gray-300">
-                <Twitter size={18} className="text-blue-400" />
-              </span>
-              <input
-                type="text"
-                name="twitterHandle"
-                value={formData.twitterHandle}
-                onChange={handleChange}
-                placeholder="https://www.twitter.com/username"
-                className="w-full p-2 border border-gray-300 rounded-r-md"
-              />
-            </div>
-          </div>
+            return (
+              <div key={field}>
+                <label className="block text-sm font-medium mb-1">
+                  {labelMap[field]}
+                </label>
+                <div className="flex items-center">
+                  <span className="bg-gray-100 p-2 rounded-l-md border border-r-0 border-gray-300">
+                    {iconMap[field]}
+                  </span>
+                  <input
+                    type="text"
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    placeholder={`https://www.${
+                      field.includes("youtube")
+                        ? "youtube.com/@"
+                        : field.includes("twitter")
+                        ? "twitter.com/"
+                        : "instagram.com/"
+                    }username`}
+                    className="w-full p-2 border border-gray-300 rounded-r-md"
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Image URLs Section */}
+      {/* Athlete Images */}
       <div className="space-y-4 pt-2 border-t border-gray-200">
         <h3 className="text-lg font-semibold flex items-center gap-2 text-blue-700 pt-2">
           <Info size={18} />
           Athlete Images
         </h3>
 
-        {formData.imageUrl.map((url, index) => (
+        {formData.imageUrl.map((item, index) => (
           <div
             key={index}
             className="p-3 bg-gray-50 rounded-lg border border-gray-200"
@@ -123,9 +128,7 @@ export default function Links(props) {
                   Upload Image
                 </label>
                 <CloudinaryImageUploader
-                  onUploadSuccess={(imageUrl) =>
-                    handleImageUpload(index, imageUrl)
-                  }
+                  onUploadSuccess={(url) => handleImageUpload(index, url)}
                 />
               </div>
 
@@ -135,18 +138,33 @@ export default function Links(props) {
                 </label>
                 <input
                   type="text"
-                  value={url}
-                  onChange={(e) => handleImageUrlChange(index, e.target.value)}
+                  value={item.image}
+                  onChange={(e) =>
+                    handleManualImageUrlInput(index, e.target.value)
+                  }
                   placeholder="Image URL"
                   className="w-full p-2 border border-gray-300 rounded-md"
                 />
               </div>
 
-              {url && (
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Description (Optional)
+                </label>
+                <input
+                  type="text"
+                  value={item.text}
+                  onChange={(e) => handleImageTextChange(index, e.target.value)}
+                  placeholder="Enter description"
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+
+              {item.image && (
                 <div>
                   <p className="text-sm text-gray-600 mb-2">Preview:</p>
                   <img
-                    src={url}
+                    src={item.image}
                     alt={`Athlete image ${index + 1}`}
                     className="w-24 h-24 object-cover rounded-md border"
                     onError={(e) => {

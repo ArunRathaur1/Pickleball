@@ -5,21 +5,27 @@ const Athlete = require("../models/Athlete");
 // 📌 1️⃣ Create a new athlete
 router.post("/", async (req, res) => {
   try {
-    const newAthlete = new Athlete(req.body);
-    await newAthlete.save();
-    
-    // Transform response to match frontend expectations
-    const transformedAthlete = {
-      ...newAthlete.toObject(),
-      imageUrl: Array.isArray(newAthlete.imageUrl) ? newAthlete.imageUrl[0] : newAthlete.imageUrl,
-      points: newAthlete.points || 0
-    };
-    
-    res.status(201).json(transformedAthlete);
+    const athleteData = req.body;
+
+    let updatedAthlete = await Athlete.findOneAndUpdate(
+      { DUPRID: athleteData.DUPRID },
+      athleteData,
+      { new: true }
+    );
+
+    if (!updatedAthlete) {
+      const newAthlete = new Athlete(athleteData);
+      await newAthlete.save();
+      updatedAthlete = newAthlete;
+    }
+
+    res.status(201).json(updatedAthlete);
   } catch (error) {
+    console.error("Error in /athletes POST:", error.message);
     res.status(400).json({ error: error.message });
   }
 });
+
 
 // 📌 2️⃣ Get all athletes (with filtering and sorting)
 router.get("/", async (req, res) => {
@@ -80,8 +86,6 @@ router.get("/:playerid", async (req, res) => {
   }
 });
 router.get("/loginid/:id", async (req, res) => {
-  console.log("hello")
-  console.log(req.params.id);
   try {
     const athlete = await Athlete.findOne({ identifier: req.params.id });
     if (!athlete) {
