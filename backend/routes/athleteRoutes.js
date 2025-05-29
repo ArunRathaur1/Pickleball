@@ -7,7 +7,15 @@ router.post("/", async (req, res) => {
   try {
     const newAthlete = new Athlete(req.body);
     await newAthlete.save();
-    res.status(201).json(newAthlete);
+    
+    // Transform response to match frontend expectations
+    const transformedAthlete = {
+      ...newAthlete.toObject(),
+      imageUrl: Array.isArray(newAthlete.imageUrl) ? newAthlete.imageUrl[0] : newAthlete.imageUrl,
+      points: newAthlete.points || 0
+    };
+    
+    res.status(201).json(transformedAthlete);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -26,37 +34,47 @@ router.get("/", async (req, res) => {
 
     let athletesQuery = Athlete.find(filter);
 
-    if (sort === "points") {
+    // Sort by points if specified, otherwise default sorting by points descending for leaderboard
+    if (sort === "points" || !sort) {
       athletesQuery = athletesQuery.sort({ points: -1 });
     }
 
     const athletes = await athletesQuery;
-    res.json(athletes);
+    
+    // Transform the data to match frontend expectations
+    const transformedAthletes = athletes.map(athlete => ({
+      ...athlete.toObject(),
+      // Handle imageUrl - if it's an array, take the first image
+      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      // Add points field with fallback
+      points: athlete.points || 0
+    }));
+
+    res.json(transformedAthletes);
   } catch (err) {
-    res.status(500).json({ message: "Server error", error: err });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 });
 
-// 📌 3️⃣ Get a single athlete by ID
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const athlete = await Athlete.findById(req.params.id);
-//     if (!athlete) {
-//       return res.status(404).json({ message: "Athlete not found" });
-//     }
-//     res.json(athlete);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
-router.get("/:id", async (req, res) => {
+// 📌 3️⃣ Get a single athlete by playerid
+router.get("/:playerid", async (req, res) => {
   try {
-    const athlete = await Athlete.findOne({ playerid: req.params.id }); 
+    const athlete = await Athlete.findOne({ playerid: req.params.playerid });
+
     if (!athlete) {
       return res.status(404).json({ message: "Athlete not found" });
     }
-    res.json(athlete);
+
+    // Transform the data to match frontend expectations
+    const transformedAthlete = {
+      ...athlete.toObject(),
+      // Handle imageUrl - if it's an array, take the first image
+      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      // Add points field with fallback
+      points: athlete.points || 0
+    };
+
+    res.json(transformedAthlete);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -75,31 +93,49 @@ router.get("/loginid/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+// 📌 4️⃣ Update an athlete by playerid
+router.put("/:playerid", async (req, res) => {
   try {
-    const updatedAthlete = await Athlete.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const updatedAthlete = await Athlete.findOneAndUpdate(
+      { playerid: req.params.playerid },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     if (!updatedAthlete) {
       return res.status(404).json({ message: "Athlete not found" });
     }
 
-    res.json(updatedAthlete);
+    // Transform the response data
+    const transformedAthlete = {
+      ...updatedAthlete.toObject(),
+      imageUrl: Array.isArray(updatedAthlete.imageUrl) ? updatedAthlete.imageUrl[0] : updatedAthlete.imageUrl,
+      points: updatedAthlete.points || 0
+    };
+
+    res.json(transformedAthlete);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 });
 
-// 📌 5️⃣ Delete an athlete
-router.delete("/:id", async (req, res) => {
+// 📌 5️⃣ Delete an athlete by playerid
+router.delete("/:playerid", async (req, res) => {
   try {
-    const deletedAthlete = await Athlete.findByIdAndDelete(req.params.id);
+    const deletedAthlete = await Athlete.findOneAndDelete({ playerid: req.params.playerid });
     if (!deletedAthlete) {
       return res.status(404).json({ message: "Athlete not found" });
     }
-    res.json({ message: "Athlete deleted successfully" });
+    res.json({ 
+      message: "Athlete deleted successfully",
+      deletedAthlete: {
+        playerid: deletedAthlete.playerid,
+        name: deletedAthlete.name
+      }
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -110,9 +146,17 @@ router.get("/duprid/:duprid", async (req, res) => {
   try {
     const athlete = await Athlete.findOne({ DUPRID: req.params.duprid });
     if (!athlete) {
-      return res.status(404).json({ message: "Athlete not found" });
+      return res.status(404).json({ message: "Athlete not found with this DUPRID" });
     }
-    res.json(athlete);
+
+    // Transform the data
+    const transformedAthlete = {
+      ...athlete.toObject(),
+      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      points: athlete.points || 0
+    };
+
+    res.json(transformedAthlete);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -122,13 +166,68 @@ router.get("/duprid/:duprid", async (req, res) => {
 router.get("/title/:title", async (req, res) => {
   try {
     const { title } = req.params;
-    const athletes = await Athlete.find({ "titlesWon.title": { $regex: title, $options: "i" } });
+    const athletes = await Athlete.find({ 
+      "titlesWon.title": { $regex: title, $options: "i" } 
+    }).sort({ points: -1 }); // Sort by points descending
 
     if (athletes.length === 0) {
       return res.status(404).json({ message: "No athletes found with this title" });
     }
 
-    res.json(athletes);
+    // Transform all athletes
+    const transformedAthletes = athletes.map(athlete => ({
+      ...athlete.toObject(),
+      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      points: athlete.points || 0
+    }));
+
+    res.json(transformedAthletes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 📌 8️⃣ Get athletes by country
+router.get("/country/:country", async (req, res) => {
+  try {
+    const { country } = req.params;
+    const athletes = await Athlete.find({ 
+      country: { $regex: country, $options: "i" } 
+    }).sort({ points: -1 });
+
+    if (athletes.length === 0) {
+      return res.status(404).json({ message: "No athletes found from this country" });
+    }
+
+    const transformedAthletes = athletes.map(athlete => ({
+      ...athlete.toObject(),
+      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      points: athlete.points || 0
+    }));
+
+    res.json(transformedAthletes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 📌 9️⃣ Get athletes by gender
+router.get("/gender/:gender", async (req, res) => {
+  try {
+    const { gender } = req.params;
+    const athletes = await Athlete.find({ gender }).sort({ points: -1 });
+
+    if (athletes.length === 0) {
+      return res.status(404).json({ message: "No athletes found with this gender" });
+    }
+
+    const transformedAthletes = athletes.map(athlete => ({
+      ...athlete.toObject(),
+      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      points: athlete.points || 0
+    }));
+
+    res.json(transformedAthletes);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

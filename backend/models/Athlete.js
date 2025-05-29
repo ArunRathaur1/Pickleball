@@ -11,6 +11,7 @@ const athleteSchema = new mongoose.Schema({
   },
   playerid: {
     type: String,
+    unique: true,
     required: true,
   },
   identifier: { type: String, required: true },
