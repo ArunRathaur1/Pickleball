@@ -29,7 +29,7 @@ import Clubdetails from "./components/userclubs/clubdetails.tsx";
 import { BlogDetail } from "./components/blogs/BlogDetail.tsx";
 import ClubForm from "./components/admin-club/form.tsx";
 import TournamentForm from "./components/tournaments/tournamentform/tournament-form.tsx";
-
+import PlayerDashboard from "./components/PlayerLogin/PlayerDashboard.tsx";
 const queryClient = new QueryClient();
 
 // Create a ChatbotWrapper to manage global chatbot state
@@ -102,6 +102,7 @@ const App = () => {
             <Route path="/sponsor" element={<Sponser></Sponser>}></Route>
             <Route path='/clubdetails/:id' element={<Clubdetails></Clubdetails>}></Route>
             <Route path='/addtournament' element={<TournamentForm/>}></Route>
+            <Route path='/playerdashboard'element={<PlayerDashboard></PlayerDashboard>}></Route>
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

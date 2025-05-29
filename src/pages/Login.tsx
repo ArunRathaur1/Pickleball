@@ -1,8 +1,11 @@
 import { useState } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-
+import { useNavigate } from "react-router-dom"; 
 const Login = () => {
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     id: "",
     password: "",
@@ -19,9 +22,34 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login Details:", formData);
+
+    if (formData.userType === "Player") {
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/playerlogin/login",
+          {
+            DUPRID: formData.id,
+            password: formData.password,
+          }
+        );
+
+        const data = response.data;
+        console.log(data.player);
+        // Save data to cookies (adjust keys based on backend response)
+        Cookies.set("player", JSON.stringify(data.player), { expires: 7 });
+        navigate("/playerdashboard");
+        // You can also redirect here: `router.push("/player/dashboard")`
+      } catch (error: any) {
+        const message =
+          error?.response?.data?.message || "Login failed! Please try again.";
+        alert(message);
+        console.error("Login Error:", error);
+      }
+    } else {
+      alert("Brand login not implemented yet.");
+    }
   };
 
   return (
@@ -33,7 +61,7 @@ const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="id" className="block mb-1 font-medium">
-                ID
+                {formData.userType === "Player" ? "DUPR ID" : "Brand ID"}
               </label>
               <input
                 type="text"
@@ -42,6 +70,11 @@ const Login = () => {
                 value={formData.id}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded-md"
+                placeholder={
+                  formData.userType === "Player"
+                    ? "Enter DUPR ID"
+                    : "Enter Brand ID"
+                }
                 required
               />
             </div>

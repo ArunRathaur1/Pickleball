@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom"; 
 import {
   Eye,
   EyeOff,
@@ -12,6 +14,7 @@ import {
 } from "lucide-react";
 
 export default function SignupBrand() {
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -85,21 +88,58 @@ export default function SignupBrand() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
+
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Signup Details:", formData);
-      setIsSubmitting(false);
-      // You would typically redirect or show success message here
-    }, 2000);
-  };
+    try {
+      const response = await fetch(
+        "http://localhost:5000/playerlogin/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            DUPRID: formData.duperId,
+            password: formData.password,
+            email: formData.email,
+            phone: formData.phone,
+          }),
+        }
+      );
 
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      // Save the returned player object in cookies
+      Cookies.set("player", JSON.stringify(data.player), { expires: 7 }); // expires in 7 days
+
+      console.log("Signup Success:", data);
+      alert("Signup successful!");
+      navigate("/playerdashboard");
+      // Optionally redirect or reset the form
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        duperId: "",
+        phone: "",
+      });
+    } catch (error) {
+      console.error("Signup Error:", error.message);
+      alert(error.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
   const getPasswordStrength = (password) => {
     if (!password) return { strength: 0, label: "", color: "bg-gray-200" };
 

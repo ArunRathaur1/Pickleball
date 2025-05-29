@@ -61,6 +61,19 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+router.get("/loginid/:id", async (req, res) => {
+  console.log("hello")
+  console.log(req.params.id);
+  try {
+    const athlete = await Athlete.findOne({ identifier: req.params.id });
+    if (!athlete) {
+      return res.status(404).json({ message: "Athlete not found" });
+    }
+    res.json(athlete);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 router.put("/:id", async (req, res) => {
   try {

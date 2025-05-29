@@ -6,10 +6,14 @@ const athleteSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  playerlogoimage: {
+    type: String,
+  },
   playerid: {
     type: String,
     required: true,
   },
+  identifier: { type: String, required: true },
   age: {
     type: Number,
     required: true,
