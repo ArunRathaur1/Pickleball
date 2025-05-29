@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
-
+import Website_Background from "../spline/website";
 // Component Imports
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -27,11 +27,13 @@ const PlayerProfile = () => {
       .then((res) => {
         setAthlete(res.data);
         setLoading(false);
+        console.log(res.data);
       })
       .catch(() => {
         setError("Athlete not found");
         setLoading(false);
       });
+      
       console.log(athlete);
   }, [id]);
 
@@ -40,10 +42,12 @@ const PlayerProfile = () => {
 
   return (
     <>
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <TabsSection athlete={athlete} />
+      <div className="fixed inset-0 z-0 ">
+        <Website_Background />
       </div>
-
+      <div className=" overflow-hidden">
+        <TabsSection athlete={athlete} />
+      </div>
     </>
   );
 };

@@ -1,227 +1,179 @@
 import { Athlete } from "./Types";
 import { Card, CardContent } from "@/components/ui/card";
-import PlayerImages from "./PlayerImages";
-import {
-  User,
-  MapPin,
-  Calendar,
-  Hash,
-  CheckCircle,
-  XCircle,
-} from "lucide-react";
-import RecentArticles from "./RecentArticles";
-import UpcomingMatches from "./Upcomming";
+import Website_Background from "../spline/website";
+import { Quote, Star, CheckCircle } from "lucide-react";
 
-const mockMatches = [
-  {
-    tournament: "Australian Open",
-    opponent: "Carlos Alvarez",
-    result: "Win",
-    score: "6-4, 3-6, 6-3",
-    date: "2025-01-22",
-  },
-  {
-    tournament: "Wimbledon",
-    opponent: "Roger Taylor",
-    result: "Loss",
-    score: "4-6, 5-7",
-    date: "2025-07-10",
-  },
-  {
-    tournament: "US Open",
-    opponent: "Daniil Medvedev",
-    result: "Win",
-    score: "7-6, 6-4",
-    date: "2025-09-15",
-  },
-  {
-    tournament: "French Open",
-    opponent: "Rafael Nadal",
-    result: "Loss",
-    score: "3-6, 6-7",
-    date: "2025-05-30",
-  },
-];
+const AboutSection = ({ athlete }: { athlete: Athlete }) => {
+  return (
+    <div className="relative min-h-screen overflow-hidden">
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 to-transparent"></div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          {/* Animated Grid Pattern */}
+          <div className="grid grid-cols-12 gap-4 h-full opacity-30">
+            {[...Array(48)].map((_, i) => (
+              <div
+                key={i}
+                className="bg-green-500/10 animate-pulse"
+                style={{
+                  animationDelay: `${i * 0.1}s`,
+                  animationDuration: "3s",
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-const AboutSection = ({ athlete }: { athlete: Athlete }) => (
-  <div className="space-y-8 p-6">
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Bio Card */}
-      <Card className="border-0 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 shadow-lg hover:shadow-xl transition-all duration-300">
-        <CardContent className="p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-blue-500 rounded-lg">
-              <User className="w-5 h-5 text-white" />
-            </div>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-              Biography
-            </h2>
-          </div>
-          <div className="space-y-4 text-gray-700 dark:text-gray-300">
-            <p className="leading-relaxed">
-              {athlete.name} is a {athlete.age}-year-old{" "}
-              {athlete.gender.toLowerCase()} athlete from {athlete.country}.
-              Standing at {athlete.height} cm tall, they have accumulated{" "}
-              {athlete.points.toLocaleString()} points in their career so far.
-            </p>
-            <p className="leading-relaxed">
-              They have won {athlete.titlesWon.length} major titles and are
-              sponsored by {athlete.sponsors.length} major brands, establishing
-              themselves as a prominent figure in their sport.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Main Content */}
+      <div className="relative z-10 space-y-16 px-4 md:px-10 py-12 max-w-7xl mx-auto" style={{fontSize:"50px"}}>
+        {/* Hero Header */}
+        <div className="text-center space-y-8">
+          <div className="relative inline-block">
+            {/* Glowing Effect Behind Text */}
+            <div className="absolute inset-0 blur-2xl bg-green-500/30 rounded-full scale-150"></div>
 
-      {/* Details Card */}
-      <Card className="border-0 bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-900/20 dark:to-teal-900/20 shadow-lg hover:shadow-xl transition-all duration-300">
-        <CardContent className="p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 bg-emerald-500 rounded-lg">
-              <Hash className="w-5 h-5 text-white" />
-            </div>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
-              Details
-            </h2>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <Hash className="w-4 h-4" />
-                <span>Athlete ID:</span>
-              </div>
-              <span className="font-semibold text-gray-800 dark:text-gray-200">
-                {athlete.DUPRID}
+            <h1 className="relative text-6xl md:text-8xl font-black text-white leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-green-400 via-green-300 to-green-500 bg-clip-text text-transparent">
+                {athlete.name}
               </span>
-            </div>
+            </h1>
 
-            <div className="flex items-center justify-between p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <MapPin className="w-4 h-4" />
-                <span>Country:</span>
+            {/* Animated Underline */}
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full animate-pulse"></div>
+
+            {/* Side Decorations */}
+            <div className="absolute -left-8 top-1/2 w-2 h-16 bg-green-400 rounded-full animate-bounce opacity-60"></div>
+            <div
+              className="absolute -right-8 top-1/2 w-2 h-16 bg-green-400 rounded-full animate-bounce opacity-60"
+              style={{ animationDelay: "0.5s" }}
+            ></div>
+          </div>
+
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed font-light">
+            Discover the journey, achievements, and inspiring story of an
+            exceptional athlete
+          </p>
+        </div>
+
+        {/* Content Sections */}
+        <div className="space-y-24">
+          {athlete.imageUrl?.map((item, index) => (
+            <div
+              key={item._id}
+              className={`flex flex-col lg:flex-row ${
+                index % 2 !== 0 ? "lg:flex-row-reverse" : ""
+              } items-center gap-16 lg:gap-20`}
+            >
+              {/* Image Section */}
+              <div className="w-full lg:w-1/2 relative group">
+                {/* Outer Glow */}
+                <div className="absolute inset-0 bg-green-400/20 rounded-3xl blur-xl scale-110 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl transform transition-all duration-700 hover:scale-105 group">
+                  {/* Border Animation */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-green-500 to-green-400 rounded-3xl p-0.5 animate-pulse">
+                    <div className="bg-black rounded-3xl h-full w-full"></div>
+                  </div>
+
+                  <div className="relative z-10 m-0.5">
+                    <img
+                      src={item.image}
+                      alt={`athlete-story-${index}`}
+                      className="rounded-3xl w-full h-80 lg:h-96 object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                    />
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                    {/* Corner Accents */}
+                    <div className="absolute top-4 left-4 w-6 h-6 border-l-4 border-t-4 border-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-4 right-4 w-6 h-6 border-r-4 border-b-4 border-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                </div>
+
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -right-4 w-4 h-4 bg-green-400 rounded-full animate-ping opacity-60"></div>
+                <div className="absolute -bottom-4 -left-4 w-3 h-3 bg-white rounded-full animate-bounce opacity-80"></div>
               </div>
-              <span className="font-semibold text-gray-800 dark:text-gray-200">
-                {athlete.country}
-              </span>
-            </div>
 
-            <div className="flex items-center justify-between p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <User className="w-4 h-4" />
-                <span>Gender:</span>
+              {/* Text Section */}
+              <div className="w-full lg:w-1/2 space-y-8">
+                <Card className="group hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-700 border border-green-400/20 bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-lg">
+                  <CardContent className="p-8 lg:p-12">
+                    <div className="flex items-start gap-6">
+                      {/* Quote Icon */}
+                      <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-green-500/30">
+                        <Quote className="w-7 h-7 text-black font-bold" />
+                      </div>
+
+                      <div className="flex-1 space-y-6">
+                        <p className="text-lg lg:text-xl text-white leading-relaxed font-light tracking-wide" style={{fontSize:"30px"}}>
+                          {item.text}
+                        </p>
+
+                        {/* Story Metadata */}
+                        <div className="flex items-center justify-between pt-4 border-t border-green-400/20">
+                          <div className="flex gap-1">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className="w-4 h-4 fill-green-400 text-green-400 opacity-80"
+                              />
+                            ))}
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span className="text-sm text-gray-400 font-medium">
+                              Chapter {index + 1}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Decorative Line */}
+                <div
+                  className={`relative ${index % 2 !== 0 ? "lg:ml-auto" : ""}`}
+                >
+                  <div className="w-24 h-0.5 bg-gradient-to-r from-green-400 to-transparent rounded-full"></div>
+                  <div className="absolute top-0 left-0 w-6 h-0.5 bg-white rounded-full animate-pulse"></div>
+                </div>
               </div>
-              <span className="font-semibold text-gray-800 dark:text-gray-200">
-                {athlete.gender}
-              </span>
             </div>
+          ))}
+        </div>
 
-            <div className="flex items-center justify-between p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                <Calendar className="w-4 h-4" />
-                <span>Age:</span>
-              </div>
-              <span className="font-semibold text-gray-800 dark:text-gray-200">
-                {athlete.age} years
-              </span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+        {/* Bottom Section */}
+        <div className="text-center py-16">
+          <div className="relative inline-block">
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-green-400/20 rounded-full blur-xl scale-150"></div>
 
-    {/* Stats Overview */}
-    <Card className="border-0 bg-gradient-to-r from-purple-50 to-pink-100 dark:from-purple-900/20 dark:to-pink-900/20 shadow-lg">
-      <CardContent className="p-6">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-4">
-          Career Overview
-        </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-            <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-              {athlete.points.toLocaleString()}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Total Points
-            </div>
-          </div>
-          <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
-              {athlete.titlesWon.length}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Titles Won
-            </div>
-          </div>
-          <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-              {athlete.sponsors.length}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Sponsors
-            </div>
-          </div>
-          <div className="text-center p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg backdrop-blur-sm">
-            <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-              {athlete.height}
-            </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Height (cm)
+            <div className="relative inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-black/80 via-gray-900/80 to-black/80 backdrop-blur-sm rounded-full border border-green-400/30 shadow-lg shadow-green-500/20">
+              <CheckCircle className="w-6 h-6 text-green-400 animate-pulse" />
+              <span className="text-white font-medium tracking-wide">
+                Journey Continues
+              </span>
+              <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-white rounded-full animate-ping"></div>
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
 
-    {/* Recent Matches Table */}
-    <Card className="border-0 shadow-lg">
-      <CardContent className="p-6 overflow-x-auto">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-4">
-          Recent Matches
-        </h3>
-        <table className="min-w-full text-sm border-separate border-spacing-y-2">
-          <thead>
-            <tr className="text-left bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-              <th className="px-4 py-2 rounded-l-lg">Tournament</th>
-              <th className="px-4 py-2">Opponent</th>
-              <th className="px-4 py-2">Result</th>
-              <th className="px-4 py-2">Score</th>
-              <th className="px-4 py-2 rounded-r-lg">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mockMatches.map((match, index) => (
-              <tr
-                key={index}
-                className="bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-200 shadow-sm rounded-lg"
-              >
-                <td className="px-4 py-2 font-semibold">{match.tournament}</td>
-                <td className="px-4 py-2">{match.opponent}</td>
-                <td className="px-4 py-2">
-                  <span
-                    className={`inline-flex items-center gap-1 font-medium ${
-                      match.result === "Win" ? "text-green-600" : "text-red-500"
-                    }`}
-                  >
-                    {match.result === "Win" ? (
-                      <CheckCircle className="w-4 h-4" />
-                    ) : (
-                      <XCircle className="w-4 h-4" />
-                    )}
-                    {match.result}
-                  </span>
-                </td>
-                <td className="px-4 py-2">{match.score}</td>
-                <td className="px-4 py-2">{match.date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </CardContent>
-    </Card>
-    <PlayerImages></PlayerImages>
-    <UpcomingMatches></UpcomingMatches>
-    <RecentArticles></RecentArticles>
-  </div>
-);
+      {/* Ambient Floating Elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-green-400 rounded-full animate-ping opacity-30"></div>
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-white rounded-full animate-pulse opacity-40"></div>
+        <div className="absolute top-1/2 right-1/3 w-3 h-3 bg-green-400 rounded-full animate-bounce opacity-20"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white rounded-full animate-ping opacity-25"></div>
+      </div>
+    </div>
+  );
+};
 
 export default AboutSection;

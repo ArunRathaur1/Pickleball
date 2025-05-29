@@ -75,7 +75,7 @@ router.get("/:playerid", async (req, res) => {
     const transformedAthlete = {
       ...athlete.toObject(),
       // Handle imageUrl - if it's an array, take the first image
-      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      imageUrl: athlete.imageUrl,
       // Add points field with fallback
       points: athlete.points || 0
     };

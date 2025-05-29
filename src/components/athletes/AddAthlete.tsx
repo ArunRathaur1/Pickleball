@@ -97,7 +97,7 @@ export default function AddAthlete() {
         );
 
         const athleteData = response.data;
-
+        console.log(athleteData);
         // Transform the fetched data to match form structure
         setFormData({
           name: athleteData.name || "",

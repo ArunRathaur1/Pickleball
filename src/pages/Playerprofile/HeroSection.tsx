@@ -1,87 +1,165 @@
 import { Athlete } from "./Types";
 import { Badge } from "@/components/ui/badge";
-import { Instagram, Award, MapPin, Calendar } from "lucide-react";
+import {
+  Instagram,
+  Award,
+  MapPin,
+  Calendar,
+  Youtube,
+  Twitter,
+} from "lucide-react";
+
 const HeroSection = ({ athlete }: { athlete: Athlete }) => (
   <div
-    className="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat text-white"
+    className="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat text-white overflow-hidden"
     style={{ backgroundImage: `url(${athlete.imageUrl})` }}
   >
     {/* Dark overlay */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/20 backdrop-blur-sm z-0" />
+    <div className="absolute inset-0 z-0" />
+
     {/* Content */}
-    <div className="relative z-10 max-w-6xl mx-auto h-full flex flex-col justify-center items-start text-left px-8 lg:px-16">
-      {/* Player Logo */}
-      <img
-        src={athlete.playerlogoimage}
-        alt={`${athlete.name} Logo`}
-        className="w-20 h-20 mb-4 rounded-full border-2 border-white/30 shadow-lg"
-      />
+    <div className="relative z-10 max-w-6xl mx-auto h-full px-6 lg:px-16 flex items-center justify-between text-left animate-slide-up">
+      {/* Left Content */}
+      <div className="flex-1 flex flex-col justify-center h-full">
+        {/* Name & Player ID */}
+        <h1 className="text-5xl lg:text-7xl font-extrabold bg-gradient-to-r from-green-300 via-lime-200 to-emerald-100 bg-clip-text text-transparent animate-fade-in drop-shadow-lg">
+          {athlete.name}
+        </h1>
+        <p className="text-md lg:text-lg mt-3 font-medium text-green-100/90 tracking-wide">
+          Player ID:{" "}
+          <span className="text-lime-300 font-semibold text-lg">
+            {athlete.playerid}
+          </span>
+        </p>
 
-      {/* Name & Player ID */}
-      <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-white via-emerald-100 to-cyan-100 bg-clip-text text-transparent animate-fade-in">
-        {athlete.name}
-      </h1>
-      <p className="text-sm mt-2 font-medium text-white/80">
-        Player ID: <span className="text-emerald-300">{athlete.playerid}</span>
-      </p>
+        {/* DUPRID */}
+        <div className="mt-4 bg-white/5 px-5 py-2 rounded-full text-md backdrop-blur-md border border-green-300/20 max-w-max text-green-100 font-medium tracking-wide">
+          DUPRID: {athlete.DUPRID}
+        </div>
 
-      {/* DUPRID */}
-      <div className="mt-3 bg-white/10 px-4 py-1 rounded-full text-sm backdrop-blur-md border border-white/20 max-w-max">
-        DUPRID: {athlete.DUPRID}
+        {/* About */}
+        <p className="mt-8 max-w-2xl text-green-100/95 text-xl italic leading-relaxed">
+          "{athlete.about}"
+        </p>
+
+        {/* Stats */}
+        <div className="flex flex-wrap gap-4 mt-12 max-w-xl text-base">
+          <Badge className="bg-gradient-to-r from-green-700 to-green-600 px-5 py-3 text-white text-base shadow-lg border border-green-500/20 backdrop-blur-sm">
+            <MapPin className="w-5 h-5 mr-2" />
+            {athlete.country}
+          </Badge>
+          <Badge className="bg-gradient-to-r from-lime-600 to-green-500 px-5 py-3 text-white text-base shadow-lg border border-green-300/20">
+            {athlete.gender}
+          </Badge>
+          <Badge className="bg-white/5 border border-green-300/20 px-5 py-3 text-white text-base shadow-lg">
+            <Calendar className="w-5 h-5 mr-2" />
+            {athlete.age} yrs
+          </Badge>
+          <Badge className="bg-gradient-to-r from-green-400 to-lime-300 px-5 py-3 text-green-900 text-base shadow-md font-bold">
+            <Award className="w-5 h-5 mr-2" />
+            {athlete.points} Points
+          </Badge>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex flex-col sm:flex-row sm:gap-6 gap-4 mt-10">
+          {/* Instagram */}
+          {athlete.instagramPage && (
+            <a
+              href={athlete.instagramPage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-400 to-green-600 px-8 py-4 rounded-full text-white text-lg font-semibold hover:scale-105 transition-all shadow-xl hover:shadow-green-400/30"
+            >
+              <Instagram className="w-5 h-5" />
+              Follow on Instagram
+            </a>
+          )}
+
+          {/* YouTube */}
+          {athlete.youtubeHandle && (
+            <a
+              href={athlete.youtubeHandle}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 rounded-full text-white text-lg font-semibold hover:scale-105 transition-all shadow-xl hover:shadow-green-400/30"
+            >
+              <Youtube className="w-5 h-5" />
+              Watch on YouTube
+            </a>
+          )}
+
+          {/* Twitter */}
+          {athlete.twitterHandle && (
+            <a
+              href={athlete.twitterHandle}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-400 to-green-500 px-8 py-4 rounded-full text-white text-lg font-semibold hover:scale-105 transition-all shadow-xl hover:shadow-sky-300/30"
+            >
+              <Twitter className="w-5 h-5" />
+              Follow on Twitter
+            </a>
+          )}
+        </div>
       </div>
 
-      {/* About */}
-      <p className="mt-6 max-w-xl text-white/90 text-lg italic">
-        "{athlete.about}"
-      </p>
-
-      {/* Stats */}
-      <div className="flex flex-wrap gap-4 mt-10 max-w-xl">
-        <Badge className="bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2 text-white text-sm shadow-md">
-          <MapPin className="w-4 h-4 mr-2" />
-          {athlete.country}
-        </Badge>
-        <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-2 text-white text-sm shadow-md">
-          {athlete.gender}
-        </Badge>
-        <Badge className="bg-white/10 border border-white/20 px-4 py-2 text-white text-sm shadow-md">
-          <Calendar className="w-4 h-4 mr-2" />
-          {athlete.age} yrs
-        </Badge>
-        <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 px-4 py-2 text-white text-sm shadow-md">
-          <Award className="w-4 h-4 mr-2" />
-          {athlete.points} Points
-        </Badge>
+      {/* Right: Logo */}
+      <div className="hidden lg:block flex-shrink-0 ml-8 animate-pop">
+        <img
+          src={athlete.playerlogoimage}
+          alt={`${athlete.name} Logo`}
+          style={{ width: "500px", height: "500px" }}
+          className="rounded-full shadow-2xl ring-4 ring-green-400/30 ring-offset-4 ring-offset-green-100/10"
+        />
       </div>
-
-      {/* Instagram */}
-      {athlete.instagramPage && (
-        <a
-          href={athlete.instagramPage}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 bg-gradient-to-r from-pink-600 to-rose-500 px-6 py-3 rounded-full text-white text-sm font-medium hover:scale-105 transition-all shadow-lg"
-        >
-          <Instagram className="w-4 h-4" />
-          Follow on Instagram
-        </a>
-      )}
     </div>
 
     {/* Animations */}
     <style jsx>{`
       @keyframes fade-in {
-        from {
+        0% {
           opacity: 0;
           transform: translateY(20px);
         }
-        to {
+        100% {
           opacity: 1;
           transform: translateY(0);
         }
       }
+
+      @keyframes slide-up {
+        0% {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
       .animate-fade-in {
-        animation: fade-in 0.8s ease-out;
+        animation: fade-in 1s ease-out forwards;
+      }
+
+      .animate-slide-up {
+        animation: slide-up 1.2s ease-out forwards;
+      }
+
+      .animate-pop {
+        animation: pop 1s ease-in-out forwards;
       }
     `}</style>
   </div>
