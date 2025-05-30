@@ -138,27 +138,27 @@ const TournamentForm = () => {
     const formattedData = formatDataForSubmission(formData);
     console.log("Form Data to be sent:", formattedData);
 
-    try {
-      const response = await fetch("http://localhost:5000/tournaments/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formattedData),
-      });
+    // try {
+    //   const response = await fetch("http://localhost:5000/tournaments/add", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(formattedData),
+    //   });
 
-      const result = await response.json();
-      console.log("Response:", result);
+    //   const result = await response.json();
+    //   console.log("Response:", result);
 
-      if (response.ok) {
-        alert("Tournament created successfully!");
-      } else {
-        alert("Error creating tournament: " + result.message);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error submitting form");
-    }
+    //   if (response.ok) {
+    //     alert("Tournament created successfully!");
+    //   } else {
+    //     alert("Error creating tournament: " + result.message);
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   alert("Error submitting form");
+    // }
   };
 
   return (
