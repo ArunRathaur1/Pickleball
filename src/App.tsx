@@ -30,6 +30,7 @@ import { BlogDetail } from "./components/blogs/BlogDetail.tsx";
 import ClubForm from "./components/admin-club/form.tsx";
 import TournamentForm from "./components/tournaments/tournamentform/tournament-form.tsx";
 import PlayerDashboard from "./components/PlayerLogin/PlayerDashboard.tsx";
+import BrandDashboard from "./components/BrandLogin/Dashboard.tsx";
 const queryClient = new QueryClient();
 
 // Create a ChatbotWrapper to manage global chatbot state
@@ -103,6 +104,7 @@ const App = () => {
             <Route path='/clubdetails/:id' element={<Clubdetails></Clubdetails>}></Route>
             <Route path='/addtournament' element={<TournamentForm/>}></Route>
             <Route path='/playerdashboard'element={<PlayerDashboard></PlayerDashboard>}></Route>
+            <Route path='/branddashboard' element={<BrandDashboard></BrandDashboard>}></Route>
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

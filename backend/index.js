@@ -21,6 +21,7 @@ const newsletter=require('./routes/newsletterRoutes');
 const Instagram=require('./routes/Instagramroutes');
 const Inquary=require('./routes/inquary');
 const playerLoginRoutes = require("./routes/playerLogin");
+const BrandLogin=require('./routes/brandroute');
 
 require("./passport"); // Passport Config
 
@@ -73,6 +74,7 @@ app.use('/newsletter',newsletter);
 app.use('/instagram',Instagram);
 app.use("/inquary", Inquary);
 app.use("/playerlogin", playerLoginRoutes);
+app.use('/brand',BrandLogin)
 
 mongoose
   .connect(process.env.MONGO_URI, {
