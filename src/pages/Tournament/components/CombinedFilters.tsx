@@ -181,13 +181,13 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
         </div>
 
         {/* Add Tournament Button */}
-        <div className="w-full sm:w-36 lg:w-36">
+        {/* <div className="w-full sm:w-36 lg:w-36">
           <Link to="/addtournament">
             <button className="w-full px-4 py-2 h-10 text-sm font-semibold text-white rounded-md bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-600 transition">
               Add Tournament
             </button>
           </Link>
-        </div>
+        </div> */}
 
         {/* Toggle View Button */}
         <div className="w-full sm:w-auto lg:w-auto">

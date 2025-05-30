@@ -37,7 +37,6 @@ const Login = () => {
 
         const data = response.data;
         console.log(data.player);
-        // Save data to cookies (adjust keys based on backend response)
         Cookies.set("player", JSON.stringify(data.player), { expires: 7 });
         navigate("/playerdashboard");
         // You can also redirect here: `router.push("/player/dashboard")`

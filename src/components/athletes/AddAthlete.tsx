@@ -73,7 +73,6 @@ export default function AddAthlete() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [submitMessage, setSubmitMessage] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchAthlete = async () => {
@@ -86,7 +85,7 @@ export default function AddAthlete() {
       try {
         const player = JSON.parse(cookieData);
         const playerId = player._id;
-
+        formData.identifier=playerId;
         if (!playerId) {
           setLoading(false);
           return;
@@ -144,7 +143,7 @@ export default function AddAthlete() {
               : [{ image: "", text: "" }],
         });
       } catch (err) {
-        setError("Failed to fetch athlete data");
+        // Silently handle errors (including 404) - just show empty form
         console.error(err);
       } finally {
         setLoading(false);
@@ -280,7 +279,7 @@ export default function AddAthlete() {
       });
     }
   };
-  
+
   const addField = (
     key: keyof Pick<
       AthleteFormData,
@@ -377,20 +376,6 @@ export default function AddAthlete() {
           <CardHeader className="bg-blue-50">
             <CardTitle className="text-xl font-bold text-blue-800">
               Loading Athlete Data...
-            </CardTitle>
-          </CardHeader>
-        </Card>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="w-full">
-        <Card>
-          <CardHeader className="bg-red-50">
-            <CardTitle className="text-xl font-bold text-red-800">
-              Error: {error}
             </CardTitle>
           </CardHeader>
         </Card>

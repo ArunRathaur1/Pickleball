@@ -106,12 +106,13 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
 
       {/* Right: Logo */}
       <div className="hidden lg:block flex-shrink-0 ml-8 animate-pop">
-        <img
-          src={athlete.playerlogoimage}
-          alt={`${athlete.name} Logo`}
-          style={{ width: "500px", height: "500px" }}
-          className="rounded-full shadow-2xl ring-4 ring-green-400/30 ring-offset-4 ring-offset-green-100/10"
-        />
+        <div className="w-[500px] h-[500px] overflow-hidden rounded-full shadow-2xl ring-4 ring-green-400/30 ring-offset-4 ring-offset-green-100/10">
+          <img
+            src={athlete.playerlogoimage}
+            alt={`${athlete.name} Logo`}
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </div>
 

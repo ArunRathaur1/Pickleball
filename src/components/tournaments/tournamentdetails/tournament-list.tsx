@@ -8,6 +8,7 @@ interface Tournament {
   Continent: string;
   Tier: number;
   startDate: string;
+  endDate: string;
   imageUrl?: string;
 }
 
@@ -43,14 +44,14 @@ const TournamentList = ({ tournaments }: TournamentListProps) => {
                 key={tournament._id}
                 className="group flex flex-col bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden hover:-translate-y-2 "
               >
-                  <div className="relative h-32 bg-gradient-to-br from-pickle via-pickle to-emerald-800 flex items-center justify-center p-3 overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                    <h3 className="text-lg font-bold text-white text-center break-words relative z-10">
-                      {tournament.name}
-                    </h3>
-                    <div className="absolute -top-4 -right-4 w-16 h-16 bg-white/10 rounded-full" />
-                    <div className="absolute -bottom-8 -left-8 w-20 h-20 bg-white/5 rounded-full" />
-                  </div>
+                <div className="relative h-32 bg-gradient-to-br from-pickle via-pickle to-emerald-800 flex items-center justify-center p-3 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                  <h3 className="text-lg font-bold text-white text-center break-words relative z-10">
+                    {tournament.name}
+                  </h3>
+                  <div className="absolute -top-4 -right-4 w-16 h-16 bg-white/10 rounded-full" />
+                  <div className="absolute -bottom-8 -left-8 w-20 h-20 bg-white/5 rounded-full" />
+                </div>
                 <div className="p-4 flex-grow flex flex-col">
                   <h3 className="text-lg font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-pickle transition-colors duration-300">
                     {tournament.name}
@@ -87,20 +88,24 @@ const TournamentList = ({ tournaments }: TournamentListProps) => {
                         <span className="text-purple-600 text-xs">📅</span>
                       </div>
                       <span className="text-xs font-medium">
-                        {formatDate(tournament.startDate)}
+                        {formatDate(tournament.startDate)} -{" "}
+                        {formatDate(tournament.endDate)}
                       </span>
                     </div>
                   </div>
 
                   <div className="mt-auto">
                     <div className="flex gap-2">
-                    <Link to={`/tournament/${tournament._id}`} className="block">
-                      <button
-                        onClick={() => handleViewDetails(tournament._id)}
-                        className="flex-1 bg-gradient-to-r from-pickle to-pickle hover:from-pickle hover:to-pickle text-white font-medium py-2 px-3 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95"
+                      <Link
+                        to={`/tournament/${tournament._id}`}
+                        className="block"
                       >
-                        <span className="text-xs">View Details</span>
-                      </button>
+                        <button
+                          onClick={() => handleViewDetails(tournament._id)}
+                          className="flex-1 bg-gradient-to-r from-pickle to-pickle hover:from-pickle hover:to-pickle text-white font-medium py-2 px-3 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95"
+                        >
+                          <span className="text-xs">View Details</span>
+                        </button>
                       </Link>
                       <button
                         onClick={handleRegisterNow}
