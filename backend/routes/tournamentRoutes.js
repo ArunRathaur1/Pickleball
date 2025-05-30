@@ -4,34 +4,83 @@ const Tournament = require('../models/Tournament');
 const router = express.Router();
 
 // Add a new tournament with location (lat, lng)
-router.post('/add', async (req, res) => {
-    try {
-        const { name, Organizer, location, country, Continent, Tier, startDate, endDate,imageUrl, description, locationCoords } = req.body;
+// Add or Update tournament by brandId
+router.post('/add-or-update', async (req, res) => {
+  try {
+    const {
+      brandId,
+      name,
+      organizer,
+      location,
+      city,
+      state,
+      country,
+      continent,
+      registrationLink,
+      contactPerson,
+      emailId,
+      contactNo,
+      format,
+      registrationEnd,
+      categories,
+      prizeMoney,
+      tier,
+      startDate,
+      endDate,
+      imageUrl,
+      description,
+      locationCoords,
+    } = req.body;
 
-        if (!Array.isArray(locationCoords) || locationCoords.length !== 2) {
-            return res.status(400).json({ message: "Invalid location coordinates. Provide [latitude, longitude]." });
-        }
-
-        const newTournament = new Tournament({
-            name,
-            Organizer,
-            location,
-            country,
-            Continent,
-            Tier,
-            startDate,
-            endDate,
-            imageUrl,
-            description,
-            locationCoords
-        });
-
-        await newTournament.save();
-        res.status(201).json({ message: 'Tournament added successfully', tournament: newTournament });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
+    if (!brandId) {
+      return res.status(400).json({ message: "brandId is required" });
     }
+
+    if (!Array.isArray(locationCoords) || locationCoords.length !== 2) {
+      return res.status(400).json({ message: "Invalid location coordinates. Provide [latitude, longitude]." });
+    }
+
+    const tournamentData = {
+      brandId,
+      name,
+      organizer,
+      location,
+      city,
+      state,
+      country,
+      continent,
+      registrationLink,
+      contactPerson,
+      emailId,
+      contactNo,
+      format,
+      registrationEnd,
+      categories,
+      prizeMoney,
+      tier,
+      startDate,
+      endDate,
+      imageUrl,
+      description,
+      locationCoords,
+    };
+
+    const updatedOrCreated = await Tournament.findOneAndUpdate(
+      { brandId }, // search by brandId
+      tournamentData,
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
+
+    res.status(200).json({
+      message: "Tournament added or updated successfully",
+      tournament: updatedOrCreated,
+    });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
+
 
 // Get all tournaments
 router.get('/all', async (req, res) => {

@@ -1,12 +1,27 @@
 const mongoose = require("mongoose");
 
+const categorySchema = new mongoose.Schema({
+  categoryName: {
+    type: String,
+  },
+  maxPlayer: {
+    type: Number,
+  },
+  gender: {
+    type: String,
+  },
+  fee: {
+    type: Number,
+  },
+});
+
 const tournamentSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
   },
-  Organizer: {
+  organizer: {
     type: String,
     required: true,
   },
@@ -14,17 +29,49 @@ const tournamentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  city: {
+    type: String,
+    required: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
   country: {
     type: String,
     required: true,
   },
-  Continent: {
+  continent: {
     type: String,
     required: true,
   },
-  Tier:{
-    type:Number,
-    required:true,
+  registrationLink: {
+    type: String,
+  },
+  contactPerson: {
+    type: String,
+  },
+  emailId: {
+    type: String,
+    required: true,
+  },
+  contactNo: {
+    type: String,
+  },
+  format: {
+    type: String,
+  },
+  registrationEnd: {
+    type: Date,
+  },
+  categories: [categorySchema],
+  prizeMoney: {
+    type: Number,
+    required: true,
+  },
+  tier: {
+    type: Number,
+    required: true,
   },
   startDate: {
     type: Date,
@@ -43,7 +90,7 @@ const tournamentSchema = new mongoose.Schema({
     required: true,
   },
   locationCoords: {
-    type: [Number], // [latitude, longitude]
+    type: [Number],
     required: true,
     validate: {
       validator: function (v) {
@@ -57,14 +104,16 @@ const tournamentSchema = new mongoose.Schema({
     enum: ["pending", "approved", "rejected"],
     default: "pending",
   },
-  
+  brandId: {
+    type: String, // Refers to the model defined by playerLoginSchema
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-// Indexing for search
 tournamentSchema.index({ name: "text", description: "text", location: "text" });
 
 const Tournament = mongoose.model("Tournament", tournamentSchema);
