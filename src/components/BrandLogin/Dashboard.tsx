@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Navbar } from "../layout/navbar";
 import { Link } from "react-router-dom";
-
+import Tournaments from "@/pages/Tournament/Tournaments";
+import ShowTournaments from "./ShowTournaments";
 export default function BrandDashboard() {
   const [brand, setBrand] = useState<any>(null);
   const [message, setMessage] = useState("");
@@ -65,8 +66,12 @@ export default function BrandDashboard() {
             <button className="action-btn secondary">Add Club</button>
           </div>
         </div>
+        <div>
+        </div>
       </div>
-
+      <div>
+        <ShowTournaments></ShowTournaments>
+      </div>
       <style>{`
         :root {
           --primary: #4caf50;

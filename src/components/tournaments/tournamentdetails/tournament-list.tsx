@@ -1,22 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-interface Tournament {
-  _id: string;
-  name: string;
-  location: string;
-  country: string;
-  Continent: string;
-  Tier: number;
-  startDate: string;
-  endDate: string;
-  imageUrl?: string;
-}
 
-interface TournamentListProps {
-  tournaments: Tournament[];
-}
-
-const TournamentList = ({ tournaments }: TournamentListProps) => {
+const TournamentList = ({ tournaments} ) => {
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString(undefined, {
       year: "numeric",
@@ -107,12 +92,11 @@ const TournamentList = ({ tournaments }: TournamentListProps) => {
                           <span className="text-xs">View Details</span>
                         </button>
                       </Link>
-                      <button
-                        onClick={handleRegisterNow}
-                        className="flex-1 bg-gradient-to-r from-pickle to-pickle hover:from-emerald-700 hover:to-teal-700 text-white font-medium py-2 px-3 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95"
-                      >
-                        <span className="text-xs">Register Now</span>
-                      </button>
+                      <Link to={tournament.registrationLink} target="_blank">
+                        <button className="flex-1 bg-gradient-to-r from-pickle to-pickle hover:from-emerald-700 hover:to-teal-700 text-white font-medium py-2 px-3 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md transform hover:scale-105 active:scale-95">
+                          <span className="text-xs">Register Now</span>
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

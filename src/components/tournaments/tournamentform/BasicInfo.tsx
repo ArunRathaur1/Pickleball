@@ -48,7 +48,7 @@ export default function BasicInfo(props) {
             gap: "24px",
           }}
         >
-          <div style={{ position: "relative" }}>
+          {/* <div style={{ position: "relative" }}>
             <label
               style={{
                 display: "block",
@@ -88,7 +88,7 @@ export default function BasicInfo(props) {
                 e.target.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.04)";
               }}
             />
-          </div>
+          </div> */}
 
           <div style={{ position: "relative" }}>
             <label

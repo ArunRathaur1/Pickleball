@@ -105,6 +105,7 @@ const App = () => {
             <Route path='/addtournament' element={<TournamentForm/>}></Route>
             <Route path='/playerdashboard'element={<PlayerDashboard></PlayerDashboard>}></Route>
             <Route path='/branddashboard' element={<BrandDashboard></BrandDashboard>}></Route>
+            <Route path='/update/brand/:id'element={<TournamentForm></TournamentForm>}></Route>
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

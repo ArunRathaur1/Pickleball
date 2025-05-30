@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import BasicInfo from "./BasicInfo";
 import BasicInfo2 from "./BasicInfo2";
 import BasicInfo3 from "./BasicInfo3";
 import BasicInfo4 from "./BasicInfo4";
-// import MapLocationSection from "./MapLocationSection";
+import Cookies from "js-cookie";
 import { Navbar } from "@/components/layout/navbar";
 
+
 const TournamentForm = () => {
+  const [tournamentId, setTournamentId] = useState(null);
   const [formData, setFormData] = useState({
     brandId: "",
     name: "",
@@ -36,7 +40,7 @@ const TournamentForm = () => {
     endDate: "",
     imageUrl: "",
     description: "",
-    locationCoords: [0,0],
+    locationCoords: [0, 0],
   });
 
   const continents = [
@@ -56,6 +60,124 @@ const TournamentForm = () => {
     { value: 2, label: "Female" },
   ];
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const pathSegments = window.location.pathname.split("/");
+      const id = pathSegments[pathSegments.length - 1]; // Get last part of the URL
+      setTournamentId(id);
+    }
+  }, []);
+  
+  useEffect(() => {
+    const cookieData = Cookies.get("brand_user");
+
+    if (cookieData) {
+      try {
+        const parsed = JSON.parse(cookieData);
+        const brandId = parsed?.player?._id;
+        if (brandId) {
+          setFormData((prevData) => ({
+            ...prevData,
+            brandId: brandId,
+          }));
+        }
+      } catch (error) {
+        console.error("Failed to parse brand_user cookie:", error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchTournament = async () => {
+      if (!tournamentId) return;
+      try {
+        const res = await fetch(
+          `http://localhost:5000/tournaments/data/${tournamentId}`
+        );
+        if (!res.ok) throw new Error("Network response was not ok");
+
+        const data = await res.json();
+        if (!data || !data.name) throw new Error("Invalid tournament data");
+
+        const tournament = data;
+        setFormData({
+          brandId: tournament.brandId || "",
+          name: tournament.name || "",
+          organizer: tournament.organizer || "",
+          location: tournament.location || "",
+          city: tournament.city || "",
+          state: tournament.state || "",
+          country: tournament.country || "",
+          continent: tournament.continent || "",
+          registrationLink: tournament.registrationLink || "",
+          contactPerson: tournament.contactPerson || "",
+          emailId: tournament.emailId || "",
+          contactNo: tournament.contactNo || "",
+          format: tournament.format || "",
+          registrationEnd: tournament.registrationEnd?.slice(0, 16) || "",
+          categories: tournament.categories?.map((cat) => ({
+            categoryName: cat.categoryName || "",
+            maxPlayer: cat.maxPlayer || "",
+            gender: cat.gender || "",
+            fee: cat.fee || "",
+          })) || [
+            {
+              categoryName: "",
+              maxPlayer: "",
+              gender: "",
+              fee: "",
+            },
+          ],
+          prizeMoney: tournament.prizeMoney || "",
+          tier: tournament.tier || "",
+          startDate: tournament.startDate?.slice(0, 16) || "",
+          endDate: tournament.endDate?.slice(0, 16) || "",
+          imageUrl: tournament.imageUrl || "",
+          description: tournament.description || "",
+          locationCoords: tournament.locationCoords || [0, 0],
+        });
+      } catch (err) {
+        console.error("Error fetching tournament data:", err);
+        // Reset form to empty state
+        setFormData({
+          brandId: "",
+          name: "",
+          organizer: "",
+          location: "",
+          city: "",
+          state: "",
+          country: "",
+          continent: "",
+          registrationLink: "",
+          contactPerson: "",
+          emailId: "",
+          contactNo: "",
+          format: "",
+          registrationEnd: "",
+          categories: [
+            {
+              categoryName: "",
+              maxPlayer: "",
+              gender: "",
+              fee: "",
+            },
+          ],
+          prizeMoney: "",
+          tier: "",
+          startDate: "",
+          endDate: "",
+          imageUrl: "",
+          description: "",
+          locationCoords: [0, 0],
+        });
+      }
+    };
+
+    fetchTournament();
+  }, [tournamentId]);
+  
+  // ... rest of your handlers remain unchanged ...
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -67,18 +189,11 @@ const TournamentForm = () => {
   const handleLocationCoordsChange = (newCoords) => {
     if (!Array.isArray(newCoords) || newCoords.length !== 2) return;
 
-    setFormData((prevData) => {
-      const updatedData = {
-        ...prevData,
-        locationCoords: newCoords,
-      };
-      console.log("Updating formData to:", updatedData); // This is the new updated data
-      return updatedData;
-    });
+    setFormData((prevData) => ({
+      ...prevData,
+      locationCoords: newCoords.map(Number),
+    }));
   };
-  
-  
-  
 
   const handleCategoryChange = (index, field, value) => {
     const newCategories = [...formData.categories];
@@ -131,33 +246,32 @@ const TournamentForm = () => {
         gender: Number(cat.gender),
         fee: Number(cat.fee),
       })),
-      locationCoords: data.locationCoords.map((coord) => Number(coord)),
+      locationCoords: data.locationCoords.map(Number),
     };
   };
 
   const handleSubmit = async () => {
     const formattedData = formatDataForSubmission(formData);
-    console.log("Form Data to be sent:", formattedData);
-
     try {
-      const response = await fetch("http://localhost:5000/tournaments/add-or-update", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formattedData),
-      });
+      const response = await fetch(
+        "http://localhost:5000/tournaments/add-or-update",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formattedData),
+        }
+      );
 
       const result = await response.json();
-      console.log("Response:", result);
-
       if (response.ok) {
         alert("Tournament created successfully!");
       } else {
         alert("Error creating tournament: " + result.message);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error submitting form:", error);
       alert("Error submitting form");
     }
   };
@@ -166,8 +280,8 @@ const TournamentForm = () => {
     <>
       <Navbar />
 
-      <div style={{ padding: "20px",margin: "0 auto" }}>
-        <h1>Create Tournament</h1>
+      <div style={{ padding: "20px", margin: "0 auto" }}>
+        <h1>{tournamentId ? "Update Tournament" : "Create Tournament"}</h1>
 
         <div>
           <BasicInfo
