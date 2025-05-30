@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { Navbar
-  
- } from "../layout/navbar";
+import { Navbar } from "../layout/navbar";
+import { Link } from "react-router-dom";
 
 export default function BrandDashboard() {
-  const [player, setPlayer] = useState(null);
+  const [brand, setBrand] = useState<any>(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -13,17 +12,15 @@ export default function BrandDashboard() {
     if (brandUserData) {
       try {
         const parsedData = JSON.parse(brandUserData);
-        setPlayer(parsedData.player);
+        setBrand(parsedData.player); // Assuming it's called 'player' in cookie
         setMessage(parsedData.message);
       } catch (err) {
         console.error("Failed to parse brand_user cookie", err);
       }
-    } else {
-      console.log("No brand_user cookie found");
     }
   }, []);
 
-  if (!player) {
+  if (!brand) {
     return (
       <div className="loading-container">
         <p>Loading user data...</p>
@@ -44,39 +41,45 @@ export default function BrandDashboard() {
 
   return (
     <>
-      <Navbar></Navbar>
-      <div className="dashboard-container">
-        <h1 className="message">{message}</h1>
-        <div className="player-info">
-          <h2>{player.name}</h2>
-          <p>
-            <strong>Phone:</strong> {player.phone}
-          </p>
-          <p>
-            <strong>Email:</strong> {player.email}
-          </p>
-          <p>
-            <small>
-              Account Created: {new Date(player.createdAt).toLocaleString()}
-            </small>
-          </p>
-        </div>
+      <Navbar />
+      <div className="dashboard-wrapper">
+        <div className="dashboard-card">
+          <h1 className="welcome-message">{message}</h1>
+          <div className="brand-info">
+            <h2>{brand.name}</h2>
+            <p>
+              <strong>Phone:</strong> {brand.phone}
+            </p>
+            <p>
+              <strong>Email:</strong> {brand.email}
+            </p>
+            <p className="created-at">
+              Account Created: {new Date(brand.createdAt).toLocaleString()}
+            </p>
+          </div>
 
-        <style>{`
-        /* Colors */
+          <div className="action-buttons">
+            <Link to="/addtournament">
+              <button className="action-btn">Add Tournament</button>
+            </Link>
+            <button className="action-btn secondary">Add Club</button>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
         :root {
-          --green: #4caf50;
-          --white: #fff;
-          --black: #000;
+          --primary: #4caf50;
+          --secondary: #388e3c;
           --bg: #fff;
           --text: #000;
-          --card-bg: #e8f5e9;
+          --card-bg: #f0fdf4;
         }
 
         @media (prefers-color-scheme: dark) {
           :root {
             --bg: #121212;
-            --text: #eee;
+            --text: #e0e0e0;
             --card-bg: #1e2a1f;
           }
         }
@@ -88,42 +91,77 @@ export default function BrandDashboard() {
           font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .dashboard-container {
-          max-width: 400px;
-          margin: 50px auto;
-          padding: 20px;
+        .dashboard-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 40px 20px;
+        }
+
+        .dashboard-card {
           background-color: var(--card-bg);
-          border-radius: 8px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+          padding: 30px;
+          border-radius: 16px;
+          max-width: 450px;
+          width: 100%;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
           text-align: center;
         }
 
-        .message {
-          color: var(--green);
-          margin-bottom: 20px;
-          font-weight: 600;
-          font-size: 1.5rem;
-        }
-
-        .player-info h2 {
-          margin: 0 0 10px 0;
-          color: var(--green);
+        .welcome-message {
+          font-size: 1.8rem;
           font-weight: 700;
-          font-size: 1.3rem;
+          color: var(--primary);
+          margin-bottom: 20px;
         }
 
-        .player-info p {
+        .brand-info h2 {
+          font-size: 1.4rem;
+          margin-bottom: 10px;
+          color: var(--primary);
+        }
+
+        .brand-info p {
           margin: 5px 0;
           font-size: 1rem;
-          color: var(--text);
         }
 
-        .player-info small {
-          color: var(--green);
+        .created-at {
+          margin-top: 10px;
           font-size: 0.85rem;
+          color: var(--primary);
+        }
+
+        .action-buttons {
+          margin-top: 30px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .action-btn {
+          background-color: var(--primary);
+          color: white;
+          border: none;
+          padding: 12px 18px;
+          font-size: 1rem;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+
+        .action-btn:hover {
+          background-color: var(--secondary);
+        }
+
+        .action-btn.secondary {
+          background-color: #2196f3;
+        }
+
+        .action-btn.secondary:hover {
+          background-color: #1976d2;
         }
       `}</style>
-      </div>
     </>
   );
 }

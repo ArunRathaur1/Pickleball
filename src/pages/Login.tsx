@@ -25,8 +25,8 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (formData.userType === "Player") {
-      try {
+    try {
+      if (formData.userType === "Player") {
         const response = await axios.post(
           "http://localhost:5000/playerlogin/login",
           {
@@ -36,20 +36,27 @@ const Login = () => {
         );
 
         const data = response.data;
-        console.log(data.player);
-        Cookies.set("player", JSON.stringify(data.player), { expires: 7 });
+        Cookies.set("player", JSON.stringify(data), { expires: 7 });
         navigate("/playerdashboard");
-        // You can also redirect here: `router.push("/player/dashboard")`
-      } catch (error: any) {
-        const message =
-          error?.response?.data?.message || "Login failed! Please try again.";
-        alert(message);
-        console.error("Login Error:", error);
+      } else {
+        console.log(formData);
+        const response = await axios.post("http://localhost:5000/brand/login", {
+          email: formData.id,
+          password: formData.password,
+        });
+
+        const data = response.data;
+        Cookies.set("brand_user", JSON.stringify(data), { expires: 7 });
+        navigate("/branddashboard");
       }
-    } else {
-      alert("Brand login not implemented yet.");
+    } catch (error: any) {
+      const message =
+        error?.response?.data?.message || "Login failed! Please try again.";
+      alert(message);
+      console.error("Login Error:", error);
     }
   };
+  
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -72,7 +79,7 @@ const Login = () => {
                 placeholder={
                   formData.userType === "Player"
                     ? "Enter DUPR ID"
-                    : "Enter Brand ID"
+                    : "Enter email id"
                 }
                 required
               />
