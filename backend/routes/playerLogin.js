@@ -24,22 +24,27 @@ router.post("/register", async (req, res) => {
 
 // Login player
 router.post("/login", async (req, res) => {
-    try {
-        const { DUPRID, password } = req.body;
+  try {
+    const DUPRID = req.body.DUPRID || req.body.duprid;
+    const password = req.body.password;
 
-        // Check if player exists
-        const player = await PlayerLogin.findOne({ DUPRID });
-        if (!player || player.password !== password) {
-            return res.status(400).json({ message: "Invalid duprid or password" });
-        }
+    const player = await PlayerLogin.findOne({ DUPRID });
 
-        const { password: _, ...playerData } = player.toObject(); // Exclude password
-        res.json({ message: "Login successful", player: playerData });
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error: error.message });
+    if (!player) {
+      return res.status(400).json({ message: "Player not found" });
     }
-});
+    // If you're storing plain passwords:
+    if (player.password !== password) {
+      return res.status(400).json({ message: "Incorrect password" });
+    }
 
+    const { password: _, ...playerData } = player.toObject();
+    res.json({ message: "Login successful", player: playerData });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+  
 // Get all players
 router.get("/", async (req, res) => {
     try {
