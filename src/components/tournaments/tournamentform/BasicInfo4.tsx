@@ -16,9 +16,8 @@ export default function BasicInfo4(props) {
   const styles = {
     container: {
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-      color: "#004d00",
-      maxWidth: "600px",
       margin: "auto",
+      marginTop:"30px",
       padding: "20px",
       backgroundColor: "#e6f2e6",
       borderRadius: "10px",
@@ -116,54 +115,71 @@ export default function BasicInfo4(props) {
         <div key={index} style={styles.categoryBox}>
           <h4>Category {index + 1}</h4>
 
-          <label style={styles.label}>Category Name:</label>
-          <input
-            type="text"
-            value={category.categoryName}
-            onChange={(e) =>
-              handleCategoryChange(index, "categoryName", e.target.value)
-            }
-            required
-            style={styles.input}
-          />
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+            {/* Category Name */}
+            <div style={{ flex: "1 1 30%"}}>
+              <label style={styles.label}>Category Name:</label>
+              <input
+                type="text"
+                value={category.categoryName}
+                onChange={(e) =>
+                  handleCategoryChange(index, "categoryName", e.target.value)
+                }
+                required
+                style={styles.input}
+              />
+            </div>
 
-          <label style={styles.label}>Max Players:</label>
-          <input
-            type="number"
-            value={category.maxPlayer}
-            onChange={(e) =>
-              handleCategoryChange(index, "maxPlayer", e.target.value)
-            }
-            required
-            style={styles.input}
-          />
+            {/* Max Players */}
+            <div style={{ flex: "1 1 30%", minWidth: "200px" }}>
+              <label style={styles.label}>Max Players:</label>
+              <input
+                type="number"
+                value={category.maxPlayer}
+                onChange={(e) =>
+                  handleCategoryChange(index, "maxPlayer", e.target.value)
+                }
+                required
+                style={styles.input}
+              />
+            </div>
 
-          <label style={styles.label}>Gender:</label>
-          <select
-            value={category.gender}
-            onChange={(e) =>
-              handleCategoryChange(index, "gender", e.target.value)
-            }
-            required
-            style={styles.select}
-          >
-            <option value="">Select Gender</option>
-            {genderOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
+            {/* Gender */}
+            <div style={{ flex: "1 1 30%", minWidth: "200px" }}>
+              <label style={styles.label}>Gender:</label>
+              <select
+                value={category.gender}
+                onChange={(e) =>
+                  handleCategoryChange(index, "gender", e.target.value)
+                }
+                required
+                style={styles.select}
+              >
+                <option value="">Select Gender</option>
+                {genderOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <label style={styles.label}>Registration Fee:</label>
-          <input
-            type="number"
-            value={category.fee}
-            onChange={(e) => handleCategoryChange(index, "fee", e.target.value)}
-            required
-            style={styles.input}
-          />
+            {/* Registration Fee */}
+            <div style={{ flex: "1 1 30%", minWidth: "200px" }}>
+              <label style={styles.label}>Registration Fee:</label>
+              <input
+                type="number"
+                value={category.fee}
+                onChange={(e) =>
+                  handleCategoryChange(index, "fee", e.target.value)
+                }
+                required
+                style={styles.input}
+              />
+            </div>
+          </div>
 
+          {/* Remove Button */}
           {formData.categories.length > 1 && (
             <button
               type="button"
@@ -204,6 +220,7 @@ export default function BasicInfo4(props) {
         required
         style={styles.input}
       />
+      <div>Or</div>
       <CloudinaryImageUploader onUploadSuccess={handleImageUpload} />
       <img src={formData.imageUrl}></img>
       <label style={styles.label}>Description:</label>

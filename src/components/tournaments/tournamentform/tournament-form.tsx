@@ -4,6 +4,7 @@ import BasicInfo2 from "./BasicInfo2";
 import BasicInfo3 from "./BasicInfo3";
 import BasicInfo4 from "./BasicInfo4";
 // import MapLocationSection from "./MapLocationSection";
+import { Navbar } from "@/components/layout/navbar";
 
 const TournamentForm = () => {
   const [formData, setFormData] = useState({
@@ -138,61 +139,69 @@ const TournamentForm = () => {
     const formattedData = formatDataForSubmission(formData);
     console.log("Form Data to be sent:", formattedData);
 
-    // try {
-    //   const response = await fetch("http://localhost:5000/tournaments/add", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formattedData),
-    //   });
+    try {
+      const response = await fetch("http://localhost:5000/tournaments/add-or-update", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formattedData),
+      });
 
-    //   const result = await response.json();
-    //   console.log("Response:", result);
+      const result = await response.json();
+      console.log("Response:", result);
 
-    //   if (response.ok) {
-    //     alert("Tournament created successfully!");
-    //   } else {
-    //     alert("Error creating tournament: " + result.message);
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   alert("Error submitting form");
-    // }
+      if (response.ok) {
+        alert("Tournament created successfully!");
+      } else {
+        alert("Error creating tournament: " + result.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error submitting form");
+    }
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-      <h1>Create Tournament</h1>
-      <div>
-        <BasicInfo
-          formData={formData}
-          handleInputChange={handleInputChange}
-          continents={continents}
-        ></BasicInfo>
-        <BasicInfo2
-          formData={formData}
-          onLocationSelect={handleLocationCoordsChange}
-        ></BasicInfo2>
-        <BasicInfo3
-          formData={formData}
-          handleInputChange={handleInputChange}
-          formats={formats}
-          tiers={tiers}
-          setFormData={setFormData}
-        ></BasicInfo3>
-        <BasicInfo4
-          formData={formData}
-          handleCategoryChange={handleCategoryChange}
-          genderOptions={genderOptions}
-          removeCategory={removeCategory}
-          addCategory={addCategory}
-          handleInputChange={handleInputChange}
-          handleSubmit={handleSubmit}
-          setFormData={setFormData}
-        ></BasicInfo4>
+    <>
+      <Navbar />
+
+      <div style={{ padding: "20px",margin: "0 auto" }}>
+        <h1>Create Tournament</h1>
+
+        <div>
+          <BasicInfo
+            formData={formData}
+            handleInputChange={handleInputChange}
+            continents={continents}
+          />
+
+          <BasicInfo2
+            formData={formData}
+            onLocationSelect={handleLocationCoordsChange}
+          />
+
+          <BasicInfo3
+            formData={formData}
+            handleInputChange={handleInputChange}
+            formats={formats}
+            tiers={tiers}
+            setFormData={setFormData}
+          />
+
+          <BasicInfo4
+            formData={formData}
+            handleCategoryChange={handleCategoryChange}
+            genderOptions={genderOptions}
+            removeCategory={removeCategory}
+            addCategory={addCategory}
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+            setFormData={setFormData}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

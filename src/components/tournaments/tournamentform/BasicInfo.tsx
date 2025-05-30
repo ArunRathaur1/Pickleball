@@ -8,7 +8,7 @@ export default function BasicInfo(props) {
       style={{
         padding: "32px 0",
         background:
-          "linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%)",
+          "linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%)",
         borderRadius: "16px",
         marginBottom: "24px",
       }}
@@ -28,7 +28,7 @@ export default function BasicInfo(props) {
         >
           <span
             style={{
-              background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+              background: "linear-gradient(135deg, #22c55e, #16a34a)",
               borderRadius: "12px",
               padding: "8px",
               display: "flex",
@@ -80,8 +80,8 @@ export default function BasicInfo(props) {
                 outline: "none",
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = "#6366f1";
-                e.target.style.boxShadow = "0 0 0 3px rgba(99, 102, 241, 0.1)";
+                e.target.style.borderColor = "#22c55e";
+                e.target.style.boxShadow = "0 0 0 3px rgba(34, 197, 94, 0.1)";
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = "#e5e7eb";
@@ -122,8 +122,8 @@ export default function BasicInfo(props) {
                 outline: "none",
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = "#6366f1";
-                e.target.style.boxShadow = "0 0 0 3px rgba(99, 102, 241, 0.1)";
+                e.target.style.borderColor = "#22c55e";
+                e.target.style.boxShadow = "0 0 0 3px rgba(34, 197, 94, 0.1)";
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = "#e5e7eb";
@@ -164,8 +164,8 @@ export default function BasicInfo(props) {
                 outline: "none",
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = "#6366f1";
-                e.target.style.boxShadow = "0 0 0 3px rgba(99, 102, 241, 0.1)";
+                e.target.style.borderColor = "#22c55e";
+                e.target.style.boxShadow = "0 0 0 3px rgba(34, 197, 94, 0.1)";
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = "#e5e7eb";
@@ -191,7 +191,7 @@ export default function BasicInfo(props) {
         >
           <span
             style={{
-              background: "linear-gradient(135deg, #10b981, #059669)",
+              background: "linear-gradient(135deg, #15803d, #166534)",
               borderRadius: "12px",
               padding: "8px",
               display: "flex",
@@ -243,8 +243,8 @@ export default function BasicInfo(props) {
                 outline: "none",
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = "#10b981";
-                e.target.style.boxShadow = "0 0 0 3px rgba(16, 185, 129, 0.1)";
+                e.target.style.borderColor = "#15803d";
+                e.target.style.boxShadow = "0 0 0 3px rgba(21, 128, 61, 0.1)";
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = "#e5e7eb";
@@ -285,8 +285,8 @@ export default function BasicInfo(props) {
                 outline: "none",
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = "#10b981";
-                e.target.style.boxShadow = "0 0 0 3px rgba(16, 185, 129, 0.1)";
+                e.target.style.borderColor = "#15803d";
+                e.target.style.boxShadow = "0 0 0 3px rgba(21, 128, 61, 0.1)";
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = "#e5e7eb";
@@ -327,8 +327,8 @@ export default function BasicInfo(props) {
                 outline: "none",
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = "#10b981";
-                e.target.style.boxShadow = "0 0 0 3px rgba(16, 185, 129, 0.1)";
+                e.target.style.borderColor = "#15803d";
+                e.target.style.boxShadow = "0 0 0 3px rgba(21, 128, 61, 0.1)";
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = "#e5e7eb";
@@ -369,8 +369,8 @@ export default function BasicInfo(props) {
                 outline: "none",
               }}
               onFocus={(e) => {
-                e.target.style.borderColor = "#10b981";
-                e.target.style.boxShadow = "0 0 0 3px rgba(16, 185, 129, 0.1)";
+                e.target.style.borderColor = "#15803d";
+                e.target.style.boxShadow = "0 0 0 3px rgba(21, 128, 61, 0.1)";
               }}
               onBlur={(e) => {
                 e.target.style.borderColor = "#e5e7eb";
@@ -413,9 +413,8 @@ export default function BasicInfo(props) {
                   cursor: "pointer",
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = "#10b981";
-                  e.target.style.boxShadow =
-                    "0 0 0 3px rgba(16, 185, 129, 0.1)";
+                  e.target.style.borderColor = "#15803d";
+                  e.target.style.boxShadow = "0 0 0 3px rgba(21, 128, 61, 0.1)";
                 }}
                 onBlur={(e) => {
                   e.target.style.borderColor = "#e5e7eb";
