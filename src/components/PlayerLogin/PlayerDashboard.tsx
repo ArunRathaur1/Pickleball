@@ -27,8 +27,8 @@ export default function PlayerDashboard() {
         }
 
         const player = JSON.parse(cookieData);
-        const playerId = player._id;
-
+        const playerId = player.player._id;
+        console.log(playerId);
         const response = await fetch(
           `http://localhost:5000/playerlogin/${playerId}`
         );

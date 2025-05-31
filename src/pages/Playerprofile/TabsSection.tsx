@@ -1,6 +1,5 @@
 import { Athlete } from "./Types";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Trophy, Star, Play, Sparkles } from "lucide-react";
 import AboutSection from "./AboutSection";
 import TitleSection from "./TitleSection";
 import SponsorSection from "./SponsorsSection";
@@ -8,50 +7,37 @@ import ContentSection from "./ContentSection";
 import HeroSection from "./HeroSection";
 
 const TabsSection = ({ athlete }: { athlete: Athlete }) => (
-  <div className="relative w-full min-h-screen overflow-hidden">
+  <div
+    className="relative w-full min-h-screen overflow-hidden"
+    style={{ fontFamily: "Times New Roman, serif" }}
+  >
     {/* ✅ Foreground Content */}
     <div className="relative z-10">
       <Tabs defaultValue="hero" className="w-full">
         <TabsList
-          style={{ marginTop: "30px", marginBottom: "-10px" }}
-          className="flex justify-center gap-2 md:gap-4 mb-8 
-             bg-transparent text-white font-bold 
-            "
+          style={{ marginTop: "30px", marginBottom: "-10px",gap:"5%",paddingLeft:'5%' }}
+          className="flex justify-start gap-8 bg-transparent text-white font-bold pl-6"
         >
-          {/* Tab Buttons */}
-          <TabsTrigger value="hero" className="group ...">
-            <Sparkles
-              className="w-4 h-4 group-data-[state=active]:animate-pulse"
-              style={{ fontSize: "30px" }}
-            />
-            <span className="hidden sm:inline" style={{ fontSize: "30px" }}>
-              Hero
-            </span>
-          </TabsTrigger>
-          <TabsTrigger value="about" className="group ...">
-            <User className="w-4 h-4 group-data-[state=active]:animate-pulse" />
-            <span className="hidden sm:inline" style={{ fontSize: "30px" }}>
-              About
-            </span>
-          </TabsTrigger>
-          <TabsTrigger value="titles" className="group ...">
-            <Trophy className="w-4 h-4 group-data-[state=active]:animate-bounce" />
-            <span className="hidden sm:inline" style={{ fontSize: "30px" }}>
-              Titles
-            </span>
-          </TabsTrigger>
-          <TabsTrigger value="sponsors" className="group ...">
-            <Star className="w-4 h-4 group-data-[state=active]:animate-spin" />
-            <span className="hidden sm:inline" style={{ fontSize: "30px" }}>
-              Sponsors
-            </span>
-          </TabsTrigger>
-          <TabsTrigger value="content" className="group ...">
-            <Play className="w-4 h-4 group-data-[state=active]:animate-pulse" />
-            <span className="hidden sm:inline" style={{ fontSize: "30px" }}>
-              Content
-            </span>
-          </TabsTrigger>
+          {[
+            { value: "hero", label: "Hero" },
+            { value: "about", label: "About" },
+            { value: "titles", label: "Titles" },
+            { value: "sponsors", label: "Sponsors" },
+            { value: "content", label: "Content" },
+          ].map(({ value, label }) => (
+            <TabsTrigger
+              key={value}
+              value={value}
+              className="data-[state=active]:border-b-4 data-[state=active]:bg-transparent"
+              style={{
+                fontSize: "30px",
+                color: "white",
+                fontFamily: "Times New Roman, serif",
+              }}
+            >
+              <span className="hidden sm:inline">{label}</span>
+            </TabsTrigger>
+          ))}
         </TabsList>
 
         {/* Tab Content */}
@@ -59,16 +45,16 @@ const TabsSection = ({ athlete }: { athlete: Athlete }) => (
           <TabsContent value="hero">
             <HeroSection athlete={athlete} />
           </TabsContent>
-          <TabsContent value="about" className="animate-in ...">
+          <TabsContent value="about" className="animate-in">
             <AboutSection athlete={athlete} />
           </TabsContent>
-          <TabsContent value="titles" className="animate-in ...">
+          <TabsContent value="titles" className="animate-in">
             <TitleSection athlete={athlete} />
           </TabsContent>
-          <TabsContent value="sponsors" className="animate-in ...">
+          <TabsContent value="sponsors" className="animate-in">
             <SponsorSection athlete={athlete} />
           </TabsContent>
-          <TabsContent value="content" className="animate-in ...">
+          <TabsContent value="content" className="animate-in">
             <ContentSection athlete={athlete} />
           </TabsContent>
         </div>

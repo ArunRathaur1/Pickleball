@@ -84,13 +84,13 @@ export default function AddAthlete() {
 
       try {
         const player = JSON.parse(cookieData);
-        const playerId = player._id;
+        const playerId = player.player._id;
         formData.identifier=playerId;
         if (!playerId) {
           setLoading(false);
           return;
         }
-
+        
         const response = await axios.get(
           `http://localhost:5000/athletes/loginid/${playerId}`
         );

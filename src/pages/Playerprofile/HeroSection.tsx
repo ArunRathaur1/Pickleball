@@ -1,117 +1,115 @@
 import { Athlete } from "./Types";
-import { Badge } from "@/components/ui/badge";
-import {
-  Instagram,
-  Award,
-  MapPin,
-  Calendar,
-  Youtube,
-  Twitter,
-} from "lucide-react";
+import { Instagram, Youtube } from "lucide-react";
+
+const capitalizeWords = (str: string) => str.toUpperCase();
+const textColorClass = "text-[#E2D8B3]";
 
 const HeroSection = ({ athlete }: { athlete: Athlete }) => (
-  <div
-    className="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat text-white overflow-hidden"
-    style={{ backgroundImage: `url(${athlete.imageUrl})` }}
-  >
-    {/* Dark overlay */}
-    <div className="absolute inset-0 z-0" />
+  <div className="relative w-full h-screen ">
+    {/* ✅ Background Image */}
+    <div
+      className="absolute top-0 left-0 w-full h-screen bg-cover bg-center bg-no-repeat z-0"
+      style={{ backgroundImage: `url(${athlete.playerlogoimage})`,marginTop:'-70px',zIndex:"-100"}}
+    >
+      <div className="absolute inset-0 bg-black/50" />
+    </div>
 
-    {/* Content */}
-    <div className="relative z-10 max-w-6xl mx-auto h-full px-6 lg:px-16 flex items-center justify-between text-left animate-slide-up">
-      {/* Left Content */}
-      <div className="flex-1 flex flex-col justify-center h-full">
-        {/* Name & Player ID */}
-        <h1 className="text-5xl lg:text-7xl font-extrabold bg-gradient-to-r from-green-300 via-lime-200 to-emerald-100 bg-clip-text text-transparent animate-fade-in drop-shadow-lg">
-          {athlete.name}
+    {/* ✅ Foreground Content */}
+    <div
+      className="relative z-10 mx-auto h-full flex items-center justify-between text-left animate-slide-up"
+      style={{ paddingRight: "5%" }}
+    >
+      <div className="flex-1 flex flex-col justify-center h-full items-end text-right">
+        <h1
+          className={`text-5xl lg:text-7xl font-extrabold animate-fade-in ${textColorClass}`}
+          style={{
+            fontFamily: "Bebas Neue",
+            fontSize: "150px",
+            marginTop: "-100px",
+            letterSpacing: "0.08em",
+          }}
+        >
+          {capitalizeWords(athlete.name)}
         </h1>
-        <p className="text-md lg:text-lg mt-3 font-medium text-green-100/90 tracking-wide">
-          Player ID:{" "}
-          <span className="text-lime-300 font-semibold text-lg">
-            {athlete.playerid}
-          </span>
-        </p>
 
-        {/* DUPRID */}
-        <div className="mt-4 bg-white/5 px-5 py-2 rounded-full text-md backdrop-blur-md border border-green-300/20 max-w-max text-green-100 font-medium tracking-wide">
-          DUPRID: {athlete.DUPRID}
-        </div>
+        <div className="mt-3" style={{ marginTop: "30px" }}>
+          <p
+            className={`text-3xl font-bold uppercase ${textColorClass}`}
+            style={{
+              fontFamily: "Bebas Neue",
+              fontSize: "60px",
+              letterSpacing: "0.08em",
+            }}
+          >
+            {capitalizeWords(athlete.playerid)}
+          </p>
+          <p
+            className={`text-lg font-medium uppercase text-white mt-1`}
+            style={{ fontFamily: "Montserrat", marginTop: "20px" }}
+          >
+            Player ID
+          </p>
 
-        {/* About */}
-        <p className="mt-8 max-w-2xl text-green-100/95 text-xl italic leading-relaxed">
-          "{athlete.about}"
-        </p>
+          <div className="my-4" style={{ marginTop: "30px" }} />
 
-        {/* Stats */}
-        <div className="flex flex-wrap gap-4 mt-12 max-w-xl text-base">
-          <Badge className="bg-gradient-to-r from-green-700 to-green-600 px-5 py-3 text-white text-base shadow-lg border border-green-500/20 backdrop-blur-sm">
-            <MapPin className="w-5 h-5 mr-2" />
-            {athlete.country}
-          </Badge>
-          <Badge className="bg-gradient-to-r from-lime-600 to-green-500 px-5 py-3 text-white text-base shadow-lg border border-green-300/20">
-            {athlete.gender}
-          </Badge>
-          <Badge className="bg-white/5 border border-green-300/20 px-5 py-3 text-white text-base shadow-lg">
-            <Calendar className="w-5 h-5 mr-2" />
-            {athlete.age} yrs
-          </Badge>
-          <Badge className="bg-gradient-to-r from-green-400 to-lime-300 px-5 py-3 text-green-900 text-base shadow-md font-bold">
-            <Award className="w-5 h-5 mr-2" />
-            {athlete.points} Points
-          </Badge>
+          <p
+            className={`text-3xl font-bold uppercase ${textColorClass}`}
+            style={{
+              fontFamily: "Bebas Neue",
+              fontSize: "60px",
+              letterSpacing: "0.08em",
+            }}
+          >
+            {capitalizeWords(athlete.DUPRID)}
+          </p>
+          <p
+            className={`text-lg font-medium uppercase text-white mt-1`}
+            style={{ fontFamily: "Montserrat", marginTop: "20px" }}
+          >
+            DUPRID
+          </p>
         </div>
 
         {/* Social Links */}
-        <div className="flex flex-col sm:flex-row sm:gap-6 gap-4 mt-10">
-          {/* Instagram */}
+        <div className="flex flex-col gap-6 mt-10 justify-end">
           {athlete.instagramPage && (
             <a
               href={athlete.instagramPage}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-400 to-green-600 px-8 py-4 rounded-full text-white text-lg font-semibold hover:scale-105 transition-all shadow-xl hover:shadow-green-400/30"
+              className="inline-flex items-center gap-3 text-white text-lg font-semibold hover:scale-110 transition-transform uppercase"
+              aria-label="Instagram"
             >
-              <Instagram className="w-5 h-5" />
-              Follow on Instagram
+              <Instagram className="w-6 h-6" />
+              FOLLOW ON INSTAGRAM
             </a>
           )}
 
-          {/* YouTube */}
           {athlete.youtubeHandle && (
             <a
               href={athlete.youtubeHandle}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 rounded-full text-white text-lg font-semibold hover:scale-105 transition-all shadow-xl hover:shadow-green-400/30"
+              className="inline-flex items-center gap-3 text-white text-lg font-semibold hover:scale-110 transition-transform uppercase"
+              aria-label="YouTube"
             >
-              <Youtube className="w-5 h-5" />
-              Watch on YouTube
-            </a>
-          )}
-
-          {/* Twitter */}
-          {athlete.twitterHandle && (
-            <a
-              href={athlete.twitterHandle}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-400 to-green-500 px-8 py-4 rounded-full text-white text-lg font-semibold hover:scale-105 transition-all shadow-xl hover:shadow-sky-300/30"
-            >
-              <Twitter className="w-5 h-5" />
-              Follow on Twitter
+              <Youtube className="w-6 h-6" />
+              WATCH ON YOUTUBE
             </a>
           )}
         </div>
-      </div>
 
-      {/* Right: Logo */}
-      <div className="hidden lg:block flex-shrink-0 ml-8 animate-pop">
-        <div className="w-[500px] h-[500px] overflow-hidden rounded-full shadow-2xl ring-4 ring-green-400/30 ring-offset-4 ring-offset-green-100/10">
-          <img
-            src={athlete.playerlogoimage}
-            alt={`${athlete.name} Logo`}
-            className="w-full h-full object-cover"
-          />
+        {/* Rank Badge */}
+        <div
+          className="absolute text-white text-4xl font-bold uppercase tracking-widest z-20 md:left-10 md:top-10 left-1/2 transform -translate-x-1/2 md:transform-none"
+          style={{
+            fontFamily: "Bebas Neue",
+            top: "450px",
+            fontSize: "300px",
+            height: "100px",
+          }}
+        >
+          #14
         </div>
       </div>
     </div>
@@ -140,27 +138,12 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
         }
       }
 
-      @keyframes pop {
-        0% {
-          transform: scale(0.8);
-          opacity: 0;
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
       .animate-fade-in {
         animation: fade-in 1s ease-out forwards;
       }
 
       .animate-slide-up {
         animation: slide-up 1.2s ease-out forwards;
-      }
-
-      .animate-pop {
-        animation: pop 1s ease-in-out forwards;
       }
     `}</style>
   </div>

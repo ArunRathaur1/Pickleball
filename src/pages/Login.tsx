@@ -37,6 +37,8 @@ const Login = () => {
 
         const data = response.data;
         Cookies.set("player", JSON.stringify(data), { expires: 7 });
+        // const c=Cookies.get("player");
+        // console.log(c);
         navigate("/playerdashboard");
       } else {
         console.log(formData);
