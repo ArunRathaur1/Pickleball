@@ -21,7 +21,7 @@ const PlayerProfile = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    console.log('hello')
+    // console.log('hello')
     axios
       .get(`http://localhost:5000/athletes/${id}`)
       .then((res) => {
@@ -43,7 +43,7 @@ const PlayerProfile = () => {
   return (
     <>
       <div className="fixed inset-0 z-0 ">
-        <Website_Background />
+       <Website_Background></Website_Background>
       </div>
       <div className=" overflow-hidden">
         <TabsSection athlete={athlete} />
