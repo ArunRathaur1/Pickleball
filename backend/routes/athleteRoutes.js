@@ -5,15 +5,42 @@ const Athlete = require("../models/Athlete");
 // 📌 1️⃣ Create a new athlete
 router.post("/", async (req, res) => {
   try {
-    const athleteData = req.body;
+    const athleteData = { ...req.body };
 
+    // Try updating if identifier exists
     let updatedAthlete = await Athlete.findOneAndUpdate(
-      { DUPRID: athleteData.DUPRID },
+      { identifier: athleteData.identifier },
       athleteData,
       { new: true }
     );
 
     if (!updatedAthlete) {
+      // Generate base playerid
+      const basePlayerId = athleteData.name.replace(/\s+/g, "").toLowerCase();
+      console.log(basePlayerId);
+      // Find all existing player IDs starting with base
+      const existingPlayers = await Athlete.find({
+        playerid: { $regex: `^${basePlayerId}(\\d*)$`, $options: "i" },
+      });
+      console.log(existingPlayers);
+
+      let maxSuffix = -1;
+      existingPlayers.forEach((player) => {
+        const match = player.playerid.match(
+          new RegExp(`^${basePlayerId}(\\d*)$`, "i")
+        );
+        const suffix = match && match[1] ? parseInt(match[1]) : 0;
+        if (suffix > maxSuffix) maxSuffix = suffix;
+        if (!match[1] && player.playerid === basePlayerId) {
+          maxSuffix = Math.max(maxSuffix, 0); // ensure base name is counted as 0
+        }
+      });
+      
+      const newPlayerId =
+        maxSuffix >= 0 ? `${basePlayerId}${maxSuffix + 1}` : basePlayerId;
+
+      athleteData.playerid = newPlayerId;
+
       const newAthlete = new Athlete(athleteData);
       await newAthlete.save();
       updatedAthlete = newAthlete;
@@ -27,8 +54,46 @@ router.post("/", async (req, res) => {
 });
 
 
+
 // 📌 2️⃣ Get all athletes (with filtering and sorting)
 router.get("/", async (req, res) => {
+  try {
+    let { gender, country, sort, name, sponsor } = req.query;
+    let filter = { status: true }; // Only include active athletes
+
+    if (gender) filter.gender = gender;
+    if (country) filter.country = country;
+    if (name) filter.name = { $regex: name, $options: "i" }; // Case-insensitive search
+    if (sponsor) filter["sponsors.name"] = { $regex: sponsor, $options: "i" };
+
+    let athletesQuery = Athlete.find(filter);
+
+    // Sort by points if specified, otherwise default sorting by points descending for leaderboard
+    if (sort === "points" || !sort) {
+      athletesQuery = athletesQuery.sort({ points: -1 });
+    }
+
+    const athletes = await athletesQuery;
+
+    // Transform the data to match frontend expectations
+    const transformedAthletes = athletes.map((athlete) => ({
+      ...athlete.toObject(),
+      // Handle imageUrl - if it's an array, take the first image
+      imageUrl: Array.isArray(athlete.imageUrl)
+        ? athlete.imageUrl[0]
+        : athlete.imageUrl,
+      // Add points field with fallback
+      points: athlete.points || 0,
+    }));
+
+    res.json(transformedAthletes);
+  } catch (err) {
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
+
+router.get("/admin", async (req, res) => {
   try {
     let { gender, country, sort, name, sponsor } = req.query;
     let filter = {};
@@ -46,14 +111,16 @@ router.get("/", async (req, res) => {
     }
 
     const athletes = await athletesQuery;
-    
+
     // Transform the data to match frontend expectations
-    const transformedAthletes = athletes.map(athlete => ({
+    const transformedAthletes = athletes.map((athlete) => ({
       ...athlete.toObject(),
       // Handle imageUrl - if it's an array, take the first image
-      imageUrl: Array.isArray(athlete.imageUrl) ? athlete.imageUrl[0] : athlete.imageUrl,
+      imageUrl: Array.isArray(athlete.imageUrl)
+        ? athlete.imageUrl[0]
+        : athlete.imageUrl,
       // Add points field with fallback
-      points: athlete.points || 0
+      points: athlete.points || 0,
     }));
 
     res.json(transformedAthletes);
@@ -61,7 +128,6 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
-
 // 📌 3️⃣ Get a single athlete by playerid
 router.get("/:playerid", async (req, res) => {
   try {

@@ -12,7 +12,6 @@ const athleteSchema = new mongoose.Schema({
   playerid: {
     type: String,
     unique: true,
-    required: true,
   },
   identifier: { type: String, required: true },
   age: {
@@ -33,7 +32,19 @@ const athleteSchema = new mongoose.Schema({
     type: Number, // Height in cm
     required: true,
   },
-  DUPRID: {
+  status:{
+    type: Boolean,
+    default:false,
+    required:true
+  },
+  DUPRIDSINGLES: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    // match: [/^[A-Z0-9]{6,12}$/, "DUPRID must be a combination of letters and numbers (6-12 characters)."],
+  },
+  DUPRIDDOUBLES: {
     type: String,
     required: true,
     unique: true,

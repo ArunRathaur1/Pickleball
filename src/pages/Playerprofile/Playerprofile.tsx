@@ -21,7 +21,7 @@ const PlayerProfile = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // console.log('hello')
+    console.log('hello')
     axios
       .get(`http://localhost:5000/athletes/${id}`)
       .then((res) => {

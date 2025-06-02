@@ -12,6 +12,7 @@ import BlogList from "@/components/blogs/BlogList";
 import InstagramNavbar from "@/components/admin/instagram";
 import AdminClub from "@/components/admin/admin-club";
 import ClubRequestsPage from "@/components/admin/ClubRequestPage";
+import Admin_Athelete from "@/components/admin-athelete/Admin_Athelete";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const AdminDashboard = () => {
             </TabsContent>
 
             <TabsContent value="athlete">
-              <AddAthlete />
+              <Admin_Athelete />
             </TabsContent>
 
             <TabsContent value="blogs">

@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import CloudinaryImageUploader from "../admin-club/imageupload";
+import { useParams } from "react-router-dom";
 import BasicInfo from "./BasicInfo";
 import Links from "./Links";
 import Sponsors from "./Sponsors";
@@ -33,7 +34,8 @@ interface AthleteFormData {
   gender: string;
   country: string;
   height: string;
-  DUPRID: string;
+  DUPRIDSINGLES: string;
+  DUPRIDDOUBLES: string;
   identifier: string;
   sponsors: { name: string; imageUrl: string }[];
   instagramPage: string;
@@ -57,7 +59,8 @@ export default function AddAthlete() {
     gender: "",
     country: "",
     height: "",
-    DUPRID: "",
+    DUPRIDSINGLES: "",
+    DUPRIDDOUBLES: "",
     identifier: "",
     sponsors: [{ name: "", imageUrl: "" }],
     instagramPage: "",
@@ -73,31 +76,37 @@ export default function AddAthlete() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [submitMessage, setSubmitMessage] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(true);
-
+  const { id } = useParams(); // Get ID from route params
   useEffect(() => {
     const fetchAthlete = async () => {
-      const cookieData = Cookies.get("player");
-      if (!cookieData) {
+      let playerId = id;
+
+      if (!playerId) {
+        const cookieData = Cookies.get("player");
+        if (cookieData) {
+          try {
+            const player = JSON.parse(cookieData);
+            playerId = player?.player?._id;
+          } catch (e) {
+            console.error("Error parsing cookie data:", e);
+          }
+        }
+      }
+
+      // If no ID is found anywhere, set loading to false and return
+      if (!playerId) {
         setLoading(false);
         return;
       }
 
       try {
-        const player = JSON.parse(cookieData);
-        const playerId = player.player._id;
-        formData.identifier=playerId;
-        if (!playerId) {
-          setLoading(false);
-          return;
-        }
-        
         const response = await axios.get(
           `http://localhost:5000/athletes/loginid/${playerId}`
         );
 
         const athleteData = response.data;
         console.log(athleteData);
-        // Transform the fetched data to match form structure
+
         setFormData({
           name: athleteData.name || "",
           playerlogoimage: athleteData.playerlogoimage || "",
@@ -106,11 +115,12 @@ export default function AddAthlete() {
           gender: athleteData.gender || "",
           country: athleteData.country || "",
           height: athleteData.height ? athleteData.height.toString() : "",
-          DUPRID: athleteData.DUPRID || "",
+          DUPRIDSINGLES: athleteData.DUPRIDSINGLES || "",
+          DUPRIDDOUBLES: athleteData.DUPRIDDOUBLES || "",
           identifier: athleteData.identifier || playerId,
           sponsors:
-            athleteData.sponsors && athleteData.sponsors.length > 0
-              ? athleteData.sponsors.map((sponsor: any) => ({
+            athleteData.sponsors?.length > 0
+              ? athleteData.sponsors.map((sponsor) => ({
                   name: sponsor.name || "",
                   imageUrl: sponsor.imageUrl || "",
                 }))
@@ -120,31 +130,30 @@ export default function AddAthlete() {
           twitterHandle: athleteData.twitterHandle || "",
           about: athleteData.about || "",
           titlesWon:
-            athleteData.titlesWon && athleteData.titlesWon.length > 0
-              ? athleteData.titlesWon.map((title: any) => ({
+            athleteData.titlesWon?.length > 0
+              ? athleteData.titlesWon.map((title) => ({
                   title: title.title || "",
-                  year: title.year ? title.year.toString() : "",
+                  year: title.year?.toString() || "",
                 }))
               : [{ title: "", year: "" }],
           relatedContent:
-            athleteData.relatedContent && athleteData.relatedContent.length > 0
-              ? athleteData.relatedContent.map((content: any) => ({
+            athleteData.relatedContent?.length > 0
+              ? athleteData.relatedContent.map((content) => ({
                   imageUrl: content.imageUrl || "",
                   title: content.title || "",
                   youtubeLink: content.youtubeLink || "",
                 }))
               : [{ imageUrl: "", title: "", youtubeLink: "" }],
           imageUrl:
-            athleteData.imageUrl && athleteData.imageUrl.length > 0
-              ? athleteData.imageUrl.map((item: any) => ({
-                  image: item.image || item || "", // Handle both old string format and new object format
+            athleteData.imageUrl?.length > 0
+              ? athleteData.imageUrl.map((item) => ({
+                  image: item.image || item || "",
                   text: item.text || "",
                 }))
               : [{ image: "", text: "" }],
         });
       } catch (err) {
-        // Silently handle errors (including 404) - just show empty form
-        console.error(err);
+        console.error("Error fetching athlete data:", err);
       } finally {
         setLoading(false);
       }
@@ -152,7 +161,6 @@ export default function AddAthlete() {
 
     fetchAthlete();
   }, []);
-
   const validateForm = () => {
     const errors: Record<string, string> = {};
 
@@ -163,8 +171,10 @@ export default function AddAthlete() {
     if (!formData.gender) errors.gender = "Gender selection is required";
     if (!formData.country.trim()) errors.country = "Country is required";
     if (!formData.height) errors.height = "Height is required";
-    if (!formData.DUPRID.trim()) errors.DUPRID = "DUPRID is required";
-
+    if (!formData.DUPRIDSINGLES.trim())
+      errors.DUPRIDSINGLES = "DUPRID SINGLES is required";
+    if (!formData.DUPRIDDOUBLES.trim())
+      errors.DUPRIDDOUBLES = "DUPRID DOUBLES is required";
     // Validate at least one image URL with image field filled
     const validImageUrls = formData.imageUrl.filter((item) =>
       item.image.trim()
@@ -351,7 +361,7 @@ export default function AddAthlete() {
         })),
         imageUrl: filteredImageUrls,
       };
-
+      console.log("data", formData);
       // For actual API call (you might want to use PUT for updates):
       await axios.post("http://localhost:5000/athletes", submitData);
 

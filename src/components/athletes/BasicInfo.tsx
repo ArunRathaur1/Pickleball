@@ -53,36 +53,44 @@ export default function BasicInfo(props) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Player ID</label>
+            <label className="block text-sm font-medium mb-1">
+              DUPRID DOUBLES
+            </label>
             <input
               type="text"
-              name="playerid"
-              value={formData.playerid}
+              name="DUPRIDDOUBLES"
+              value={formData.DUPRIDDOUBLES}
               onChange={handleChange}
-              placeholder="Player ID"
+              placeholder="Unique athlete ID "
               className={`w-full p-2 border rounded-md ${
-                formErrors.playerid ? "border-red-500" : "border-gray-300"
+                formErrors.DUPRIDDOUBLES ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {formErrors.playerid && (
-              <p className="text-red-500 text-xs mt-1">{formErrors.playerid}</p>
+            {formErrors.DUPRIDDOUBLES && (
+              <p className="text-red-500 text-xs mt-1">
+                {formErrors.DUPRIDDOUBLES}
+              </p>
             )}
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">DUPRID</label>
+            <label className="block text-sm font-medium mb-1">
+              DUPRID SINGLES
+            </label>
             <input
               type="text"
-              name="DUPRID"
-              value={formData.DUPRID}
+              name="DUPRIDSINGLES"
+              value={formData.DUPRIDSINGLES}
               onChange={handleChange}
-              placeholder="Unique athlete ID (6-12 characters)"
+              placeholder="Unique athlete ID "
               className={`w-full p-2 border rounded-md ${
-                formErrors.DUPRID ? "border-red-500" : "border-gray-300"
+                formErrors.DUPRIDSINGLES ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {formErrors.DUPRID && (
-              <p className="text-red-500 text-xs mt-1">{formErrors.DUPRID}</p>
+            {formErrors.DUPRIDSINGLES && (
+              <p className="text-red-500 text-xs mt-1">
+                {formErrors.DUPRIDSINGLES}
+              </p>
             )}
           </div>
 

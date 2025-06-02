@@ -42,7 +42,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
             letterSpacing: "0.08em",
           }}
         >
-          {capitalizeWords(athlete.name)}
+          {athlete.name}
         </h1>
 
         <div className="mt-3" style={{ marginTop: "70px" }}>
@@ -54,7 +54,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               letterSpacing: "0.08em",
             }}
           >
-            {capitalizeWords(athlete.playerid)}
+            {athlete.DUPRIDDOUBLES}
           </p>
           <p
             className="text-lg font-medium uppercase text-white mt-1"
@@ -77,7 +77,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               letterSpacing: "0.08em",
             }}
           >
-            {capitalizeWords(athlete.DUPRID)}
+            {athlete.DUPRIDSINGLES}
           </p>
           <p
             className="text-lg font-medium uppercase text-white mt-1"

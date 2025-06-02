@@ -31,6 +31,7 @@ import ClubForm from "./components/admin-club/form.tsx";
 import TournamentForm from "./components/tournaments/tournamentform/tournament-form.tsx";
 import PlayerDashboard from "./components/PlayerLogin/PlayerDashboard.tsx";
 import BrandDashboard from "./components/BrandLogin/Dashboard.tsx";
+import AddAthlete from "./components/athletes/AddAthlete.tsx";
 const queryClient = new QueryClient();
 
 // Create a ChatbotWrapper to manage global chatbot state
@@ -92,7 +93,7 @@ const App = () => {
             <Route path="/courts" element={<CourtPage />} />
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/dashboard" element={<UserDashboard />} />
-            <Route path="/addclubs" element={<ClubForm/>} />
+            <Route path="/addclubs" element={<ClubForm />} />
             <Route path="/:id" element={<PlayerProfile />} />
             <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
             <Route path="/tournament/:id" element={<TournamentDetails />} />
@@ -101,11 +102,27 @@ const App = () => {
             <Route path="adminlogin12345" element={<AdminLogin />} />
             <Route path="adminsignup12345" element={<AdminSingup />} />
             <Route path="/sponsor" element={<Sponser></Sponser>}></Route>
-            <Route path='/clubdetails/:id' element={<Clubdetails></Clubdetails>}></Route>
-            <Route path='/addtournament' element={<TournamentForm/>}></Route>
-            <Route path='/playerdashboard'element={<PlayerDashboard></PlayerDashboard>}></Route>
-            <Route path='/branddashboard' element={<BrandDashboard></BrandDashboard>}></Route>
-            <Route path='/update/brand/:id'element={<TournamentForm></TournamentForm>}></Route>
+            <Route
+              path="/clubdetails/:id"
+              element={<Clubdetails></Clubdetails>}
+            ></Route>
+            <Route path="/addtournament" element={<TournamentForm />}></Route>
+            <Route
+              path="/playerdashboard"
+              element={<PlayerDashboard></PlayerDashboard>}
+            ></Route>
+            <Route
+              path="/branddashboard"
+              element={<BrandDashboard></BrandDashboard>}
+            ></Route>
+            <Route
+              path="/update/brand/:id"
+              element={<TournamentForm></TournamentForm>}
+            ></Route>
+            <Route
+              path="/athelete_update/:id"
+              element={<AddAthlete></AddAthlete>}
+            ></Route>
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
