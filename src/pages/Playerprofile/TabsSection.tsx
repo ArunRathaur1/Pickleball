@@ -19,11 +19,11 @@ const TabsSection = ({ athlete }: { athlete: Athlete }) => (
           className="flex justify-start gap-8 bg-transparent text-white font-bold pl-6"
         >
           {[
-            { value: "hero", label: "Hero" },
-            { value: "about", label: "About" },
-            { value: "titles", label: "Titles" },
-            { value: "sponsors", label: "Sponsors" },
-            { value: "content", label: "Content" },
+            { value: "hero", label: "HERO" },
+            { value: "about", label: "ABOUT" },
+            { value: "titles", label: "TITLES" },
+            { value: "sponsors", label: "SPONSORS" },
+            { value: "content", label: "CONTENT" },
           ].map(({ value, label }) => (
             <TabsTrigger
               key={value}

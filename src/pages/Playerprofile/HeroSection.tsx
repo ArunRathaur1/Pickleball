@@ -40,6 +40,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
             fontSize: "116px",
             marginTop: "-80px",
             letterSpacing: "0.08em",
+            textShadow: "2px 2px 20px rgba(0, 0, 0, 1)", // Added text shadow
           }}
         >
           {athlete.name}
@@ -130,6 +131,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
           style={{
             fontFamily: "Bebas Neue",
             top: "300px",
+            textShadow: "2px 2px 20px rgba(0, 0, 0, 1)",
           }}
         >
           #14
