@@ -100,7 +100,7 @@ export default function TournamentDetails() {
       case "rejected":
         return "bg-red-100 text-red-800 border-red-200";
       case "completed":
-        return "bg-blue-100 text-blue-800 border-blue-200";
+        return "bg-green-100 text-green-800 border-green-200";
       default:
         return "bg-gray-100 text-gray-800 border-gray-200";
     }
@@ -166,7 +166,7 @@ export default function TournamentDetails() {
         <p className="text-gray-600">{error}</p>
         <Link
           to="/tournaments"
-          className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
         >
           Back to Tournaments
         </Link>
@@ -182,7 +182,7 @@ export default function TournamentDetails() {
         </div>
         <Link
           to="/tournaments"
-          className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          className="mt-4 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
         >
           Back to Tournaments
         </Link>
@@ -262,11 +262,11 @@ export default function TournamentDetails() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-600 text-sm">Duration</p>
-                  <p className="text-2xl font-bold text-blue-600">
+                  <p className="text-2xl font-bold text-green-600">
                     {getDuration()} Days
                   </p>
                 </div>
-                <Clock className="text-blue-600" size={32} />
+                <Clock className="text-green-600" size={32} />
               </div>
             </div>
 
@@ -274,11 +274,11 @@ export default function TournamentDetails() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-600 text-sm">Categories</p>
-                  <p className="text-2xl font-bold text-purple-600">
+                  <p className="text-2xl font-bold text-green-600">
                     {tournament.categories?.length || 0}
                   </p>
                 </div>
-                <Users className="text-purple-600" size={32} />
+                <Users className="text-green-600" size={32} />
               </div>
             </div>
 
@@ -286,11 +286,11 @@ export default function TournamentDetails() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-gray-600 text-sm">Format</p>
-                  <p className="text-xl font-bold text-orange-600">
+                  <p className="text-xl font-bold text-green-600">
                     {tournament.format}
                   </p>
                 </div>
-                <Target className="text-orange-600" size={32} />
+                <Target className="text-green-600" size={32} />
               </div>
             </div>
           </div>
@@ -302,7 +302,7 @@ export default function TournamentDetails() {
               {/* Tournament Description */}
               <div className="bg-white rounded-xl shadow-md border border-gray-100 p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-3">
-                  <Globe2 className="text-blue-600" />
+                  <Globe2 className="text-green-600" />
                   About Tournament
                 </h2>
                 <p className="text-gray-700 text-lg leading-relaxed">
@@ -382,7 +382,7 @@ export default function TournamentDetails() {
               {/* Categories Section */}
               <div className="bg-white rounded-xl shadow-md border border-gray-100 p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                  <Medal className="text-yellow-600" />
+                  <Medal className="text-green-600" />
                   Tournament Categories
                 </h2>
 
@@ -427,14 +427,14 @@ export default function TournamentDetails() {
                   Registration Information
                 </h2>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
                   <div className="flex items-start gap-4">
-                    <Calendar className="text-blue-600 mt-1" size={24} />
+                    <Calendar className="text-green-600 mt-1" size={24} />
                     <div>
-                      <h3 className="font-semibold text-blue-800 mb-2">
+                      <h3 className="font-semibold text-green-800 mb-2">
                         Registration Deadline
                       </h3>
-                      <p className="text-blue-700">
+                      <p className="text-green-700">
                         {formatDate(tournament.registrationEnd)}
                       </p>
                     </div>
@@ -447,7 +447,7 @@ export default function TournamentDetails() {
                     className={`font-semibold ${
                       tournament.status === "approved"
                         ? "text-green-600"
-                        : "text-red-600"
+                        : "text-green-600"
                     }`}
                   >
                     {tournament.status === "approved"
@@ -463,7 +463,7 @@ export default function TournamentDetails() {
                       href={tournament.registrationLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors gap-2"
+                      className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors gap-2"
                     >
                       Register Now
                       <ExternalLink size={16} />
@@ -497,7 +497,7 @@ export default function TournamentDetails() {
                       <p className="text-sm text-gray-500">Phone Number</p>
                       <a
                         href={`tel:${tournament.contactNo}`}
-                        className="font-semibold text-blue-600 hover:text-blue-800"
+                        className="font-semibold text-green-600 hover:text-green-800"
                       >
                         {tournament.contactNo}
                       </a>
@@ -510,7 +510,7 @@ export default function TournamentDetails() {
                       <p className="text-sm text-gray-500">Email</p>
                       <a
                         href={`mailto:${tournament.emailId}`}
-                        className="font-semibold text-blue-600 hover:text-blue-800"
+                        className="font-semibold text-green-600 hover:text-green-800"
                       >
                         {tournament.emailId}
                       </a>
@@ -545,7 +545,7 @@ export default function TournamentDetails() {
               </div>
 
               {/* Tournament Stats */}
-              <div className="bg-white rounded-xl shadow-md border border-gray-100 p-8">
+              {/* <div className="bg-white rounded-xl shadow-md border border-gray-100 p-8">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">
                   Tournament Details
                 </h2>
@@ -581,7 +581,7 @@ export default function TournamentDetails() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
