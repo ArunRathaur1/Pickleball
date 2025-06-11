@@ -6,7 +6,7 @@ const Athlete = require("../models/Athlete");
 router.post("/", async (req, res) => {
   try {
     const athleteData = { ...req.body };
-
+    console.log("Received athlete data:", athleteData);
     // Try updating if identifier exists
     let updatedAthlete = await Athlete.findOneAndUpdate(
       { identifier: athleteData.identifier },

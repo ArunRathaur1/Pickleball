@@ -12,7 +12,7 @@ const TabsSection = ({ athlete }: { athlete: Athlete }) => (
     style={{ fontFamily: "Times New Roman, serif" }}
   >
     {/* ✅ Foreground Content */}
-    <div className="relative z-10">
+    <div className="relative z-1000">
       <Tabs defaultValue="hero" className="w-full">
         <TabsList
           style={{ marginTop: "50px", marginBottom: "20px",gap:"5%",paddingLeft:'5%',zIndex:"100" }}

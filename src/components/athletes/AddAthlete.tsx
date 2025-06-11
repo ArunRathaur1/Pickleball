@@ -42,7 +42,7 @@ interface AthleteFormData {
   youtubeHandle: string;
   twitterHandle: string;
   about: string;
-  titlesWon: { title: string; year: string; }[];
+  titlesWon: { title: string; year: string; venue: string; positon:string }[];
   relatedContent: { imageUrl: string; title: string; youtubeLink: string }[];
   imageUrl: {
     image: string;
@@ -67,7 +67,7 @@ export default function AddAthlete() {
     youtubeHandle: "",
     twitterHandle: "",
     about: "",
-    titlesWon: [{ title: "", year: "" }],
+    titlesWon: [{ title: "", year: "" , positon:"", venue:"" }],
     relatedContent: [{ imageUrl: "", title: "", youtubeLink: "" }],
     imageUrl: [{ image: "", text: "" }],
   });
@@ -134,8 +134,10 @@ export default function AddAthlete() {
               ? athleteData.titlesWon.map((title) => ({
                   title: title.title || "",
                   year: title.year?.toString() || "",
+                  positon: title.positon || "",
+                  venue: title.venue || "",
                 }))
-              : [{ title: "", year: "" }],
+              : [{ title: "", year: "", positon: "", venue: "" }],
           relatedContent:
             athleteData.relatedContent?.length > 0
               ? athleteData.relatedContent.map((content) => ({
@@ -203,6 +205,10 @@ export default function AddAthlete() {
       if (!title.title.trim())
         errors[`title_${idx}_name`] = "Title name is required";
       if (!title.year) errors[`title_${idx}_year`] = "Year is required";
+      if (!title.positon.trim())
+        errors[`title_${idx}_positon`] = "Position is required";
+      if (!title.venue.trim())
+        errors[`title_${idx}_venue`] = "Venue is required";
     });
 
     // Validate related content
@@ -363,7 +369,7 @@ export default function AddAthlete() {
       };
       console.log("data", formData);
       // For actual API call (you might want to use PUT for updates):
-      await axios.post("http://localhost:5000/athletes", submitData);
+      await axios.post("http://localhost:5000/athletes", formData);
 
       setSubmitMessage({
         type: "success",

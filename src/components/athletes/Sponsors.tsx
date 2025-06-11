@@ -212,13 +212,96 @@ export default function Sponsors(props) {
                   </p>
                 )}
               </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Position
+                </label>
+                <select
+                  value={title.positon}
+                  onChange={(e) =>
+                    handleNestedChange(
+                      index,
+                      "positon",
+                      e.target.value,
+                      "titlesWon"
+                    )
+                  }
+                  className={`w-full p-2 border rounded-md ${
+                    formErrors[`title_${index}_positon`]
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  }`}
+                >
+                  <option value="">Select position</option>
+                  <option value="Gold">Gold 🥇</option>
+                  <option value="Silver">Silver 🥈</option>
+                  <option value="Bronze">Bronze 🥉</option>
+                </select>
+                <input
+                  type="text"
+                  value={title.positon}
+                  onChange={(e) =>
+                    handleNestedChange(
+                      index,
+                      "positon",
+                      e.target.value,
+                      "titlesWon"
+                    )
+                  }
+                  placeholder="Position"
+                  className={`w-full p-2 border rounded-md ${
+                    formErrors[`title_${index}_positon`]
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  }`}
+                />
+
+                {formErrors[`title_${index}_positon`] && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {formErrors[`title_${index}_positon`]}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-1">Venue</label>
+                <input
+                  type="text"
+                  value={title.venue}
+                  onChange={(e) =>
+                    handleNestedChange(
+                      index,
+                      "venue",
+                      e.target.value,
+                      "titlesWon"
+                    )
+                  }
+                  placeholder="Venue"
+                  className={`w-full p-2 border rounded-md ${
+                    formErrors[`title_${index}_venue`]
+                      ? "border-red-500"
+                      : "border-gray-300"
+                  }`}
+                />
+                {formErrors[`title_${index}_venue`] && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {formErrors[`title_${index}_venue`]}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
         ))}
 
         <button
           type="button"
-          onClick={() => addField("titlesWon", { title: "", year: "" })}
+          onClick={() =>
+            addField("titlesWon", {
+              title: "",
+              year: "",
+              venue: "",
+              positon: "",
+            })
+          }
           className="w-full py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 flex items-center justify-center gap-2 rounded-md border border-blue-200"
         >
           <Plus size={16} />

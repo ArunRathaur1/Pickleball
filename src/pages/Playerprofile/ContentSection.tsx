@@ -22,76 +22,19 @@ interface Athlete {
 const ContentSection = ({ athlete }: { athlete: Athlete }) => {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        {/* Floating Elements */}
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-green-400/20 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 4}s`,
-                animationDuration: `${3 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Gradient Orbs */}
-        <div
-          className="absolute top-20 -left-40 w-80 h-80 bg-green-500/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDuration: "4s" }}
-        ></div>
-        <div
-          className="absolute bottom-20 -right-40 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "2s", animationDuration: "5s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/4 w-64 h-64 bg-teal-500/5 rounded-full blur-3xl animate-pulse"
-          style={{ animationDelay: "1s", animationDuration: "3s" }}
-        ></div>
-      </div>
-
       <div className="relative space-y-8 p-8">
-        {/* Enhanced Header Section */}
-        <div className="text-center mb-12 animate-fade-in">
-          <div className="relative inline-block">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-3xl blur-xl opacity-20 "></div>
-            <div className="relative flex items-center justify-center gap-6 p-8 bg-gradient-to-r from-green-600/10 via-emerald-600/10 to-green-600/10 backdrop-blur-md rounded-3xl border border-green-500/20">
-              <div className="relative"></div>
-              <div className="text-left">
-                <h2
-                  style={{
-                    fontFamily: "Bebas Neue",
-                    color: "#E2D8B3",
-                    fontSize: "50px",
-                    letterSpacing: "0.08em",
-                    textAlign:"center",
-                    textShadow: "2px 2px 20px rgba(0, 0, 0, 1)", // Added text shadow
-                  }}
-                  className="text-4xl md:text-5xl font-black bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 bg-clip-text text-transparent"
-                >
-                  Media Gallery
-                </h2>
-                <p
-                  style={{
-                    fontFamily: "Montserrat",
-                    color: "white",
-                    letterSpacing: "0.08em",
-                    textShadow: "2px 2px 20px rgba(0, 0, 0, 1)", // Added text shadow
-                  }}
-                  className="text-green-300/80 text-lg mt-2 "
-                >
-                  Videos, interviews, and exclusive content
-                </p>
-              </div>
-            </div>
-          </div>
+        <hr></hr>
+        <div
+          style={{
+            fontFamily: "Bebas Neue",
+            fontWeight: "bold",
+            fontSize: "80px",
+            color: "#E2D8B3",
+          }}
+        >
+          VIDEOS CONTENT
         </div>
-
+          <hr></hr>
         {athlete.relatedContent.length > 0 ? (
           <>
             {/* Enhanced Stats Section */}

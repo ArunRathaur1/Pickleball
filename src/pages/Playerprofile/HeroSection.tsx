@@ -2,18 +2,19 @@ import { Athlete } from "./Types";
 import { Instagram, Youtube } from "lucide-react";
 import Image_Background from "./Background.png";
 
-const capitalizeWords = (str: string) => str.toUpperCase();
 const textColorClass = "text-[#E2D8B3]";
 
+const textShadow = "2px 2px 20px rgba(0, 0, 0, 1)";
+
 const HeroSection = ({ athlete }: { athlete: Athlete }) => (
-  <div className="relative w-full h-screen" style={{ zIndex: "-5" }}>
+  <div className="relative w-full min-h-screen z-0 pt-[120px]">
     {/* Background Image */}
     <div
-      className="absolute inset-0 bg-cover bg-center"
+      className="absolute inset-0 bg-cover bg-center z-0"
       style={{
         backgroundImage: `url(${Image_Background})`,
-        zIndex: "0",
-        marginTop:"-120px"
+        width: "120%",
+        left: "-5%",
       }}
     ></div>
 
@@ -21,8 +22,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
     <div
       className="absolute inset-0 bg-cover bg-center z-10"
       style={{ backgroundImage: `url(${athlete.playerlogoimage})` }}
-    >
-    </div>
+    ></div>
 
     {/* Foreground Text and Content */}
     <div
@@ -37,7 +37,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
             fontSize: "116px",
             marginTop: "-80px",
             letterSpacing: "0.08em",
-            textShadow: "2px 2px 20px rgba(0, 0, 0, 1)",
+            textShadow,
           }}
         >
           {athlete.name}
@@ -50,6 +50,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               fontFamily: "Bebas Neue",
               fontSize: "98px",
               letterSpacing: "0.08em",
+              textShadow,
             }}
           >
             {athlete.DUPRIDDOUBLES}
@@ -60,6 +61,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               fontFamily: "Montserrat",
               marginTop: "20px",
               fontSize: "12.7px",
+              textShadow,
             }}
           >
             DOPRDOUBLES
@@ -73,6 +75,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               fontFamily: "Bebas Neue",
               fontSize: "98px",
               letterSpacing: "0.08em",
+              textShadow,
             }}
           >
             {athlete.DUPRIDSINGLES}
@@ -83,6 +86,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               fontFamily: "Montserrat",
               marginTop: "20px",
               fontSize: "12.7px",
+              textShadow,
             }}
           >
             DUPERSINGLES
@@ -90,10 +94,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
         </div>
 
         {/* Social Links */}
-        <div
-          className="flex flex-col gap-6 mt-10 justify-end"
-          style={{ marginTop: "100px" }}
-        >
+        <div className="flex flex-col gap-6 mt-10 justify-end z-30">
           {athlete.instagramPage && (
             <a
               href={athlete.instagramPage}
@@ -101,6 +102,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-white text-lg font-semibold hover:scale-110 transition-transform uppercase"
               aria-label="Instagram"
+              style={{ textShadow }}
             >
               <Instagram className="w-6 h-6" />
               FOLLOW ON INSTAGRAM
@@ -113,6 +115,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-white text-lg font-semibold hover:scale-110 transition-transform uppercase"
               aria-label="YouTube"
+              style={{ textShadow }}
             >
               <Youtube className="w-6 h-6" />
               WATCH ON YOUTUBE
@@ -128,7 +131,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
           style={{
             fontFamily: "Bebas Neue",
             top: "300px",
-            textShadow: "2px 2px 20px rgba(0, 0, 0, 1)",
+            textShadow,
           }}
         >
           #14
