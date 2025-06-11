@@ -9,7 +9,7 @@ const AboutSection = ({ athlete }: { athlete: Athlete }) => {
       {/* Scrollable Foreground Content */}
       <hr style={{ color: "#E2D8B3" }}></hr>
       <div className="relative w-full px-4 md:px-20 py-16 space-y-24">
-        {athlete.imageUrl?.map((item, index) => (
+        {athlete.imageUrl?.map((item, index) => (  
           <div
             key={item._id}
             className={`flex flex-col md:flex-row gap-16 items-center ${

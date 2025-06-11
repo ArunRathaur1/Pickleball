@@ -42,7 +42,7 @@ interface AthleteFormData {
   youtubeHandle: string;
   twitterHandle: string;
   about: string;
-  titlesWon: { title: string; year: string }[];
+  titlesWon: { title: string; year: string; }[];
   relatedContent: { imageUrl: string; title: string; youtubeLink: string }[];
   imageUrl: {
     image: string;
