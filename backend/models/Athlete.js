@@ -77,6 +77,8 @@ const athleteSchema = new mongoose.Schema({
     {
       title: { type: String, required: true },
       year: { type: Number, required: true },
+      venue:{type:String,required:true},
+      positon:{type:String,required:true},
     },
   ],
   relatedContent: [
