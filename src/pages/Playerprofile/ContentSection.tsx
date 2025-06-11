@@ -23,7 +23,7 @@ const ContentSection = ({ athlete }: { athlete: Athlete }) => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-green-900/10 to-emerald-900/20">
+      <div className="absolute inset-0">
         {/* Floating Elements */}
         <div className="absolute inset-0">
           {[...Array(15)].map((_, i) => (
@@ -59,23 +59,32 @@ const ContentSection = ({ athlete }: { athlete: Athlete }) => {
         {/* Enhanced Header Section */}
         <div className="text-center mb-12 animate-fade-in">
           <div className="relative inline-block">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-3xl blur-xl opacity-20 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-3xl blur-xl opacity-20 "></div>
             <div className="relative flex items-center justify-center gap-6 p-8 bg-gradient-to-r from-green-600/10 via-emerald-600/10 to-green-600/10 backdrop-blur-md rounded-3xl border border-green-500/20">
-              <div className="relative">
-                <div className="absolute inset-0 bg-green-400/20 rounded-full blur-md animate-pulse"></div>
-                <div className="relative p-4 bg-gradient-to-br from-green-500/20 to-emerald-600/20 rounded-full backdrop-blur-sm border border-green-400/30">
-                  <Film className="w-10 h-10 text-green-400 animate-pulse" />
-                </div>
-                <Sparkles
-                  className="absolute -top-2 -right-2 w-5 h-5 text-green-300 animate-spin"
-                  style={{ animationDuration: "6s" }}
-                />
-              </div>
+              <div className="relative"></div>
               <div className="text-left">
-                <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 bg-clip-text text-transparent">
+                <h2
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    color: "#E2D8B3",
+                    fontSize: "50px",
+                    letterSpacing: "0.08em",
+                    textAlign:"center",
+                    textShadow: "2px 2px 20px rgba(0, 0, 0, 1)", // Added text shadow
+                  }}
+                  className="text-4xl md:text-5xl font-black bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 bg-clip-text text-transparent"
+                >
                   Media Gallery
                 </h2>
-                <p className="text-green-300/80 text-lg mt-2 animate-pulse">
+                <p
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "white",
+                    letterSpacing: "0.08em",
+                    textShadow: "2px 2px 20px rgba(0, 0, 0, 1)", // Added text shadow
+                  }}
+                  className="text-green-300/80 text-lg mt-2 "
+                >
                   Videos, interviews, and exclusive content
                 </p>
               </div>
@@ -86,80 +95,6 @@ const ContentSection = ({ athlete }: { athlete: Athlete }) => {
         {athlete.relatedContent.length > 0 ? (
           <>
             {/* Enhanced Stats Section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              {[
-                {
-                  icon: PlaySquare,
-                  value: athlete.relatedContent.length,
-                  label: "Total Videos",
-                  delay: "0s",
-                  gradient: "from-green-600 to-emerald-700",
-                  iconColor: "text-green-400",
-                },
-                {
-                  icon: Eye,
-                  value: "High",
-                  label: "Engagement",
-                  delay: "0.2s",
-                  gradient: "from-emerald-600 to-teal-700",
-                  iconColor: "text-emerald-400",
-                },
-                {
-                  icon: Clock,
-                  value: "Recent",
-                  label: "Content Updates",
-                  delay: "0.4s",
-                  gradient: "from-teal-600 to-green-700",
-                  iconColor: "text-teal-400",
-                },
-              ].map((stat, index) => (
-                <div
-                  key={index}
-                  className="group animate-slide-up opacity-0"
-                  style={{
-                    animationDelay: stat.delay,
-                    animationFillMode: "forwards",
-                    animationDuration: "0.8s",
-                  }}
-                >
-                  <Card className="relative border-0 bg-black/30 backdrop-blur-md shadow-2xl hover:shadow-green-500/20 transition-all duration-700 hover:scale-110 hover:-translate-y-2 overflow-hidden">
-                    {/* Animated Border */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-transparent to-green-500/20 animate-pulse"></div>
-                    <div className="absolute inset-[1px] bg-black/60 rounded-lg"></div>
-
-                    <CardContent className="relative p-8 text-center">
-                      {/* Glowing Background */}
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-700`}
-                      ></div>
-
-                      <div className="relative">
-                        <div className="flex justify-center mb-6 relative">
-                          <div className="absolute inset-0 bg-green-400/10 rounded-full blur-lg animate-pulse"></div>
-                          <div className="relative p-5 bg-gradient-to-br from-green-500/15 to-emerald-600/15 rounded-full backdrop-blur-sm border border-green-400/20 group-hover:rotate-12 transition-transform duration-500">
-                            <stat.icon
-                              className={`w-12 h-12 ${stat.iconColor} group-hover:scale-110 transition-transform duration-300`}
-                            />
-                          </div>
-                          <div className="absolute -top-1 -right-1">
-                            <Zap
-                              className="w-4 h-4 text-green-300 animate-bounce"
-                              style={{ animationDelay: `${index * 0.5}s` }}
-                            />
-                          </div>
-                        </div>
-                        <div className="text-4xl font-black text-green-400 mb-3 group-hover:scale-105 transition-transform duration-300">
-                          {stat.value}
-                        </div>
-                        <div className="text-green-300/80 font-semibold tracking-wide">
-                          {stat.label}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
 
             {/* Enhanced Content Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">

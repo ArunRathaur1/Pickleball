@@ -15,7 +15,7 @@ const TabsSection = ({ athlete }: { athlete: Athlete }) => (
     <div className="relative z-10">
       <Tabs defaultValue="hero" className="w-full">
         <TabsList
-          style={{ marginTop: "30px", marginBottom: "-10px",gap:"5%",paddingLeft:'5%' }}
+          style={{ marginTop: "50px", marginBottom: "20px",gap:"5%",paddingLeft:'5%',zIndex:"100" }}
           className="flex justify-start gap-8 bg-transparent text-white font-bold pl-6"
         >
           {[

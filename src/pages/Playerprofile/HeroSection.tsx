@@ -6,25 +6,22 @@ const capitalizeWords = (str: string) => str.toUpperCase();
 const textColorClass = "text-[#E2D8B3]";
 
 const HeroSection = ({ athlete }: { athlete: Athlete }) => (
-  <div className="relative w-full h-screen " style={{ zIndex: "-5" }}>
+  <div className="relative w-full h-screen" style={{ zIndex: "-5" }}>
     {/* Background Image */}
     <div
-      className="absolute inset-0 bg-cover  z-0"
+      className="absolute inset-0 bg-cover bg-center"
       style={{
         backgroundImage: `url(${Image_Background})`,
-        top: "-100px",
-        width: "100%",
-        height: "100hv",
+        zIndex: "0",
+        marginTop:"-120px"
       }}
-    />
+    ></div>
 
     {/* Player Logo Image */}
     <div
       className="absolute inset-0 bg-cover bg-center z-10"
       style={{ backgroundImage: `url(${athlete.playerlogoimage})` }}
     >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0  z-10" />
     </div>
 
     {/* Foreground Text and Content */}
@@ -40,7 +37,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
             fontSize: "116px",
             marginTop: "-80px",
             letterSpacing: "0.08em",
-            textShadow: "2px 2px 20px rgba(0, 0, 0, 1)", // Added text shadow
+            textShadow: "2px 2px 20px rgba(0, 0, 0, 1)",
           }}
         >
           {athlete.name}
@@ -126,8 +123,8 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
         {/* Rank Badge */}
         <div
           className={`absolute font-bold uppercase tracking-widest z-30 
-    left-1/4 transform -translate-x-1/2 md:left-10 md:top-10 md:transform-none 
-    ${textColorClass} text-[100px] md:text-[273px]`}
+          left-1/4 transform -translate-x-1/2 md:left-10 md:top-10 md:transform-none 
+          ${textColorClass} text-[100px] md:text-[273px]`}
           style={{
             fontFamily: "Bebas Neue",
             top: "300px",

@@ -56,97 +56,35 @@ const TitlesSection = ({ athlete }: { athlete: Athlete }) => {
 
       <div className="relative space-y-8 p-8">
         {/* Header Section with Enhanced Animation */}
-        <div className="text-center mb-12 animate-fade-in">
+        <div className="text-center mb-12 ">
           <div className="relative inline-block">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl blur-lg opacity-30 animate-pulse"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl blur-lg opacity-30 "></div>
             <div className="relative flex items-center justify-center gap-4 p-8 bg-gradient-to-r from-green-600/20 via-emerald-600/20 to-green-600/20 backdrop-blur-sm rounded-2xl border border-green-500/20">
-              <div className="relative">
-                <Crown
-                  className="w-12 h-12 text-green-400 animate-bounce"
-                  style={{ animationDuration: "3s" }}
-                />
-                <Sparkles
-                  className="absolute -top-2 -right-2 w-6 h-6 text-yellow-400 animate-spin"
-                  style={{ animationDuration: "4s" }}
-                />
-              </div>
               <div className="text-left">
-                <h1 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 bg-clip-text text-transparent">
+                <h1
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    color: "#E2D8B3",
+                    letterSpacing: "0.08em",
+                  }}
+                  className="text-4xl md:text-6xl font-black bg-gradient-to-r from-green-400 via-emerald-300 to-green-500 bg-clip-text text-transparent"
+                >
                   Championship Gallery
                 </h1>
-                <p className="text-green-300/80 text-lg mt-2 animate-pulse">
+                <p
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "white",
+                    letterSpacing: "0.08em",
+                  }}
+                  className="text-green-300/80 text-lg mt-2 animate-pulse"
+                >
                   Celebrating victories and achievements
                 </p>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Enhanced Summary Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {[
-            {
-              icon: Trophy,
-              value: titles.length,
-              label: "Total Titles",
-              delay: "0s",
-              color: "from-green-600 to-emerald-700",
-            },
-            {
-              icon: Calendar,
-              value: latestVictoryYear,
-              label: "Latest Victory",
-              delay: "0.2s",
-              color: "from-emerald-600 to-teal-700",
-            },
-            {
-              icon: Star,
-              value: yearsActive,
-              label: "Years Active",
-              delay: "0.4s",
-              color: "from-teal-600 to-green-700",
-            },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="group animate-slide-up opacity-0"
-              style={{
-                animationDelay: stat.delay,
-                animationFillMode: "forwards",
-                animationDuration: "0.8s",
-              }}
-            >
-              <Card className="relative border-0 bg-black/40 backdrop-blur-md shadow-2xl hover:shadow-green-500/20 transition-all duration-500 hover:scale-105 overflow-hidden">
-                {/* Animated border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 via-transparent to-green-500/20 animate-pulse"></div>
-                <div className="absolute inset-[1px] bg-black/60 rounded-lg"></div>
-
-                <CardContent className="relative p-8 text-center">
-                  {/* Glowing background effect */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-5 group-hover:opacity-10 transition-opacity duration-500`}
-                  ></div>
-
-                  <div className="relative">
-                    <div className="flex justify-center mb-4 relative">
-                      <div className="absolute inset-0 bg-green-400/20 rounded-full blur-md animate-pulse"></div>
-                      <div className="relative p-4 bg-gradient-to-br from-green-500/20 to-emerald-600/20 rounded-full backdrop-blur-sm border border-green-400/30">
-                        <stat.icon className="w-10 h-10 text-green-400 animate-pulse" />
-                      </div>
-                    </div>
-                    <div className="text-5xl font-black text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300">
-                      {stat.value}
-                    </div>
-                    <div className="text-green-300/80 font-medium tracking-wide">
-                      {stat.label}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-
         {/* Enhanced Titles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           {titles.map((title, index) => (
@@ -197,7 +135,13 @@ const TitlesSection = ({ athlete }: { athlete: Athlete }) => {
                         </div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-black text-white text-xl leading-tight mb-3 group-hover:text-green-200 transition-colors duration-300">
+                        <h3
+                          className="font-black text-white text-xl leading-tight mb-3 group-hover:text-green-200 transition-colors duration-300"
+                          style={{
+                            fontFamily: "Montserrat",
+                            color: "#E2D8B3",
+                          }}
+                        >
                           {title.title}
                         </h3>
                         <div className="flex items-center gap-3">
@@ -206,24 +150,6 @@ const TitlesSection = ({ athlete }: { athlete: Athlete }) => {
                             {title.year}
                           </span>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Enhanced Footer */}
-                  <div className="relative p-6 bg-black/90 border-t border-green-800/50">
-                    <div className="flex items-center justify-between">
-                      <span className="text-green-400 font-semibold tracking-wide">
-                        Championship Title
-                      </span>
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className="w-4 h-4 fill-green-400 text-green-400 hover:scale-125 transition-transform duration-300 animate-pulse"
-                            style={{ animationDelay: `${i * 0.1}s` }}
-                          />
-                        ))}
                       </div>
                     </div>
                   </div>

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
-import Website_Background from "../spline/website";
+// import Website_Background from "../spline/website";
 // Component Imports
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -12,7 +12,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import ErrorSection from "./ErrorSection";
 import HeroSection from "./HeroSection";
 import TabsSection from "./TabsSection";
-
+import Website_Background from './About  BG.png'
 const PlayerProfile = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -42,10 +42,15 @@ const PlayerProfile = () => {
 
   return (
     <>
-      <div className="fixed inset-0 z-0 ">
-       <Website_Background></Website_Background>
+      <div className="fixed inset-0 z-[-1] h-screen w-screen">
+        <img
+          src={Website_Background}
+          alt="Background"
+          className="h-full w-full object-cover object-center"
+        />
       </div>
-      <div className=" overflow-hidden">
+
+      <div className="relative z-10 overflow-hidden">
         <TabsSection athlete={athlete} />
       </div>
     </>
