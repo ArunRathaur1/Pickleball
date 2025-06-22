@@ -23,12 +23,11 @@ const Inquary=require('./routes/inquary');
 const playerLoginRoutes = require("./routes/playerLogin");
 const BrandLogin=require('./routes/brandroute');
 const dupr = require("./routes/dupr.js");
+const rankingRoutes = require("./routes/rankingroutes");
 
 require("./passport"); // Passport Config
 
 const app = express();
-
-// ✅ SESSION CONFIGURATION
 app.use(
   session({
     secret: process.env.COOKIE_SECRET || "default_secret_key",
@@ -71,6 +70,7 @@ app.use("/admin", adminRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/airoutes",airoutes);
 app.use('/clublist',clublist);
+app.use("/ranking", rankingRoutes);
 app.use('/newsletter',newsletter);
 app.use('/instagram',Instagram);
 app.use("/inquary", Inquary);

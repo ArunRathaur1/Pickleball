@@ -1,6 +1,6 @@
-import express from "express";
-import fs from "fs";
-import path from "path";
+const express =require("express");
+const fs = require("fs"); ;
+const path =require("path") ;
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ router.get("/:country/:currindex", async (req, res) => {
     return res.status(400).json({ message: "Invalid country or page index." });
   }
 
-  const filePath = path.join(process.cwd(), "data", "ids", country, "id.txt");
+  const filePath = path.join(process.cwd(), country, "id.txt");
 
   try {
     const fileData = fs.readFileSync(filePath, "utf-8");
