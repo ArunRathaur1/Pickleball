@@ -1,40 +1,145 @@
-const express =require("express");
-const fs = require("fs"); ;
-const path =require("path") ;
+const express = require("express");
+const fs = require("fs");
+const path = require("path");
+const Ranking = require("../models/ranking"); // Mongoose model
 
 const router = express.Router();
 
-const ITEMS_PER_PAGE = 20;
+const tokenUrl = "https://prod.mydupr.com/api/auth/v3/token";
+const apiUrl = "https://prod.mydupr.com/api/v3/player";
 
-router.get("/:country/:currindex", async (req, res) => {
-  const { country, currindex } = req.params;
-  const page = parseInt(currindex, 10);
+const clientKey = "ck-65e264b5-721d-4381-feae-c9868ca2de08";
+const clientSecret = "cs-8e4e014368754a04ffbbc8a360e3661f";
+const encoded = Buffer.from(`${clientKey}:${clientSecret}`).toString("base64");
 
-  if (!country || isNaN(page)) {
-    return res.status(400).json({ message: "Invalid country or page index." });
+// 🔐 Get DUPr API token
+async function getAccessToken() {
+  const res = await fetch(tokenUrl, {
+    method: "POST",
+    headers: {
+      "x-authorization": encoded,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await res.json();
+  if (!res.ok || !data.result?.token) {
+    throw new Error("Failed to fetch access token.");
   }
 
+  return data.result.token;
+}
+
+// 🔄 Fetch player details for a batch of duprIds
+async function fetchPlayerDetails(token, duprIds) {
+  const body = {
+    duprIds,
+    sortBy: "string",
+  };
+
+  const res = await fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.message || "Failed to fetch player details");
+  }
+
+  return data.results || [];
+}
+
+// 📥 Save player data into MongoDB
+async function savePlayersToDB(players, continent) {
+  const operations = players.map((player) => {
+    return {
+      updateOne: {
+        filter: { duprId: player.duprId },
+        update: {
+          $set: {
+            ...player,
+            Continent: continent,
+          },
+        },
+        upsert: true,
+      },
+    };
+  });
+
+  // Use bulkWrite for efficient batch insert/update
+  await Ranking.bulkWrite(operations);
+}
+
+// 📤 Route to fetch & save full data for a continent
+router.get("/full/:country", async (req, res) => {
+  const { country } = req.params;
   const filePath = path.join(process.cwd(), country, "id.txt");
 
   try {
     const fileData = fs.readFileSync(filePath, "utf-8");
-    const allIds = fileData.trim().split(/[\n,]+/); // handles comma or newline separated IDs
+    const allIds = fileData
+      .trim()
+      .split(/[\n,]+/)
+      .map((id) => id.replace(/"/g, "").trim())
+      .filter(Boolean);
 
-    const totalPages = Math.ceil(allIds.length / ITEMS_PER_PAGE);
-    const start = page * ITEMS_PER_PAGE;
-    const ids = allIds.slice(start, start + ITEMS_PER_PAGE);
+    const token = await getAccessToken();
+    const batchSize = 1000;
+    const allResults = [];
+
+    for (let i = 0; i < allIds.length; i += batchSize) {
+      const batch = allIds.slice(i, i + batchSize);
+      const results = await fetchPlayerDetails(token, batch);
+      allResults.push(...results);
+      await savePlayersToDB(results, country);
+      console.log(`✅ Saved batch ${i / batchSize + 1} for ${country}`);
+    }
 
     res.status(200).json({
-      ids,
-      page,
-      totalPages,
-      message: `Fetched ${ids.length} IDs from ${country} page ${page}`,
+      country,
+      totalPlayers: allResults.length,
+      message: "All player data saved to MongoDB.",
     });
   } catch (error) {
+    console.error("❌ Error:", error);
     res.status(500).json({
-      message: "Failed to read ID file",
+      message: "Failed to fetch and save player data",
       error: error.message,
     });
   }
 });
+
+// 📥 Route to get players by continent
+router.get("/details/:continent", async (req, res) => {
+  const { continent } = req.params;
+
+  try {
+    const players = await Ranking.find({ Continent: continent });
+
+    if (!players || players.length === 0) {
+      return res.status(404).json({
+        message: `No players found for continent: ${continent}`,
+      });
+    }
+
+    res.status(200).json({
+      continent,
+      count: players.length,
+      players,
+    });
+  } catch (error) {
+    console.error("❌ Error fetching players by continent:", error);
+    res.status(500).json({
+      message: "Failed to retrieve players",
+      error: error.message,
+    });
+  }
+});
+
 module.exports = router;
