@@ -12,7 +12,7 @@ const headers = {
 
 const allDuprIds = [];
 
-for (let pageNo = 221; pageNo <= 233; pageNo++) {
+for (let pageNo = 1; pageNo <= 19; pageNo++) {
   const formData = new URLSearchParams({
     view_type: "list",
     coaches_input: "",
@@ -20,7 +20,7 @@ for (let pageNo = 221; pageNo <= 233; pageNo++) {
     player_country: "",
     ntrp_rat_type: "",
     avaibility_date: "",
-    continent: "AS", // Asia
+    continent: "OC", // Asia
     event_types: "0",
     inlineCheckbox1: "",
     ntrp_rat: "0",
@@ -65,5 +65,5 @@ for (let pageNo = 221; pageNo <= 233; pageNo++) {
     console.error(`❌ Error on page ${pageNo}:`, err.message);
   }
 }
-await fs.writeFile("dupr_ids12.json", JSON.stringify(allDuprIds, null, 2));
+await fs.writeFile("Oceana/dupr_ids.json", JSON.stringify(allDuprIds, null, 2));
 console.log(`\n💾 Done! Saved ${allDuprIds.length} dupr_ids to dupr_ids.json`);

@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 
 // Step 1: Read the JSON file
-const raw = await fs.readFile("dupr_ids12.json", "utf-8");
+const raw = await fs.readFile("Oceana/dupr_ids.json", "utf-8");
 const data = JSON.parse(raw);
 
 // Step 2: Extract and format dupr_ids
@@ -14,7 +14,7 @@ const duprIds = data
 const result = duprIds.join(",");
 
 // Step 4: Write to TXT file
-await fs.writeFile("dupr_ids12.txt", result);
+await fs.writeFile("Oceana/dupr_ids.txt", result);
 
 console.log(
   `✅ Saved ${duprIds.length} dupr_ids to dupr_ids.txt in the format: "ID1";"ID2";...`
