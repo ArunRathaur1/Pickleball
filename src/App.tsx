@@ -32,6 +32,7 @@ import TournamentForm from "./components/tournaments/tournamentform/tournament-f
 import PlayerDashboard from "./components/PlayerLogin/PlayerDashboard.tsx";
 import BrandDashboard from "./components/BrandLogin/Dashboard.tsx";
 import AddAthlete from "./components/athletes/AddAthlete.tsx";
+import Ranking from "./pages/Ranking/Ranking.tsx";
 const queryClient = new QueryClient();
 
 // Create a ChatbotWrapper to manage global chatbot state
@@ -102,6 +103,7 @@ const App = () => {
             <Route path="adminlogin12345" element={<AdminLogin />} />
             <Route path="adminsignup12345" element={<AdminSingup />} />
             <Route path="/sponsor" element={<Sponser></Sponser>}></Route>
+            <Route path='/ranking' element={<Ranking></Ranking>}></Route>
             <Route
               path="/clubdetails/:id"
               element={<Clubdetails></Clubdetails>}

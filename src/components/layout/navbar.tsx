@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Athletes", href: "/athletes" },
+  { label: "Ranking", href: "/ranking" },
   { label: "Tournaments", href: "/tournaments" },
   { label: "Clubs", href: "/clubs" },
   { label: "About us", href: "/contact" },
