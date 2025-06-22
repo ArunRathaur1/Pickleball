@@ -7,14 +7,17 @@ const textColorClass = "text-[#E2D8B3]";
 const textShadow = "2px 2px 20px rgba(0, 0, 0, 1)";
 
 const HeroSection = ({ athlete }: { athlete: Athlete }) => (
-  <div className="relative w-full min-h-screen z-0 pt-[120px]">
+  <div className="relative w-full min-h-screen pt-[120px]"
+  style={{zIndex:"-10"}}>
     {/* Background Image */}
     <div
-      className="absolute inset-0 bg-cover bg-center z-0"
+      className="absolute inset-0 bg-cover bg-center "
       style={{
         backgroundImage: `url(${Image_Background})`,
         width: "120%",
         left: "-5%",
+        marginTop:"-120px",
+        zIndex:"-10"
       }}
     ></div>
 
