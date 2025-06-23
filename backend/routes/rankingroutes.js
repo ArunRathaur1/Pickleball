@@ -141,5 +141,84 @@ router.get("/details/:continent", async (req, res) => {
     });
   }
 });
+router.get("/filtered-players", async (req, res) => {
+  const {
+    gender = "ALL",
+    duprSortType = "singles",
+    page = 1,
+    continent = "ALL",
+  } = req.query;
+
+  const pageSize = 50;
+  const skip = (parseInt(page) - 1) * pageSize;
+  const filter = {};
+
+  if (gender.toUpperCase() !== "ALL") {
+    filter.gender = gender.toUpperCase();
+  }
+
+  if (continent.toUpperCase() !== "ALL") {
+    filter.Continent = continent;
+  }
+
+  const ratingField =
+    duprSortType === "singles" ? "ratings.singles" : "ratings.doubles";
+
+  try {
+    // Aggregation pipeline with ratingValue logic and total count
+    const aggregationPipeline = [
+      { $match: filter },
+      {
+        $addFields: {
+          ratingValue: {
+            $cond: [
+              {
+                $or: [
+                  { $eq: [`$${ratingField}`, "NR"] },
+                  { $eq: [`$${ratingField}`, null] },
+                  { $eq: [`$${ratingField}`, ""] },
+                  { $not: [`$${ratingField}`] },
+                ],
+              },
+              null,
+              { $toDouble: `$${ratingField}` },
+            ],
+          },
+        },
+      },
+      { $sort: { ratingValue: -1 } },
+      {
+        $facet: {
+          paginatedResults: [{ $skip: skip }, { $limit: pageSize }],
+          totalCount: [{ $count: "count" }],
+        },
+      },
+    ];
+
+    const result = await Ranking.aggregate(aggregationPipeline);
+
+    const players = result[0].paginatedResults;
+    const totalPlayers = result[0].totalCount[0]?.count || 0;
+
+    res.status(200).json({
+      filters: { gender, duprSortType, continent },
+      page: parseInt(page),
+      pageSize,
+      totalPlayers,
+      totalPages: Math.ceil(totalPlayers / pageSize),
+      players,
+    });
+  } catch (error) {
+    console.error("❌ Error filtering players:", error);
+    res.status(500).json({
+      message: "Failed to retrieve filtered players",
+      error: error.message,
+    });
+  }
+});
+
+
+
+
 
 module.exports = router;
