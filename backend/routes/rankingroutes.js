@@ -2,14 +2,13 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const Ranking = require("../models/ranking"); // Mongoose model
-
+require("dotenv").config(); 
 const router = express.Router();
 
-const tokenUrl = "https://prod.mydupr.com/api/auth/v3/token";
-const apiUrl = "https://prod.mydupr.com/api/v3/player";
-
-const clientKey = "ck-65e264b5-721d-4381-feae-c9868ca2de08";
-const clientSecret = "cs-8e4e014368754a04ffbbc8a360e3661f";
+const tokenUrl = process.env.DUPR_TOKEN_URL;
+const apiUrl = process.env.DUPR_API_URL;
+const clientKey = process.env.DUPR_CLIENT_KEY;
+const clientSecret = process.env.DUPR_CLIENT_SECRET;
 const encoded = Buffer.from(`${clientKey}:${clientSecret}`).toString("base64");
 
 // 🔐 Get DUPr API token
