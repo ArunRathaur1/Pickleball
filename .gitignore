@@ -12,6 +12,10 @@ lerna-debug.log*
 Africa
 .id
 Asia
+Europe
+NorthAmerica
+SouthAmerica
+Oceana
 # Others
 .env
 node_modules
