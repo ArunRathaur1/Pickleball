@@ -1,0 +1,5402 @@
+[
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  },
+  {
+    "name": "Aanik  Lohani",
+    "profile_url": "/players/aanik-lohani",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720703686844/-1JAOwD8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8E9L4V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 450,
+        "rank": "83rd"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 1075,
+        "rank": "29th"
+      }
+    }
+  },
+  {
+    "name": "Adam  Harvey",
+    "profile_url": "/players/adam-harvey",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1731618899123/IMG_0302.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 24,
+    "dupr_id": "8MP4LO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 587.5,
+        "rank": "69th"
+      },
+      "mixed": {
+        "points": 0,
+        "rank": "280th"
+      },
+      "singles": {
+        "points": 1715,
+        "rank": "20th"
+      }
+    }
+  },
+  {
+    "name": "AJ  Koller",
+    "profile_url": "/players/aj-koller",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1738254767164/PPA_MEDIADAY_AJ_KOLLER-18-removebg-preview.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 36,
+    "dupr_id": "8J5P4D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1975,
+        "rank": "29th"
+      },
+      "mixed": {
+        "points": 1050,
+        "rank": "28th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "62nd"
+      }
+    }
+  },
+  {
+    "name": "Alex  Neumann",
+    "profile_url": "/players/alex-neumann",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1700107909534/Alex-No-Smile.png?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 27,
+    "dupr_id": "8WKN2K",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 137.5,
+        "rank": "149th"
+      },
+      "mixed": {
+        "points": 25,
+        "rank": "167th"
+      },
+      "singles": {
+        "points": 825,
+        "rank": "36th"
+      }
+    }
+  },
+  {
+    "name": "Alex  Walker",
+    "profile_url": "/players/alex-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720539192029/gZmi2aK4.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 24,
+    "dupr_id": "XJ2VO2",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 675,
+        "rank": "42nd"
+      },
+      "singles": {
+        "points": 362.5,
+        "rank": "54th"
+      }
+    }
+  },
+  {
+    "name": "Alix  Truong",
+    "profile_url": "/players/alix-truong",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554750811/dXgvvdCY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 20,
+    "dupr_id": "8W46K3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 2750,
+        "rank": "26th"
+      },
+      "mixed": {
+        "points": 1975,
+        "rank": "18th"
+      },
+      "singles": {
+        "points": 1212.5,
+        "rank": "25th"
+      }
+    }
+  },
+  {
+    "name": "Allison  Phillips",
+    "profile_url": "/players/allison-phillips",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542340640/eOJ4vKn0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 22,
+    "dupr_id": "8MEP5D",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1575,
+        "rank": "38th"
+      },
+      "mixed": {
+        "points": 662.5,
+        "rank": "43rd"
+      },
+      "singles": {
+        "points": 187.5,
+        "rank": "85th"
+      }
+    }
+  },
+  {
+    "name": "Allyce  Jones",
+    "profile_url": "/players/allyce-jones",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554866552/jl2GFPAM.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 37,
+    "dupr_id": "89JL9E",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 7200,
+        "rank": "8th"
+      },
+      "mixed": {
+        "points": 2200,
+        "rank": "16th"
+      },
+      "singles": {
+        "points": 425,
+        "rank": "47th"
+      }
+    }
+  },
+  {
+    "name": "Anderson  Scarpa",
+    "profile_url": "/players/anderson-scarpa",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720537661436/wrBJLgKs.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 31,
+    "dupr_id": "3OWLR2",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1200,
+        "rank": "49th"
+      },
+      "mixed": {
+        "points": 1012.5,
+        "rank": "31st"
+      },
+      "singles": {
+        "points": 900,
+        "rank": "33rd"
+      }
+    }
+  },
+  {
+    "name": "Andrea  Koop -",
+    "profile_url": "/players/andrea-koop",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543029261/qGNLFjgI.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 36,
+    "dupr_id": "8J5YVO",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1800,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 487.5,
+        "rank": "54th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Andrei  Daescu -",
+    "profile_url": "/players/andrei-daescu",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542964791/z3CAJNTQ.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 37,
+    "dupr_id": "8E9X2V",
+    "country": {
+      "name": "ROU",
+      "flag": "https://cdn.pickleball.com/circle-flags/ro.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 14100,
+        "rank": "4th"
+      },
+      "mixed": {
+        "points": 5000,
+        "rank": "8th"
+      },
+      "singles": {
+        "points": 0,
+        "rank": "N/A"
+      }
+    }
+  },
+  {
+    "name": "Angie  Walker",
+    "profile_url": "/players/angie-walker",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720554965513/FHPi6G1g.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 27,
+    "dupr_id": "17NZ25",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "34th"
+      },
+      "mixed": {
+        "points": 825,
+        "rank": "36th"
+      },
+      "singles": {
+        "points": 1750,
+        "rank": "18th"
+      }
+    }
+  },
+  {
+    "name": "Anna  Bright",
+    "profile_url": "/players/anna-bright",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555046789/D2iblmwE.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 25,
+    "dupr_id": "3LVZJZ",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 19400,
+        "rank": "3rd"
+      },
+      "mixed": {
+        "points": 10450,
+        "rank": "3rd"
+      },
+      "singles": {
+        "points": 200,
+        "rank": "77th"
+      }
+    }
+  },
+  {
+    "name": "Anna Leigh  Waters",
+    "profile_url": "/players/anna-leigh-waters",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555142963/doLFa2-I.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 18,
+    "dupr_id": "1RWDQ3",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 22300,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 18500,
+        "rank": "1st"
+      }
+    }
+  },
+  {
+    "name": "Audrey Adele  Brown",
+    "profile_url": "/players/audrey-adele-brown",
+    "profile_image": "https://cdn.pickleball.com/pickleball-app/static/profile-image.svg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 28,
+    "dupr_id": "MYNV7V",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 362.5,
+        "rank": "82nd"
+      },
+      "mixed": {
+        "points": 125,
+        "rank": "87th"
+      },
+      "singles": {
+        "points": 125,
+        "rank": "98th"
+      }
+    }
+  },
+  {
+    "name": "Augustus  Ge",
+    "profile_url": "/players/augustus-ge",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720543267349/-MrBM-AA.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 28,
+    "dupr_id": "8D6EX4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 3675,
+        "rank": "20th"
+      },
+      "mixed": {
+        "points": 1462.5,
+        "rank": "22nd"
+      },
+      "singles": {
+        "points": 875,
+        "rank": "34th"
+      }
+    }
+  },
+  {
+    "name": "Ava  Ignatowich",
+    "profile_url": "/players/ava-ignatowich",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555281729/5uA0Zh08.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Female",
+    "age": 23,
+    "dupr_id": "3XRMD4",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1225,
+        "rank": "46th"
+      },
+      "mixed": {
+        "points": 600,
+        "rank": "47th"
+      },
+      "singles": {
+        "points": 1425,
+        "rank": "19th"
+      }
+    }
+  },
+  {
+    "name": "Ben  Johns",
+    "profile_url": "/players/ben-johns",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555369461/lmbA0oL0.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 26,
+    "dupr_id": "V8DYL8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 16000,
+        "rank": "1st"
+      },
+      "mixed": {
+        "points": 21700,
+        "rank": "1st"
+      },
+      "singles": {
+        "points": 7037.5,
+        "rank": "5th"
+      }
+    }
+  },
+  {
+    "name": "Blaine  Hovenier",
+    "profile_url": "/players/blaine-hovenier",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720542437534/pUCBVJI8.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 25,
+    "dupr_id": "EGLE6W",
+    "country": {
+      "name": "CAN",
+      "flag": "https://cdn.pickleball.com/circle-flags/ca.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1950,
+        "rank": "30th"
+      },
+      "mixed": {
+        "points": 925,
+        "rank": "34th"
+      },
+      "singles": {
+        "points": 850,
+        "rank": "35th"
+      }
+    }
+  },
+  {
+    "name": "Brandon  French",
+    "profile_url": "/players/brandon-french",
+    "profile_image": "https://cdn.pickleball.com/profile-images/1720555418817/FcFf6kgY.jpeg?width=64&height=64&optimizer=image",
+    "role": "UPA Tour Pro",
+    "gender": "Male",
+    "age": 33,
+    "dupr_id": "8GGZG8",
+    "country": {
+      "name": "USA",
+      "flag": "https://cdn.pickleball.com/circle-flags/us.svg?width=20&height=20&optimizer=image"
+    },
+    "ranking": {
+      "doubles": {
+        "points": 1750,
+        "rank": "32nd"
+      },
+      "mixed": {
+        "points": 525,
+        "rank": "52nd"
+      },
+      "singles": {
+        "points": 500,
+        "rank": "56th"
+      }
+    }
+  }
+]

@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Navbar } from "../layout/navbar";
 import { Link } from "react-router-dom";
-import Tournaments from "@/pages/Tournament/Tournaments";
 import ShowTournaments from "./ShowTournaments";
+
 export default function BrandDashboard() {
   const [brand, setBrand] = useState<any>(null);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     const brandUserData = Cookies.get("brand_user");
+    console.log("Brand User Data:", brandUserData);
     if (brandUserData) {
       try {
         const parsedData = JSON.parse(brandUserData);
-        setBrand(parsedData.player); // Assuming it's called 'player' in cookie
+        setBrand(parsedData.player);
         setMessage(parsedData.message);
       } catch (err) {
         console.error("Failed to parse brand_user cookie", err);
@@ -23,19 +24,8 @@ export default function BrandDashboard() {
 
   if (!brand) {
     return (
-      <div className="loading-container">
-        <p>Loading user data...</p>
-        <style>{`
-          .loading-container {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: Arial, sans-serif;
-          }
-        `}</style>
+      <div style={styles.loadingContainer}>
+        <p style={styles.loadingText}>Loading user data...</p>
       </div>
     );
   }
@@ -43,130 +33,123 @@ export default function BrandDashboard() {
   return (
     <>
       <Navbar />
-      <div className="dashboard-wrapper">
-        <div className="dashboard-card">
-          <h1 className="welcome-message">{message}</h1>
-          <div className="brand-info">
-            <h2>{brand.name}</h2>
+      <div style={styles.wrapper}>
+        <div style={styles.card}>
+          <h1 style={styles.welcome}>{message}</h1>
+          <div style={styles.brandInfo}>
+            <h2 style={styles.name}>{brand.name}</h2>
             <p>
               <strong>Phone:</strong> {brand.phone}
             </p>
             <p>
               <strong>Email:</strong> {brand.email}
             </p>
-            <p className="created-at">
+            <p style={styles.createdAt}>
               Account Created: {new Date(brand.createdAt).toLocaleString()}
             </p>
           </div>
 
-          <div className="action-buttons">
-            <Link to="/addtournament">
-              <button className="action-btn">Add Tournament</button>
+          <div style={styles.actions}>
+            <Link to="/addtournament" style={styles.link}>
+              <button style={styles.primaryBtn}>Add Tournament</button>
             </Link>
-            <button className="action-btn secondary">Add Club</button>
+            <button style={styles.secondaryBtn}>Add Club</button>
           </div>
         </div>
-        <div>
-        </div>
       </div>
-      <div>
-        <ShowTournaments></ShowTournaments>
+      <div style={{ marginTop: "40px" }}>
+        <ShowTournaments />
       </div>
-      <style>{`
-        :root {
-          --primary: #4caf50;
-          --secondary: #388e3c;
-          --bg: #fff;
-          --text: #000;
-          --card-bg: #f0fdf4;
-        }
-
-        @media (prefers-color-scheme: dark) {
-          :root {
-            --bg: #121212;
-            --text: #e0e0e0;
-            --card-bg: #1e2a1f;
-          }
-        }
-
-        body, html, #root {
-          margin: 0; padding: 0; height: 100%;
-          background-color: var(--bg);
-          color: var(--text);
-          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .dashboard-wrapper {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 40px 20px;
-        }
-
-        .dashboard-card {
-          background-color: var(--card-bg);
-          padding: 30px;
-          border-radius: 16px;
-          max-width: 450px;
-          width: 100%;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-          text-align: center;
-        }
-
-        .welcome-message {
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: var(--primary);
-          margin-bottom: 20px;
-        }
-
-        .brand-info h2 {
-          font-size: 1.4rem;
-          margin-bottom: 10px;
-          color: var(--primary);
-        }
-
-        .brand-info p {
-          margin: 5px 0;
-          font-size: 1rem;
-        }
-
-        .created-at {
-          margin-top: 10px;
-          font-size: 0.85rem;
-          color: var(--primary);
-        }
-
-        .action-buttons {
-          margin-top: 30px;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .action-btn {
-          background-color: var(--primary);
-          color: white;
-          border: none;
-          padding: 12px 18px;
-          font-size: 1rem;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: background-color 0.3s;
-        }
-
-        .action-btn:hover {
-          background-color: var(--secondary);
-        }
-
-        .action-btn.secondary {
-          background-color: #2196f3;
-        }
-
-        .action-btn.secondary:hover {
-          background-color: #1976d2;
-        }
-      `}</style>
     </>
   );
 }
+
+const baseColors = {
+  primary: "#4caf50",
+  secondary: "#388e3c",
+  accent: "#2196f3",
+  accentHover: "#1976d2",
+  background: "#f0fdf4",
+  text: "#000",
+};
+
+const styles: { [key: string]: React.CSSProperties } = {
+  loadingContainer: {
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#121212",
+    color: "#e0e0e0",
+    fontFamily: "Arial, sans-serif",
+  },
+  loadingText: {
+    fontSize: "1.2rem",
+  },
+  wrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "40px 20px",
+    backgroundColor: "#fff",
+  },
+  card: {
+    backgroundColor: baseColors.background,
+    padding: "30px",
+    borderRadius: "16px",
+    maxWidth: "500px",
+    width: "100%",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+    textAlign: "center",
+  },
+  welcome: {
+    fontSize: "1.8rem",
+    fontWeight: 700,
+    color: baseColors.primary,
+    marginBottom: "20px",
+  },
+  brandInfo: {
+    marginBottom: "20px",
+    fontSize: "1rem",
+    color: baseColors.text,
+  },
+  name: {
+    fontSize: "1.5rem",
+    marginBottom: "10px",
+    color: baseColors.primary,
+  },
+  createdAt: {
+    marginTop: "10px",
+    fontSize: "0.85rem",
+    color: baseColors.primary,
+  },
+  actions: {
+    marginTop: "30px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+  },
+  link: {
+    textDecoration: "none",
+  },
+  primaryBtn: {
+    backgroundColor: baseColors.primary,
+    color: "#fff",
+    border: "none",
+    padding: "12px 18px",
+    fontSize: "1rem",
+    borderRadius: "8px",
+    cursor: "pointer",
+    transition: "background-color 0.3s",
+  },
+  secondaryBtn: {
+    backgroundColor: baseColors.accent,
+    color: "#fff",
+    border: "none",
+    padding: "12px 18px",
+    fontSize: "1rem",
+    borderRadius: "8px",
+    cursor: "pointer",
+    transition: "background-color 0.3s",
+  },
+};

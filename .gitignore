@@ -6,8 +6,16 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-.env
 
+# Ignore entire Africa folder
+backend/Africa/
+backend/Africa-*
+backend/Asia/
+backend/Europe/
+backend/NorthAmerica/
+backend/SouthAmerica/
+# Others
+.env
 node_modules
 dist
 dist-ssr

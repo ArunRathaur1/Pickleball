@@ -10,9 +10,9 @@ const headers = {
   Referer: "https://pickleball.global/players",
 };
 
-const allDuprIds = [];
+const allPlayers = [];
 
-for (let pageNo = 1; pageNo <= 19; pageNo++) {
+for (let pageNo = 1; pageNo <= 1; pageNo++) {
   const formData = new URLSearchParams({
     view_type: "list",
     coaches_input: "",
@@ -20,7 +20,7 @@ for (let pageNo = 1; pageNo <= 19; pageNo++) {
     player_country: "",
     ntrp_rat_type: "",
     avaibility_date: "",
-    continent: "OC", // Asia
+    continent: "OC", // Oceania
     event_types: "0",
     inlineCheckbox1: "",
     ntrp_rat: "0",
@@ -49,21 +49,21 @@ for (let pageNo = 1; pageNo <= 19; pageNo++) {
       continue;
     }
 
-    json.data.forEach((player, index) => {
-      if (player.dupr_id) {
-        allDuprIds.push({
-          name: player.name,
-          dupr_id: player.dupr_id,
-          city: player.city,
-          country: player.countryname,
-        });
-      }
-    });
+    allPlayers.push(...json.data);
 
     console.log(`✅ Page ${pageNo} - Added ${json.data.length} players`);
   } catch (err) {
     console.error(`❌ Error on page ${pageNo}:`, err.message);
   }
 }
-await fs.writeFile("Oceana/dupr_ids.json", JSON.stringify(allDuprIds, null, 2));
-console.log(`\n💾 Done! Saved ${allDuprIds.length} dupr_ids to dupr_ids.json`);
+
+// Save full raw player data to file
+await fs.mkdir("Oceana", { recursive: true });
+await fs.writeFile(
+  "Oceana/raw_players.json",
+  JSON.stringify(allPlayers, null, 2)
+);
+
+console.log(
+  `\n💾 Done! Saved ${allPlayers.length} full player records to raw_players.json`
+);

@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const Ranking = require("../models/ranking"); // Mongoose model
+const Ranking = require("../models/ranking"); 
 require("dotenv").config(); 
 const router = express.Router();
 
