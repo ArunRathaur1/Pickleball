@@ -10,7 +10,27 @@ import {
   Twitter,
 } from "lucide-react";
 
-export default function Links(props) {
+interface LinksProps {
+  formData: {
+    instagramPage: string;
+    youtubeHandle: string;
+    twitterHandle: string;
+    imageUrlGallery: {
+      image: string;
+      text: string;
+    }[];
+  };
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleImageUrlChange: (
+    index: number,
+    value: { image: string; text: string }
+  ) => void;
+  removeImageUrl: (index: number) => void;
+  formErrors: Record<string, string>;
+  addImageUrl: () => void;
+}
+
+export default function Links(props: LinksProps) {
   const {
     formData,
     handleChange,
@@ -21,26 +41,26 @@ export default function Links(props) {
   } = props;
 
   // Handle Cloudinary upload success for specific image index
-  const handleImageUpload = (index, uploadedUrl) => {
+  const handleImageUpload = (index: number, uploadedUrl: string) => {
     const updatedImageObject = {
-      ...formData.imageUrl[index],
+      ...formData.imageUrlGallery[index],
       image: uploadedUrl,
     };
     handleImageUrlChange(index, updatedImageObject);
   };
 
   // Handle text input manually
-  const handleManualImageUrlInput = (index, url) => {
+  const handleManualImageUrlInput = (index: number, url: string) => {
     const updatedImageObject = {
-      ...formData.imageUrl[index],
+      ...formData.imageUrlGallery[index],
       image: url,
     };
     handleImageUrlChange(index, updatedImageObject);
   };
 
-  const handleImageTextChange = (index, text) => {
+  const handleImageTextChange = (index: number, text: string) => {
     const updatedImageObject = {
-      ...formData.imageUrl[index],
+      ...formData.imageUrlGallery[index],
       text,
     };
     handleImageUrlChange(index, updatedImageObject);
@@ -57,13 +77,13 @@ export default function Links(props) {
 
         <div className="grid grid-cols-1 gap-4">
           {["instagramPage", "youtubeHandle", "twitterHandle"].map((field) => {
-            const labelMap = {
+            const labelMap: Record<string, string> = {
               instagramPage: "Instagram Page",
               youtubeHandle: "YouTube Handle",
               twitterHandle: "Twitter Handle",
             };
 
-            const iconMap = {
+            const iconMap: Record<string, React.ReactNode> = {
               instagramPage: <Instagram size={18} className="text-pink-500" />,
               youtubeHandle: <Youtube size={18} className="text-red-500" />,
               twitterHandle: <Twitter size={18} className="text-blue-400" />,
@@ -81,7 +101,7 @@ export default function Links(props) {
                   <input
                     type="text"
                     name={field}
-                    value={formData[field]}
+                    value={formData[field as keyof typeof formData] as string}
                     onChange={handleChange}
                     placeholder={`https://www.${
                       field.includes("youtube")
@@ -106,7 +126,7 @@ export default function Links(props) {
           Athlete Images
         </h3>
 
-        {formData.imageUrl.map((item, index) => (
+        {formData.imageUrlGallery.map((item, index) => (
           <div
             key={index}
             className="p-3 bg-gray-50 rounded-lg border border-gray-200"
@@ -128,7 +148,9 @@ export default function Links(props) {
                   Upload Image
                 </label>
                 <CloudinaryImageUploader
-                  onUploadSuccess={(url) => handleImageUpload(index, url)}
+                  onUploadSuccess={(url: string) =>
+                    handleImageUpload(index, url)
+                  }
                 />
               </div>
 
@@ -145,6 +167,11 @@ export default function Links(props) {
                   placeholder="Image URL"
                   className="w-full p-2 border border-gray-300 rounded-md"
                 />
+                {formErrors[`imageUrlGallery_${index}_text`] && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {formErrors[`imageUrlGallery_${index}_text`]}
+                  </p>
+                )}
               </div>
 
               <div>
@@ -168,7 +195,8 @@ export default function Links(props) {
                     alt={`Athlete image ${index + 1}`}
                     className="w-24 h-24 object-cover rounded-md border"
                     onError={(e) => {
-                      e.target.style.display = "none";
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
                     }}
                   />
                 </div>
@@ -177,8 +205,8 @@ export default function Links(props) {
           </div>
         ))}
 
-        {formErrors.imageUrl && (
-          <p className="text-red-500 text-sm">{formErrors.imageUrl}</p>
+        {formErrors.imageUrlGallery && (
+          <p className="text-red-500 text-sm">{formErrors.imageUrlGallery}</p>
         )}
 
         <button

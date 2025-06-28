@@ -24,59 +24,145 @@ import {
   Instagram,
   Youtube,
   Twitter,
+  Cookie,
 } from "lucide-react";
 
+interface RatingData {
+  singles: string;
+  singlesVerified: string;
+  singlesProvisional: boolean;
+  singlesReliabilityScore: number;
+  doubles: string;
+  doublesVerified: string;
+  doublesProvisional: boolean;
+  doublesReliabilityScore: number;
+  defaultRating: string;
+  provisionalRatings: {
+    singlesRating: number | null;
+    doublesRating: number | null;
+    coach: string | null;
+  };
+}
+
 interface AthleteFormData {
-  name: string;
+  id?: number;
+  fullName: string;
+  firstName: string;
+  lastName: string;
+  shortAddress: string;
+  gender: "MALE" | "FEMALE" | "OTHER";
+  age: string;
+  height: string;
   playerlogoimage: string;
   playerid: string;
-  age: string;
-  gender: string;
-  country: string;
-  height: string;
-  DUPRIDSINGLES: string;
-  DUPRIDDOUBLES: string;
-  identifier: string;
+  imageUrl: string;
+  ratings: RatingData;
+
+  enablePrivacy: boolean;
+  isPlayer1: boolean;
+  verifiedEmail: boolean;
+  registered: boolean;
+
+  duprId: string;
+
+  showRatingBanner: boolean;
+  status: string;
+
+  sponsor: Record<string, any>;
   sponsors: { name: string; imageUrl: string }[];
+
+  lucraConnected: boolean;
+
   instagramPage: string;
   youtubeHandle: string;
   twitterHandle: string;
   about: string;
-  titlesWon: { title: string; year: string; venue: string; positon:string }[];
-  relatedContent: { imageUrl: string; title: string; youtubeLink: string }[];
-  imageUrl: {
+
+  titlesWon: {
+    title: string;
+    year: string;
+    venue: string;
+    positon: string;
+  }[];
+
+  relatedContent: {
+    imageUrl: string;
+    title: string;
+    youtubeLink: string;
+  }[];
+
+  imageUrlGallery: {
     image: string;
     text: string;
   }[];
+
+  Continent: string | null;
+  createdAt?: string;
 }
 
 export default function AddAthlete() {
   const [formData, setFormData] = useState<AthleteFormData>({
-    name: "",
+    fullName: "",
+    firstName: "",
+    lastName: "",
+    shortAddress: "",
+    gender: "MALE",
+    age: "",
+    height: "",
     playerlogoimage: "",
     playerid: "",
-    age: "",
-    gender: "",
-    country: "",
-    height: "",
-    DUPRIDSINGLES: "",
-    DUPRIDDOUBLES: "",
-    identifier: "",
+    imageUrl: "",
+
+    ratings: {
+      singles: "NR",
+      singlesVerified: "NR",
+      singlesProvisional: false,
+      singlesReliabilityScore: 0,
+      doubles: "NR",
+      doublesVerified: "NR",
+      doublesProvisional: false,
+      doublesReliabilityScore: 0,
+      defaultRating: "DOUBLES",
+      provisionalRatings: {
+        singlesRating: null,
+        doublesRating: null,
+        coach: null,
+      },
+    },
+
+    enablePrivacy: false,
+    isPlayer1: false,
+    verifiedEmail: false,
+    registered: false,
+
+    duprId: "",
+
+    showRatingBanner: false,
+    status: "",
+
+    sponsor: {},
     sponsors: [{ name: "", imageUrl: "" }],
+
+    lucraConnected: false,
+
     instagramPage: "",
     youtubeHandle: "",
     twitterHandle: "",
     about: "",
-    titlesWon: [{ title: "", year: "" , positon:"", venue:"" }],
+
+    titlesWon: [{ title: "", year: "", positon: "", venue: "" }],
     relatedContent: [{ imageUrl: "", title: "", youtubeLink: "" }],
-    imageUrl: [{ image: "", text: "" }],
+    imageUrlGallery: [{ image: "", text: "" }],
+
+    Continent: null,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [submitMessage, setSubmitMessage] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(true);
-  const { id } = useParams(); // Get ID from route params
+  const { id } = useParams();
+
   useEffect(() => {
     const fetchAthlete = async () => {
       let playerId = id;
@@ -86,14 +172,13 @@ export default function AddAthlete() {
         if (cookieData) {
           try {
             const player = JSON.parse(cookieData);
-            playerId = player?.player?._id;
+            playerId = player?.player?.DUPRID;
           } catch (e) {
             console.error("Error parsing cookie data:", e);
           }
         }
       }
 
-      // If no ID is found anywhere, set loading to false and return
       if (!playerId) {
         setLoading(false);
         return;
@@ -101,124 +186,200 @@ export default function AddAthlete() {
 
       try {
         const response = await axios.get(
-          `http://localhost:5000/athletes/loginid/${playerId}`
+          `http://localhost:5000/playerlogin/${playerId}`
         );
 
         const athleteData = response.data;
-        console.log(athleteData);
+        console.log("Received athlete data:", athleteData);
+
+        // Create default ratings object if not provided
+        const defaultRatings: RatingData = {
+          singles: "NR",
+          singlesVerified: "NR",
+          singlesProvisional: false,
+          singlesReliabilityScore: 0,
+          doubles: "NR",
+          doublesVerified: "NR",
+          doublesProvisional: false,
+          doublesReliabilityScore: 0,
+          defaultRating: "DOUBLES",
+          provisionalRatings: {
+            singlesRating: null,
+            doublesRating: null,
+            coach: null,
+          },
+        };
 
         setFormData({
-          name: athleteData.name || "",
+          id: athleteData.id,
+          fullName: athleteData.fullName || "",
+          firstName: athleteData.firstName || "",
+          lastName: athleteData.lastName || "",
+          shortAddress: athleteData.shortAddress || "",
+          gender: athleteData.gender || "MALE",
+          age: athleteData.age ? athleteData.age.toString() : "",
+          height: athleteData.height ? athleteData.height.toString() : "",
           playerlogoimage: athleteData.playerlogoimage || "",
           playerid: athleteData.playerid || "",
-          age: athleteData.age ? athleteData.age.toString() : "",
-          gender: athleteData.gender || "",
-          country: athleteData.country || "",
-          height: athleteData.height ? athleteData.height.toString() : "",
-          DUPRIDSINGLES: athleteData.DUPRIDSINGLES || "",
-          DUPRIDDOUBLES: athleteData.DUPRIDDOUBLES || "",
-          identifier: athleteData.identifier || playerId,
+          imageUrl: athleteData.imageUrl || "",
+
+          // Handle ratings - merge with defaults if partial data exists
+          ratings: athleteData.ratings
+            ? { ...defaultRatings, ...athleteData.ratings }
+            : defaultRatings,
+
+          enablePrivacy: athleteData.enablePrivacy || false,
+          isPlayer1: athleteData.isPlayer1 || false,
+          verifiedEmail: athleteData.verifiedEmail || false,
+          registered: athleteData.registered || false,
+
+          duprId: athleteData.duprId || "",
+
+          showRatingBanner: athleteData.showRatingBanner || false,
+          status: athleteData.status || "",
+
+          sponsor: athleteData.sponsor || {},
           sponsors:
             athleteData.sponsors?.length > 0
-              ? athleteData.sponsors.map((sponsor) => ({
+              ? athleteData.sponsors.map((sponsor: any) => ({
                   name: sponsor.name || "",
                   imageUrl: sponsor.imageUrl || "",
                 }))
               : [{ name: "", imageUrl: "" }],
+
+          lucraConnected: athleteData.lucraConnected || false,
+
           instagramPage: athleteData.instagramPage || "",
           youtubeHandle: athleteData.youtubeHandle || "",
           twitterHandle: athleteData.twitterHandle || "",
           about: athleteData.about || "",
+
           titlesWon:
             athleteData.titlesWon?.length > 0
-              ? athleteData.titlesWon.map((title) => ({
+              ? athleteData.titlesWon.map((title: any) => ({
                   title: title.title || "",
                   year: title.year?.toString() || "",
                   positon: title.positon || "",
                   venue: title.venue || "",
                 }))
               : [{ title: "", year: "", positon: "", venue: "" }],
+
           relatedContent:
             athleteData.relatedContent?.length > 0
-              ? athleteData.relatedContent.map((content) => ({
+              ? athleteData.relatedContent.map((content: any) => ({
                   imageUrl: content.imageUrl || "",
                   title: content.title || "",
                   youtubeLink: content.youtubeLink || "",
                 }))
               : [{ imageUrl: "", title: "", youtubeLink: "" }],
-          imageUrl:
-            athleteData.imageUrl?.length > 0
-              ? athleteData.imageUrl.map((item) => ({
+
+          imageUrlGallery:
+            athleteData.imageUrlGallery?.length > 0
+              ? athleteData.imageUrlGallery.map((item: any) => ({
                   image: item.image || item || "",
                   text: item.text || "",
                 }))
               : [{ image: "", text: "" }],
+
+          Continent: athleteData.Continent || null,
+          createdAt: athleteData.createdAt,
         });
       } catch (err) {
         console.error("Error fetching athlete data:", err);
+        setSubmitMessage({
+          type: "error",
+          message: "Failed to load athlete data. Please try again.",
+        });
       } finally {
         setLoading(false);
       }
     };
 
     fetchAthlete();
-  }, []);
+    
+  }, [id]);
+  const playerCookie = Cookies.get("player");
+  let password = "";
+  if (playerCookie) {
+    try {
+      const parsed = JSON.parse(playerCookie);
+      password = parsed.player.password;
+      console.log("Extracted password from cookies:", password);
+    } catch (err) {
+      console.error("Error parsing player cookie:", err);
+    }
+  }
   const validateForm = () => {
     const errors: Record<string, string> = {};
 
-    if (!formData.name.trim()) errors.name = "Name is required";
+    if (!formData.fullName.trim()) errors.fullName = "Full name is required";
+    if (!formData.firstName.trim()) errors.firstName = "First name is required";
+    if (!formData.lastName.trim()) errors.lastName = "Last name is required";
     if (!formData.playerid.trim()) errors.playerid = "Player ID is required";
     if (!formData.age) errors.age = "Age is required";
     if (Number(formData.age) < 10) errors.age = "Age must be at least 10";
     if (!formData.gender) errors.gender = "Gender selection is required";
-    if (!formData.country.trim()) errors.country = "Country is required";
+    if (!formData.shortAddress.trim())
+      errors.shortAddress = "Address is required";
     if (!formData.height) errors.height = "Height is required";
-    if (!formData.DUPRIDSINGLES.trim())
-      errors.DUPRIDSINGLES = "DUPRID SINGLES is required";
-    if (!formData.DUPRIDDOUBLES.trim())
-      errors.DUPRIDDOUBLES = "DUPRID DOUBLES is required";
+
     // Validate at least one image URL with image field filled
-    const validImageUrls = formData.imageUrl.filter((item) =>
+    const validImageUrls = formData.imageUrlGallery.filter((item) =>
       item.image.trim()
     );
     if (validImageUrls.length === 0)
-      errors.imageUrl = "At least one image URL is required";
+      errors.imageUrlGallery = "At least one image URL is required";
 
     // Validate individual image entries
-    formData.imageUrl.forEach((item, idx) => {
+    formData.imageUrlGallery.forEach((item, idx) => {
       if (item.image.trim() && !item.text.trim()) {
-        errors[`imageUrl_${idx}_text`] =
+        errors[`imageUrlGallery_${idx}_text`] =
           "Text description is required when image is provided";
       }
     });
 
-    // Validate sponsors
+    // Validate sponsors - only if they have data
     formData.sponsors.forEach((sponsor, idx) => {
-      if (!sponsor.name.trim())
-        errors[`sponsor_${idx}_name`] = "Sponsor name is required";
-      if (!sponsor.imageUrl.trim())
-        errors[`sponsor_${idx}_image`] = "Sponsor image URL is required";
+      if (sponsor.name.trim() || sponsor.imageUrl.trim()) {
+        if (!sponsor.name.trim())
+          errors[`sponsor_${idx}_name`] = "Sponsor name is required";
+        if (!sponsor.imageUrl.trim())
+          errors[`sponsor_${idx}_image`] = "Sponsor image URL is required";
+      }
     });
 
-    // Validate titles
+    // Validate titles - only if they have data
     formData.titlesWon.forEach((title, idx) => {
-      if (!title.title.trim())
-        errors[`title_${idx}_name`] = "Title name is required";
-      if (!title.year) errors[`title_${idx}_year`] = "Year is required";
-      if (!title.positon.trim())
-        errors[`title_${idx}_positon`] = "Position is required";
-      if (!title.venue.trim())
-        errors[`title_${idx}_venue`] = "Venue is required";
+      if (
+        title.title.trim() ||
+        title.year ||
+        title.positon.trim() ||
+        title.venue.trim()
+      ) {
+        if (!title.title.trim())
+          errors[`title_${idx}_name`] = "Title name is required";
+        if (!title.year) errors[`title_${idx}_year`] = "Year is required";
+        if (!title.positon.trim())
+          errors[`title_${idx}_positon`] = "Position is required";
+        if (!title.venue.trim())
+          errors[`title_${idx}_venue`] = "Venue is required";
+      }
     });
 
-    // Validate related content
+    // Validate related content - only if they have data
     formData.relatedContent.forEach((content, idx) => {
-      if (!content.imageUrl.trim())
-        errors[`content_${idx}_image`] = "Content image URL is required";
-      if (!content.title.trim())
-        errors[`content_${idx}_title`] = "Content title is required";
-      if (!content.youtubeLink.trim())
-        errors[`content_${idx}_link`] = "YouTube link is required";
+      if (
+        content.imageUrl.trim() ||
+        content.title.trim() ||
+        content.youtubeLink.trim()
+      ) {
+        if (!content.imageUrl.trim())
+          errors[`content_${idx}_image`] = "Content image URL is required";
+        if (!content.title.trim())
+          errors[`content_${idx}_title`] = "Content title is required";
+        if (!content.youtubeLink.trim())
+          errors[`content_${idx}_link`] = "YouTube link is required";
+      }
     });
 
     setFormErrors(errors);
@@ -228,11 +389,39 @@ export default function AddAthlete() {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    const { name, value, type } = e.target;
+
+    // Handle checkbox separately
+    if (type === "checkbox") {
+      const target = e.target as HTMLInputElement;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: target.checked,
+      }));
+    } else {
+      // Check for nested fields using dot notation (e.g., "ratings.singles")
+      if (name.includes(".")) {
+        const keys = name.split(".");
+        setFormData((prev) => {
+          const updated = { ...prev };
+          let nested: any = updated;
+
+          for (let i = 0; i < keys.length - 1; i++) {
+            nested[keys[i]] = { ...nested[keys[i]] }; // clone intermediate objects
+            nested = nested[keys[i]];
+          }
+
+          nested[keys[keys.length - 1]] = value;
+          return updated;
+        });
+      } else {
+        // Normal flat update
+        setFormData((prev) => ({
+          ...prev,
+          [name]: value,
+        }));
+      }
+    }
 
     // Clear error for this field if it exists
     if (formErrors[name]) {
@@ -243,6 +432,7 @@ export default function AddAthlete() {
       });
     }
   };
+  
 
   const handleNestedChange = (
     index: number,
@@ -278,19 +468,19 @@ export default function AddAthlete() {
     }
   };
 
-  const handleImageUrlChange = (
+  const handleImageUrlGalleryChange = (
     index: number,
     value: { image: string; text: string }
   ) => {
-    const updatedArray = [...formData.imageUrl];
+    const updatedArray = [...formData.imageUrlGallery];
     updatedArray[index] = value;
-    setFormData((prev) => ({ ...prev, imageUrl: updatedArray }));
+    setFormData((prev) => ({ ...prev, imageUrlGallery: updatedArray }));
 
     // Clear error if exists
-    if (formErrors.imageUrl) {
+    if (formErrors.imageUrlGallery) {
       setFormErrors((prev) => {
         const updated = { ...prev };
-        delete updated.imageUrl;
+        delete updated.imageUrlGallery;
         return updated;
       });
     }
@@ -306,10 +496,10 @@ export default function AddAthlete() {
     setFormData((prev) => ({ ...prev, [key]: [...prev[key], newItem] }));
   };
 
-  const addImageUrl = () => {
+  const addImageUrlGallery = () => {
     setFormData((prev) => ({
       ...prev,
-      imageUrl: [...prev.imageUrl, { image: "", text: "" }],
+      imageUrlGallery: [...prev.imageUrlGallery, { image: "", text: "" }],
     }));
   };
 
@@ -321,69 +511,92 @@ export default function AddAthlete() {
     >
   ) => {
     if (formData[key].length <= 1) {
-      return; // Keep at least one item
+      return;
     }
     const updatedArray = formData[key].filter((_, i) => i !== index);
     setFormData((prev) => ({ ...prev, [key]: updatedArray }));
   };
 
-  const removeImageUrl = (index: number) => {
-    if (formData.imageUrl.length <= 1) {
-      return; // Ensure at least one entry remains
+  const removeImageUrlGallery = (index: number) => {
+    if (formData.imageUrlGallery.length <= 1) {
+      return;
     }
 
-    const updatedArray = formData.imageUrl.filter((_, i) => i !== index);
-    setFormData((prev) => ({ ...prev, imageUrl: updatedArray }));
+    const updatedArray = formData.imageUrlGallery.filter((_, i) => i !== index);
+    setFormData((prev) => ({ ...prev, imageUrlGallery: updatedArray }));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      setSubmitMessage({
-        type: "error",
-        message: "Please fix the errors in the form",
-      });
-      return;
-    }
-
     setIsSubmitting(true);
     setSubmitMessage({ type: "", message: "" });
 
     try {
-      // Filter out empty image URLs (only keep entries with image field filled)
-      const filteredImageUrls = formData.imageUrl.filter((item) =>
+      // Filter values to avoid empty fields being submitted
+      const filteredImageUrls = formData.imageUrlGallery.filter((item) =>
         item.image.trim()
       );
 
-      // Prepare data for submission
+      const filteredSponsors = formData.sponsors.filter(
+        (sponsor) => sponsor.name.trim() && sponsor.imageUrl.trim()
+      );
+
+      const filteredTitles = formData.titlesWon.filter(
+        (title) =>
+          title.title.trim() ||
+          title.year ||
+          title.positon.trim() ||
+          title.venue.trim()
+      );
+
+      const filteredRelatedContent = formData.relatedContent.filter(
+        (content) =>
+          content.imageUrl.trim() &&
+          content.title.trim() &&
+          content.youtubeLink.trim()
+      );
+      const DUPRID = formData.duprId;
+      // Construct data to send
       const submitData = {
         ...formData,
         age: Number(formData.age),
         height: Number(formData.height),
-        titlesWon: formData.titlesWon.map((t) => ({
-          title: t.title,
+        titlesWon: filteredTitles.map((t) => ({
+          ...t,
           year: Number(t.year),
         })),
-        imageUrl: filteredImageUrls,
+        sponsors: filteredSponsors,
+        relatedContent: filteredRelatedContent,
+        imageUrlGallery: filteredImageUrls,
+        DUPRID,
+        password,
       };
-      console.log("data", formData);
-      // For actual API call (you might want to use PUT for updates):
-      await axios.post("http://localhost:5000/athletes", formData);
+      // 🔁 Submit via POST request
+      const response = await axios.put(
+        "http://localhost:5000/playerlogin/update/data",
+        { submitData }
+      );
 
       setSubmitMessage({
         type: "success",
-        message: "Athlete updated successfully!",
+        message: `Athlete updated successfully!`,
       });
-    } catch (error) {
+
+      console.log("Server response:", response.data);
+    } catch (error: any) {
+      console.error("Submit error:", error);
       setSubmitMessage({
         type: "error",
-        message: "Failed to update athlete. Please try again.",
+        message: `Failed to update athlete. ${
+          error?.response?.data?.message || "Please try again."
+        }`,
       });
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   if (loading) {
     return (
@@ -394,6 +607,12 @@ export default function AddAthlete() {
               Loading Athlete Data...
             </CardTitle>
           </CardHeader>
+          <CardContent className="pt-6">
+            <div className="flex justify-center items-center py-8">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <span className="ml-2 text-gray-600">Loading...</span>
+            </div>
+          </CardContent>
         </Card>
       </div>
     );
@@ -404,11 +623,23 @@ export default function AddAthlete() {
       <Card>
         <CardHeader className="bg-blue-50">
           <CardTitle className="text-xl font-bold text-blue-800">
-            Edit Athlete Profile
+            {formData.id ? "Edit" : "Add"} Athlete Profile
           </CardTitle>
         </CardHeader>
 
         <CardContent className="pt-6">
+          {submitMessage.message && (
+            <div
+              className={`mb-4 p-4 rounded-md ${
+                submitMessage.type === "success"
+                  ? "bg-green-50 text-green-700 border border-green-200"
+                  : "bg-red-50 text-red-700 border border-red-200"
+              }`}
+            >
+              {submitMessage.message}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Basic Information */}
             <BasicInfo
@@ -421,10 +652,10 @@ export default function AddAthlete() {
             <Links
               formData={formData}
               handleChange={handleChange}
-              handleImageUrlChange={handleImageUrlChange}
-              removeImageUrl={removeImageUrl}
+              handleImageUrlChange={handleImageUrlGalleryChange}
+              removeImageUrl={removeImageUrlGallery}
               formErrors={formErrors}
-              addImageUrl={addImageUrl}
+              addImageUrl={addImageUrlGallery}
             />
 
             {/* Sponsors Section */}

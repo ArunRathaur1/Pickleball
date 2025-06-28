@@ -12,7 +12,6 @@ const userRoutes = require("./routes/userRoutes");
 const tournamentRoutes = require("./routes/tournamentRoutes");
 const athleteRoutes = require("./routes/athleteRoutes");
 const courtRoutes = require("./routes/courtRoutes");
-const googleAuthRoutes = require("./routes/goolgeauth");
 const adminRoutes = require("./routes/adminroute");
 const blogRoutes = require("./routes/blogRoutes");
 const airoutes=require('./routes/airoutes');
@@ -22,7 +21,6 @@ const Instagram=require('./routes/Instagramroutes');
 const Inquary=require('./routes/inquary');
 const playerLoginRoutes = require("./routes/playerLogin");
 const BrandLogin=require('./routes/brandroute');
-const dupr = require("./routes/dupr.js");
 const rankingRoutes = require("./routes/rankingroutes");
 
 require("./passport"); // Passport Config
@@ -65,7 +63,6 @@ app.use("/users", userRoutes);
 app.use("/tournaments", tournamentRoutes);
 app.use("/athletes", athleteRoutes);
 app.use("/court", courtRoutes);
-app.use("/auth", googleAuthRoutes);
 app.use("/admin", adminRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/airoutes",airoutes);
@@ -76,7 +73,6 @@ app.use('/instagram',Instagram);
 app.use("/inquary", Inquary);
 app.use("/playerlogin", playerLoginRoutes);
 app.use('/brand',BrandLogin)
-app.use('/dupr', dupr);
 
 mongoose
   .connect(process.env.MONGO_URI, {

@@ -1,29 +1,15 @@
 import React from "react";
 import CloudinaryImageUploader from "../admin-club/imageupload";
-import {
-  Info,
-  Trash2,
-  Plus,
-  Award,
-  Users,
-  Instagram,
-  Youtube,
-  Twitter,
-} from "lucide-react";
+import { Info } from "lucide-react";
 
-export default function BasicInfo(props) {
-  const { formData, handleChange, formErrors } = props;
-
-  // Handle Cloudinary upload success
-  const handleImageUpload = (imageUrl) => {
-    // Create a synthetic event to match the existing handleChange function
-    const syntheticEvent = {
+export default function BasicInfo({ formData, handleChange, formErrors }) {
+  const handleImageUpload = (imageUrl: string) => {
+    handleChange({
       target: {
         name: "playerlogoimage",
         value: imageUrl,
       },
-    };
-    handleChange(syntheticEvent);
+    });
   };
 
   return (
@@ -35,65 +21,91 @@ export default function BasicInfo(props) {
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Full Name */}
           <div>
-            <label className="block text-sm font-medium mb-1">Name</label>
+            <label className="block text-sm font-medium mb-1">Full Name</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="fullName"
+              value={formData.fullName}
               onChange={handleChange}
-              placeholder="Athlete's full name"
+              placeholder="Full name"
               className={`w-full p-2 border rounded-md ${
-                formErrors.name ? "border-red-500" : "border-gray-300"
+                formErrors.fullName ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {formErrors.name && (
-              <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>
+            {formErrors.fullName && (
+              <p className="text-red-500 text-xs mt-1">{formErrors.fullName}</p>
             )}
           </div>
 
+          {/* First Name */}
+          <div>
+            <label className="block text-sm font-medium mb-1">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md border-gray-300"
+            />
+          </div>
+
+          {/* Last Name */}
+          <div>
+            <label className="block text-sm font-medium mb-1">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md border-gray-300"
+            />
+          </div>
+
+          {/* Short Address */}
           <div>
             <label className="block text-sm font-medium mb-1">
-              DUPRID DOUBLES
+              Short Address
             </label>
             <input
               type="text"
-              name="DUPRIDDOUBLES"
-              value={formData.DUPRIDDOUBLES}
+              name="shortAddress"
+              value={formData.shortAddress}
               onChange={handleChange}
-              placeholder="Unique athlete ID "
-              className={`w-full p-2 border rounded-md ${
-                formErrors.DUPRIDDOUBLES ? "border-red-500" : "border-gray-300"
-              }`}
+              className="w-full p-2 border rounded-md border-gray-300"
             />
-            {formErrors.DUPRIDDOUBLES && (
-              <p className="text-red-500 text-xs mt-1">
-                {formErrors.DUPRIDDOUBLES}
-              </p>
-            )}
           </div>
 
+          {/* DUPR ID SINGLES */}
           <div>
             <label className="block text-sm font-medium mb-1">
-              DUPRID SINGLES
+              DUPR ID (Singles)
             </label>
             <input
               type="text"
-              name="DUPRIDSINGLES"
-              value={formData.DUPRIDSINGLES}
+              readOnly
+              name="ratings.singles"
+              value={formData.ratings.singles}
               onChange={handleChange}
-              placeholder="Unique athlete ID "
-              className={`w-full p-2 border rounded-md ${
-                formErrors.DUPRIDSINGLES ? "border-red-500" : "border-gray-300"
-              }`}
             />
-            {formErrors.DUPRIDSINGLES && (
-              <p className="text-red-500 text-xs mt-1">
-                {formErrors.DUPRIDSINGLES}
-              </p>
-            )}
           </div>
 
+          {/* DUPR ID DOUBLES */}
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              DUPR ID (Doubles)
+            </label>
+            <input
+              type="text"
+              name="ratings.doubles"
+             readOnly
+              value={formData.ratings.doubles}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Age */}
           <div>
             <label className="block text-sm font-medium mb-1">Age</label>
             <input
@@ -101,7 +113,6 @@ export default function BasicInfo(props) {
               name="age"
               value={formData.age}
               onChange={handleChange}
-              placeholder="Age (minimum 10)"
               min="10"
               className={`w-full p-2 border rounded-md ${
                 formErrors.age ? "border-red-500" : "border-gray-300"
@@ -112,6 +123,7 @@ export default function BasicInfo(props) {
             )}
           </div>
 
+          {/* Gender */}
           <div>
             <label className="block text-sm font-medium mb-1">Gender</label>
             <select
@@ -123,32 +135,16 @@ export default function BasicInfo(props) {
               }`}
             >
               <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
             </select>
             {formErrors.gender && (
               <p className="text-red-500 text-xs mt-1">{formErrors.gender}</p>
             )}
           </div>
 
-          <div>
-            <label className="block text-sm font-medium mb-1">Country</label>
-            <input
-              type="text"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              placeholder="Country"
-              className={`w-full p-2 border rounded-md ${
-                formErrors.country ? "border-red-500" : "border-gray-300"
-              }`}
-            />
-            {formErrors.country && (
-              <p className="text-red-500 text-xs mt-1">{formErrors.country}</p>
-            )}
-          </div>
-
+          {/* Height */}
           <div>
             <label className="block text-sm font-medium mb-1">
               Height (cm)
@@ -159,8 +155,6 @@ export default function BasicInfo(props) {
               value={formData.height}
               onChange={handleChange}
               placeholder="Height in cm"
-              min="0"
-              step="any"
               className={`w-full p-2 border rounded-md ${
                 formErrors.height ? "border-red-500" : "border-gray-300"
               }`}
@@ -170,6 +164,7 @@ export default function BasicInfo(props) {
             )}
           </div>
 
+          {/* Player Logo Image */}
           <div>
             <label className="block text-sm font-medium mb-1">
               Player Logo Image

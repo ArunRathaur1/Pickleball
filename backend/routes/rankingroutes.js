@@ -146,6 +146,7 @@ router.get("/filtered-players", async (req, res) => {
     duprSortType = "singles",
     page = 1,
     continent = "ALL",
+    status = "ALL",
   } = req.query;
 
   const pageSize = 50;
@@ -160,11 +161,14 @@ router.get("/filtered-players", async (req, res) => {
     filter.Continent = continent;
   }
 
+  if (status.toUpperCase() !== "ALL") {
+    filter.status = status.toUpperCase();
+  }
+
   const ratingField =
     duprSortType === "singles" ? "ratings.singles" : "ratings.doubles";
 
   try {
-    // Aggregation pipeline with ratingValue logic and total count
     const aggregationPipeline = [
       { $match: filter },
       {
@@ -194,13 +198,16 @@ router.get("/filtered-players", async (req, res) => {
       },
     ];
 
-    const result = await Ranking.aggregate(aggregationPipeline);
+    // ✅ Allow disk use to avoid memory error
+    const result = await Ranking.aggregate(aggregationPipeline, {
+      allowDiskUse: true,
+    });
 
     const players = result[0].paginatedResults;
     const totalPlayers = result[0].totalCount[0]?.count || 0;
 
     res.status(200).json({
-      filters: { gender, duprSortType, continent },
+      filters: { gender, duprSortType, continent, status },
       page: parseInt(page),
       pageSize,
       totalPlayers,
@@ -215,6 +222,29 @@ router.get("/filtered-players", async (req, res) => {
     });
   }
 });
+
+router.get("/status-only/:status", async (req, res) => {
+  try {
+    const { status } = req.params;
+    const validStatuses = ["PENDING", "APPROVED", "REJECTED"];
+    const upperStatus = status.toUpperCase();
+
+    if (!validStatuses.includes(upperStatus)) {
+      return res.status(400).json({ message: "Invalid status filter" });
+    }
+
+    const players = await Ranking.find({ status: upperStatus });
+
+    res.status(200).json({ players });
+  } catch (error) {
+    console.error("❌ Error fetching athletes by status:", error);
+    res.status(500).json({
+      message: "Failed to retrieve athletes by status",
+      error: error.message,
+    });
+  }
+});
+
 
 
 
