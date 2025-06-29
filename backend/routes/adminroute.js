@@ -101,5 +101,48 @@ router.put("/update/data", async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 });
+router.put("/update/playerid", async (req, res) => {
+  try {
+    const { email, password, duprId, playerid, status } = req.body;
+
+    // Step 1: Validate required fields
+    if (!email || !password || !duprId || !playerid) {
+      return res.status(400).json({
+        message: "Email, password, duprId, and playerid are required",
+      });
+    }
+
+    // Step 2: Authenticate Admin
+    const admin = await Admin.findOne({ email, password });
+    if (!admin) {
+      return res.status(401).json({ message: "Invalid admin credentials" });
+    }
+
+    // Step 3: Check if Ranking exists for given duprId
+    const player = await ranking.findOne({ duprId });
+    if (!player) {
+      return res
+        .status(404)
+        .json({ message: "No player found with the given duprId" });
+    }
+
+    // ✅ Step 4: Update playerid and status
+    player.playerid = playerid;
+
+    if (status) {
+      player.status = status.toUpperCase(); // convert to uppercase
+    }
+
+    await player.save();
+
+    return res.status(200).json({
+      message: "Player ID and status updated successfully",
+      updatedPlayer: player,
+    });
+  } catch (error) {
+    console.error("Error updating playerid:", error);
+    return res.status(500).json({ error: error.message });
+  }
+});
 
 module.exports = router;

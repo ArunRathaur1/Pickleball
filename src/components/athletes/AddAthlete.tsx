@@ -562,7 +562,7 @@ export default function AddAthlete() {
       let submitData: any = {
         ...formData,
         age: Number(formData.age),
-        height: Number(formData.height),
+        height: Number(formData.height)+0,
         titlesWon: filteredTitles.map((t) => ({
           ...t,
           year: Number(t.year),
