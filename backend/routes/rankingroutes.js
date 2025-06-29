@@ -276,6 +276,7 @@ router.get("/filtered-players", async (req, res) => {
                 Continent: 1,
                 imageUrl: 1,
                 duprId: 1,
+                playerid: 1,
                 ratingValue: {
                   $cond: [
                     {

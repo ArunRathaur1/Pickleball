@@ -38,6 +38,7 @@ export default function PlayerDescription() {
       .get(`http://localhost:5000/playerlogin/${duprid}`)
       .then((res) => {
         setPlayer(res.data);
+        console.log("Player data fetched:", res.data);
         setLoading(false);
       })
       .catch((err) => {
