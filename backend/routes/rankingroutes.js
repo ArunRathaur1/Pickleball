@@ -75,7 +75,6 @@ async function savePlayersToDB(players, continent) {
   await Ranking.bulkWrite(operations);
 }
 
-// 📤 Route to fetch & save full data for a continent
 router.get("/full/:country", async (req, res) => {
   const { country } = req.params;
   const filePath = path.join(process.cwd(), country, "id.txt");
@@ -113,6 +112,76 @@ router.get("/full/:country", async (req, res) => {
     });
   }
 });
+
+
+//route that will automatically sync players from dupr API based on country
+router.get("/sync-from-dupr/:country", async (req, res) => {
+  const { country } = req.params;
+
+  try {
+    // Step 1: Get all duprIds from DB
+    const allPlayers = await Ranking.find(
+      { Continent: country },
+      { duprId: 1, _id: 0 }
+    );
+
+    const duprIds = allPlayers.map((p) => p.duprId).filter(Boolean);
+
+    if (duprIds.length === 0) {
+      return res.status(404).json({ message: "No players found for update." });
+    }
+
+    const token = await getAccessToken();
+    const batchSize = 1000;
+    const updatedResults = [];
+
+    for (let i = 0; i < duprIds.length; i += batchSize) {
+      const batch = duprIds.slice(i, i + batchSize);
+      const results = await fetchPlayerDetails(token, batch);
+
+      // Filter allowed fields for update only
+      const filteredResults = results.map((player) => ({
+        duprId: player.duprId,
+        id: player.id,
+        fullName: player.fullName,
+        firstName: player.firstName,
+        lastName: player.lastName,
+        shortAddress: player.shortAddress,
+        gender: player.gender,
+        age: player.age,
+        imageUrl: player.imageUrl,
+        ratings: player.ratings,
+        enablePrivacy: player.enablePrivacy,
+        isPlayer1: player.isPlayer1,
+        verifiedEmail: player.verifiedEmail,
+        registered: player.registered,
+        showRatingBanner: player.showRatingBanner,
+        status: player.status,
+        sponsor: player.sponsor,
+        lucraConnected: player.lucraConnected,
+        Continent: country, // to ensure it remains consistent
+      }));
+
+      await savePlayersToDB(filteredResults, country);
+      updatedResults.push(...filteredResults);
+
+      console.log(`✅ Synced batch ${i / batchSize + 1} (${batch.length} IDs)`);
+    }
+
+    res.status(200).json({
+      country,
+      totalUpdated: updatedResults.length,
+      message: "✅ Successfully synced players from DUPr API.",
+    });
+  } catch (error) {
+    console.error("❌ Sync Error:", error);
+    res.status(500).json({
+      message: "Failed to sync players from DUPr API.",
+      error: error.message,
+    });
+  }
+});
+
 
 // 📥 Route to get players by continent
 router.get("/details/:continent", async (req, res) => {
@@ -266,39 +335,69 @@ router.get("/with-playerid", async (req, res) => {
   }
 });
 
-router.get("/fill-rankings-by-singles", async (req, res) => {
+router.get("/fill-rankings", async (req, res) => {
   try {
+    const players = await Ranking.find();
 
-    const players = await Ranking.find({
-      "ratings.singles": { $nin: ["NR", null, ""] },
-    });
+    const singlesList = [];
+    const doublesList = [];
 
-    const sortedPlayers = players
-      .map((player) => ({
-        ...player.toObject(),
-        singlesValue: parseFloat(player.ratings.singles),
-      }))
-      .filter((p) => !isNaN(p.singlesValue))
-      .sort((a, b) => b.singlesValue - a.singlesValue);
+    for (const player of players) {
+      const singlesRating = parseFloat(player?.ratings?.singles);
+      const doublesRating = parseFloat(player?.ratings?.doubles);
 
-    // Step 3: Update each player’s rank
-    for (let i = 0; i < sortedPlayers.length; i++) {
-      const playerId = sortedPlayers[i]._id;
-      await Ranking.findByIdAndUpdate(playerId, { rank: i + 1 });
+      singlesList.push({
+        _id: player._id,
+        value: !isNaN(singlesRating) ? singlesRating : -1,
+      });
+
+      doublesList.push({
+        _id: player._id,
+        value: !isNaN(doublesRating) ? doublesRating : -1,
+      });
     }
 
+    // Sort: valid ratings (highest to lowest), then invalid ones (value = -1)
+    singlesList.sort((a, b) => b.value - a.value);
+    doublesList.sort((a, b) => b.value - a.value);
+
+    const bulkOps = [];
+
+    for (let i = 0; i < singlesList.length; i++) {
+      bulkOps.push({
+        updateOne: {
+          filter: { _id: singlesList[i]._id },
+          update: { $set: { singlerank: i + 1 } },
+        },
+      });
+    }
+
+    for (let i = 0; i < doublesList.length; i++) {
+      bulkOps.push({
+        updateOne: {
+          filter: { _id: doublesList[i]._id },
+          update: { $set: { doublerank: i + 1 } },
+        },
+      });
+    }
+
+    // Use bulkWrite for efficiency
+    await Ranking.bulkWrite(bulkOps);
+
     res.status(200).json({
-      message: "Ranks updated successfully based on singles ratings.",
-      totalRanked: sortedPlayers.length,
+      message: "Ranks updated for all players (singles and doubles).",
+      totalPlayers: players.length,
     });
   } catch (error) {
     console.error("❌ Error updating rankings:", error);
     res.status(500).json({
-      message: "Failed to update rankings",
+      message: "Failed to update rankings.",
       error: error.message,
     });
   }
 });
+
+
 
 
 
