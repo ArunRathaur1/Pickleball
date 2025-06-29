@@ -147,10 +147,14 @@ router.get("/filtered-players", async (req, res) => {
     page = 1,
     continent = "ALL",
     status = "ALL",
+    name = "",
+    maxAge = "",
   } = req.query;
 
   const pageSize = 50;
   const skip = (parseInt(page) - 1) * pageSize;
+
+  // Build MongoDB filter
   const filter = {};
 
   if (gender.toUpperCase() !== "ALL") {
@@ -165,8 +169,17 @@ router.get("/filtered-players", async (req, res) => {
     filter.status = status.toUpperCase();
   }
 
+  if (name.trim() !== "") {
+    filter.fullName = { $regex: name.trim(), $options: "i" }; // case-insensitive name match
+  }
+
+  const parsedMaxAge = parseInt(maxAge);
+  if (!isNaN(parsedMaxAge)) {
+    filter.age = { $lte: parsedMaxAge };
+  }
+
   const ratingField =
-    duprSortType === "singles" ? "ratings.singles" : "ratings.doubles";
+    duprSortType === "doubles" ? "ratings.doubles" : "ratings.singles";
 
   try {
     const aggregationPipeline = [
@@ -198,7 +211,6 @@ router.get("/filtered-players", async (req, res) => {
       },
     ];
 
-    // ✅ Allow disk use to avoid memory error
     const result = await Ranking.aggregate(aggregationPipeline, {
       allowDiskUse: true,
     });
@@ -207,7 +219,7 @@ router.get("/filtered-players", async (req, res) => {
     const totalPlayers = result[0].totalCount[0]?.count || 0;
 
     res.status(200).json({
-      filters: { gender, duprSortType, continent, status },
+      filters: { gender, duprSortType, continent, status, name, maxAge },
       page: parseInt(page),
       pageSize,
       totalPlayers,
@@ -222,6 +234,7 @@ router.get("/filtered-players", async (req, res) => {
     });
   }
 });
+
 
 router.get("/status-only/:status", async (req, res) => {
   try {

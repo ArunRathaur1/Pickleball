@@ -30,18 +30,24 @@ export default function Ranking() {
   const [selectedGender, setSelectedGender] = useState("MALE");
   const [duprSortType, setDuprSortType] = useState("singles");
   const [currentPage, setCurrentPage] = useState(1);
+  const [playerName, setPlayerName] = useState("");
+  const [maxAge, setMaxAge] = useState("");
+
 
   const [players, setPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
 
   const fetchPlayers = async () => {
     try {
-      const query = new URLSearchParams({
-        gender: selectedGender,
-        duprSortType,
-        page: currentPage.toString(),
-        continent: selectedContinent,
-      });
+     const query = new URLSearchParams();
+    query.append("gender", selectedGender);
+    query.append("duprSortType", duprSortType);
+    query.append("page", currentPage.toString());
+    query.append("continent", selectedContinent);
+    if (playerName) query.append("name", playerName);
+    if (maxAge) query.append("maxAge", maxAge.toString());
+
+
 
       const res = await fetch(
         `http://localhost:5000/ranking/filtered-players?${query}`
@@ -57,7 +63,7 @@ export default function Ranking() {
 
   useEffect(() => {
     fetchPlayers();
-  }, [selectedContinent, selectedGender, duprSortType, currentPage]);
+  }, [selectedContinent, selectedGender, duprSortType, currentPage,playerName,maxAge]);
 
   const handleContinentChange = (continent) => {
     setSelectedContinent(continent);
@@ -184,6 +190,41 @@ export default function Ranking() {
                 ))}
               </div>
             </div>
+            {/* Player Name and Age Filters */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+              <div className="space-y-3">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">
+                  Player Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Search by name"
+                  value={playerName}
+                  onChange={(e) => {
+                    setPlayerName(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  className="w-full border-2 border-green-200 dark:border-emerald-600/50 rounded-xl px-4 py-3 bg-white dark:bg-gray-700 focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100 dark:focus:ring-emerald-900/50 text-gray-700 dark:text-gray-200 shadow-sm"
+                />
+              </div>
+
+              <div className="space-y-3">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">
+                  Max Age
+                </label>
+                <input
+                  type="number"
+                  placeholder="Enter maximum age"
+                  value={maxAge}
+                  onChange={(e) => {
+                    setMaxAge(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  className="w-full border-2 border-green-200 dark:border-emerald-600/50 rounded-xl px-4 py-3 bg-white dark:bg-gray-700 focus:border-emerald-500 dark:focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100 dark:focus:ring-emerald-900/50 text-gray-700 dark:text-gray-200 shadow-sm"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
 
