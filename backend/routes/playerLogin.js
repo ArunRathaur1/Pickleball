@@ -188,8 +188,7 @@ router.post("/register", async (req, res) => {
   }
 });
   
-
-
+//Login route
 router.post("/login", async (req, res) => {
   try {
     const DUPRID = req.body.DUPRID || req.body.duprid;
@@ -210,15 +209,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const players = await PlayerLogin.find();
-    res.json(players);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-// Correct GET route
+// Correct GET route  get the data from playerlogin model
 router.get("/userdata/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -236,6 +227,7 @@ router.get("/userdata/:id", async (req, res) => {
   }
 });
 
+//get the data from the ranking model on the basis of duprid
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -257,7 +249,28 @@ router.get("/:id", async (req, res) => {
 
 
 
-// Update a player by ID
+//get the data of the player using playerId from the ranking model
+router.get("/player/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find player in Ranking model using playerId (case sensitive)
+    const player = await ranking.findOne({ playerid: id });
+
+    if (!player) {
+      return res
+        .status(404)
+        .json({ message: "Player with this ID not found" });
+    }
+
+    res.json(player);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+// Update a player by ID from the athlete
 router.put("/update/data", async (req, res) => {
   try {
     const { submitData } = req.body;
