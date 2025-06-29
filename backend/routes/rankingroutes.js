@@ -226,7 +226,6 @@ router.get("/filtered-players", async (req, res) => {
   const pageSize = 50;
   const skip = (parseInt(page) - 1) * pageSize;
 
-  // Build MongoDB filter
   const filter = {};
 
   if (gender.toUpperCase() !== "ALL") {
@@ -242,7 +241,7 @@ router.get("/filtered-players", async (req, res) => {
   }
 
   if (name.trim() !== "") {
-    filter.fullName = { $regex: name.trim(), $options: "i" }; // case-insensitive name match
+    filter.fullName = { $regex: name.trim(), $options: "i" };
   }
 
   const parsedMaxAge = parseInt(maxAge);
@@ -250,34 +249,52 @@ router.get("/filtered-players", async (req, res) => {
     filter.age = { $lte: parsedMaxAge };
   }
 
-  const ratingField =
-    duprSortType === "doubles" ? "ratings.doubles" : "ratings.singles";
+  const sortField = duprSortType === "doubles" ? "doublerank" : "singlerank";
+  const ratingField = duprSortType === "doubles" ? "$ratings.doubles" : "$ratings.singles";
 
   try {
     const aggregationPipeline = [
       { $match: filter },
       {
         $addFields: {
-          ratingValue: {
-            $cond: [
-              {
-                $or: [
-                  { $eq: [`$${ratingField}`, "NR"] },
-                  { $eq: [`$${ratingField}`, null] },
-                  { $eq: [`$${ratingField}`, ""] },
-                  { $not: [`$${ratingField}`] },
-                ],
-              },
-              null,
-              { $toDouble: `$${ratingField}` },
-            ],
-          },
+          singlerank: { $ifNull: ["$singlerank", Number.MAX_SAFE_INTEGER] },
+          doublerank: { $ifNull: ["$doublerank", Number.MAX_SAFE_INTEGER] },
         },
       },
-      { $sort: { ratingValue: -1 } },
+      { $sort: { [sortField]: 1 } },
       {
         $facet: {
-          paginatedResults: [{ $skip: skip }, { $limit: pageSize }],
+          paginatedResults: [
+            {
+              $project: {
+                fullName: 1,
+                age: 1,
+                singlerank: 1,
+                doublerank: 1,
+                ratings: 1,
+                gender: 1,
+                Continent: 1,
+                imageUrl: 1,
+                duprId: 1,
+                ratingValue: {
+                  $cond: [
+                    {
+                      $or: [
+                        { $eq: [ratingField, "NR"] },
+                        { $eq: [ratingField, null] },
+                        { $eq: [ratingField, ""] },
+                      ],
+                    },
+                    null,
+                    { $toDouble: ratingField },
+                  ],
+                },
+                originalRank: sortField === "doublerank" ? "$doublerank" : "$singlerank",
+              },
+            },
+            { $skip: skip },
+            { $limit: pageSize },
+          ],
           totalCount: [{ $count: "count" }],
         },
       },
