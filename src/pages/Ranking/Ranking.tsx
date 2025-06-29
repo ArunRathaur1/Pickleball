@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
+import { Link } from "react-router-dom";
 import {
   Trophy,
   Users,
@@ -229,6 +230,7 @@ export default function Ranking() {
         </div>
 
         {/* Players Table */}
+        
         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-green-100/50 dark:border-emerald-600/30">
           <div className="overflow-x-auto">
             <table className="w-full">
@@ -259,6 +261,9 @@ export default function Ranking() {
                   const rank = player.originalRank ?? (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
 
                   return (
+                    <Link
+                      to={`/player/${player.duprId}`}
+                      className="no-underline text-gray-900 dark:text-gray-100">
                     <tr
                       key={player.duprId}
                       className="hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 dark:hover:from-gray-700/50 dark:hover:to-emerald-900/30 transition-all duration-200 group"
@@ -316,6 +321,7 @@ export default function Ranking() {
                         </span>
                       </td>
                     </tr>
+                    </Link>
                   );
                 })}
               </tbody>

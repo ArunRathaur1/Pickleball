@@ -33,6 +33,7 @@ import PlayerDashboard from "./components/PlayerLogin/PlayerDashboard.tsx";
 import BrandDashboard from "./components/BrandLogin/Dashboard.tsx";
 import AddAthlete from "./components/athletes/AddAthlete.tsx";
 import Ranking from "./pages/Ranking/Ranking.tsx";
+import PlayerDescription from "./pages/Ranking/PlayerDescription.tsx";
 const queryClient = new QueryClient();
 
 // Create a ChatbotWrapper to manage global chatbot state
@@ -124,6 +125,10 @@ const App = () => {
             <Route
               path="/athelete_update/:id"
               element={<AddAthlete></AddAthlete>}
+            ></Route>
+            <Route
+              path="/player/:duprid"
+              element={<PlayerDescription></PlayerDescription>}
             ></Route>
           </Routes>
         </BrowserRouter>
