@@ -261,9 +261,7 @@ export default function Ranking() {
                   const rank = player.originalRank ?? (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
 
                   return (
-                    <Link
-                      to={`/player/${player.duprId}`}
-                      className="no-underline text-gray-900 dark:text-gray-100">
+                    
                     <tr
                       key={player.duprId}
                       className="hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 dark:hover:from-gray-700/50 dark:hover:to-emerald-900/30 transition-all duration-200 group"
@@ -291,11 +289,16 @@ export default function Ranking() {
                               </div>
                             )}
                           </div>
-                          <div>
-                            <p className="font-semibold text-gray-900 dark:text-gray-100 text-lg">
-                              {player.fullName}
-                            </p>
-                          </div>
+                          <Link
+                            to={`/player/${player.duprId}`}
+                            className="no-underline text-gray-900 dark:text-gray-100"
+                          >
+                            <div>
+                              <p className="font-semibold text-gray-900 dark:text-gray-100 text-lg">
+                                {player.fullName}
+                              </p>
+                            </div>
+                          </Link>
                         </div>
                       </td>
                       <td className="px-6 py-4">
@@ -321,7 +324,6 @@ export default function Ranking() {
                         </span>
                       </td>
                     </tr>
-                    </Link>
                   );
                 })}
               </tbody>
