@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import bg from "../Playerprofile/Background.png"; // fallback image
 
 interface PlayerData {
   fullName: string;
@@ -17,13 +18,6 @@ interface PlayerData {
     doubles: string;
     defaultRating: string;
   };
-  sponsor?: {
-    imageURL: string;
-    sponsorRedirectUrl: string;
-    sponsorPopupHeading: string;
-    description: string;
-    buttonText: string;
-  };
 }
 
 export default function PlayerDescription() {
@@ -33,7 +27,6 @@ export default function PlayerDescription() {
 
   useEffect(() => {
     if (!duprid) return;
-
     axios
       .get(`http://localhost:5000/playerlogin/${duprid}`)
       .then((res) => {
@@ -47,75 +40,54 @@ export default function PlayerDescription() {
       });
   }, [duprid]);
 
-  if (loading) {
-    return <p className="text-center text-lg">Loading player data...</p>;
-  }
-
-  if (!player) {
-    return <p className="text-center text-red-500">Player not found.</p>;
-  }
+  if (loading) return <p className="text-center text-lg">Loading player data...</p>;
+  if (!player) return <p className="text-center text-red-500">Player not found.</p>;
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
-      <div className="flex flex-col md:flex-row items-center gap-6">
-        <img
-          src={
-            player.imageUrl || "https://via.placeholder.com/150?text=No+Image"
-          }
-          alt={player.fullName}
-          className="w-32 h-32 object-cover rounded-full border"
-        />
-        <div>
-          <h2 className="text-3xl font-bold text-pickle">{player.fullName}</h2>
-          <p className="text-gray-600 dark:text-gray-300 mt-2">
-            <strong>Gender:</strong> {player.gender} <br />
-            <strong>Age:</strong> {player.age} <br />
-            <strong>Location:</strong> {player.shortAddress} <br />
-            <strong>Status:</strong> {player.status}
-          </p>
+    <div
+      className="relative min-h-screen bg-cover bg-center flex flex-col items-center justify-center text-white"
+      style={{
+        backgroundImage: `url(${player.imageUrl || bg})`,
+      }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-60 z-0" />
+
+      {/* Content */}
+      <div className="relative z-10 text-center p-6 w-full max-w-4xl">
+        <h1 className="text-4xl md:text-6xl font-extrabold uppercase mb-6 tracking-wide">
+          {player.fullName}
+        </h1>
+
+        {/* Ratings Section */}
+        <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 space-y-4 mx-auto max-w-xl shadow-xl border border-white/20">
+          <div className="text-xl md:text-2xl font-semibold">
+            <span className="block">
+              <strong>Singles Rating:</strong> {player.ratings.singles}
+            </span>
+            <span className="block">
+              <strong>Doubles Rating:</strong> {player.ratings.doubles}
+            </span>
+            <span className="block">
+              <strong>Default:</strong> {player.ratings.defaultRating}
+            </span>
+          </div>
+        </div>
+
+        {/* Basic Info Section */}
+        <div className="mt-8 bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 space-y-2 text-lg shadow-lg max-w-xl mx-auto border border-white/20">
+          <p><strong>Age:</strong> {player.age}</p>
+          <p><strong>Gender:</strong> {player.gender}</p>
+          <p><strong>Location:</strong> {player.shortAddress}</p>
+          <p><strong>Status:</strong> {player.status}</p>
+        </div>
+
+        {/* Ranks Section */}
+        <div className="mt-8 bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 space-y-2 text-lg shadow-lg max-w-xl mx-auto border border-white/20">
+          <p><strong>Singles Rank:</strong> #{player.singlerank || "N/A"}</p>
+          <p><strong>Doubles Rank:</strong> #{player.doublerank || "N/A"}</p>
         </div>
       </div>
-
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow">
-          <h3 className="text-xl font-semibold text-pickle">Ratings</h3>
-          <p>Singles: {player.ratings.singles}</p>
-          <p>Doubles: {player.ratings.doubles}</p>
-          <p>Default: {player.ratings.defaultRating}</p>
-        </div>
-
-        <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow">
-          <h3 className="text-xl font-semibold text-pickle">Ranks</h3>
-          <p>Singles Rank: #{player.singlerank || "N/A"}</p>
-          <p>Doubles Rank: #{player.doublerank || "N/A"}</p>
-        </div>
-      </div>
-
-      {player.sponsor?.imageURL && (
-        <div className="mt-8 bg-yellow-50 dark:bg-yellow-900 p-4 rounded-xl">
-          <a
-            href={player.sponsor.sponsorRedirectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-4"
-          >
-            <img
-              src={player.sponsor.imageURL}
-              alt="Sponsor"
-              className="w-16 h-16 object-contain"
-            />
-            <div>
-              <h4 className="text-lg font-bold">
-                {player.sponsor.sponsorPopupHeading}
-              </h4>
-              <p className="text-sm">{player.sponsor.description}</p>
-              <button className="mt-2 px-3 py-1 bg-pickle text-white rounded-lg text-sm">
-                {player.sponsor.buttonText}
-              </button>
-            </div>
-          </a>
-        </div>
-      )}
     </div>
   );
 }
