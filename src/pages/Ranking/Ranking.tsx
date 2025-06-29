@@ -256,7 +256,8 @@ export default function Ranking() {
               </thead>
               <tbody className="divide-y divide-green-50 dark:divide-gray-700">
                 {players.map((player, index) => {
-                  const rank = (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
+                  const rank = player.originalRank ?? (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
+
                   return (
                     <tr
                       key={player.duprId}
