@@ -296,7 +296,7 @@ export default function Ranking() {
                             }
                             className="no-underline text-gray-900 dark:text-gray-100"
                           >
-                            <div style={{ border: "solid" }}>
+                            <div>
                               {player.fullName || "Unknown Player"}
                             </div>
                           </Link>
