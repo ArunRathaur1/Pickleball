@@ -225,7 +225,6 @@ export default function Ranking() {
                 />
               </div>
             </div>
-
           </div>
         </div>
 
@@ -237,7 +236,7 @@ export default function Ranking() {
               <thead>
                 <tr className="bg-gradient-to-r from-emerald-600 to-green-600 dark:from-emerald-500 dark:to-green-500 text-white">
                   <th className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
-                    Rank
+                    Global Rank
                   </th>
                   <th className="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
                     Player
@@ -258,7 +257,9 @@ export default function Ranking() {
               </thead>
               <tbody className="divide-y divide-green-50 dark:divide-gray-700">
                 {players.map((player, index) => {
-                  const rank = player.originalRank ?? (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
+                  const rank =
+                    player.originalRank ??
+                    (currentPage - 1) * ITEMS_PER_PAGE + index + 1;
 
                   return (
                     <tr
@@ -296,9 +297,7 @@ export default function Ranking() {
                             }
                             className="no-underline text-gray-900 dark:text-gray-100"
                           >
-                            <div>
-                              {player.fullName || "Unknown Player"}
-                            </div>
+                            <div>{player.fullName || "Unknown Player"}</div>
                           </Link>
                         </div>
                       </td>
