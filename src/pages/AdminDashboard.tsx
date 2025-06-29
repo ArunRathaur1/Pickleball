@@ -13,6 +13,7 @@ import InstagramNavbar from "@/components/admin/instagram";
 import AdminClub from "@/components/admin/admin-club";
 import ClubRequestsPage from "@/components/admin/ClubRequestPage";
 import Admin_Athelete from "@/components/admin-athelete/Admin_Athelete";
+import SyncwithDupr from "@/components/admin/SyncData/SyncwithDupr";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -62,8 +63,9 @@ const AdminDashboard = () => {
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
               <TabsTrigger value="users">Users</TabsTrigger>
               {/* <TabsTrigger value='instagram'>Instagram</TabsTrigger> */}
-              <TabsTrigger value='clubapproval'>Club Approval</TabsTrigger>
-            </TabsList> 
+              <TabsTrigger value="clubapproval">Club Approval</TabsTrigger>
+              <TabsTrigger value="sync-data">Sync Data</TabsTrigger>
+            </TabsList>
 
             <TabsContent value="tournaments">
               <TournamentRequestsPage />
@@ -87,12 +89,15 @@ const AdminDashboard = () => {
             <TabsContent value="clubs">
               <AdminClub />
             </TabsContent>
-            <TabsContent value='instagram'>
+            <TabsContent value="instagram">
               <InstagramNavbar></InstagramNavbar>
             </TabsContent>
 
-            <TabsContent value='clubapproval'>
+            <TabsContent value="clubapproval">
               <ClubRequestsPage></ClubRequestsPage>
+            </TabsContent>
+            <TabsContent value="sync-data">
+              <SyncwithDupr />
             </TabsContent>
           </Tabs>
         </div>
