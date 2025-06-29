@@ -7,8 +7,10 @@ const textColorClass = "text-[#E2D8B3]";
 const textShadow = "2px 2px 20px rgba(0, 0, 0, 1)";
 
 const HeroSection = ({ athlete }: { athlete: Athlete }) => (
-  <div className="relative w-full min-h-screen pt-[120px]"
-  style={{zIndex:"-10"}}>
+  <div
+    className="relative w-full min-h-screen pt-[120px]"
+    style={{ zIndex: "-10" }}
+  >
     {/* Background Image */}
     <div
       className="absolute inset-0 bg-cover bg-center "
@@ -16,8 +18,8 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
         backgroundImage: `url(${Image_Background})`,
         width: "120%",
         left: "-5%",
-        marginTop:"-120px",
-        zIndex:"-10"
+        marginTop: "-120px",
+        zIndex: "-10",
       }}
     ></div>
 
@@ -43,7 +45,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
             textShadow,
           }}
         >
-          {athlete.name}
+          {athlete.fullName}
         </h1>
 
         <div className="mt-3" style={{ marginTop: "70px" }}>
@@ -56,7 +58,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               textShadow,
             }}
           >
-            {athlete.DUPRIDDOUBLES}
+            {athlete.ratings.doubles}
           </p>
           <p
             className="text-lg font-medium uppercase text-white mt-1"
@@ -81,7 +83,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
               textShadow,
             }}
           >
-            {athlete.DUPRIDSINGLES}
+            {athlete.ratings.singles}
           </p>
           <p
             className="text-lg font-medium uppercase text-white mt-1"
@@ -137,7 +139,7 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
             textShadow,
           }}
         >
-          #14
+          {athlete.rank}
         </div>
       </div>
     </div>

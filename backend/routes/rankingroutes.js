@@ -140,6 +140,9 @@ router.get("/details/:continent", async (req, res) => {
     });
   }
 });
+
+
+
 router.get("/filtered-players", async (req, res) => {
   const {
     gender = "ALL",
@@ -223,6 +226,7 @@ router.get("/filtered-players", async (req, res) => {
   }
 });
 
+
 router.get("/status-only/:status", async (req, res) => {
   try {
     const { status } = req.params;
@@ -245,8 +249,56 @@ router.get("/status-only/:status", async (req, res) => {
   }
 });
 
+// ✅ Route to fetch players with non-empty playerid
+router.get("/with-playerid", async (req, res) => {
+  try {
+    const players = await Ranking.find({
+      playerid: { $exists: true, $ne: "" }, // ensures playerid exists and is not an empty string
+    });
 
+    res.status(200).json({ players });
+  } catch (error) {
+    console.error("❌ Error fetching players with playerid:", error);
+    res.status(500).json({
+      message: "Failed to retrieve players with playerid",
+      error: error.message,
+    });
+  }
+});
 
+router.get("/fill-rankings-by-singles", async (req, res) => {
+  try {
+
+    const players = await Ranking.find({
+      "ratings.singles": { $nin: ["NR", null, ""] },
+    });
+
+    const sortedPlayers = players
+      .map((player) => ({
+        ...player.toObject(),
+        singlesValue: parseFloat(player.ratings.singles),
+      }))
+      .filter((p) => !isNaN(p.singlesValue))
+      .sort((a, b) => b.singlesValue - a.singlesValue);
+
+    // Step 3: Update each player’s rank
+    for (let i = 0; i < sortedPlayers.length; i++) {
+      const playerId = sortedPlayers[i]._id;
+      await Ranking.findByIdAndUpdate(playerId, { rank: i + 1 });
+    }
+
+    res.status(200).json({
+      message: "Ranks updated successfully based on singles ratings.",
+      totalRanked: sortedPlayers.length,
+    });
+  } catch (error) {
+    console.error("❌ Error updating rankings:", error);
+    res.status(500).json({
+      message: "Failed to update rankings",
+      error: error.message,
+    });
+  }
+});
 
 
 
