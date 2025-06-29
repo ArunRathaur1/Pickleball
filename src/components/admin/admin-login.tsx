@@ -29,13 +29,11 @@ export default function AdminLogin() {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
+      console.log("Login Response:", data);
       if (!response.ok) {
         throw new Error(data.message || "Login failed");
       }
-      localStorage.setItem('adminData', JSON.stringify({
-        email: data.admin.email,
-        id: data.admin._id
-      }));
+      localStorage.setItem("adminData", JSON.stringify(data));
       navigate("/admin/dashboard");
     } catch (error) {
       console.error("Login Error:", error.message);

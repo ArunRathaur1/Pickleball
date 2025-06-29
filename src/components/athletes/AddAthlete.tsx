@@ -166,7 +166,7 @@ export default function AddAthlete() {
   useEffect(() => {
     const fetchAthlete = async () => {
       let playerId = id;
-
+      console.log("Fetching athlete data for ID:", playerId);
       if (!playerId) {
         const cookieData = Cookies.get("player");
         if (cookieData) {
@@ -525,7 +525,7 @@ export default function AddAthlete() {
     const updatedArray = formData.imageUrlGallery.filter((_, i) => i !== index);
     setFormData((prev) => ({ ...prev, imageUrlGallery: updatedArray }));
   };
-
+  
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -533,7 +533,6 @@ export default function AddAthlete() {
     setSubmitMessage({ type: "", message: "" });
 
     try {
-      // Filter values to avoid empty fields being submitted
       const filteredImageUrls = formData.imageUrlGallery.filter((item) =>
         item.image.trim()
       );
@@ -556,9 +555,11 @@ export default function AddAthlete() {
           content.title.trim() &&
           content.youtubeLink.trim()
       );
+
       const DUPRID = formData.duprId;
-      // Construct data to send
-      const submitData = {
+
+      // Prepare the common data
+      let submitData: any = {
         ...formData,
         age: Number(formData.age),
         height: Number(formData.height),
@@ -569,14 +570,45 @@ export default function AddAthlete() {
         sponsors: filteredSponsors,
         relatedContent: filteredRelatedContent,
         imageUrlGallery: filteredImageUrls,
-        DUPRID,
-        password,
       };
-      // 🔁 Submit via POST request
-      const response = await axios.put(
-        "http://localhost:5000/playerlogin/update/data",
-        { submitData }
-      );
+
+      let url = "";
+
+      if (id) {
+        // 🔐 Admin is updating
+        const adminData = localStorage.getItem("adminData");
+        let adminemail = null;
+        let adminpassword = null;
+
+        try {
+          const parsedData = JSON.parse(adminData);
+          if (parsedData?.admin) {
+            adminemail = parsedData.admin.email;
+            adminpassword = parsedData.admin.password;
+          }
+        } catch (error) {
+          console.error("Failed to parse adminData:", error);
+        }
+
+        submitData = {
+          ...submitData,
+          email: adminemail,
+          password: adminpassword,
+        };
+
+        url = "http://localhost:5000/admin/update/data";
+      } else {
+        // 🧑‍ Athlete is updating
+        submitData = {
+          ...submitData,
+          DUPRID,
+          password,
+        };
+
+        url = "http://localhost:5000/playerlogin/update/data";
+      }
+
+      const response = await axios.put(url, { submitData });
 
       setSubmitMessage({
         type: "success",

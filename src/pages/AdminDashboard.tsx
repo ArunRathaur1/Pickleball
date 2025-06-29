@@ -18,22 +18,23 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const adminData = localStorage.getItem('adminData');
-    console.log('adminData:', adminData);
-    
-    // Try parsing the adminData to ensure it's valid
+    const adminData = localStorage.getItem("adminData");
+    console.log("adminData:", adminData);
+
     let isValidAdmin = false;
     try {
-      const parsedAdminData = JSON.parse(adminData);
-      isValidAdmin = parsedAdminData && parsedAdminData.id && parsedAdminData.email;
+      const parsed = JSON.parse(adminData);
+      const admin = parsed.admin;
+      isValidAdmin = admin && admin._id && admin.email;
     } catch (e) {
       isValidAdmin = false;
     }
-    
+
     if (!adminData || !isValidAdmin) {
-      navigate('/'); // Redirect to admin login instead of home
+      navigate("/"); // Redirect to login
     }
   }, [navigate]);
+  
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -60,7 +61,7 @@ const AdminDashboard = () => {
               <TabsTrigger value="blogs">Blogs</TabsTrigger>
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
               <TabsTrigger value="users">Users</TabsTrigger>
-              <TabsTrigger value='instagram'>Instagram</TabsTrigger>
+              {/* <TabsTrigger value='instagram'>Instagram</TabsTrigger> */}
               <TabsTrigger value='clubapproval'>Club Approval</TabsTrigger>
             </TabsList> 
 
