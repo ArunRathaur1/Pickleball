@@ -15,7 +15,7 @@ export default function SignupPage() {
           <h1 className="text-2xl font-bold text-center mb-6">Signup</h1>
 
           {/* Selection Buttons */}
-          <div className="flex justify-center">
+          <div className="flex justify-center "style={{ gap: "1rem", marginBottom: "2rem" }}>
             <button
               onClick={() => setSelectedType("Player")}
               className={`px-4 py-2 rounded-md font-semibold ${

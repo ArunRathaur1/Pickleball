@@ -1,40 +1,23 @@
-#include <iostream>
-#include <cmath>
+#include<bits/stdc++.h>
 using namespace std;
-
-bool isDisarium(int num)
-{
-   int temp = num;
-   int length = 0;
-   while (temp > 0)
-   {
-      length++;
-      temp /= 10;
+void solve(){
+   long long n;
+   cin>>n;
+   long long start=1;
+   long long ans=0;
+   while(start<=n){
+      long long tem=start;
+      if((tem&n)!=0){
+         ans=ans+(tem<<1)-1;
+      }
+      start=start<<1;
    }
-
-   temp = num;
-   int sum = 0;
-   while (temp > 0)
-   {
-      int digit = temp % 10;
-      sum += pow(digit, length);
-      length--;
-      temp /= 10;
-   }
-
-   return sum == num;
+   cout<<ans<<endl;
 }
-
-int main()
-{
-   int num;
-   cout << "Enter a number: ";
-   cin >> num;
-
-   if (isDisarium(num))
-      cout << num << " is a Disarium number." << endl;
-   else
-      cout << num << " is not a Disarium number." << endl;
-
-   return 0;
+int main(){
+   long long t;
+   cin>>t;
+   while(t--){
+      solve();
+   }
 }

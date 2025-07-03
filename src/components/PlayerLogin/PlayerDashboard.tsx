@@ -27,7 +27,7 @@ export default function PlayerDashboard() {
         }
 
         const player = JSON.parse(cookieData);
-        const playerId = player.player.DUPRID;
+        const playerId = player.player.duperId;
         console.log(playerId);
         const response = await fetch(
           `http://localhost:5000/playerlogin/userdata/${playerId}`
@@ -212,7 +212,7 @@ export default function PlayerDashboard() {
                             DUPRID
                           </p>
                           <p className="text-lg font-semibold text-gray-800">
-                            {playerData.DUPRID}
+                            {playerData.duperId}
                           </p>
                         </div>
                       </div>
