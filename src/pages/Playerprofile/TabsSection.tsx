@@ -8,8 +8,8 @@ import TitleSection from "./TitleSection";
 import SponsorSection from "./SponsorsSection";
 import ContentSection from "./ContentSection";
 import HeroSection from "./HeroSection";
-import { Menu } from "lucide-react";
-
+import { Link, Menu, Router } from "lucide-react";
+import { Link as RouterLink } from "react-router-dom";
 const tabOptions = [
   { value: "hero", label: "HERO" },
   { value: "about", label: "ABOUT" },
@@ -34,7 +34,7 @@ const TabsSection = ({ athlete }: { athlete: Athlete }) => {
           onValueChange={setSelectedTab}
           className="w-full"
         >
-          {/* 📱 Hamburger Menu for Small Screens */}
+          {/* 📱 Mobile Navbar */}
           <div className="sm:hidden px-4 py-3 flex justify-between items-center text-white bg-black">
             <span className="font-bold text-lg">
               {tabOptions.find((tab) => tab.value === selectedTab)?.label}
@@ -44,6 +44,7 @@ const TabsSection = ({ athlete }: { athlete: Athlete }) => {
             </button>
           </div>
 
+          {/* 📱 Hamburger Menu */}
           {menuOpen && (
             <div className="sm:hidden px-4 py-2 bg-gray-800 text-white space-y-2">
               {tabOptions.map(({ value, label }) => (
@@ -58,31 +59,56 @@ const TabsSection = ({ athlete }: { athlete: Athlete }) => {
                   {label}
                 </button>
               ))}
+              <hr className="border-gray-600 my-2" />
+              <RouterLink to='/'>
+              <button
+                className="block w-full text-left text-lg font-semibold text-blue-400 hover:text-yellow-400"
+                onClick={() => {
+                  setSelectedTab("hero"); // assuming "hero" is your home
+                  setMenuOpen(false);
+                }}
+              >
+                Home
+              </button>
+              </RouterLink>
             </div>
           )}
 
-          {/* 🖥️ Tab List for Desktop */}
-          <TabsList
-          style={{marginBottom:"20px"}}
-           className="hidden sm:flex flex-wrap justify-start gap-10 px-8 py-6 bg-transparent text-white font-bold  scrollbar-hide">
-            {tabOptions.map(({ value, label }) => (
-              <TabsTrigger
-                key={value}
-                value={value}
-                className="data-[state=active]:border-b-4 data-[state=active]:bg-transparent whitespace-nowrap"
-                style={{
-                  fontSize: "28px",
-                  padding: "10px 20px", 
-                  color: "white",
-                  fontFamily: "Times New Roman, serif",
-                  marginBottom:"100px",
-                  zIndex: "1000",
-                }}
-              >
-                {label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          {/* 🖥️ Desktop Navbar */}
+          <div className="hidden sm:flex justify-between items-center px-8 py-6 bg-transparent text-white">
+            {/* Tabs */}
+            <TabsList
+              style={{ marginBottom: "20px" }}
+              className="flex flex-wrap justify-start gap-10 bg-transparent text-white font-bold scrollbar-hide"
+            >
+              {tabOptions.map(({ value, label }) => (
+                <TabsTrigger
+                  key={value}
+                  value={value}
+                  className="data-[state=active]:border-b-4 data-[state=active]:bg-transparent whitespace-nowrap"
+                  style={{
+                    fontSize: "28px",
+                    padding: "10px 20px",
+                    color: "white",
+                    fontFamily: "Times New Roman, serif",
+                    marginBottom: "100px",
+                    zIndex: "1000",
+                  }}
+                >
+                  {label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* 👉 Top-right Button */}
+            <RouterLink to='/'>
+            <button
+              className="text-white border px-4 py-2 rounded hover:bg-white hover:text-black transition"
+            >
+              Home
+            </button>
+            </RouterLink>
+          </div>
 
           {/* Tab Content */}
           <div className="relative">
