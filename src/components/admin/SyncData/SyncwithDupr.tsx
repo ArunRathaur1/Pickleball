@@ -13,7 +13,7 @@ export default function SyncwithDupr() {
 
     try {
       const res = await axios.get(
-        `http://localhost:5000/ranking/sync-from-dupr/${continent}`
+        `https://pickleball-phi.vercel.app/ranking/sync-from-dupr/${continent}`
       );
       setMessage(
         `✅ ${continent} synced successfully. Updated: ${
@@ -34,7 +34,7 @@ export default function SyncwithDupr() {
 
     try {
       const res = await axios.get(
-        "http://localhost:5000/ranking/fill-rankings"
+        "https://pickleball-phi.vercel.app/ranking/fill-rankings"
       );
       setMessage(
         `✅ Rankings updated! Total Ranked: ${res.data.totalRanked}, Singles: ${res.data.validSingles}, Doubles: ${res.data.validDoubles}`

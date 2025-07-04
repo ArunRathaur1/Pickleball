@@ -42,7 +42,7 @@ const ClubDetails = () => {
       
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/clublist/${id}`);
+        const response = await axios.get(`https://pickleball-phi.vercel.app/clublist/${id}`);
         setClub(response.data);
       } catch (error) {
         console.error('Error fetching club details:', error);

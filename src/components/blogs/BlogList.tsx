@@ -27,7 +27,7 @@ const BlogList: React.FC = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.get("http://localhost:5000/blogs");
+      const response = await axios.get("https://pickleball-phi.vercel.app/blogs");
       setBlogs(response.data);
     } catch (error) {
       console.error("Error fetching blogs", error);
@@ -40,9 +40,9 @@ const BlogList: React.FC = () => {
   const handleAddOrUpdate = async (blog: { name: string; heading: string; description: string }) => {
     try {
       if (editData) {
-        await axios.put(`http://localhost:5000/blogs/update/${editData._id}`, blog);
+        await axios.put(`https://pickleball-phi.vercel.app/blogs/update/${editData._id}`, blog);
       } else {
-        await axios.post("http://localhost:5000/blogs/add", blog);
+        await axios.post("https://pickleball-phi.vercel.app/blogs/add", blog);
       }
       fetchBlogs();
       setShowForm(false);
@@ -56,7 +56,7 @@ const BlogList: React.FC = () => {
   const handleDelete = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this blog?")) {
       try {
-        await axios.delete(`http://localhost:5000/blogs/delete/${id}`);
+        await axios.delete(`https://pickleball-phi.vercel.app/blogs/delete/${id}`);
         fetchBlogs();
       } catch (error) {
         console.error("Error deleting blog", error);

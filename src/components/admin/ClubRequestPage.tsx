@@ -38,8 +38,8 @@ const ClubRequestsPage = () => {
   const fetchClubsByStatus = (status: string) => {
     const url =
       status === "all"
-        ? "http://localhost:5000/clublist/all"
-        : `http://localhost:5000/clublist/status/${status}`;
+        ? "https://pickleball-phi.vercel.app/clublist/all"
+        : `https://pickleball-phi.vercel.app/clublist/status/${status}`;
   
     fetch(url)
       .then((res) => res.json())
@@ -49,7 +49,7 @@ const ClubRequestsPage = () => {
   
 
   const updateClubStatus = (id: string, status: "approved" | "rejected") => {
-    fetch(`http://localhost:5000/clublist/status/${id}`, {
+    fetch(`https://pickleball-phi.vercel.app/clublist/status/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

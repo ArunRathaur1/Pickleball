@@ -22,7 +22,7 @@ const CourtMap = () => {
   const [courts, setCourts] = useState<Court[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/court/all")
+    fetch("https://pickleball-phi.vercel.app/court/all")
       .then((res) => res.json())
       .then((data) => setCourts(data))
       .catch((err) => console.error("Error fetching courts:", err));

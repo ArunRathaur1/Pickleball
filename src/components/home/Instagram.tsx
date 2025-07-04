@@ -9,7 +9,7 @@ export default function View() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/instagram/");
+        const response = await fetch("https://pickleball-phi.vercel.app/instagram/");
         if (!response.ok) {
           throw new Error("Failed to fetch posts.");
         }

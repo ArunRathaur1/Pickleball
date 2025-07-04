@@ -37,7 +37,7 @@ export default function TournamentDetails() {
     const fetchTournament = async () => {
       try {
         console.log(id);
-        const response = await fetch(`http://localhost:5000/tournaments/data/${id}`);
+        const response = await fetch(`https://pickleball-phi.vercel.app/tournaments/data/${id}`);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch tournament (${response.status})`);

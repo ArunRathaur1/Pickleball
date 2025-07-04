@@ -41,7 +41,7 @@ const MapView = () => {
     const fetchClubs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/clublist/all');
+        const response = await axios.get('https://pickleball-phi.vercel.app/clublist/all');
         const approvedClubs = response.data.filter((club: Club) => club.status === 'approved');
         setClubs(approvedClubs);
       } catch (error) {

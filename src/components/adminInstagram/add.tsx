@@ -25,7 +25,7 @@ export default function InstagramEmbedExtractor() {
     setLoading(true);
     setMessage(""); // Clear previous messages
     try {
-      const response = await fetch("http://localhost:5000/instagram/", {
+      const response = await fetch("https://pickleball-phi.vercel.app/instagram/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

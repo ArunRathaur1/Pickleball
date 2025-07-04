@@ -186,7 +186,7 @@ export default function AddAthlete() {
 
       try {
         const response = await axios.get(
-          `http://localhost:5000/playerlogin/${playerId}`
+          `https://pickleball-phi.vercel.app/playerlogin/${playerId}`
         );
 
         const athleteData = response.data;
@@ -596,7 +596,7 @@ export default function AddAthlete() {
           password: adminpassword,
         };
 
-        url = "http://localhost:5000/admin/update/data";
+        url = "https://pickleball-phi.vercel.app/admin/update/data";
       } else {
         // 🧑‍ Athlete is updating
         submitData = {
@@ -605,7 +605,7 @@ export default function AddAthlete() {
           password,
         };
 
-        url = "http://localhost:5000/playerlogin/update/data";
+        url = "https://pickleball-phi.vercel.app/playerlogin/update/data";
       }
 
       const response = await axios.put(url, { submitData });

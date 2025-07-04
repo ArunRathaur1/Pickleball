@@ -34,7 +34,7 @@ const ClubList = () => {
     const fetchClubs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/clublist/all');
+        const response = await axios.get('https://pickleball-phi.vercel.app/clublist/all');
         setClubs(response.data);
         
         // Extract unique countries

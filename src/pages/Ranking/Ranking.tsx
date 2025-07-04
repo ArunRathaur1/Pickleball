@@ -51,7 +51,7 @@ export default function Ranking() {
 
 
       const res = await fetch(
-        `http://localhost:5000/ranking/filtered-players?${query}`
+        `https://pickleball-phi.vercel.app/ranking/filtered-players?${query}`
       );
       const data = await res.json();
       setPlayers(data.players || []);

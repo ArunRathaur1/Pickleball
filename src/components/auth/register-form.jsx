@@ -39,7 +39,7 @@ export function RegisterForm() {
     setError("");
     console.log(formData);
     try {
-      const response = await fetch("http://localhost:5000/users/register", {
+      const response = await fetch("https://pickleball-phi.vercel.app/users/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

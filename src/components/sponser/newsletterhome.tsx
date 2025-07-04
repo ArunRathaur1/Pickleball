@@ -21,7 +21,7 @@ export default function Newsletter({ onClose }) {
     setError(null);
 
     try {
-      const res = await fetch("http://localhost:5000/newsletter/subscribe", {
+      const res = await fetch("https://pickleball-phi.vercel.app/newsletter/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),

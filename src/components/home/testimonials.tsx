@@ -39,7 +39,7 @@ export function Testimonials() {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/blogs");
+      const response = await axios.get("https://pickleball-phi.vercel.app/blogs");
       setBlogs(response.data);
       console.log(response.data);
     } catch (error) {

@@ -28,7 +28,7 @@ const Login = () => {
     try {
       if (formData.userType === "Player") {
         const response = await axios.post(
-          "http://localhost:5000/playerlogin/login",
+          "https://pickleball-phi.vercel.app/playerlogin/login",
           {
             DUPRID: formData.id,
             password: formData.password,
@@ -42,7 +42,7 @@ const Login = () => {
         navigate("/playerdashboard");
       } else {
         console.log(formData);
-        const response = await axios.post("http://localhost:5000/brand/login", {
+        const response = await axios.post("https://pickleball-phi.vercel.app/brand/login", {
           email: formData.id,
           password: formData.password,
         });

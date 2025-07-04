@@ -23,7 +23,7 @@ const CampaignForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/inquary/", {
+      const response = await fetch("https://pickleball-phi.vercel.app/inquary/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

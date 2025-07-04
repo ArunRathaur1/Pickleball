@@ -23,14 +23,14 @@ const TournamentRequestsPage = () => {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    fetch("http://localhost:5000/tournaments/all")
+    fetch("https://pickleball-phi.vercel.app/tournaments/all")
       .then((response) => response.json())
       .then((data) => setTournaments(data))
       .catch((error) => console.error("Error fetching tournaments:", error));
   }, []);
 
   const updateTournamentStatus = (id, status) => {
-    fetch(`http://localhost:5000/tournaments/update-status/${id}`, {
+    fetch(`https://pickleball-phi.vercel.app/tournaments/update-status/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

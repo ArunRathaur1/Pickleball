@@ -26,7 +26,7 @@ export function BlogDetail() {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/blogs/${id}`);
+        const response = await axios.get(`https://pickleball-phi.vercel.app/blogs/${id}`);
         const blogData = response.data;
     
         // Estimate read time
@@ -44,7 +44,7 @@ export function BlogDetail() {
         setError(null);
     
         // Fetch and set real related posts
-        const allBlogsResponse = await axios.get('http://localhost:5000/blogs');
+        const allBlogsResponse = await axios.get('https://pickleball-phi.vercel.app/blogs');
         const filteredBlogs = allBlogsResponse.data.filter((b: Blog) => b._id !== blogData._id);
         const shuffled = filteredBlogs.sort(() => Math.random() - 0.5);
         setRelatedPosts(shuffled.slice(0, 3));

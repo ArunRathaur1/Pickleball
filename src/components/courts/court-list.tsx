@@ -18,7 +18,7 @@ const CourtList = () => {
   const [searchCountry, setSearchCountry] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/court/all")
+    fetch("https://pickleball-phi.vercel.app/court/all")
       .then((res) => res.json())
       .then((data) => {
         setCourts(data);

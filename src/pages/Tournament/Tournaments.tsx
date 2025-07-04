@@ -12,7 +12,7 @@ const Tournaments = () => {
   const [view, setView] = useState("list");
 
   useEffect(() => {
-    fetch("http://localhost:5000/tournaments/approved")
+    fetch("https://pickleball-phi.vercel.app/tournaments/approved")
       .then((res) => res.json())
       .then((data) => {
         setTournaments(data);

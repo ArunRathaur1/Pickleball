@@ -29,7 +29,7 @@ export default function Clubs() {
     }
 
     // Fetch data from the API
-    fetch("http://localhost:5000/clublist/all")
+    fetch("https://pickleball-phi.vercel.app/clublist/all")
       .then((res) => res.json())
       .then((data) => {
         setClubs(data);

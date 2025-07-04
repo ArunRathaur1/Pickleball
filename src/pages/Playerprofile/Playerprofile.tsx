@@ -23,7 +23,7 @@ const PlayerProfile = () => {
   useEffect(() => {
     console.log('hello')
     axios
-      .get(`http://localhost:5000/playerlogin/player/${id}`)
+      .get(`https://pickleball-phi.vercel.app/playerlogin/player/${id}`)
       .then((res) => {
         setAthlete(res.data);
         setLoading(false);

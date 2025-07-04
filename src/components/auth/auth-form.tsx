@@ -46,7 +46,7 @@ export function AuthForm({ type, userType }) {
   
  const handleGoogleAuth = async () => {
    // Open Google OAuth in a new tab
-   window.open(`http://localhost:5000/auth/google`, "_self");
+   window.open(`https://pickleball-phi.vercel.app/auth/google`, "_self");
  };
 
   return (

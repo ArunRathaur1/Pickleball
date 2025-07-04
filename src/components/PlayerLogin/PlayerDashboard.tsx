@@ -30,7 +30,7 @@ export default function PlayerDashboard() {
         const playerId = player.player.duperId;
         console.log(playerId);
         const response = await fetch(
-          `http://localhost:5000/playerlogin/userdata/${playerId}`
+          `https://pickleball-phi.vercel.app/playerlogin/userdata/${playerId}`
         );
         const data = await response.json();
         console.log(data);

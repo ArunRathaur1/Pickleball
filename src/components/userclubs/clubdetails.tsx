@@ -52,7 +52,7 @@ export default function ClubDetails() {
     const fetchClubDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/clublist/${id}`
+          `https://pickleball-phi.vercel.app/clublist/${id}`
         );
         setClub(response.data);
       } catch (error) {

@@ -29,7 +29,7 @@ const Athletes = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/ranking/with-playerid")
+      .get("https://pickleball-phi.vercel.app/ranking/with-playerid")
       .then((res) => {
         const approvedPlayers = res.data.players.filter(
           (player: Athlete) =>

@@ -28,7 +28,7 @@ export default function PlayerDescription() {
   useEffect(() => {
     if (!duprid) return;
     axios
-      .get(`http://localhost:5000/playerlogin/${duprid}`)
+      .get(`https://pickleball-phi.vercel.app/playerlogin/${duprid}`)
       .then((res) => {
         setPlayer(res.data);
         console.log("Player data fetched:", res.data);

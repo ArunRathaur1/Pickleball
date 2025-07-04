@@ -14,7 +14,7 @@ export default function ClubData() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/clublist/all")
+    fetch("https://pickleball-phi.vercel.app/clublist/all")
       .then((res) => res.json())
       .then((data) => setClubs(data))
       .catch((error) => console.error("Error fetching club data:", error));
@@ -24,7 +24,7 @@ export default function ClubData() {
     if (!window.confirm("Are you sure you want to delete this club?")) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/clublist/delete/${id}`, {
+      const response = await fetch(`https://pickleball-phi.vercel.app/clublist/delete/${id}`, {
         method: "DELETE",
       });
 
@@ -82,7 +82,7 @@ export default function ClubData() {
         formData.append("logoimageUrl", updatedClub.logoimageUrl);
       }
 
-      const response = await fetch(`http://localhost:5000/clublist/update/${editingClub}`, {
+      const response = await fetch(`https://pickleball-phi.vercel.app/clublist/update/${editingClub}`, {
         method: "PATCH",
         body: formData,
       });

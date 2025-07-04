@@ -57,7 +57,7 @@ export function Navbar() {
     localStorage.removeItem("adminData");
 
     try {
-      await fetch("http://localhost:5000/auth/logout", {
+      await fetch("https://pickleball-phi.vercel.app/auth/logout", {
         method: "GET",
         credentials: "include",
       });

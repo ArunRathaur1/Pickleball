@@ -29,7 +29,7 @@ export default function SimpleAthleteList() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/ranking/status-only/${statusFilter}`)
+      .get(`https://pickleball-phi.vercel.app/ranking/status-only/${statusFilter}`)
       .then((response) => {
         const fetchedAthletes = response.data.players || [];
         setAthletes(fetchedAthletes);
@@ -78,7 +78,7 @@ export default function SimpleAthleteList() {
 
     try {
       const response = await axios.put(
-        "http://localhost:5000/admin/update/playerid",
+        "https://pickleball-phi.vercel.app/admin/update/playerid",
         {
           email,
           password,

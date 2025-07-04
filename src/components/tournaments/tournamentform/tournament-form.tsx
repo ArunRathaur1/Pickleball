@@ -92,7 +92,7 @@ const TournamentForm = () => {
       if (!tournamentId) return;
       try {
         const res = await fetch(
-          `http://localhost:5000/tournaments/data/${tournamentId}`
+          `https://pickleball-phi.vercel.app/tournaments/data/${tournamentId}`
         );
         if (!res.ok) throw new Error("Network response was not ok");
 
@@ -254,7 +254,7 @@ const TournamentForm = () => {
     const formattedData = formatDataForSubmission(formData);
     try {
       const response = await fetch(
-        "http://localhost:5000/tournaments/add-or-update",
+        "https://pickleball-phi.vercel.app/tournaments/add-or-update",
         {
           method: "POST",
           headers: {

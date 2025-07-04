@@ -44,7 +44,7 @@ export default function SimpleSignup() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/playerlogin/register",
+        "https://pickleball-phi.vercel.app/playerlogin/register",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
