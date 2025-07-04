@@ -29,7 +29,7 @@ export default function ShowTournaments() {
         }
 
         const response = await axios.get(
-          `http://localhost:5000/tournaments/brand/${brandId}`
+          `http://pickleball-phi.vercel.app/tournaments/brand/${brandId}`
         );
         setTournaments(response.data);
       } catch (err) {
