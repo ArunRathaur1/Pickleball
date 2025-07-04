@@ -50,18 +50,13 @@ app.use(passport.session());
 
 // ✅ MIDDLEWARES
 app.use(bodyParser.json());
-import cors from "cors";
-
 app.use(
   cors({
-    origin: (origin, callback) => {
-      callback(null, true); // allow all origins
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true, // Allow cookies/auth headers
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE","PATCH"],
+    credentials: true, // 🔑 Allow cookies
   })
 );
-
 
 // ✅ ROUTES
 app.use("/users", userRoutes);
