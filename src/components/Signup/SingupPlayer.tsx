@@ -62,7 +62,7 @@ export default function SimpleSignup() {
 
       if (!response.ok) throw new Error(data.message || "Signup failed");
 
-      Cookies.set("player", JSON.stringify(data.player), { expires: 7 });
+      localStorage.setItem("player", JSON.stringify(data.player));
       alert("Signup successful!");
       navigate("/playerdashboard");
 
