@@ -1,13 +1,27 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const CampaignForm: React.FC = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
+  const [isInView, setIsInView] = useState(false);
   const [shake, setShake] = useState(false);
   const [status, setStatus] = useState<string | null>(null);
+
+  // Custom inView hook using IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsInView(true);
+      },
+      { rootMargin: "-100px", threshold: 0.2 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,20 +37,21 @@ const CampaignForm: React.FC = () => {
     };
 
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/inquary/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://pickleball-phi.vercel.app/inquary/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
-        console.log("Form submitted successfully!");
         setStatus("Form submitted successfully!");
         form.reset();
       } else {
-        console.error("Failed to submit form");
         setStatus("Failed to submit form.");
       }
     } catch (error) {
@@ -44,7 +59,7 @@ const CampaignForm: React.FC = () => {
       setStatus("Error submitting form.");
     }
 
-    setTimeout(() => setStatus(null), 3000); // Auto-clear after 3s
+    setTimeout(() => setStatus(null), 3000);
   };
 
   return (
@@ -88,7 +103,6 @@ const CampaignForm: React.FC = () => {
           }`}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Name Field */}
             <motion.input
               type="text"
               name="name"
@@ -97,8 +111,6 @@ const CampaignForm: React.FC = () => {
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
               whileFocus={{ scale: 1.05 }}
             />
-
-            {/* Company Name */}
             <motion.input
               type="text"
               name="company"
@@ -108,8 +120,6 @@ const CampaignForm: React.FC = () => {
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all"
               whileFocus={{ scale: 1.05 }}
             />
-
-            {/* Email */}
             <motion.input
               type="email"
               name="email"
@@ -121,7 +131,6 @@ const CampaignForm: React.FC = () => {
             />
           </div>
 
-          {/* Message Field */}
           <motion.textarea
             name="message"
             placeholder="Message"
@@ -131,12 +140,10 @@ const CampaignForm: React.FC = () => {
             whileFocus={{ scale: 1.02 }}
           ></motion.textarea>
 
-          {/* Status Message */}
           {status && (
             <p className="text-center text-sm text-gray-600 mt-4">{status}</p>
           )}
 
-          {/* Submit Button */}
           <div className="mt-6 flex justify-center">
             <motion.button
               type="submit"
@@ -151,13 +158,12 @@ const CampaignForm: React.FC = () => {
                 stroke="currentColor"
                 strokeWidth="2"
                 viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   d="M9 5l7 7-7 7"
-                ></path>
+                />
               </svg>
             </motion.button>
           </div>

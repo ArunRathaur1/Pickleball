@@ -1,9 +1,8 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignupPage from "./pages/SginupPage.tsx";
@@ -23,7 +22,7 @@ import ContactPage from "./pages/contact/ContactPage.js";
 import Blogpage from "./pages/Blogpage.js";
 import Clubs from "./pages/Clubs.js";
 import Chatbot from "./components/Chatbot";
-import Sponser from './components/sponser/Sponser.js'
+import Sponser from "./components/sponser/Sponser.js";
 import TournamentDetails from "./components/tournaments/tournamentdetails/tournamentDetails.tsx";
 import Clubdetails from "./components/userclubs/clubdetails.tsx";
 import { BlogDetail } from "./components/blogs/BlogDetail.tsx";
@@ -34,51 +33,10 @@ import BrandDashboard from "./components/BrandLogin/Dashboard.tsx";
 import AddAthlete from "./components/athletes/AddAthlete.tsx";
 import Ranking from "./pages/Ranking/Ranking.tsx";
 import PlayerDescription from "./pages/Ranking/PlayerDescription.tsx";
-const queryClient = new QueryClient();
 
-// Create a ChatbotWrapper to manage global chatbot state
-// const ChatbotWrapper = () => {
-//   const [chatOpen, setChatOpen] = useState(false);
-
-//   return (
-//     <div style={{ position: "relative", zIndex: 10000 }}>
-//       {/* Chatbot Button */}
-//       <button
-//         onClick={() => setChatOpen(!chatOpen)}
-//         style={{
-//           position: "fixed",
-//           bottom: "20px",
-//           right: "20px",
-//           backgroundColor: "#2e7d32",
-//           color: "white",
-//           border: "none",
-//           borderRadius: "50%",
-//           width: "50px",
-//           height: "50px",
-//           cursor: "pointer",
-//           fontSize: "24px",
-//           zIndex: 10000,
-//           boxShadow: "0px 2px 5px rgba(0,0,0,0.2)",
-//         }}
-//       >
-//         💬
-//       </button>
-
-//       {/* Chatbot Component */}
-//       {chatOpen && <Chatbot onClose={() => setChatOpen(false)} />}
-//     </div>
-//   );
-// };
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-
-        {/* ChatbotWrapper comes before the BrowserRouter to ensure it's on top layer */}
-        {/* <ChatbotWrapper /> */}
 
         <BrowserRouter>
           <Routes>
@@ -97,43 +55,23 @@ const App = () => {
             <Route path="/dashboard" element={<UserDashboard />} />
             <Route path="/addclubs" element={<ClubForm />} />
             <Route path="/:id" element={<PlayerProfile />} />
-            <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
+            <Route path="/signup" element={<SignupPage />} />
             <Route path="/tournament/:id" element={<TournamentDetails />} />
-            <Route path="*" element={<NotFound />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
+            <Route path="*" element={<NotFound />} />
             <Route path="adminlogin12345" element={<AdminLogin />} />
             <Route path="adminsignup12345" element={<AdminSingup />} />
-            <Route path="/sponsor" element={<Sponser></Sponser>}></Route>
-            <Route path='/ranking' element={<Ranking></Ranking>}></Route>
-            <Route
-              path="/clubdetails/:id"
-              element={<Clubdetails></Clubdetails>}
-            ></Route>
-            <Route path="/addtournament" element={<TournamentForm />}></Route>
-            <Route
-              path="/playerdashboard"
-              element={<PlayerDashboard></PlayerDashboard>}
-            ></Route>
-            <Route
-              path="/branddashboard"
-              element={<BrandDashboard></BrandDashboard>}
-            ></Route>
-            <Route
-              path="/update/brand/:id"
-              element={<TournamentForm></TournamentForm>}
-            ></Route>
-            <Route
-              path="/athelete_update/:id"
-              element={<AddAthlete></AddAthlete>}
-            ></Route>
-            <Route
-              path="/player/:duprid"
-              element={<PlayerDescription></PlayerDescription>}
-            ></Route>
+            <Route path="/sponsor" element={<Sponser />} />
+            <Route path="/ranking" element={<Ranking />} />
+            <Route path="/clubdetails/:id" element={<Clubdetails />} />
+            <Route path="/addtournament" element={<TournamentForm />} />
+            <Route path="/playerdashboard" element={<PlayerDashboard />} />
+            <Route path="/branddashboard" element={<BrandDashboard />} />
+            <Route path="/update/brand/:id" element={<TournamentForm />} />
+            <Route path="/athelete_update/:id" element={<AddAthlete />} />
+            <Route path="/player/:duprid" element={<PlayerDescription />} />
           </Routes>
         </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
   );
 };
 

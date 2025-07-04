@@ -1,16 +1,32 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import Newsletter from "./newsletter";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+
 export default function PickleballInsights() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsInView(true);
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div ref={sectionRef} className="bg-white text-black py-20 px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        {/* Left: Image Section */}
-        
-
         {/* Right: Text Content */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}

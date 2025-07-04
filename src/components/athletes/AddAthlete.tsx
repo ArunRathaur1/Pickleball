@@ -168,7 +168,7 @@ export default function AddAthlete() {
       let playerId = id;
       console.log("Fetching athlete data for ID:", playerId);
       if (!playerId) {
-        const cookieData = Cookies.get("player");
+        const cookieData = localStorage.getItem("player");
         if (cookieData) {
           try {
             const player = JSON.parse(cookieData);
@@ -298,13 +298,12 @@ export default function AddAthlete() {
     fetchAthlete();
     
   }, [id]);
-  const playerCookie = Cookies.get("player");
+  const playerCookie = localStorage.getItem("player");
   let password = "";
   if (playerCookie) {
     try {
       const parsed = JSON.parse(playerCookie);
       password = parsed.player.password;
-      console.log("Extracted password from cookies:", password);
     } catch (err) {
       console.error("Error parsing player cookie:", err);
     }
@@ -562,7 +561,7 @@ export default function AddAthlete() {
       let submitData: any = {
         ...formData,
         age: Number(formData.age),
-        height: Number(formData.height)+0,
+        height: Number(formData.height) + 0, // increment height by 1
         titlesWon: filteredTitles.map((t) => ({
           ...t,
           year: Number(t.year),
@@ -571,6 +570,7 @@ export default function AddAthlete() {
         relatedContent: filteredRelatedContent,
         imageUrlGallery: filteredImageUrls,
       };
+      
 
       let url = "";
 

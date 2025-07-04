@@ -36,9 +36,8 @@ const Login = () => {
         );
 
         const data = response.data;
-        Cookies.set("player", JSON.stringify(data), { expires: 7 });
-        // const c=Cookies.get("player");
-        // console.log(c);
+        console.log(data);
+        localStorage.setItem("player", JSON.stringify(data));
         navigate("/playerdashboard");
       } else {
         console.log(formData);
@@ -46,9 +45,8 @@ const Login = () => {
           email: formData.id,
           password: formData.password,
         });
-
         const data = response.data;
-        Cookies.set("brand_user", JSON.stringify(data), { expires: 7 });
+        localStorage.setItem("brand", JSON.stringify(data));
         navigate("/branddashboard");
       }
     } catch (error: any) {

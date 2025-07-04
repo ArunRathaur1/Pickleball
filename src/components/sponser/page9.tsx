@@ -1,13 +1,25 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const GallerySection: React.FC = () => {
-  // Ref for triggering animations on scroll
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [isInView, setIsInView] = useState(false);
 
-  // Gallery images
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsInView(true);
+      },
+      { rootMargin: "-100px", threshold: 0.2 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
   const images = [
     {
       src: "/Partner with The Dink_files/66f87bbd.jpg",

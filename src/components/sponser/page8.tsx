@@ -1,10 +1,27 @@
 "use client";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 const MinorLeagueSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { rootMargin: "-100px", threshold: 0.2 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
 
   return (
     <div id="container06" className="w-full bg-black py-12 flex justify-center">

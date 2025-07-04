@@ -112,6 +112,22 @@ router.get('/approved', async (req, res) => {
     }
 });
 
+router.get("/brand/:brandid", async (req, res) => {
+  try {
+    console.log("Fetching tournaments for brandId:", req.params.brandid);
+    const tournaments = await Tournament.find({ brandId: req.params.brandid });
+
+    if (tournaments.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No tournaments found for this brandId" });
+    }
+
+    res.status(200).json(tournaments);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 // Update tournament status (approve or reject)
 router.put('/update-status/:id', async (req, res) => {
     try {
@@ -146,21 +162,7 @@ router.delete('/delete/:id', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-router.get("/brand/:brandid", async (req, res) => {
-  try {
-    const tournaments = await Tournament.find({ brandId: req.params.brandid });
 
-    if (tournaments.length === 0) {
-      return res
-        .status(404)
-        .json({ message: "No tournaments found for this brandId" });
-    }
-
-    res.status(200).json(tournaments);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
 // GET /tournaments/data/:id
 router.get("/data/:id", async (req, res) => {
   try {

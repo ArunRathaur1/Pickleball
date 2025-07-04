@@ -11,16 +11,17 @@ export default function ShowTournaments() {
   useEffect(() => {
     const fetchTournaments = async () => {
       try {
-        const brandData = Cookies.get("brand_user");
+        const brandData = localStorage.getItem("brand");
+        console.log(brandData);
         if (!brandData) {
-          setError("No brand user data found in cookies.");
+          setError("No brand user data found in local storage.");
           setLoading(false);
           return;
         }
 
         const parsedData = JSON.parse(brandData);
         const brandId = parsedData?.player?._id;
-
+        console.log(brandId);
         if (!brandId) {
           setError("Brand ID not found.");
           setLoading(false);
@@ -28,7 +29,7 @@ export default function ShowTournaments() {
         }
 
         const response = await axios.get(
-          `https://pickleball-phi.vercel.app/tournaments/brand/${brandId}`
+          `http://localhost:5000/tournaments/brand/${brandId}`
         );
         setTournaments(response.data);
       } catch (err) {

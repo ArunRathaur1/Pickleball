@@ -9,7 +9,7 @@ export default function BrandDashboard() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const brandUserData = Cookies.get("brand_user");
+    const brandUserData = localStorage.getItem("brand");
     console.log("Brand User Data:", brandUserData);
     if (brandUserData) {
       try {

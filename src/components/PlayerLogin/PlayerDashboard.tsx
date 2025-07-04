@@ -18,7 +18,7 @@ export default function PlayerDashboard() {
   useEffect(() => {
     const fetchPlayerData = async () => {
       try {
-        const cookieData = Cookies.get("player");
+        const cookieData = localStorage.getItem("player");
 
         if (!cookieData) {
           setError("Player not found in cookies");
@@ -27,7 +27,7 @@ export default function PlayerDashboard() {
         }
 
         const player = JSON.parse(cookieData);
-        const playerId = player.player.duperId;
+        const playerId = player.player.DUPRID;
         console.log(playerId);
         const response = await fetch(
           `https://pickleball-phi.vercel.app/playerlogin/userdata/${playerId}`

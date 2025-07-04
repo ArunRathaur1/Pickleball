@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import hero1 from "../../images/sp1.svg";
 import hero2 from "../../images/sp2.webp";
 import hero3 from "../../images/sp3.png";
@@ -11,13 +10,28 @@ import hero7 from "../../images/sp7.png";
 
 export default function TrustedBrands() {
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, amount: 0.2 });
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsInView(true);
+      },
+      { rootMargin: "0px", threshold: 0.2 }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+    };
+  }, []);
 
   const brands = [
     {
       src: hero1,
       alt: "sixzeropickleball",
-      link: "https://www.sixzeropickleball.com/?srsltid=AfmBOoogHgRsZW2x0UK5dSwmVSKP-22MCYfvULNjzYpb7_YmbPr224wp",
+      link: "https://www.sixzeropickleball.com/",
     },
     { src: hero2, alt: "Globalsports", link: "https://globalsports.net.in/" },
     {
@@ -29,7 +43,7 @@ export default function TrustedBrands() {
     {
       src: hero6,
       alt: "MaxWill",
-      link: "https://www.maxwillsports.com/?srsltid=AfmBOopWLBBzY2cpbqdfg5K_C264ERFHhBgAC-kkxdgn1tSpRYYMX0pf",
+      link: "https://www.maxwillsports.com/",
     },
     { src: hero7, alt: "Pickleball", link: "https://pickleball.in/" },
   ];
