@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 const API = import.meta.env.VITE_API;
+
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState(null);
@@ -56,13 +57,13 @@ export default function Newsletter() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-white-50 to-white-100 px-4">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md border border-white-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4">
+      <div className="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-8 w-full max-w-md border border-gray-200 dark:border-gray-700">
         <div className="flex justify-center mb-6">
-          <div className="bg-blue-100 p-3 rounded-full">
+          <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 text-blue-600"
+              className="h-8 w-8 text-blue-600 dark:text-blue-300"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -76,10 +77,10 @@ export default function Newsletter() {
             </svg>
           </div>
         </div>
-        <h2 className="text-2xl font-bold text-center text-white-800 mb-4">
+        <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-4">
           Subscribe to Our Newsletter
         </h2>
-        <p className="text-white-600 text-center mb-6">
+        <p className="text-gray-600 dark:text-gray-300 text-center mb-6">
           Get the latest updates straight to your inbox!
         </p>
 
@@ -92,15 +93,19 @@ export default function Newsletter() {
               onChange={(e) => setEmail(e.target.value)}
               onBlur={() => setTouched(true)}
               onKeyDown={handleKeyDown}
-              className={`w-full p-3 pl-10 border ${
-                showError ? "border-red-300" : "border-white-300"
+              className={`w-full p-3 pl-10 bg-white dark:bg-gray-800 text-black dark:text-black placeholder-gray-400 dark:placeholder-gray-500 border ${
+                showError
+                  ? "border-red-300 dark:border-red-500"
+                  : "border-gray-300 dark:border-gray-600"
               } rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none`}
             />
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`h-5 w-5 ${
-                  showError ? "text-red-400" : "text-white-400"
+                  showError
+                    ? "text-red-400"
+                    : "text-gray-400 dark:text-gray-500"
                 }`}
                 fill="none"
                 viewBox="0 0 24 24"
@@ -155,18 +160,17 @@ export default function Newsletter() {
               "Subscribe"
             )}
           </button>
-          <p className="text-xs text-white-500 text-center mt-2">
+          <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
             We respect your privacy. No spam, ever.
           </p>
         </div>
 
-        {/* Response Message - Now with better formatting for multi-line */}
         {response && (
-          <div className="bg-green-50 border border-green-200 rounded-md p-4 mt-6">
+          <div className="bg-green-50 dark:bg-green-900 border border-green-200 dark:border-green-700 rounded-md p-4 mt-6">
             <div className="flex items-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-green-500 mr-2 mt-0.5 flex-shrink-0"
+                className="h-5 w-5 text-green-500 dark:text-green-300 mr-2 mt-0.5 flex-shrink-0"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -176,21 +180,19 @@ export default function Newsletter() {
                   clipRule="evenodd"
                 />
               </svg>
-              <div className="text-green-700">
+              <div className="text-green-700 dark:text-green-300">
                 <p>{response.message}</p>
-                {/* <p className="mt-1 font-medium">{response.email}</p> */}
               </div>
             </div>
           </div>
         )}
 
-        {/* Error Message */}
         {error && !response && (
-          <div className="bg-red-50 border border-red-200 rounded-md p-4 mt-6">
+          <div className="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-md p-4 mt-6">
             <div className="flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-red-500 mr-2 flex-shrink-0"
+                className="h-5 w-5 text-red-500 dark:text-red-300 mr-2 flex-shrink-0"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -200,12 +202,13 @@ export default function Newsletter() {
                   clipRule="evenodd"
                 />
               </svg>
-              <p className="text-red-700">{error}</p>
+              <p className="text-red-700 dark:text-red-300">{error}</p>
             </div>
           </div>
         )}
       </div>
-      <p className="text-white-500 text-sm mt-6">
+
+      <p className="text-gray-500 dark:text-gray-400 text-sm mt-6">
         © {new Date().getFullYear()} Your Company. All rights reserved.
       </p>
     </div>
