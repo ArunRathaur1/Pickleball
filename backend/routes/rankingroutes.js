@@ -367,7 +367,9 @@ router.get("/with-playerid", async (req, res) => {
 
 router.get("/fill-rankings", async (req, res) => {
   try {
+    console.log("🔄 Fetching all players from the Ranking collection...");
     const players = await Ranking.find();
+    console.log(`✅ Total players found: ${players.length}`);
 
     const singlesList = [];
     const doublesList = [];
@@ -378,22 +380,24 @@ router.get("/fill-rankings", async (req, res) => {
 
       singlesList.push({
         _id: player._id,
-        value: !isNaN(singlesRating) ? singlesRating : -1,
+        value: isNaN(singlesRating) ? -Infinity : singlesRating,
       });
 
       doublesList.push({
         _id: player._id,
-        value: !isNaN(doublesRating) ? doublesRating : -1,
+        value: isNaN(doublesRating) ? -Infinity : doublesRating,
       });
     }
 
-    // Sort: valid ratings (highest to lowest), then invalid ones (value = -1)
+    console.log("📊 Sorting singles and doubles rating lists...");
     singlesList.sort((a, b) => b.value - a.value);
     doublesList.sort((a, b) => b.value - a.value);
 
+    console.log("🎯 Assigning ranks...");
     const bulkOps = [];
 
     for (let i = 0; i < singlesList.length; i++) {
+      
       bulkOps.push({
         updateOne: {
           filter: { _id: singlesList[i]._id },
@@ -411,11 +415,12 @@ router.get("/fill-rankings", async (req, res) => {
       });
     }
 
-    // Use bulkWrite for efficiency
+    console.log(`📦 Performing bulkWrite with ${bulkOps.length} operations...`);
     await Ranking.bulkWrite(bulkOps);
 
+    console.log("✅ Ranking update completed successfully.");
     res.status(200).json({
-      message: "Ranks updated for all players (singles and doubles).",
+      message: "✅ All players ranked based on ratings. NaNs pushed to bottom.",
       totalPlayers: players.length,
     });
   } catch (error) {
@@ -426,6 +431,8 @@ router.get("/fill-rankings", async (req, res) => {
     });
   }
 });
+
+
 
 
 module.exports = router;

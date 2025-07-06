@@ -34,7 +34,7 @@ export default function SyncwithDupr() {
 
     try {
       const res = await axios.get(
-        "https://pickleball-phi.vercel.app/ranking/fill-rankings"
+        `${API}/ranking/fill-rankings`
       );
       setMessage(
         `✅ Rankings updated! Total Ranked: ${res.data.totalRanked}, Singles: ${res.data.validSingles}, Doubles: ${res.data.validDoubles}`
