@@ -28,7 +28,8 @@ export default function PlayerDashboard() {
         }
 
         const player = JSON.parse(cookieData);
-        const playerId = player.DUPRID;
+        console.log(player);
+        const playerId = player.player.DUPRID;
         console.log(playerId);
         const response = await fetch(
           `${API}/playerlogin/userdata/${playerId}`
