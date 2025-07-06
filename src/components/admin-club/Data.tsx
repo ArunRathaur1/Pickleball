@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function ClubData() {
   const [clubs, setClubs] = useState([]);
   const [editingClub, setEditingClub] = useState(null);
@@ -14,7 +14,7 @@ export default function ClubData() {
   });
 
   useEffect(() => {
-    fetch("https://pickleball-phi.vercel.app/clublist/all")
+    fetch(`${API}/clublist/all`)
       .then((res) => res.json())
       .then((data) => setClubs(data))
       .catch((error) => console.error("Error fetching club data:", error));
@@ -24,7 +24,7 @@ export default function ClubData() {
     if (!window.confirm("Are you sure you want to delete this club?")) return;
 
     try {
-      const response = await fetch(`https://pickleball-phi.vercel.app/clublist/delete/${id}`, {
+      const response = await fetch(`${API}/clublist/delete/${id}`, {
         method: "DELETE",
       });
 
@@ -82,7 +82,7 @@ export default function ClubData() {
         formData.append("logoimageUrl", updatedClub.logoimageUrl);
       }
 
-      const response = await fetch(`https://pickleball-phi.vercel.app/clublist/update/${editingClub}`, {
+      const response = await fetch(`${API}/clublist/update/${editingClub}`, {
         method: "PATCH",
         body: formData,
       });

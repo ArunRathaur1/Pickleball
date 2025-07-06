@@ -4,6 +4,7 @@ import axios from "axios";
 import { Navbar } from "../layout/navbar";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import L from "leaflet";
 import {
   MapPin,
@@ -52,7 +53,7 @@ export default function ClubDetails() {
     const fetchClubDetails = async () => {
       try {
         const response = await axios.get(
-          `https://pickleball-phi.vercel.app/clublist/${id}`
+          `${API}/clublist/${id}`
         );
         setClub(response.data);
       } catch (error) {

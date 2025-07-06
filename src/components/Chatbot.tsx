@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function Chatbot({ onClose }) {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
@@ -26,7 +26,7 @@ export default function Chatbot({ onClose }) {
     setLoading(true);
 
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/airoutes/chat", {
+      const response = await fetch(`${API}/airoutes/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userInput }),

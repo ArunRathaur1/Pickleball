@@ -6,6 +6,7 @@ import BasicInfo2 from "./BasicInfo2";
 import BasicInfo3 from "./BasicInfo3";
 import BasicInfo4 from "./BasicInfo4";
 import Cookies from "js-cookie";
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import { Navbar } from "@/components/layout/navbar";
 
 
@@ -92,7 +93,7 @@ const TournamentForm = () => {
       if (!tournamentId) return;
       try {
         const res = await fetch(
-          `https://pickleball-phi.vercel.app/tournaments/data/${tournamentId}`
+          `${API}/tournaments/data/${tournamentId}`
         );
         if (!res.ok) throw new Error("Network response was not ok");
 
@@ -254,7 +255,7 @@ const TournamentForm = () => {
     const formattedData = formatDataForSubmission(formData);
     try {
       const response = await fetch(
-        "https://pickleball-phi.vercel.app/tournaments/add-or-update",
+        `${API}/tournaments/add-or-update`,
         {
           method: "POST",
           headers: {

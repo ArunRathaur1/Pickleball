@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 const continents = ["Africa", "Asia", "Europe", "NorthAmerica", "SouthAmerica"];
 
 export default function SyncwithDupr() {
@@ -13,7 +13,7 @@ export default function SyncwithDupr() {
 
     try {
       const res = await axios.get(
-        `https://pickleball-phi.vercel.app/ranking/sync-from-dupr/${continent}`
+        `${API}/ranking/sync-from-dupr/${continent}`
       );
       setMessage(
         `✅ ${continent} synced successfully. Updated: ${

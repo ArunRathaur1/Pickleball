@@ -5,7 +5,7 @@ import { useToast } from "@/components/ui/use-toast";
 import ClubCard from '@/components/ClubCard';
 import FilterBar from '@/components/FilterBar';
 import { Skeleton } from '@/components/ui/skeleton';
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 interface Club {
   _id: string;
   name: string;
@@ -34,7 +34,7 @@ const ClubList = () => {
     const fetchClubs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://pickleball-phi.vercel.app/clublist/all');
+        const response = await axios.get(`${API}/clublist/all`);
         setClubs(response.data);
         
         // Extract unique countries

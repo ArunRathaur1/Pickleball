@@ -5,14 +5,14 @@ import { TournamentList } from "@/components/tournaments/tournamentdetails/tourn
 import { TournamentMap } from "@/components/tournaments/tournamentdetails/tournament-map";
 import ViewToggle from "./components/ViewToggle";
 import FilterManager from "./components/FilterManager";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 const Tournaments = () => {
   const [tournaments, setTournaments] = useState([]);
   const [filteredTournaments, setFilteredTournaments] = useState([]);
   const [view, setView] = useState("list");
 
   useEffect(() => {
-    fetch("https://pickleball-phi.vercel.app/tournaments/approved")
+    fetch(`${API}/tournaments/approved`)
       .then((res) => res.json())
       .then((data) => {
         setTournaments(data);

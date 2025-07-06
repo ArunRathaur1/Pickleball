@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { useNavigate } from "react-router-dom";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function RegisterForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -27,7 +27,7 @@ export default function RegisterForm() {
     setLoading(true);
     setError("");
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/admin/signup", {
+      const response = await fetch(`${API}/admin/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

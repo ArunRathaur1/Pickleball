@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 // Fix marker icon issue in Leaflet
 import markerIconPng from "leaflet/dist/images/marker-icon.png";
 
@@ -22,7 +22,7 @@ const CourtMap = () => {
   const [courts, setCourts] = useState<Court[]>([]);
 
   useEffect(() => {
-    fetch("https://pickleball-phi.vercel.app/court/all")
+    fetch(`${API}/court/all`)
       .then((res) => res.json())
       .then((data) => setCourts(data))
       .catch((err) => console.error("Error fetching courts:", err));

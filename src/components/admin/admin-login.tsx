@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function AdminLogin() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +23,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/admin/login", {
+      const response = await fetch(`${API}/admin/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

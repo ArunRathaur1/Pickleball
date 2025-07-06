@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { useNavigate } from "react-router-dom"; 
+const API= import.meta.env.VITE_API; // Use the environment variable for API URL
 const Login = () => {
   const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const Login = () => {
     try {
       if (formData.userType === "Player") {
         const response = await axios.post(
-          "https://pickleball-phi.vercel.app/playerlogin/login",
+          `${API}/playerlogin/login`,
           {
             DUPRID: formData.id,
             password: formData.password,
@@ -41,7 +42,7 @@ const Login = () => {
         navigate("/playerdashboard");
       } else {
         console.log(formData);
-        const response = await axios.post("https://pickleball-phi.vercel.app/brand/login", {
+        const response = await axios.post(`${API}/brand/login`, {
           email: formData.id,
           password: formData.password,
         });

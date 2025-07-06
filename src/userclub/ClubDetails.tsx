@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from "@/components/ui/skeleton";
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 // Add your Mapbox token here
 const MAPBOX_TOKEN = 'YOUR_MAPBOX_TOKEN';
 
@@ -42,7 +42,7 @@ const ClubDetails = () => {
       
       try {
         setLoading(true);
-        const response = await axios.get(`https://pickleball-phi.vercel.app/clublist/${id}`);
+        const response = await axios.get(`${API}/clublist/${id}`);
         setClub(response.data);
       } catch (error) {
         console.error('Error fetching club details:', error);

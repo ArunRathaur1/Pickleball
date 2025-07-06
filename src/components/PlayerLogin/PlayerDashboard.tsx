@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import AddAthlete from "../athletes/AddAthlete";
 import { Navbar } from "../layout/navbar";
 import logo from './logo.png';
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function PlayerDashboard() {
   const [playerData, setPlayerData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ export default function PlayerDashboard() {
         const playerId = player.DUPRID;
         console.log(playerId);
         const response = await fetch(
-          `https://pickleball-phi.vercel.app/playerlogin/userdata/${playerId}`
+          `${API}/playerlogin/userdata/${playerId}`
         );
         const data = await response.json();
         console.log(data);

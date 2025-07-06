@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function ShowTournaments() {
   const [tournaments, setTournaments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function ShowTournaments() {
         }
 
         const response = await axios.get(
-          `http://pickleball-phi.vercel.app/tournaments/brand/${brandId}`
+          `${API}/tournaments/brand/${brandId}`
         );
         setTournaments(response.data);
       } catch (err) {

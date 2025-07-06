@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+const API = import.meta.env.VITE_API;
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState(null);
@@ -25,7 +25,7 @@ export default function Newsletter() {
     setError(null);
 
     try {
-      const res = await fetch("https://pickleball-phi.vercel.app/newsletter/subscribe", {
+      const res = await fetch(`${API}/newsletter/subscribe`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

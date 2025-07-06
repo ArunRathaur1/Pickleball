@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from 'react-router-dom';
-
+const API = import.meta.env.VITE_API;
 export function LoginForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +48,7 @@ export function LoginForm() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/users/login", {
+      const response = await fetch(`${API}/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

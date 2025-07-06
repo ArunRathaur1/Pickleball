@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import { Badge } from "@/components/ui/badge";
 import {
   CalendarIcon,
@@ -23,14 +24,14 @@ const TournamentRequestsPage = () => {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    fetch("https://pickleball-phi.vercel.app/tournaments/all")
+    fetch(`${API}/tournaments/all`)
       .then((response) => response.json())
       .then((data) => setTournaments(data))
       .catch((error) => console.error("Error fetching tournaments:", error));
   }, []);
 
   const updateTournamentStatus = (id, status) => {
-    fetch(`https://pickleball-phi.vercel.app/tournaments/update-status/${id}`, {
+    fetch(`${API}/tournaments/update-status/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

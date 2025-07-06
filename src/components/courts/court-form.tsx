@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 const CourtForm = () => {
   const [courtData, setCourtData] = useState({
     name: "",
@@ -47,7 +47,7 @@ const CourtForm = () => {
     };
 
     try {
-      const res = await fetch("https://pickleball-phi.vercel.app/court/add", {
+      const res = await fetch(`${API}/court/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newCourt),

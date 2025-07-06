@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 // Add your Mapbox token here - in production this should be an environment variable
 // or retrieved from your backend through an API
 const MAPBOX_TOKEN = 'YOUR_MAPBOX_TOKEN';
@@ -41,7 +41,7 @@ const MapView = () => {
     const fetchClubs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://pickleball-phi.vercel.app/clublist/all');
+        const response = await axios.get(`${API}/clublist/all`);
         const approvedClubs = response.data.filter((club: Club) => club.status === 'approved');
         setClubs(approvedClubs);
       } catch (error) {

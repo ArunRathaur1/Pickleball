@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import bg from "../Playerprofile/Background.png"; // fallback image
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 interface PlayerData {
   fullName: string;
   duprId: string;
@@ -28,7 +28,7 @@ export default function PlayerDescription() {
   useEffect(() => {
     if (!duprid) return;
     axios
-      .get(`https://pickleball-phi.vercel.app/playerlogin/${duprid}`)
+      .get(`${API}/playerlogin/${duprid}`)
       .then((res) => {
         setPlayer(res.data);
         console.log("Player data fetched:", res.data);

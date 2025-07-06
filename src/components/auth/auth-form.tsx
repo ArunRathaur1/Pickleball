@@ -9,7 +9,7 @@ import { LoginForm } from "./login-form";
 import { RegisterForm } from "./register-form";
 import { GoogleAuthButton } from "./google-auth-button";
 import { AuthFormFooter } from "./auth-form-footer";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export function AuthForm({ type, userType }) {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -46,7 +46,7 @@ export function AuthForm({ type, userType }) {
   
  const handleGoogleAuth = async () => {
    // Open Google OAuth in a new tab
-   window.open(`https://pickleball-phi.vercel.app/auth/google`, "_self");
+   window.open(`${API}/auth/google`, "_self");
  };
 
   return (

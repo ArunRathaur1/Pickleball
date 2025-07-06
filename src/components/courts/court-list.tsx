@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 interface Court {
   _id: string;
   name: string;
@@ -18,7 +18,7 @@ const CourtList = () => {
   const [searchCountry, setSearchCountry] = useState("");
 
   useEffect(() => {
-    fetch("https://pickleball-phi.vercel.app/court/all")
+    fetch(`${API}/court/all`)
       .then((res) => res.json())
       .then((data) => {
         setCourts(data);

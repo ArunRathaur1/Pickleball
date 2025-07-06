@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 interface Blog {
   _id: string;
   name: string;
@@ -39,7 +39,7 @@ export function Testimonials() {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("https://pickleball-phi.vercel.app/blogs");
+      const response = await axios.get(`${API}/blogs`);
       setBlogs(response.data);
       console.log(response.data);
     } catch (error) {

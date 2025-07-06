@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { Navbar } from "../../layout/navbar";
 import { TournamentMap } from "./TournamentMap";
+const API= import.meta.env.VITE_API; // Use the environment variable for API URL
 import {
   MapPin,
   Calendar,
@@ -37,7 +38,7 @@ export default function TournamentDetails() {
     const fetchTournament = async () => {
       try {
         console.log(id);
-        const response = await fetch(`https://pickleball-phi.vercel.app/tournaments/data/${id}`);
+        const response = await fetch(`${API}/tournaments/data/${id}`);
 
         if (!response.ok) {
           throw new Error(`Failed to fetch tournament (${response.status})`);

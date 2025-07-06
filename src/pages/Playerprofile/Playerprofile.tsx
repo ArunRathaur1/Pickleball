@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
 // import Website_Background from "../spline/website";
@@ -23,7 +24,7 @@ const PlayerProfile = () => {
   useEffect(() => {
     console.log('hello')
     axios
-      .get(`https://pickleball-phi.vercel.app/playerlogin/player/${id}`)
+      .get(`${API}/playerlogin/player/${id}`)
       .then((res) => {
         setAthlete(res.data);
         setLoading(false);

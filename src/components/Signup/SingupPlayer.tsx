@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-
+const API = import.meta.env.VITE_API;
 export default function SimpleSignup() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ export default function SimpleSignup() {
       setLoading(true);
 
       const response = await fetch(
-        "https://pickleball-phi.vercel.app/playerlogin/register",
+        `${API}/playerlogin/register`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

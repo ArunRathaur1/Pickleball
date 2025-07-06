@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -20,7 +20,7 @@ const NAV_ITEMS = [
     localStorage.removeItem("userData");
     localStorage.removeItem("googleData");
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/auth/logout", {
+      const response = await fetch(`${API}/auth/logout`, {
         method: "GET",
         credentials: "include", // ✅ Allow sending cookies
       });

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function View() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -8,7 +8,7 @@ export default function View() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("https://pickleball-phi.vercel.app/instagram/");
+        const response = await fetch(`${API}/instagram/`);
         if (!response.ok) {
           throw new Error("Failed to fetch posts.");
         }
@@ -40,7 +40,7 @@ export default function View() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://pickleball-phi.vercel.app/instagram/${id}`, {
+      const response = await fetch(`${API}/instagram/${id}`, {
         method: "DELETE",
       });
 

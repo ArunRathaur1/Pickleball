@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 const CampaignForm: React.FC = () => {
   const ref = useRef(null);
   const [isInView, setIsInView] = useState(false);
@@ -38,7 +38,7 @@ const CampaignForm: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://pickleball-phi.vercel.app/inquary/",
+        `${API}/inquary/`,
         {
           method: "POST",
           headers: {

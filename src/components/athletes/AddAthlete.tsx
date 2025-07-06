@@ -8,6 +8,7 @@ import Related from "./Related";
 import axios from "axios";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+const API = import.meta.env.VITE_API;
 import {
   Card,
   CardContent,
@@ -186,7 +187,7 @@ export default function AddAthlete() {
 
       try {
         const response = await axios.get(
-          `https://pickleball-phi.vercel.app/playerlogin/${playerId}`
+          `${API}/playerlogin/${playerId}`
         );
 
         const athleteData = response.data;
@@ -596,7 +597,7 @@ export default function AddAthlete() {
           password: adminpassword,
         };
 
-        url = "https://pickleball-phi.vercel.app/admin/update/data";
+        url = `${API}/admin/update/data`;
       } else {
         // 🧑‍ Athlete is updating
         submitData = {
@@ -605,7 +606,7 @@ export default function AddAthlete() {
           password,
         };
 
-        url = "https://pickleball-phi.vercel.app/playerlogin/update/data";
+        url = `${API}/playerlogin/update/data`;
       }
 
       const response = await axios.put(url, { submitData });

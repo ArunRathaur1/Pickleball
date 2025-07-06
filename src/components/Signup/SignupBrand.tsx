@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-
+const API = import.meta.env.VITE_API;
 export default function SignupBrand() {
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function SignupBrand() {
     setError("");
 
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/brand/signup", {
+      const response = await fetch(`${API}/brand/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

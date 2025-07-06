@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import {
   Card,
   CardContent,
@@ -38,9 +39,9 @@ const ClubRequestsPage = () => {
   const fetchClubsByStatus = (status: string) => {
     const url =
       status === "all"
-        ? "https://pickleball-phi.vercel.app/clublist/all"
-        : `https://pickleball-phi.vercel.app/clublist/status/${status}`;
-  
+        ? `${API}/clublist/all`
+        : `${API}/clublist/status/${status}`;
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => setClubs(data))
@@ -49,7 +50,7 @@ const ClubRequestsPage = () => {
   
 
   const updateClubStatus = (id: string, status: "approved" | "rejected") => {
-    fetch(`https://pickleball-phi.vercel.app/clublist/status/${id}`, {
+    fetch(`${API}/clublist/status/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

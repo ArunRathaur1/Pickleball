@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function SimpleAthleteList() {
   const [athletes, setAthletes] = useState([]);
   const [statusFilter, setStatusFilter] = useState("PENDING");
@@ -29,7 +29,7 @@ export default function SimpleAthleteList() {
 
   useEffect(() => {
     axios
-      .get(`https://pickleball-phi.vercel.app/ranking/status-only/${statusFilter}`)
+      .get(`${API}/ranking/status-only/${statusFilter}`)
       .then((response) => {
         const fetchedAthletes = response.data.players || [];
         setAthletes(fetchedAthletes);
@@ -78,7 +78,7 @@ export default function SimpleAthleteList() {
 
     try {
       const response = await axios.put(
-        "https://pickleball-phi.vercel.app/admin/update/playerid",
+        `${API}/admin/update/playerid`,
         {
           email,
           password,

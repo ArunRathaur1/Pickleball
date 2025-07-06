@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/navbar";
 import Listview from "@/components/userclubs/listview";
 import Mapview from "@/components/userclubs/Mapview";
 import { useNavigate } from "react-router-dom";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function Clubs() {
   const [clubs, setClubs] = useState([]);
   const [filteredClubs, setFilteredClubs] = useState([]);
@@ -29,7 +29,7 @@ export default function Clubs() {
     }
 
     // Fetch data from the API
-    fetch("https://pickleball-phi.vercel.app/clublist/all")
+    fetch(`${API}/clublist/all`)
       .then((res) => res.json())
       .then((data) => {
         setClubs(data);

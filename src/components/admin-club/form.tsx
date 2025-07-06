@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import CloudinaryImageUploader from "./imageupload";
 import {
   MapContainer,
@@ -138,7 +139,7 @@ const ClubForm = () => {
       };
 
       const response = await axios.post(
-        "https://pickleball-phi.vercel.app/clublist/add",
+        `${API}/clublist/add`,
         payload
       );
 

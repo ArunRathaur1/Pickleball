@@ -3,7 +3,7 @@ import axios from "axios";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Link } from "react-router-dom";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 interface Athlete {
   _id: string;
   fullName: string;
@@ -29,7 +29,7 @@ const Athletes = () => {
 
   useEffect(() => {
     axios
-      .get("https://pickleball-phi.vercel.app/ranking/with-playerid")
+      .get(`${API}/ranking/with-playerid`)
       .then((res) => {
         const approvedPlayers = res.data.players.filter(
           (player: Athlete) =>

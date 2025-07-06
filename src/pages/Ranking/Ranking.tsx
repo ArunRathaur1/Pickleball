@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Link } from "react-router-dom";
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import {
   Trophy,
   Users,
@@ -51,7 +52,7 @@ export default function Ranking() {
 
 
       const res = await fetch(
-        `https://pickleball-phi.vercel.app/ranking/filtered-players?${query}`
+        `${API}/ranking/filtered-players?${query}`
       );
       const data = await res.json();
       setPlayers(data.players || []);

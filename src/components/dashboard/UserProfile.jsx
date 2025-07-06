@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 const UserDashboard = () => {
   const [userData, setUserData] = useState(null);
   const [isGoogleUser, setIsGoogleUser] = useState(false);
@@ -22,7 +22,7 @@ const UserDashboard = () => {
     
     // Priority 1: Try to fetch from Google API
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/auth/login/success", {
+      const response = await fetch(`${API}/auth/login/success`, {
         method: "GET",
         credentials: "include",
       });

@@ -5,7 +5,7 @@ import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 import image from './pickleballoriginal.png';
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
@@ -59,7 +59,7 @@ export function Navbar() {
     localStorage.removeItem("adminData");
 
     try {
-      await fetch("https://pickleball-phi.vercel.app/auth/logout", {
+      await fetch(`${API}/auth/logout`, {
         method: "GET",
         credentials: "include",
       });

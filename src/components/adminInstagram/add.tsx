@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 export default function InstagramEmbedExtractor() {
   const [embedCode, setEmbedCode] = useState("");
   const [postUrl, setPostUrl] = useState("");
@@ -25,7 +25,7 @@ export default function InstagramEmbedExtractor() {
     setLoading(true);
     setMessage(""); // Clear previous messages
     try {
-      const response = await fetch("https://pickleball-phi.vercel.app/instagram/", {
+      const response = await fetch(`${API}/instagram/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
