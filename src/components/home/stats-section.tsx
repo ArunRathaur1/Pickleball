@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import backgroundImage from "../../images/14.jpg"; // Import the background image
+import backgroundImage from "./ourimpact.jpg"
 
 interface StatItemProps {
   value: number;
@@ -52,12 +52,12 @@ const StatItem = ({ value, label, suffix = "", delay = 0 }: StatItemProps) => {
   return (
     <div className="text-center">
       <div className="flex justify-center items-baseline">
-        <span ref={countRef} className="text-4xl md:text-5xl font-bold text-pickle">
+        <span ref={countRef} className="text-4xl md:text-5xl font-bold text-white">
           {count}
         </span>
-        <span className="text-2xl md:text-3xl font-bold text-pickle ml-1">{suffix}</span>
+        <span className="text-2xl md:text-3xl font-bold text-white ml-1">{suffix}</span>
       </div>
-      <p className="text-muted-foreground mt-2">{label}</p>
+      <p className="text-white mt-2">{label}</p>
     </div>
   );
 };
@@ -81,7 +81,7 @@ export function StatsSection() {
           <p className="text-white/80">The numbers speak for themselves</p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8" >
           <StatItem value={120} label="Athletes Promoted" delay={0} />
           <StatItem value={85} label="Tournaments Marketed" delay={200} />
           <StatItem value={10} suffix="+" label="Years of Experience" delay={400} />
