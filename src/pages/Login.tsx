@@ -3,10 +3,12 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { useNavigate } from "react-router-dom"; 
-const API= import.meta.env.VITE_API; // Use the environment variable for API URL
+import { useNavigate } from "react-router-dom";
+
+const API = import.meta.env.VITE_API;
+
 const Login = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     id: "",
     password: "",
@@ -28,24 +30,20 @@ const Login = () => {
 
     try {
       if (formData.userType === "Player") {
-        const response = await axios.post(
-          `${API}/playerlogin/login`,
-          {
-            DUPRID: formData.id,
-            password: formData.password,
-          }
-        );
+        const response = await axios.post(`${API}/playerlogin/login`, {
+          DUPRID: formData.id,
+          password: formData.password,
+        });
 
         const data = response.data;
-        console.log(data);
         localStorage.setItem("player", JSON.stringify(data));
         navigate("/playerdashboard");
       } else {
-        console.log(formData);
         const response = await axios.post(`${API}/brand/login`, {
           email: formData.id,
           password: formData.password,
         });
+
         const data = response.data;
         localStorage.setItem("brand", JSON.stringify(data));
         navigate("/branddashboard");
@@ -57,17 +55,18 @@ const Login = () => {
       console.error("Login Error:", error);
     }
   };
-  
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-black text-gray-900 dark:text-white transition-all">
       <Navbar />
       <main className="flex-1 py-12">
-        <div className="container max-w-md mx-auto bg-white p-6 rounded-xl shadow-md">
-          <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+        <div className="container max-w-md mx-auto bg-white dark:bg-gray-900 p-6 rounded-xl shadow-md transition-all">
+          <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
+            Login
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="id" className="block mb-1 font-medium">
+              <label htmlFor="id" className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
                 {formData.userType === "Player" ? "DUPR ID" : "Brand ID"}
               </label>
               <input
@@ -76,18 +75,16 @@ const Login = () => {
                 name="id"
                 value={formData.id}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-black dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={
-                  formData.userType === "Player"
-                    ? "Enter DUPR ID"
-                    : "Enter email id"
+                  formData.userType === "Player" ? "Enter DUPR ID" : "Enter email id"
                 }
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block mb-1 font-medium">
+              <label htmlFor="password" className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
                 Password
               </label>
               <input
@@ -96,13 +93,13 @@ const Login = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-black dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="userType" className="block mb-1 font-medium">
+              <label htmlFor="userType" className="block mb-1 font-medium text-gray-700 dark:text-gray-300">
                 Select User Type
               </label>
               <select
@@ -110,7 +107,7 @@ const Login = () => {
                 name="userType"
                 value={formData.userType}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-md"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-black dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="Player">Player</option>
                 <option value="Brand">Brand</option>

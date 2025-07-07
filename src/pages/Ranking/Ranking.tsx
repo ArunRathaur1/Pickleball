@@ -50,7 +50,7 @@ export default function Ranking() {
     if (maxAge) query.append("maxAge", maxAge.toString());
 
 
-
+console.log(`${API}/ranking/filtered-players?${query}`)
       const res = await fetch(
         `${API}/ranking/filtered-players?${query}`
       );

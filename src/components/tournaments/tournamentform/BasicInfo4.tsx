@@ -11,32 +11,39 @@ export default function BasicInfo4(props) {
     addCategory,
     handleInputChange,
     handleSubmit,
+    darkMode = false,
   } = props;
+
+  const baseColor = darkMode ? "#1f2937" : "#e6f2e6";
+  const textColor = darkMode ? "#f9fafb" : "#000";
+  const borderColor = darkMode ? "#10b981" : "#339933";
+  const boxColor = darkMode ? "#374151" : "#ccffcc";
 
   const styles = {
     container: {
       fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
       margin: "auto",
-      marginTop:"30px",
+      marginTop: "30px",
       padding: "20px",
-      backgroundColor: "#e6f2e6",
+      backgroundColor: baseColor,
       borderRadius: "10px",
       boxShadow: "0 4px 8px rgba(0, 77, 0, 0.2)",
+      color: textColor,
     },
     heading: {
-      borderBottom: "2px solid #339933",
+      borderBottom: `2px solid ${borderColor}`,
       paddingBottom: "8px",
       marginBottom: "20px",
       fontWeight: "700",
       fontSize: "1.5rem",
     },
     categoryBox: {
-      backgroundColor: "#ccffcc",
-      border: "1px solid #66bb66",
+      backgroundColor: boxColor,
+      border: `1px solid ${borderColor}`,
       borderRadius: "8px",
       padding: "15px",
       marginBottom: "15px",
-      boxShadow: "inset 0 0 5px #66bb66",
+      boxShadow: `inset 0 0 5px ${borderColor}`,
     },
     label: {
       display: "block",
@@ -48,30 +55,35 @@ export default function BasicInfo4(props) {
       width: "100%",
       padding: "8px",
       borderRadius: "6px",
-      border: "1px solid #339933",
+      border: `1px solid ${borderColor}`,
       fontSize: "14px",
-      outlineColor: "#339933",
+      outlineColor: borderColor,
+      backgroundColor: darkMode ? "#1e293b" : "#fff",
+      color: textColor,
     },
     select: {
       width: "100%",
       padding: "8px",
       borderRadius: "6px",
-      border: "1px solid #339933",
+      border: `1px solid ${borderColor}`,
       fontSize: "14px",
-      outlineColor: "#339933",
-      backgroundColor: "#f0fff0",
+      outlineColor: borderColor,
+      backgroundColor: darkMode ? "#1e293b" : "#f0fff0",
+      color: textColor,
     },
     textarea: {
       width: "100%",
       padding: "10px",
       borderRadius: "6px",
-      border: "1px solid #339933",
+      border: `1px solid ${borderColor}`,
       fontSize: "14px",
-      outlineColor: "#339933",
+      outlineColor: borderColor,
       resize: "vertical",
+      backgroundColor: darkMode ? "#1e293b" : "#fff",
+      color: textColor,
     },
     buttonPrimary: {
-      backgroundColor: "#339933",
+      backgroundColor: borderColor,
       color: "#fff",
       padding: "10px 20px",
       border: "none",
@@ -80,7 +92,7 @@ export default function BasicInfo4(props) {
       fontSize: "1rem",
       cursor: "pointer",
       marginTop: "20px",
-      boxShadow: "0 3px 6px rgba(51, 153, 51, 0.5)",
+      boxShadow: `0 3px 6px rgba(51, 153, 51, 0.5)`,
       transition: "background-color 0.3s ease",
     },
     buttonRemove: {
@@ -103,7 +115,6 @@ export default function BasicInfo4(props) {
   const [primaryHover, setPrimaryHover] = React.useState(false);
   const [removeHoverIndex, setRemoveHoverIndex] = React.useState(null);
 
-  // This updates the imageUrl field in formData when upload succeeds
   const handleImageUpload = (uploadedUrl) => {
     setFormData({ ...formData, imageUrl: uploadedUrl });
   };
@@ -116,8 +127,7 @@ export default function BasicInfo4(props) {
           <h4>Category {index + 1}</h4>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-            {/* Category Name */}
-            <div style={{ flex: "1 1 30%"}}>
+            <div style={{ flex: "1 1 30%" }}>
               <label style={styles.label}>Category Name:</label>
               <input
                 type="text"
@@ -130,7 +140,6 @@ export default function BasicInfo4(props) {
               />
             </div>
 
-            {/* Max Players */}
             <div style={{ flex: "1 1 30%", minWidth: "200px" }}>
               <label style={styles.label}>Max Players:</label>
               <input
@@ -144,7 +153,6 @@ export default function BasicInfo4(props) {
               />
             </div>
 
-            {/* Gender */}
             <div style={{ flex: "1 1 30%", minWidth: "200px" }}>
               <label style={styles.label}>Gender:</label>
               <select
@@ -164,7 +172,6 @@ export default function BasicInfo4(props) {
               </select>
             </div>
 
-            {/* Registration Fee */}
             <div style={{ flex: "1 1 30%", minWidth: "200px" }}>
               <label style={styles.label}>Registration Fee:</label>
               <input
@@ -179,7 +186,6 @@ export default function BasicInfo4(props) {
             </div>
           </div>
 
-          {/* Remove Button */}
           {formData.categories.length > 1 && (
             <button
               type="button"
@@ -222,7 +228,7 @@ export default function BasicInfo4(props) {
       />
       <div>Or</div>
       <CloudinaryImageUploader onUploadSuccess={handleImageUpload} />
-      <img src={formData.imageUrl}></img>
+      <img src={formData.imageUrl} style={{ maxWidth: "100%", marginTop: "10px" }} alt="Uploaded preview" />
       <label style={styles.label}>Description:</label>
       <textarea
         name="description"
