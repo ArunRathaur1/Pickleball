@@ -59,10 +59,12 @@ export default function SimpleSignup() {
       );
 
       const data = await response.json();
-
+      console.log("Response data:", data);
       if (!response.ok) throw new Error(data.message || "Signup failed");
 
-      localStorage.setItem("player", JSON.stringify(data.player));
+      localStorage.setItem("player", JSON.stringify(data));
+      console.log("Player data:", data);
+      
       alert("Signup successful!");
       navigate("/playerdashboard");
 
