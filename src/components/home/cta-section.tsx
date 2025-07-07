@@ -59,16 +59,6 @@ export function CTASection() {
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
-            <Link to="/contact">
-              <Button
-                size="lg"
-                variant="outline"
-                className="  hover:bg-white/10 btn-animated"
-              >
-                Contact Us
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
           </div>
         </div>
       </div>

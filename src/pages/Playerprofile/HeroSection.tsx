@@ -16,14 +16,14 @@ const HeroSection = ({ athlete }: { athlete: Athlete }) => (
         paddingTop: "120px",
         width: "120%",
         left: "-5%",
-        marginTop: "-120px",
-        zIndex: "-10",
+        marginTop:'-120px',
+        zIndex:"-1"
       }}
     ></div>
 
     {/* Player Logo Image */}
     <div
-      className="absolute inset-0 bg-cover bg-center z-10"
+      className="absolute inset-0 bg-cover bg-center "
       style={{ backgroundImage: `url(${athlete.playerlogoimage})` }}
     ></div>
 
