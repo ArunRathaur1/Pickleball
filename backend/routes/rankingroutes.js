@@ -220,8 +220,8 @@ router.get("/filtered-players", async (req, res) => {
     continent = "ALL",
     status = "ALL",
     name = "",
-    maxAge = "",
-    country = "", // 👈 added
+    minAge = "",
+    country = "",
   } = req.query;
 
   const pageSize = 50;
@@ -229,28 +229,33 @@ router.get("/filtered-players", async (req, res) => {
 
   const filter = {};
 
+  // Gender Filter
   if (gender.toUpperCase() !== "ALL") {
     filter.gender = gender.toUpperCase();
   }
 
+  // Continent Filter
   if (continent.toUpperCase() !== "ALL") {
     filter.Continent = continent;
   }
 
+  // Status Filter
   if (status.toUpperCase() !== "ALL") {
     filter.status = status.toUpperCase();
   }
 
+  // Name Filter (Partial match, case-insensitive)
   if (name.trim() !== "") {
     filter.fullName = { $regex: name.trim(), $options: "i" };
   }
 
-  const parsedMaxAge = parseInt(maxAge);
-  if (!isNaN(parsedMaxAge)) {
-    filter.age = { $lte: parsedMaxAge };
+  // Min Age Filter
+  const parsedMinAge = parseInt(minAge);
+  if (!isNaN(parsedMinAge)) {
+    filter.age = { $gte: parsedMinAge };
   }
 
-  // ✅ Country filtering using shortAddress regex
+  // Country Filter from shortAddress
   if (country.trim() !== "") {
     const regex = new RegExp(`,\\s*${country.trim().toUpperCase()}$`, "i");
     filter.shortAddress = { $regex: regex };
@@ -325,9 +330,9 @@ router.get("/filtered-players", async (req, res) => {
         continent,
         status,
         name,
-        maxAge,
+        minAge,
         country,
-      }, // 👈 included
+      },
       page: parseInt(page),
       pageSize,
       totalPlayers,

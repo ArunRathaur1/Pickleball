@@ -36,7 +36,7 @@ export default function Ranking() {
   const [selectedCountry, setSelectedCountry] = useState("IN");
   const [currentPage, setCurrentPage] = useState(1);
   const [playerName, setPlayerName] = useState("");
-  const [maxAge, setMaxAge] = useState("");
+  const [minAge, setminAge] = useState("");
 
   const [players, setPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -49,7 +49,7 @@ export default function Ranking() {
       query.append("page", currentPage.toString());
       query.append("continent", selectedContinent);
       if (playerName) query.append("name", playerName);
-      if (maxAge) query.append("maxAge", maxAge.toString());
+      if (minAge) query.append("minAge", minAge.toString());
       if (selectedCountry !== "ALL") query.append("country", selectedCountry);
       if (selectedStatus !== "ALL") query.append("status", selectedStatus);
 
@@ -74,7 +74,7 @@ export default function Ranking() {
     selectedCountry,
     currentPage,
     playerName,
-    maxAge,
+    minAge,
   ]);
 
   const getRating = (player) =>
@@ -197,12 +197,12 @@ export default function Ranking() {
 
             <div>
               <label className="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">
-                Max Age
+                Min Age
               </label>
               <input
                 type="number"
-                value={maxAge}
-                onChange={(e) => setMaxAge(e.target.value)}
+                value={minAge}
+                onChange={(e) => setminAge(e.target.value)}
                 className="w-full px-4 py-2 rounded-lg border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white"
                 placeholder="Enter max age"
               />
@@ -217,6 +217,7 @@ export default function Ranking() {
               <thead>
                 <tr className="bg-gradient-to-r from-emerald-600 to-green-600 text-white">
                   <th className="px-6 py-4">Global Rank</th>
+                  <th className="px-6 py-4">Rank by filters</th>
                   <th className="px-6 py-4">Player</th>
                   <th className="px-6 py-4">DUPR ID</th>
                   <th className="px-6 py-4">Age</th>
@@ -242,6 +243,15 @@ export default function Ranking() {
                           )}`}
                         >
                           {getRankIcon(rank)}#{rank}
+                        </div>
+                      </td>
+                      <td className="px-6 py-4">
+                        <div
+                          className={`inline-flex items-center gap-2 px-3 py-2 rounded-full text-sm font-bold ${getRankBadgeColor(
+                            rank
+                          )}`}
+                        >
+                          {index+1}
                         </div>
                       </td>
                       <td className="px-6 py-4">
