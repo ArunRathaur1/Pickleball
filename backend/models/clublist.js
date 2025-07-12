@@ -17,7 +17,7 @@ const courtSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ["pending", "approved", "rejected"],
-    default: "pending",
+    default: "approved",
   },
   location: {
     type: String, // User-entered location name

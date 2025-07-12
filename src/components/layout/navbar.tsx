@@ -14,8 +14,6 @@ const NAV_ITEMS = [
   { label: "Tournaments", href: "/tournaments" },
   { label: "Clubs", href: "/clubs" },
   { label: "About us", href: "/contact" },
-  { label: "Admin Login", href: "/adminlogin12345" },
-  { label: "Admin Signup", href: "/adminsignup12345" },
 ];
 
 export function Navbar() {
