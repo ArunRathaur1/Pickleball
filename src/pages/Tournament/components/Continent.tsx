@@ -1,10 +1,10 @@
 import React from "react";
-import asia from "../../../images/asia.jpg";
-import europe from "../../../images/europe1.jpg";
-import aus from "../../../images/aus.jpg";
-import africa from "../../../images/europe.png";
-import norame from "../../../images/northamerica.avif";
-import souame from "../../../images/southamerica.jpg";
+import asia from "../../../images/asia1.png";
+import europe from "../../../images/europe1.png";
+import aus from "../../../images/austrelia1.png";
+import africa from "../../../images/africa1.png";
+import norame from "../../../images/north america1.png";
+import souame from "../../../images/south america1.png";
 
 interface ContinentSelectorProps {
   selectedContinent: string | null;
@@ -34,19 +34,19 @@ const ContinentSelector: React.FC<ContinentSelectorProps> = ({
         style={{
           display: "flex",
           justifyContent: "center",
-          flexWrap: "wrap", // ✅ wrap images to next row if needed
-          gap: "20px", // space between items
+          flexWrap: "wrap",
+          gap: "10px",
         }}
       >
         {continents.map(({ name, image }) => (
           <div
             key={name}
             onClick={() => handleSelect(name)}
-            className={`${
-              selectedContinent === name
-                ? "bg-blue-100 border-blue-500"
-                : "bg-gray-100 hover:bg-gray-200"
-            } p-2 rounded-md`}
+            style={{
+              border: selectedContinent === name ? "3px solid #3B82F6" : "none", // Tailwind blue-500
+              padding: "2px",
+              cursor: "pointer",
+            }}
           >
             <img
               src={image}
@@ -55,7 +55,7 @@ const ContinentSelector: React.FC<ContinentSelectorProps> = ({
                 width: "200px",
                 height: "100px",
                 objectFit: "cover",
-                borderRadius: "8px",
+                display: "block",
               }}
             />
           </div>
