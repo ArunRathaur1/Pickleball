@@ -28,6 +28,17 @@ const duprSortTypes = ["singles", "doubles"];
 const statuses = ["ALL", "Pending", "Approved"];
 const countries = ["ALL", "IN", "US", "UK", "CA", "AU", "DE", "FR"];
 
+const countryNameMap = {
+  ALL: "All Countries",
+  IN: "India",
+  US: "United States",
+  UK: "United Kingdom",
+  CA: "Canada",
+  AU: "Australia",
+  DE: "Germany",
+  FR: "France",
+};
+
 export default function Ranking() {
   const [selectedContinent, setSelectedContinent] = useState("Asia");
   const [selectedGender, setSelectedGender] = useState("MALE");
@@ -37,7 +48,6 @@ export default function Ranking() {
   const [currentPage, setCurrentPage] = useState(1);
   const [playerName, setPlayerName] = useState("");
   const [minAge, setminAge] = useState("");
-
   const [players, setPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -111,122 +121,128 @@ export default function Ranking() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 dark:from-gray-900 dark:via-gray-800 dark:to-emerald-900">
       <Navbar />
-      <div className="mx-auto py-3">
+      <div className="mx-auto py-3 px-2">
         {/* Filters */}
-        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-8 mb-8 border border-green-100/50 dark:border-emerald-600/30 backdrop-blur-sm">
-          <h1 className="text-center text-5xl font-bold mb-2 text-black dark:text-white">
+        <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl p-4 sm:p-6 mb-8 border border-green-100/50 dark:border-emerald-600/30 backdrop-blur-sm">
+          <h1 className="text-center text-3xl sm:text-5xl font-bold mb-4 text-black dark:text-white">
             Player Rankings
           </h1>
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-gradient-to-r from-emerald-500 to-green-500 rounded-lg">
               <Filter className="w-5 h-5 text-white" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">
               Filter Players
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* All filter selectors */}
-            {[
-              {
-                label: "Continent",
-                value: selectedContinent,
-                setter: setSelectedContinent,
-                options: continents,
-              },
-              {
-                label: "Gender",
-                value: selectedGender,
-                setter: setSelectedGender,
-                options: genders,
-              },
-              {
-                label: "Country",
-                value: selectedCountry,
-                setter: setSelectedCountry,
-                options: countries,
-              },
-              {
-                label: "Status",
-                value: selectedStatus,
-                setter: setSelectedStatus,
-                options: statuses,
-              },
-              {
-                label: "DUPR Type",
-                value: duprSortType,
-                setter: setDuprSortType,
-                options: duprSortTypes,
-              },
-            ].map(({ label, value, setter, options }) => (
-              <div key={label}>
-                <label className="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">
-                  {label}
+          <div className="overflow-x-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 text-sm">
+              {[
+                {
+                  label: "Continent",
+                  value: selectedContinent,
+                  setter: setSelectedContinent,
+                  options: continents,
+                },
+                {
+                  label: "Gender",
+                  value: selectedGender,
+                  setter: setSelectedGender,
+                  options: genders,
+                },
+                {
+                  label: "Country",
+                  value: selectedCountry,
+                  setter: setSelectedCountry,
+                  options: countries,
+                },
+                // {
+                //   label: "Status",
+                //   value: selectedStatus,
+                //   setter: setSelectedStatus,
+                //   options: statuses,
+                // },
+                {
+                  label: "DUPR Type",
+                  value: duprSortType,
+                  setter: setDuprSortType,
+                  options: duprSortTypes,
+                },
+              ].map(({ label, value, setter, options }) => (
+                <div key={label}>
+                  <label className="block font-medium text-gray-700 dark:text-gray-300 mb-1">
+                    {label}
+                  </label>
+                  <select
+                    value={value}
+                    onChange={(e) => {
+                      setter(e.target.value);
+                      setCurrentPage(1);
+                    }}
+                    className="w-full px-2 py-1 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm"
+                  >
+                    {options.map((opt) => (
+                      <option key={opt} value={opt}>
+                        {label === "Country"
+                          ? countryNameMap[opt] || opt
+                          : opt === "ALL"
+                          ? `All ${label}s`
+                          : opt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+
+              {/* Player Name */}
+              <div>
+                <label className="block font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Player Name
                 </label>
-                <select
-                  value={value}
-                  onChange={(e) => {
-                    setter(e.target.value);
-                    setCurrentPage(1);
-                  }}
-                  className="w-full px-4 py-2 rounded-lg border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white"
-                >
-                  {options.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt === "ALL" ? `All ${label}s` : opt}
-                    </option>
-                  ))}
-                </select>
+                <input
+                  type="text"
+                  value={playerName}
+                  onChange={(e) => setPlayerName(e.target.value)}
+                  className="w-full px-2 py-1 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm"
+                  placeholder="Search by name"
+                />
               </div>
-            ))}
 
-            {/* Name and Max Age Inputs */}
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">
-                Player Name
-              </label>
-              <input
-                type="text"
-                value={playerName}
-                onChange={(e) => setPlayerName(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white"
-                placeholder="Search by name"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">
-                Min Age
-              </label>
-              <input
-                type="number"
-                value={minAge}
-                onChange={(e) => setminAge(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white"
-                placeholder="Enter max age"
-              />
+              {/* Min Age */}
+              <div>
+                <label className="block font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Min Age
+                </label>
+                <input
+                  type="number"
+                  value={minAge}
+                  onChange={(e) => setminAge(e.target.value)}
+                  className="w-full px-2 py-1 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm"
+                  placeholder="Enter min age"
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Players Table */}
+        {/* Table */}
         <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-green-100/50 dark:border-emerald-600/30">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="bg-gradient-to-r from-emerald-600 to-green-600 text-white">
-                  <th className="px-6 py-4">Global Rank</th>
-                  <th className="px-6 py-4">Rank by filters</th>
-                  <th className="px-6 py-4">Player</th>
-                  <th className="px-6 py-4">DUPR ID</th>
-                  <th className="px-6 py-4">Age</th>
-                  <th className="px-6 py-4">Rating</th>
-                  <th className="px-6 py-4">Continent</th>
-                  <th className="px-6 py-4">Country</th>
+                <tr className="bg-gradient-to-r from-emerald-600 to-green-600 text-white text-sm sm:text-base">
+                  <th className="px-4 py-3">Global Rank</th>
+                  <th className="px-4 py-3">Rank by filters</th>
+                  <th className="px-4 py-3">Player</th>
+                  <th className="px-4 py-3">DUPR ID</th>
+                  <th className="px-4 py-3">Age</th>
+                  <th className="px-4 py-3">Rating</th>
+                  <th className="px-4 py-3">Continent</th>
+                  <th className="px-4 py-3">Country</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-green-50 dark:divide-gray-700">
+              <tbody className="divide-y divide-green-50 dark:divide-gray-700 text-sm">
                 {players.map((player, index) => {
                   const rank =
                     player.originalRank ??
@@ -235,30 +251,31 @@ export default function Ranking() {
                     <tr
                       key={player.duprId}
                       className="hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition"
+                      style={{ textAlign: "center" }}
                     >
-                      <td className="px-6 py-4">
+                      <td className="px-4 py-3">
                         <div
-                          className={`inline-flex items-center gap-2 px-3 py-2 rounded-full text-sm font-bold ${getRankBadgeColor(
+                          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${getRankBadgeColor(
                             rank
                           )}`}
                         >
                           {getRankIcon(rank)}#{rank}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-4 py-3">
                         <div
-                          className={`inline-flex items-center gap-2 px-3 py-2 rounded-full text-sm font-bold ${getRankBadgeColor(
+                          className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${getRankBadgeColor(
                             rank
                           )}`}
                         >
-                          {index+1}
+                          {index + 1}
                         </div>
                       </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-4">
+                      <td className="px-4 py-3" style={{display:"flex", alignItems:"center",justifyContent:"center"}}>
+                        <div className="flex items-center gap-3">
                           <img
                             src={getImage(player.imageUrl)}
-                            className="w-12 h-12 rounded-full"
+                            className="w-10 h-10 rounded-full"
                             alt="player"
                           />
                           <Link
@@ -272,16 +289,17 @@ export default function Ranking() {
                           </Link>
                         </div>
                       </td>
-                      <td className="px-6 py-4">{player.duprId}</td>
-                      <td className="px-6 py-4">{player.age ?? "N/A"}</td>
-                      <td className="px-6 py-4">
-                        <span className="bg-gradient-to-r from-emerald-500 to-green-600 text-white px-3 py-1 rounded-full font-bold">
+                      <td className="px-4 py-3">{player.duprId}</td>
+                      <td className="px-4 py-3">{player.age ?? "N/A"}</td>
+                      <td className="px-4 py-3">
+                        <span className="bg-gradient-to-r from-emerald-500 to-green-600 text-white px-2 py-1 rounded-full font-bold text-xs">
                           {getRating(player)}
                         </span>
                       </td>
-                      <td className="px-6 py-4">{player.Continent}</td>
-                      <td className="px-6 py-4">
-                        {getCountryCode(player.shortAddress)}
+                      <td className="px-4 py-3">{player.Continent}</td>
+                      <td className="px-4 py-3">
+                        {countryNameMap[getCountryCode(player.shortAddress)] ||
+                          getCountryCode(player.shortAddress)}
                       </td>
                     </tr>
                   );
@@ -292,25 +310,25 @@ export default function Ranking() {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-between items-center mt-8">
+        <div className="flex justify-between items-center mt-6 text-sm sm:text-base">
           <button
             onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-6 py-3 rounded-full font-semibold bg-emerald-500 text-white disabled:bg-gray-300"
+            className="px-4 py-2 rounded-full font-semibold bg-emerald-500 text-white disabled:bg-gray-300 flex items-center gap-1"
           >
-            <ChevronLeft className="inline w-4 h-4 mr-1" />
+            <ChevronLeft className="w-4 h-4" />
             Previous
           </button>
-          <span className="text-lg font-medium">
+          <span className="font-medium">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
             disabled={currentPage >= totalPages}
-            className="px-6 py-3 rounded-full font-semibold bg-emerald-500 text-white disabled:bg-gray-300"
+            className="px-4 py-2 rounded-full font-semibold bg-emerald-500 text-white disabled:bg-gray-300 flex items-center gap-1"
           >
             Next
-            <ChevronRight className="inline w-4 h-4 ml-1" />
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </div>
