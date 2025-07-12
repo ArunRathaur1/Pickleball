@@ -8,7 +8,21 @@ const AboutSection = ({ athlete }: { athlete: Athlete }) => {
     <>
       {/* Scrollable Foreground Content */}
       <hr style={{ color: "#E2D8B3" }}></hr>
-      <div className="relative w-full px-4 md:px-20 py-16 space-y-24">
+      <div
+        style={{ padding: "50px" }}
+        className="text-4xl md:text-5xl font-bold text-center text-white tracking-wide mb-10"
+      >
+        <div
+          style={{
+            color: "#E2D8B3",
+            fontFamily: "Bebas Neue",
+            fontSize: "100px",
+          }}
+        >
+          Sponsors
+        </div>
+      </div>
+      <div className="relative w-full px-4 md:px-20 py-8 space-y-24">
         {athlete.imageUrlGallery?.map((item, index) => (
           <div
             key={item._id}

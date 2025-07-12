@@ -11,7 +11,7 @@ import { Menu } from "lucide-react";
 import { Link as RouterLink } from "react-router-dom";
 
 const tabOptions = [
-  { value: "hero", label: "HERO" },
+  { value: "hero", label: "ATHLETE" },
   { value: "about", label: "ABOUT" },
   { value: "titles", label: "TITLES" },
   { value: "sponsors", label: "SPONSORS" },
