@@ -221,6 +221,7 @@ router.get("/filtered-players", async (req, res) => {
     status = "ALL",
     name = "",
     maxAge = "",
+    country = "", // 👈 added
   } = req.query;
 
   const pageSize = 50;
@@ -249,8 +250,15 @@ router.get("/filtered-players", async (req, res) => {
     filter.age = { $lte: parsedMaxAge };
   }
 
+  // ✅ Country filtering using shortAddress regex
+  if (country.trim() !== "") {
+    const regex = new RegExp(`,\\s*${country.trim().toUpperCase()}$`, "i");
+    filter.shortAddress = { $regex: regex };
+  }
+
   const sortField = duprSortType === "doubles" ? "doublerank" : "singlerank";
-  const ratingField = duprSortType === "doubles" ? "$ratings.doubles" : "$ratings.singles";
+  const ratingField =
+    duprSortType === "doubles" ? "$ratings.doubles" : "$ratings.singles";
 
   try {
     const aggregationPipeline = [
@@ -274,6 +282,7 @@ router.get("/filtered-players", async (req, res) => {
                 ratings: 1,
                 gender: 1,
                 Continent: 1,
+                shortAddress: 1,
                 imageUrl: 1,
                 duprId: 1,
                 playerid: 1,
@@ -290,7 +299,8 @@ router.get("/filtered-players", async (req, res) => {
                     { $toDouble: ratingField },
                   ],
                 },
-                originalRank: sortField === "doublerank" ? "$doublerank" : "$singlerank",
+                originalRank:
+                  sortField === "doublerank" ? "$doublerank" : "$singlerank",
               },
             },
             { $skip: skip },
@@ -309,7 +319,15 @@ router.get("/filtered-players", async (req, res) => {
     const totalPlayers = result[0].totalCount[0]?.count || 0;
 
     res.status(200).json({
-      filters: { gender, duprSortType, continent, status, name, maxAge },
+      filters: {
+        gender,
+        duprSortType,
+        continent,
+        status,
+        name,
+        maxAge,
+        country,
+      }, // 👈 included
       page: parseInt(page),
       pageSize,
       totalPlayers,
