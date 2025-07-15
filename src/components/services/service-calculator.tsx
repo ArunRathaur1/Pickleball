@@ -29,63 +29,72 @@ export function ServiceCalculator() {
   
   // Pricing constants (in a real app, these might come from an API)
   const RATES = {
-    photographer: 350, // per day
-    videographer: 500, // per day
-    socialMedia: 250, // per day
-    tournamentBonus: 200, // flat fee for tournaments
-  };
+  photographer: { firstDay: 300, extraDay: 200 },
+  videographer: { firstDay: 300, extraDay: 200 },
+  socialMedia: { firstDay: 300, extraDay: 200 },
+  tournamentBonus: 200,
+};
+
   
   // Calculate estimated cost whenever inputs change
   useEffect(() => {
-    const days = eventDuration[0];
-    const items: PricingItem[] = [];
-    
-    // Photographer costs
-    if (photographers > 0) {
-      items.push({
-        label: `Photographer${photographers > 1 ? 's' : ''} (${photographers} × $${RATES.photographer}/day × ${days} day${days > 1 ? 's' : ''})`,
-        quantity: photographers * days,
-        rate: RATES.photographer,
-        total: photographers * RATES.photographer * days,
-      });
-    }
-    
-    // Videographer costs
-    if (videographers > 0) {
-      items.push({
-        label: `Videographer${videographers > 1 ? 's' : ''} (${videographers} × $${RATES.videographer}/day × ${days} day${days > 1 ? 's' : ''})`,
-        quantity: videographers * days,
-        rate: RATES.videographer,
-        total: videographers * RATES.videographer * days,
-      });
-    }
-    
-    // Social media package
-    if (socialMediaPackage) {
-      items.push({
-        label: `Social Media Package ($${RATES.socialMedia}/day × ${days} day${days > 1 ? 's' : ''})`,
-        quantity: days,
-        rate: RATES.socialMedia,
-        total: RATES.socialMedia * days,
-      });
-    }
-    
-    // Tournament bonus
-    if (eventType === "tournament") {
-      items.push({
-        label: "Tournament Coordination Fee",
-        quantity: 1,
-        rate: RATES.tournamentBonus,
-        total: RATES.tournamentBonus,
-      });
-    }
-    
-    // Calculate total
-    const total = items.reduce((sum, item) => sum + item.total, 0);
-    
-    setBreakdown(items);
-    setEstimatedCost(total);
-  }, [eventType, eventDuration, photographers, videographers, socialMediaPackage]);
+  const days = eventDuration[0];
+  const items: PricingItem[] = [];
+
+  const calculateTieredCost = (count: number, rate: { firstDay: number, extraDay: number }) => {
+    if (days === 0 || count === 0) return 0;
+    return count * (rate.firstDay + rate.extraDay * (days - 1));
+  };
+
+  // Photographer cost
+  if (photographers > 0) {
+    const total = calculateTieredCost(photographers, RATES.photographer);
+    items.push({
+      label: `Photographer${photographers > 1 ? 's' : ''} (${photographers} × $${RATES.photographer.firstDay} + $${RATES.photographer.extraDay} for ${days - 1} extra day${days - 1 > 1 ? 's' : ''})`,
+      quantity: photographers * days,
+      rate: RATES.photographer.firstDay,
+      total,
+    });
+  }
+
+  // Videographer cost
+  if (videographers > 0) {
+    const total = calculateTieredCost(videographers, RATES.videographer);
+    items.push({
+      label: `Videographer${videographers > 1 ? 's' : ''} (${videographers} × $${RATES.videographer.firstDay} + $${RATES.videographer.extraDay} for ${days - 1} extra day${days - 1 > 1 ? 's' : ''})`,
+      quantity: videographers * days,
+      rate: RATES.videographer.firstDay,
+      total,
+    });
+  }
+
+  // Social Media Package
+  if (socialMediaPackage) {
+    const total = RATES.socialMedia.firstDay + RATES.socialMedia.extraDay * (days - 1);
+    items.push({
+      label: `Social Media Package ($${RATES.socialMedia.firstDay} + $${RATES.socialMedia.extraDay} × ${days - 1} day${days - 1 > 1 ? 's' : ''})`,
+      quantity: days,
+      rate: RATES.socialMedia.firstDay,
+      total,
+    });
+  }
+
+  // Tournament Bonus
+  if (eventType === "tournament") {
+    items.push({
+      label: "Tournament Coordination Fee",
+      quantity: 1,
+      rate: RATES.tournamentBonus,
+      total: RATES.tournamentBonus,
+    });
+  }
+
+  const total = items.reduce((sum, item) => sum + item.total, 0);
+
+  setBreakdown(items);
+  setEstimatedCost(total);
+}, [eventType, eventDuration, photographers, videographers, socialMediaPackage]);
+
   
   const handleRequest = () => {
     toast({
