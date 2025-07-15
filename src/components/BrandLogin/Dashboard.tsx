@@ -53,7 +53,6 @@ export default function BrandDashboard() {
             <Link to="/addtournament" style={styles.link}>
               <button style={styles.primaryBtn}>Add Tournament</button>
             </Link>
-            <button style={styles.secondaryBtn}>Add Club</button>
           </div>
         </div>
       </div>
