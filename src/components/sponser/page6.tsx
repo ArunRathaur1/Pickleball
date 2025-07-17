@@ -11,7 +11,8 @@ export default function PickleballPodcast() {
           transition={{ duration: 0.8 }}
           className="text-lg font-semibold text-green-400"
         >
-          Expert Insights • Bold Conversations • Exclusive Interviews
+          Expert Insights • Bold Conversations • Exclusive Interviews •
+          Pickleball TV
         </motion.p>
 
         <motion.h2

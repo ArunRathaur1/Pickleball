@@ -27,7 +27,7 @@ export default function Sponser() {
           <Page5 />
           <Page6 />
           <Page7 />
-          <Page8 />
+          {/* <Page8 /> */}
           <Page9 />
           <Page10 />
           <Page11 />
