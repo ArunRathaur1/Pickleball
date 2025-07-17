@@ -268,7 +268,7 @@ export default function Ranking() {
                             rank
                           )}`}
                         >
-                          {index + 1}
+                          {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
                         </div>
                       </td>
                       <td className="px-4 py-3" style={{display:"flex", alignItems:"center",justifyContent:"center"}}>
