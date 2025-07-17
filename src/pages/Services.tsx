@@ -9,67 +9,72 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Services = () => {
   const services = [
-    {
-      title: "Social Media Marketing",
-      description: "Grow your pickleball presence across all major platforms",
-      icon: <Instagram className="h-6 w-6" />,
-      features: [
-        "Strategic content calendar creation",
-        "Daily posting and engagement",
-        "Analytics and performance tracking",
-        "Community management",
-        "Hashtag and keyword optimization"
-      ],
-      popular: true,
-      link: "/contact?service=social",
-      id: "social"
-    },
-    {
-      title: "Tournament Promotion",
-      description: "Maximize attendance and engagement for your events",
-      icon: <Users className="h-6 w-6" />,
-      features: [
-        "Pre-event marketing campaign",
-        "On-site coverage and content creation",
-        "Live updates and stories",
-        "Post-event highlights and recaps",
-        "Sponsor integration and promotion"
-      ],
-      popular: false,
-      link: "/contact?service=tournament",
-      id: "tournament"
-    },
-    {
-      title: "Content Creation",
-      description: "Professional photo and video content for pickleball",
-      icon: <Video className="h-6 w-6" />,
-      features: [
-        "Professional photography",
-        "Cinematic videography",
-        "Highlight reels and montages",
-        "Athlete profile videos",
-        "Product showcases and reviews"
-      ],
-      popular: false,
-      link: "/contact?service=content",
-      id: "content"
-    },
-    {
-      title: "Analytics & Reporting",
-      description: "Data-driven insights to optimize your strategy",
-      icon: <BarChart className="h-6 w-6" />,
-      features: [
-        "Comprehensive performance metrics",
-        "Competitor analysis",
-        "Audience insights and demographics",
-        "Monthly progress reports",
-        "Strategy optimization recommendations"
-      ],
-      popular: false,
-      link: "/contact?service=analytics",
-      id: "analytics"
-    }
-  ];
+  {
+    title: "Tournament Promotion",
+    description:
+      "From reels and content to campaigns and collaborations – we handle everything before, during, and after your tournament.",
+    icon: <Video className="h-6 w-6" />,
+    features: [
+      "Pre, live & post-event coverage",
+      "Reels & creative content",
+      "Influencer & sponsor collabs",
+      "Paid ad campaigns",
+      "Full digital amplification"
+    ],
+    popular: true,
+    link: "/contact?service=tournament-promotion",
+    id: "tournament"
+  },
+  {
+    title: "Social Media for Brands",
+    description:
+      "A complete digital growth package — from posts and websites to ads and strategy — for your pickleball brand.",
+    icon: <Instagram className="h-6 w-6" />,
+    features: [
+      "Content calendar & design",
+      "Meta, Google & WhatsApp ads",
+      "Website & landing pages",
+      "Engagement & DMs handled",
+      "Analytics & reporting"
+    ],
+    popular: false,
+    link: "/contact?service=social-brands",
+    id: "social"
+  },
+  {
+    title: "Athlete Social Management",
+    description:
+      "We build your athlete brand online — you focus on your game, we manage your digital identity.",
+    icon: <Users className="h-6 w-6" />,
+    features: [
+      "Athlete portfolio site",
+      "Social reels & highlights",
+      "Match-day coverage",
+      "Posters & graphic kits",
+      "Online branding strategy"
+    ],
+    popular: false,
+    link: "/contact?service=athlete-social",
+    id: "athlete"
+  },
+  {
+    title: "Advertise with Pickleball Official",
+    description:
+      "Get your brand in front of Asia’s biggest pickleball community. Partner with us to grow your visibility.",
+    icon: <BarChart className="h-6 w-6" />,
+    features: [
+      "Sponsored social posts",
+      "Branded reels",
+      "Story promotions",
+      "Collaborations & giveaways",
+      "Regional & global reach"
+    ],
+    popular: false,
+    link: "/contact?service=advertise",
+    id: "advertise"
+  }
+];
+
 
   return (
     <div className="min-h-screen flex flex-col">

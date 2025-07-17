@@ -35,7 +35,7 @@ export function Footer() {
             <h3 className="font-semibold">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link to="/" className="text-sm text-muted-foreground hover:text-pickle">Home</Link></li>
-              <li><Link to="/sponsor" className="text-sm text-muted-foreground hover:text-pickle">Our Sponsers</Link></li>
+              <li><Link to="/sponsor" className="text-sm text-muted-foreground hover:text-pickle">Our Sponsors</Link></li>
               <li><Link to="/services" className="text-sm text-muted-foreground hover:text-pickle">Services</Link></li>
               <li><Link to="/tournaments" className="text-sm text-muted-foreground hover:text-pickle">Tournaments</Link></li>
               <li><Link to="/contact" className="text-sm text-muted-foreground hover:text-pickle">Contact</Link></li>
@@ -58,11 +58,11 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail size={16} className="text-pickle" />
-                <a href="mailto:info@pickleofficial.com" className="hover:text-pickle">info@pickleofficial.com</a>
+                <a href="mailto:info@pickleofficial.com" className="hover:text-pickle">pickleballofficial.india@gmail.com</a>
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone size={16} className="text-pickle" />
-                <a href="tel:+123456789" className="hover:text-pickle">+1 (234) 567-890</a>
+                <a href="tel:+123456789" className="hover:text-pickle">+91 93401 92808</a>
               </li>
             </ul>
           </div>
