@@ -77,7 +77,7 @@ export default function TrustedBrands() {
         {brands.map((brand, index) => (
           <motion.div
             key={index}
-            className="bg-black border border-green-400 p-8 rounded-2xl shadow-2xl flex items-center justify-center hover:scale-105 transition-transform duration-300 ease-in-out hover:bg-green-100 hover:text-black"
+            className="bg-white p-6 rounded-xl shadow-md flex items-center justify-center"
             variants={{
               hidden: { opacity: 0, scale: 0.9, y: 20 },
               visible: {
@@ -88,13 +88,16 @@ export default function TrustedBrands() {
               },
             }}
           >
-            <a href={brand.link} target="_blank" rel="noopener noreferrer">
+            <a
+              href={brand.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-full flex items-center justify-center"
+            >
               <img
                 src={brand.src}
                 alt={brand.alt}
-                className={`w-full max-h-24 object-contain grayscale hover:grayscale-0 transition-all duration-300 ${
-                  brand.alt === "MaxWill" ? "bg-white p-2 rounded" : ""
-                }`}
+                className="w-[160px] h-[80px] object-contain"
               />
             </a>
           </motion.div>
