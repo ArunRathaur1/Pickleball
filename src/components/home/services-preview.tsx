@@ -180,7 +180,8 @@ export function ServicesPreview() {
             </Button>
           </Link>
         </div>
-      </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default ServicesPreview;
