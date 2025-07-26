@@ -42,17 +42,21 @@ export default function SignupBrand() {
       Cookies.set("brand_user", JSON.stringify(data), { expires: 7 });
 
       // Redirect to dashboard
-      navigate("/branddashboard");
+      navigate("/login");
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
-      <h2 className="text-2xl font-bold mb-4 text-center">Brand Signup</h2>
+    <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow bg-white dark:bg-gray-900 dark:border-gray-700">
+      <h2 className="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-white">
+        Brand Signup
+      </h2>
 
-      {error && <p className="text-red-500 text-sm mb-3">{error}</p>}
+      {error && (
+        <p className="text-red-600 dark:text-red-400 text-sm mb-3">{error}</p>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
@@ -62,7 +66,7 @@ export default function SignupBrand() {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
         />
         <input
           type="text"
@@ -71,7 +75,7 @@ export default function SignupBrand() {
           value={formData.phone}
           onChange={handleChange}
           required
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
         />
         <input
           type="email"
@@ -80,7 +84,7 @@ export default function SignupBrand() {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
         />
         <input
           type="password"
@@ -89,7 +93,7 @@ export default function SignupBrand() {
           value={formData.password}
           onChange={handleChange}
           required
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
         />
         <button
           type="submit"
@@ -99,5 +103,6 @@ export default function SignupBrand() {
         </button>
       </form>
     </div>
+
   );
 }
