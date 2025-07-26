@@ -19,7 +19,7 @@ const AboutSection = ({ athlete }: { athlete: Athlete }) => {
             fontSize: "100px",
           }}
         >
-          Sponsors
+          About Athlete
         </div>
       </div>
       <div className="relative w-full px-4 md:px-20 py-8 space-y-24">

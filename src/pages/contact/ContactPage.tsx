@@ -1,30 +1,31 @@
 import { useState } from "react";
-import { FaLinkedin, FaEnvelope, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaTwitter, FaGithub,FaInstagram } from "react-icons/fa";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import ContactForm from "./Contactform";
 import TeamMemberCard from "./TeamMembercard";
 import indreshverma from '../../images/indreshverma.jpg'
 import arunrathaur from '../../images/arunrathaur.jpg';
+import shrey from '../../images/shrey.jpg';
 const teamMembers = {
   founders: [
     {
-      name: "Founder One",
-      role: "CEO & Co-Founder",
-      bio: "Visionary leader with 10+ years of industry experience.",
+      name: "Samarth Mishra",
+      role: "CEO & Founder",
+      bio: "International Pickleball Player.",
       image: "/images/founder1.jpg", // replace with actual image path
-      linkedin: "https://www.linkedin.com/in/founder1",
-      twitter: "https://twitter.com/founder1",
-      email: "founder1@example.com",
+      // linkedin: "https://www.linkedin.com/in/founder1",
+      // twitter: "https://twitter.com/founder1",
+      // email: "founder1@example.com",
     },
     {
-      name: "Founder Two",
-      role: "CTO & Co-Founder",
-      bio: "Technical genius with a passion for innovative solutions.",
-      image: "/images/founder2.jpg", // replace with actual image path
-      linkedin: "https://www.linkedin.com/in/founder2",
-      twitter: "https://twitter.com/founder2",
-      email: "founder2@example.com",
+      name: "Shrey Mishra",
+      role: "COO & Founder",
+      bio: "International Pickleball Player.",
+      image: shrey, // replace with actual image path
+      // linkedin: "https://www.linkedin.com/in/shreysuryamishra/",
+      // instagram: "https://www.instagram.com/shreysuryamishra/",
+      // email: "founder2@example.com",
     },
   ],
   developers: [
@@ -141,25 +142,20 @@ const ContactPage = () => {
                     Follow Us:
                   </h4>
                   <div className="flex space-x-4">
-                    <a
-                      href="#"
-                      className="text-blue-600 hover:text-blue-800 transition-colors"
-                    >
+                    <a href="#" className="text-blue-600 hover:text-blue-800 transition-colors">
                       <FaLinkedin className="text-2xl" />
                     </a>
-                    <a
-                      href="#"
-                      className="text-blue-400 hover:text-blue-600 transition-colors"
-                    >
+                    <a href="#" className="text-blue-400 hover:text-blue-600 transition-colors">
                       <FaTwitter className="text-2xl" />
                     </a>
-                    <a
-                      href="#"
-                      className="text-gray-800 hover:text-gray-600 transition-colors"
-                    >
+                    <a href="#" className="text-gray-800 hover:text-gray-600 transition-colors">
                       <FaGithub className="text-2xl" />
                     </a>
+                    <a href="#" className="text-pink-500 hover:text-pink-600 transition-colors">
+                      <FaInstagram className="text-2xl" />
+                    </a>
                   </div>
+
                 </div>
               </div>
 

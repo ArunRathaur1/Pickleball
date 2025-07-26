@@ -5,6 +5,7 @@ import aus from "../../../images/austrelia1.png";
 import africa from "../../../images/africa1.png";
 import norame from "../../../images/north america1.png";
 import souame from "../../../images/south america1.png";
+import india from "../../../images/india2.png";
 
 interface ContinentSelectorProps {
   selectedContinent: string | null;
@@ -18,6 +19,7 @@ const continents = [
   { name: "North America", image: norame },
   { name: "South America", image: souame },
   { name: "Australia", image: aus },
+  { name: "India", image: india },
 ];
 
 const ContinentSelector: React.FC<ContinentSelectorProps> = ({
