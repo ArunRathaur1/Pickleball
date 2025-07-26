@@ -1,66 +1,117 @@
-
-import { ArrowRight, Video, Image, Users, BarChart } from "lucide-react";
+import {
+  ArrowRight,
+  Video,
+  Users,
+  BarChart,
+  Instagram
+} from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useEffect, useState, useRef } from "react";
+import {
+  Button
+} from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from "@/components/ui/card";
 
+// 🎯 Services Array
 const SERVICES = [
   {
-    title: "Social Media Marketing",
-    description: "Strategic content creation for Instagram, TikTok, YouTube and more to grow your pickleball presence.",
-    icon: <Image className="h-10 w-10 text-pickle" />,
-    link: "/services#social",
-  },
-  {
-    title: "Athlete Performance Overview",
-    description: "Track detailed performance of Your Favorite Athelete.",
-    icon: <Users className="h-10 w-10 text-pickle" />,
-    link: "/athletes",
-  },
-  {
-    title: "Discover Nearby Courts",
-    description: "Trace down the nearby Pickleball Courts to enjoy and enhance your pickleball skills.",
+    id: "tournament",
+    title: "Tournament Promotion",
+    description:
+      "From reels and content to campaigns and collaborations – we handle everything before, during, and after your tournament.",
     icon: <Video className="h-10 w-10 text-pickle" />,
-    link: "/courts",
+    features: [
+      "Pre, live & post-event coverage",
+      "Reels & creative content",
+      "Influencer & sponsor collabs",
+      "Paid ad campaigns",
+      "Full digital amplification"
+    ],
+    link: "/contact?service=tournament-promotion",
+    popular: true
   },
   {
-    title: "Join Club",
-    description: "Join The Pickleball clubs and become elite member of the pickleball community and enjoy the facilities",
-    icon: <BarChart className="h-10 w-10 text-pickle" />,
-    link: "/clubs",
+    id: "social",
+    title: "Social Media for Brands",
+    description:
+      "A complete digital growth package — from posts and websites to ads and strategy — for your pickleball brand.",
+    icon: <Instagram className="h-10 w-10 text-pickle" />,
+    features: [
+      "Content calendar & design",
+      "Meta, Google & WhatsApp ads",
+      "Website & landing pages",
+      "Engagement & DMs handled",
+      "Analytics & reporting"
+    ],
+    link: "/contact?service=social-brands",
+    popular: false
   },
+  {
+    id: "athlete",
+    title: "Athlete Social Management",
+    description:
+      "We build your athlete brand online — you focus on your game, we manage your digital identity.",
+    icon: <Users className="h-10 w-10 text-pickle" />,
+    features: [
+      "Athlete portfolio site",
+      "Social reels & highlights",
+      "Match-day coverage",
+      "Posters & graphic kits",
+      "Online branding strategy"
+    ],
+    link: "/contact?service=athlete-social",
+    popular: false
+  },
+  {
+    id: "advertise",
+    title: "Advertise with Pickleball Official",
+    description:
+      "Get your brand in front of Asia’s biggest pickleball community. Partner with us to grow your visibility.",
+    icon: <BarChart className="h-10 w-10 text-pickle" />,
+    features: [
+      "Sponsored social posts",
+      "Branded reels",
+      "Story promotions",
+      "Collaborations & giveaways",
+      "Regional & global reach"
+    ],
+    link: "/contact?service=advertise",
+    popular: false
+  }
 ];
 
 export function ServicesPreview() {
-  const [visibleItems, setVisibleItems] = useState([]);
-  const sectionRef = useRef(null);
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       if (sectionRef.current) {
         const sectionTop = sectionRef.current.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
-        
+
         if (sectionTop < windowHeight * 0.75) {
-          const newVisibleItems = [];
           for (let i = 0; i < SERVICES.length; i++) {
             setTimeout(() => {
-              setVisibleItems(prev => [...prev, i]);
+              setVisibleItems((prev) => [...prev, i]);
             }, i * 200);
           }
-          // Remove scroll listener after animation
-          window.removeEventListener('scroll', handleScroll);
+          window.removeEventListener("scroll", handleScroll);
         }
       }
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    // Check visibility on initial load
+
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-    
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -76,28 +127,43 @@ export function ServicesPreview() {
             We offer comprehensive digital marketing solutions tailored exclusively for the pickleball community.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {SERVICES.map((service, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={service.id}
               className={`transition-all duration-700 transform ${
-                visibleItems.includes(index) 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-20'
+                visibleItems.includes(index)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-20"
               } hover:shadow-lg hover:shadow-pickle/10 hover:-translate-y-2 border-t-4 border-t-transparent hover:border-t-pickle`}
             >
               <CardHeader className="pb-2">
                 <div className="mb-4 p-4 bg-pickle/10 rounded-full inline-block">
                   {service.icon}
                 </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  {service.popular && (
+                    <span className="text-xs bg-pickle text-white px-2 py-1 rounded-full font-semibold ml-2">
+                      Popular
+                    </span>
+                  )}
+                </div>
               </CardHeader>
               <CardContent className="pb-4">
-                <p className="text-muted-foreground text-sm">{service.description}</p>
+                <p className="text-muted-foreground text-sm mb-3">{service.description}</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                  {service.features.map((feature, i) => (
+                    <li key={i}>{feature}</li>
+                  ))}
+                </ul>
               </CardContent>
               <CardFooter>
-                <Link to={service.link} className="text-pickle hover:text-pickle-dark text-sm font-medium inline-flex items-center group transition-all">
+                <Link
+                  to={service.link}
+                  className="text-pickle hover:text-pickle-dark text-sm font-medium inline-flex items-center group transition-all"
+                >
                   Learn more
                   <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -105,7 +171,7 @@ export function ServicesPreview() {
             </Card>
           ))}
         </div>
-        
+
         <div className="mt-16 text-center">
           <Link to="/services">
             <Button size="lg" className="bg-pickle hover:bg-pickle-dark btn-animated">
