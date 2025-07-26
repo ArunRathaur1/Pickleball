@@ -1,12 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import backgroundImage from "./ourimpact.jpg"
-
-interface StatItemProps {
-  value: number;
-  label: string;
-  suffix?: string;
-  delay?: number;
-}
+import backgroundImage from "./ourimpact.jpg";
 
 interface StatItemProps {
   value: number;
@@ -63,7 +56,7 @@ const StatItem = ({ value, label, suffix = "", delay = 0 }: StatItemProps) => {
   }, [value, delay]);
 
   return (
-    <div className="text-center">
+    <div className="text-center px-4">
       <div className="flex justify-center items-baseline">
         <span ref={countRef} className="text-4xl md:text-5xl font-bold text-white">
           {formatNumber(count)}
@@ -75,11 +68,10 @@ const StatItem = ({ value, label, suffix = "", delay = 0 }: StatItemProps) => {
   );
 };
 
-
 export function StatsSection() {
   return (
     <section
-      className="py-16 text-white relative"
+      className="py-20 text-white relative"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -89,18 +81,16 @@ export function StatsSection() {
     >
       <div className="absolute inset-0 bg-black/50"></div> {/* Overlay */}
       <div className="container relative z-10">
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2">Our Impact</h2>
           <p className="text-white/80">The numbers speak for themselves</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 center" style={{display:"flex",justifyContent:'center'}}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-16 gap-y-10">
           <StatItem value={3091645} label="Account Reach" delay={0} />
           <StatItem value={5792093} label="Impressions" delay={200} />
           <StatItem value={10000} label="Followers" delay={400} />
           <StatItem value={38513} label="Profile Visits" delay={600} />
-          <StatItem value={695620} label="Indian Reach" delay={600} />
-          <StatItem value={241483} label="Global Reach" delay={600} />
         </div>
       </div>
     </section>

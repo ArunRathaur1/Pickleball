@@ -7,9 +7,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
-import {
-  Button
-} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -155,7 +153,7 @@ export function ServicesPreview() {
                 <p className="text-muted-foreground text-sm mb-3">{service.description}</p>
                 <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
                   {service.features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
+                    <li key={`${service.id}-feature-${i}`}>{feature}</li>
                   ))}
                 </ul>
               </CardContent>
@@ -180,8 +178,9 @@ export function ServicesPreview() {
             </Button>
           </Link>
         </div>
-    </div>
+      </div>
+    </section>
   );
-};
+}
 
 export default ServicesPreview;
