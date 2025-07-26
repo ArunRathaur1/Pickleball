@@ -108,7 +108,7 @@ const FilterManager: React.FC<FilterManagerProps> = ({
 
       // Image-based continent selector filter
       const selectedContinentMatch =
-        !selectedContinent || tournament.Continent === selectedContinent;
+        !selectedContinent || tournament.Continent === selectedContinent||tournament.country==selectedContinent;
 
       // Tier filter
       const tierMatch = !tierFilter || tournament.Tier === Number(tierFilter);

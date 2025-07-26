@@ -1,36 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Queue{
-    vector<int>ar;
-    int front;
-    int rear;
-    int currsize;
-    Queue(int size){
-        ar.resize(size);
-        front=-1;
-        rear=-1;
-        currsize=0;
+int countsubset(vector<int>&ar,int index,int sum){
+    if (sum == 0)
+    {
+       return 1;
     }
-    void pushelement(int value){
-        if(currsize==size)
-    }
+    if(sum<0||index>=ar.size())return 0;
+    int c1=countsubset(ar,index+1,sum-ar[index]);
+    int c2=countsubset(ar,index+1,sum);
+    return c1+c2;
+}
+int subSetWithSumK(vector<int>ar,int k){
+    int n=ar.size();
+    int count = countsubset(ar, 0, k);
+    return count;
 }
 int main(){
-    int n;
-    cin>>n;
-    vector<int>ans;
-    for(int i=2;i<=sqrt(n);i++){
-        if(n%i==0){
-            ans.push_back(i);
-            while(n%i==0){
-                n=n/i;
-            }
-        }
-    }
-    if(n!=1){
-        ans.push_back(n);
-    }
-    for(auto i: ans){
-        cout<<i<<" ";
-    }
+    vector<int>ar={3,4,5,2,1,5};
+    int k=10;
+    int count=subSetWithSumK(ar,k);
+    cout<<count<<endl;
 }
