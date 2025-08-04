@@ -20,6 +20,7 @@ const Tournaments = () => {
       })
       .catch((err) => console.error("Error fetching tournaments:", err));
   }, []);
+  console.log("Tournaments:", tournaments);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">

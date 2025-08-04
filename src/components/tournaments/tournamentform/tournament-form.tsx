@@ -69,24 +69,6 @@ const TournamentForm = () => {
     }
   }, []);
   
-  useEffect(() => {
-    const cookieData = Cookies.get("brand_user");
-
-    if (cookieData) {
-      try {
-        const parsed = JSON.parse(cookieData);
-        const brandId = parsed?.player?._id;
-        if (brandId) {
-          setFormData((prevData) => ({
-            ...prevData,
-            brandId: brandId,
-          }));
-        }
-      } catch (error) {
-        console.error("Failed to parse brand_user cookie:", error);
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const fetchTournament = async () => {
@@ -253,6 +235,20 @@ const TournamentForm = () => {
 
   const handleSubmit = async () => {
     const formattedData = formatDataForSubmission(formData);
+
+    const cookieData = localStorage.getItem("brand");
+    console.log("Cookie Data:", cookieData);
+    if (cookieData) {
+      try {
+        const parsed = JSON.parse(cookieData);
+        console.log("Parsed Cookie Data:", parsed.player._id);
+        const brandId = parsed?.player?._id;
+        formattedData.brandId = brandId;
+      } catch (error) {
+        console.error("Failed to parse brand_user cookie:", error);
+      }
+    }
+    console.log(formattedData);
     try {
       const response = await fetch(
         `${API}/tournaments/add-or-update`,

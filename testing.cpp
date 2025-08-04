@@ -1,23 +1,33 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-int countsubset(vector<int>&ar,int index,int sum){
-    if (sum == 0)
-    {
-       return 1;
+void count(string s,int index,int n,string&tem,vector<string>&ans){
+    if(index>=n){
+        ans.push_back(tem);
+        return;
     }
-    if(sum<0||index>=ar.size())return 0;
-    int c1=countsubset(ar,index+1,sum-ar[index]);
-    int c2=countsubset(ar,index+1,sum);
-    return c1+c2;
+    tem.push_back(char(s[index]-'1'+'a'));
+    count(s,index+1,n,tem,ans);
+    tem.pop_back();
+    if(index+1<n){
+        int value=(s[index]-'0')*10+(s[index+1]-'0');
+        if(value<=26){
+            tem.push_back(char(value+'a'-1));
+            count(s,index+2,n,tem,ans);
+            tem.pop_back();
+        }
+    }
 }
-int subSetWithSumK(vector<int>ar,int k){
-    int n=ar.size();
-    int count = countsubset(ar, 0, k);
-    return count;
-}
-int main(){
-    vector<int>ar={3,4,5,2,1,5};
-    int k=10;
-    int count=subSetWithSumK(ar,k);
-    cout<<count<<endl;
+int main() {
+	string s;
+	cin>>s;
+	vector<string>ans;
+	string tem="";
+	int index=0;
+	int n=s.length();
+	count(s,index,n,tem,ans);
+	for(auto i: ans){
+	    cout<<i<<" ";
+	}
+	return -1;
+
 }
