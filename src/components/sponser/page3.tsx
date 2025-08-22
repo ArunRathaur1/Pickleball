@@ -28,11 +28,11 @@ export default function TrustedBrands() {
   }, []);
 
   const brands = [
-    {
-      src: hero1,
-      alt: "sixzeropickleball",
-      link: "https://www.sixzeropickleball.com/",
-    },
+    // {
+    //   src: hero1,
+    //   alt: "sixzeropickleball",
+    //   link: "https://www.sixzeropickleball.com/",
+    // },
     { src: hero2, alt: "Globalsports", link: "https://globalsports.net.in/" },
     {
       src: hero3,
