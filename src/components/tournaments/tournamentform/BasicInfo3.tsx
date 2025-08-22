@@ -151,7 +151,7 @@ export default function BasicInfo3(props) {
         </div>
 
         <div>
-          <label style={labelStyle}>Prize Money:</label>
+          <label style={labelStyle}>Prize Money in dollar:</label>
           <input
             type="number"
             name="prizeMoney"
