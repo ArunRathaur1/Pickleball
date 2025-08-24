@@ -63,7 +63,7 @@ const TournamentList = ({ tournaments} ) => {
                       <div className="flex items-center">
                         <span className="text-yellow-500 mr-1 text-xs">🎖</span>
                         <span className="text-xs font-medium">
-                          Tier {tournament.Tier}
+                          Tier {tournament.tier}
                         </span>
                       </div>
                     </div>
