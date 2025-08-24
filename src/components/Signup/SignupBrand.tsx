@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+
 const API = import.meta.env.VITE_API;
+
 export default function SignupBrand() {
   const navigate = useNavigate();
 
@@ -12,6 +14,7 @@ export default function SignupBrand() {
     phone: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [error, setError] = useState("");
@@ -24,11 +27,22 @@ export default function SignupBrand() {
     e.preventDefault();
     setError("");
 
+    // ✅ Check if passwords match before API call
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
     try {
       const response = await fetch(`${API}/brand/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          password: formData.password, // only send password (not confirmPassword)
+        }),
       });
 
       if (!response.ok) {
@@ -41,7 +55,7 @@ export default function SignupBrand() {
       // Save response to cookies
       Cookies.set("brand_user", JSON.stringify(data), { expires: 7 });
 
-      // Redirect to dashboard
+      // Redirect to login
       navigate("/login");
     } catch (err) {
       setError(err.message);
@@ -95,6 +109,15 @@ export default function SignupBrand() {
           required
           className="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
         />
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+          className="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 dark:text-white dark:border-gray-600"
+        />
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
@@ -103,6 +126,5 @@ export default function SignupBrand() {
         </button>
       </form>
     </div>
-
   );
 }

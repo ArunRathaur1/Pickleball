@@ -173,7 +173,7 @@ export default function BasicInfo4(props) {
             </div>
 
             <div style={{ flex: "1 1 30%", minWidth: "200px" }}>
-              <label style={styles.label}>Registration Fee:</label>
+              <label style={styles.label}>Registration Fee in dollar:</label>
               <input
                 type="number"
                 value={category.fee}

@@ -249,7 +249,7 @@ export default function TournamentDetails() {
             <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm">Prize Money</p>
+                  <p className="text-gray-600 text-sm">Prize Money in dollar</p>
                   <p className="text-2xl font-bold text-green-600 flex items-center">
                     <IndianRupee size={20} />
                     {tournament.prizeMoney?.toLocaleString("en-IN") || "TBD"}

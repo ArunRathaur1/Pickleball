@@ -7,13 +7,14 @@ import TeamMemberCard from "./TeamMembercard";
 import indreshverma from '../../images/indreshverma.jpg'
 import arunrathaur from '../../images/arunrathaur.jpg';
 import shrey from '../../images/shrey.jpg';
+import samarth from '../../images/samarth.jpg';
 const teamMembers = {
   founders: [
     {
       name: "Samarth Mishra",
       role: "CEO & Founder",
       bio: "International Pickleball Player.",
-      image: "/images/founder1.jpg", // replace with actual image path
+      image: samarth, // replace with actual image path
       // linkedin: "https://www.linkedin.com/in/founder1",
       // twitter: "https://twitter.com/founder1",
       // email: "founder1@example.com",
