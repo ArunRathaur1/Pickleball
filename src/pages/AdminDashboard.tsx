@@ -63,7 +63,7 @@ const AdminDashboard = () => {
               <TabsTrigger value="analytics">Analytics</TabsTrigger>
               <TabsTrigger value="users">Users</TabsTrigger>
               <TabsTrigger value='instagram'>Instagram</TabsTrigger>
-              {/* <TabsTrigger value="clubapproval">Club Approval</TabsTrigger> */}
+              <TabsTrigger value="clubapproval">Club Approval</TabsTrigger>
               <TabsTrigger value="sync-data">Sync Data</TabsTrigger>
             </TabsList>
 
