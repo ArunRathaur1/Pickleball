@@ -65,7 +65,6 @@ export default function Ranking() {
 
       const res = await fetch(`${API}/ranking/filtered-players?${query}`);
       const data = await res.json();
-
       setPlayers(data.players || []);
       setTotalPages(data.totalPages || 1);
     } catch (err) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 interface TournamentFiltersCombinedProps {
@@ -11,11 +11,10 @@ interface TournamentFiltersCombinedProps {
   setSelectedYear: (year: string | null) => void;
   countryFilter: string;
   setCountryFilter: (value: string) => void;
-  tierFilter: string;
-  setTierFilter: (value: string) => void;
+  tier: number | null;
+  setTier: (value: number | null) => void;
   resetFilters: () => void;
   countries: string[];
-  tiers: number[];
   view: string;
   setView: (view: string) => void;
 }
@@ -34,6 +33,7 @@ const months = [
   "November",
   "December",
 ];
+const tiers = [1, 2, 3];
 
 const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
   tournaments,
@@ -45,11 +45,10 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
   setSelectedYear,
   countryFilter,
   setCountryFilter,
-  tierFilter,
-  setTierFilter,
+  tier,
+  setTier,
   resetFilters,
   countries,
-  tiers,
   view,
   setView,
 }) => {
@@ -71,11 +70,12 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
     setView(view === "list" ? "map" : "list");
   };
 
+
+
   return (
-    <div className="px-5 py-4  rounded-md w-full">
-      {/* Filters Container - Responsive Layout */}
+    <div className="px-5 py-4 rounded-md w-full">
       <div className="flex flex-wrap lg:flex-nowrap items-end justify-center gap-3 lg:gap-4">
-        {/* Search by Name */}
+        {/* Search */}
         <div className="w-full sm:w-48 lg:w-48">
           <label className="block text-sm font-semibold text-green-700 mb-1">
             Search by Name
@@ -90,7 +90,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
           />
         </div>
 
-        {/* Year Selector */}
+        {/* Year */}
         <div className="w-full sm:w-36 lg:w-36">
           <label className="block text-sm font-semibold text-green-700 mb-1">
             Select Year
@@ -99,7 +99,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
             value={selectedYear || ""}
             style={{ color: "black" }}
             onChange={(e) => setSelectedYear(e.target.value || null)}
-            className="w-full px-3 py-2 border border-green-300 focus:ring-2 focus:ring-green-400 rounded-md outline-none "
+            className="w-full px-3 py-2 border border-green-300 focus:ring-2 focus:ring-green-400 rounded-md outline-none"
           >
             <option value="">All Years</option>
             {years.map((year) => (
@@ -110,7 +110,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
           </select>
         </div>
 
-        {/* Month Selector */}
+        {/* Month */}
         <div className="w-full sm:w-40 lg:w-40">
           <label className="block text-sm font-semibold text-green-700 mb-1">
             Select Month
@@ -130,7 +130,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
           </select>
         </div>
 
-        {/* Country Selector */}
+        {/* Country */}
         <div className="w-full sm:w-48 lg:w-48">
           <label className="block text-sm font-semibold text-green-700 mb-1">
             Country
@@ -139,7 +139,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
             style={{ color: "black" }}
             value={countryFilter}
             onChange={(e) => setCountryFilter(e.target.value)}
-            className="w-full px-3 py-2 border border-green-300 focus:ring-2 focus:ring-green-400 rounded-md outline-none "
+            className="w-full px-3 py-2 border border-green-300 focus:ring-2 focus:ring-green-400 rounded-md outline-none"
           >
             <option value="">All Countries</option>
             {countries.map((country) => (
@@ -150,27 +150,29 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
           </select>
         </div>
 
-        {/* Tier Selector */}
+        {/* Tier */}
         <div className="w-full sm:w-36 lg:w-36">
           <label className="block text-sm font-semibold text-green-700 mb-1">
             Tier
           </label>
           <select
             style={{ color: "black" }}
-            value={tierFilter}
-            onChange={(e) => setTierFilter(e.target.value)}
-            className="w-full px-3 py-2 border border-green-300 focus:ring-2 focus:ring-green-400 rounded-md outline-none "
+            value={tier || ""}
+            onChange={(e) =>
+              setTier(e.target.value ? Number(e.target.value) : null)
+            }
+            className="w-full px-3 py-2 border border-green-300 focus:ring-2 focus:ring-green-400 rounded-md outline-none"
           >
             <option value="">All Tiers</option>
-            {tiers.map((tier) => (
-              <option key={tier} value={tier}>
-                Tier {tier}
+            {tiers.map((t) => (
+              <option key={t} value={t}>
+                Tier {t}
               </option>
             ))}
           </select>
         </div>
 
-        {/* Reset Filters Button */}
+        {/* Reset */}
         <div className="w-full sm:w-36 lg:w-36">
           <button
             onClick={resetFilters}
@@ -180,16 +182,7 @@ const TournamentFiltersCombined: React.FC<TournamentFiltersCombinedProps> = ({
           </button>
         </div>
 
-        {/* Add Tournament Button */}
-        {/* <div className="w-full sm:w-36 lg:w-36">
-          <Link to="/addtournament">
-            <button className="w-full px-4 py-2 h-10 text-sm font-semibold text-white rounded-md bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-600 transition">
-              Add Tournament
-            </button>
-          </Link>
-        </div> */}
-
-        {/* Toggle View Button */}
+        {/* Toggle View */}
         <div className="w-full sm:w-auto lg:w-auto">
           <button
             onClick={toggleView}

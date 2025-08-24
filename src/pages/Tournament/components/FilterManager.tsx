@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FilterSummary from "./FilterSummary";
 import ContinentSelector from "./Continent";
 import TournamentFiltersCombined from "./CombinedFilters";
+import { set } from "date-fns";
 
 interface FilterManagerProps {
   tournaments: any[];
@@ -46,6 +47,7 @@ const FilterManager: React.FC<FilterManagerProps> = ({
   const [continents, setContinents] = useState<string[]>([]);
   const [countries, setCountries] = useState<string[]>([]);
   const [tiers, setTiers] = useState<number[]>([]);
+  const [tier, setTier] = useState<number | null>(null);
 
   // Initialize filter data from tournaments
   useEffect(() => {
@@ -87,6 +89,7 @@ const FilterManager: React.FC<FilterManagerProps> = ({
 
   // Apply filters when any filter changes
   useEffect(() => {
+    console.log("tiers", tier);
     const filtered = tournaments.filter((tournament) => {
       // Name search filter
       const nameMatch = tournament.name
@@ -108,10 +111,13 @@ const FilterManager: React.FC<FilterManagerProps> = ({
 
       // Image-based continent selector filter
       const selectedContinentMatch =
-        !selectedContinent || tournament.continent === selectedContinent||tournament.country==selectedContinent;
+        !selectedContinent ||
+        tournament.continent === selectedContinent ||
+        tournament.country === selectedContinent;
       console.log("Filtering for continent:", selectedContinent);
-      // Tier filter
-      const tierMatch = !tierFilter || tournament.Tier === Number(tierFilter);
+
+      // Tier filter (updated)
+      const tierMatch = tier === null || tournament.tier === tier;
 
       // Date range filter
       let dateRangeMatch = true;
@@ -121,7 +127,6 @@ const FilterManager: React.FC<FilterManagerProps> = ({
         const filterStart = new Date(dateFilter.startDate);
         const filterEnd = new Date(dateFilter.endDate);
 
-        // Check if tournament dates overlap with filter dates
         dateRangeMatch = !(
           tournamentEnd < filterStart || tournamentStart > filterEnd
         );
@@ -134,7 +139,6 @@ const FilterManager: React.FC<FilterManagerProps> = ({
         const tournamentStart = new Date(tournament.startDate);
         const tournamentEnd = new Date(tournament.endDate);
 
-        // Check if the selected date falls within the tournament date range
         specificDateMatch =
           selectedDateObj >= tournamentStart &&
           selectedDateObj <= tournamentEnd;
@@ -145,69 +149,27 @@ const FilterManager: React.FC<FilterManagerProps> = ({
       if (selectedMonth || selectedYear) {
         const tournamentStart = new Date(tournament.startDate);
         const tournamentEnd = new Date(tournament.endDate);
-
-        // Create a range of dates for the tournament
-        const dates = [];
+        const dates: Date[] = [];
         let currentDate = new Date(tournamentStart);
-
         while (currentDate <= tournamentEnd) {
           dates.push(new Date(currentDate));
           currentDate.setDate(currentDate.getDate() + 1);
         }
 
-        // Check if any date in the tournament falls within the selected month/year
         if (selectedMonth && selectedYear) {
-          // Both month and year are selected
           const monthNum = parseInt(selectedMonth);
           const yearNum = parseInt(selectedYear);
-
-          console.log("Filtering for month:", monthNum, "year:", yearNum);
-          console.log("Tournament:", tournament.name);
-          console.log(
-            "Tournament dates:",
-            tournamentStart,
-            "to",
-            tournamentEnd
+          monthYearMatch = dates.some(
+            (date) =>
+              date.getMonth() + 1 === monthNum && date.getFullYear() === yearNum
           );
-
-          monthYearMatch = dates.some((date) => {
-            const dateMonth = date.getMonth() + 1; // Add 1 to match 1-12 format
-            const dateYear = date.getFullYear();
-
-            console.log(
-              "Checking date:",
-              date,
-              "month:",
-              dateMonth,
-              "year:",
-              dateYear
-            );
-            const isMatch = dateMonth === monthNum && dateYear === yearNum;
-            if (isMatch) {
-              console.log("Match found!");
-            }
-            return isMatch;
-          });
-
-          console.log("Result:", monthYearMatch ? "Included" : "Filtered out");
         } else if (selectedMonth) {
-          // Only month is selected
           const monthNum = parseInt(selectedMonth);
-
-          console.log("Filtering for month only:", monthNum);
-          console.log("Tournament:", tournament.name);
-
-          monthYearMatch = dates.some((date) => {
-            const dateMonth = date.getMonth() + 1; // Add 1 to match 1-12 format
-            return dateMonth === monthNum;
-          });
+          monthYearMatch = dates.some(
+            (date) => date.getMonth() + 1 === monthNum
+          );
         } else if (selectedYear) {
-          // Only year is selected
           const yearNum = parseInt(selectedYear);
-
-          console.log("Filtering for year only:", yearNum);
-          console.log("Tournament:", tournament.name);
-
           monthYearMatch = dates.some((date) => date.getFullYear() === yearNum);
         }
       }
@@ -232,7 +194,7 @@ const FilterManager: React.FC<FilterManagerProps> = ({
     countryFilter,
     continentFilter,
     selectedContinent,
-    tierFilter,
+    tier, // ✅ Updated here
     dateFilter,
     selectedDate,
     selectedMonth,
@@ -240,6 +202,7 @@ const FilterManager: React.FC<FilterManagerProps> = ({
     tournaments,
     setFilteredTournaments,
   ]);
+
 
   // Helper function to format dates to YYYY-MM-DD
   const formatDate = (date: Date | null) => {
@@ -328,7 +291,8 @@ const FilterManager: React.FC<FilterManagerProps> = ({
           setTierFilter={setTierFilter}
           resetFilters={resetFilters}
           countries={countries}
-          tiers={tiers}
+          tier={tier}
+          setTier={setTier}
           view={view}
           setView={setView}
         />
