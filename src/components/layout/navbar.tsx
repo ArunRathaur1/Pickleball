@@ -78,10 +78,16 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ height: "80px" }}>
+      <div
+        className="max-w-7xl mx-auto sm:px-6 lg:px-8"
+        // style={{ height: "80px" }}
+      >
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center space-x-2 group">
+            <Link
+              to="/"
+              className="flex-shrink-0 flex items-center space-x-2 group"
+            >
               <div style={{ width: "50px", height: "50px" }}>
                 <img
                   src={image}
@@ -145,7 +151,11 @@ export function Navbar() {
                   <User className="h-4 w-4 mr-1" />
                   <span className="hover:underline">{userName}</span>
                 </Link>
-                <Button onClick={handleLogout} variant="outline" className="btn-animated text-lg">
+                <Button
+                  onClick={handleLogout}
+                  variant="outline"
+                  className="btn-animated text-lg"
+                >
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
                 </Button>
@@ -153,7 +163,10 @@ export function Navbar() {
             ) : (
               <>
                 <Link to="/login">
-                  <Button variant="ghost" className="text-lg hover:text-pickle hover:bg-pickle/10">
+                  <Button
+                    variant="ghost"
+                    className="text-lg hover:text-pickle hover:bg-pickle/10"
+                  >
                     Login
                   </Button>
                 </Link>
@@ -172,18 +185,26 @@ export function Navbar() {
               onClick={toggleTheme}
               variant="outline"
               size="icon"
-              className="rounded-full relative overflow-hidden"
+              className="rounded-full relative overflow-hidden flex items-center justify-center"
               aria-label="Toggle theme"
             >
-              <div className="relative h-5 w-5">
-                {theme === "dark" ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-slate-700" />}
+              <div className="flex items-center justify-center h-5 w-5">
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5 text-yellow-400" />
+                ) : (
+                  <Moon className="h-5 w-5 text-slate-700" />
+                )}
               </div>
             </Button>
             <button
               className="text-foreground/80 hover:text-pickle"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>

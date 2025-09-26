@@ -50,7 +50,45 @@ export default function Ranking() {
   const [minAge, setminAge] = useState("");
   const [players, setPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+  // ✅ Load filters from localStorage on mount
+  useEffect(() => {
+    const savedFilters = localStorage.getItem("filtersdata");
+    if (savedFilters) {
+      const parsed = JSON.parse(savedFilters);
+      setSelectedContinent(parsed.selectedContinent || "Asia");
+      setSelectedGender(parsed.selectedGender || "MALE");
+      setDuprSortType(parsed.duprSortType || "singles");
+      setSelectedStatus(parsed.selectedStatus || "ALL");
+      setSelectedCountry(parsed.selectedCountry || "IN");
+      setCurrentPage(parsed.currentPage || 1);
+      setPlayerName(parsed.playerName || "");
+      setminAge(parsed.minAge || "");
+    }
+  }, []);
 
+  // ✅ Save filters to localStorage whenever they change
+  useEffect(() => {
+    const filters = {
+      selectedContinent,
+      selectedGender,
+      duprSortType,
+      selectedStatus,
+      selectedCountry,
+      currentPage,
+      playerName,
+      minAge,
+    };
+    localStorage.setItem("filtersdata", JSON.stringify(filters));
+  }, [
+    selectedContinent,
+    selectedGender,
+    duprSortType,
+    selectedStatus,
+    selectedCountry,
+    currentPage,
+    playerName,
+    minAge,
+  ]);
   const fetchPlayers = async () => {
     try {
       const query = new URLSearchParams();
@@ -270,7 +308,14 @@ export default function Ranking() {
                           {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
                         </div>
                       </td>
-                      <td className="px-4 py-3" style={{display:"flex", alignItems:"center",justifyContent:"center"}}>
+                      <td
+                        className="px-4 py-3"
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
                         <div className="flex items-center gap-3">
                           <img
                             src={getImage(player.imageUrl)}

@@ -233,6 +233,7 @@ const FilterManager: React.FC<FilterManagerProps> = ({
     setSelectedMonth(null);
     setSelectedYear(null);
     setSelectedContinent(null);
+    setTier(null);
 
     // Reset dates to full range
     if (dateRange.min && dateRange.max) {
