@@ -134,44 +134,67 @@ router.get("/sync-from-dupr/:country", async (req, res) => {
     const token = await getAccessToken();
     const batchSize = 1000;
     const updatedResults = [];
+    const failedBatches = [];
 
     for (let i = 0; i < duprIds.length; i += batchSize) {
       const batch = duprIds.slice(i, i + batchSize);
-      const results = await fetchPlayerDetails(token, batch);
 
-      // Filter allowed fields for update only
-      const filteredResults = results.map((player) => ({
-        duprId: player.duprId,
-        id: player.id,
-        fullName: player.fullName,
-        firstName: player.firstName,
-        lastName: player.lastName,
-        shortAddress: player.shortAddress,
-        gender: player.gender,
-        age: player.age,
-        imageUrl: player.imageUrl,
-        ratings: player.ratings,
-        enablePrivacy: player.enablePrivacy,
-        isPlayer1: player.isPlayer1,
-        verifiedEmail: player.verifiedEmail,
-        registered: player.registered,
-        showRatingBanner: player.showRatingBanner,
-        status: player.status,
-        sponsor: player.sponsor,
-        lucraConnected: player.lucraConnected,
-        Continent: country, // to ensure it remains consistent
-      }));
+      try {
+        const results = await fetchPlayerDetails(token, batch);
 
-      await savePlayersToDB(filteredResults, country);
-      updatedResults.push(...filteredResults);
+        if (!Array.isArray(results)) {
+          throw new Error("Invalid response format from DUPr API");
+        }
 
-      console.log(`✅ Synced batch ${i / batchSize + 1} (${batch.length} IDs)`);
+        // Filter allowed fields for update only
+        const filteredResults = results.map((player) => ({
+          duprId: player.duprId,
+          id: player.id,
+          fullName: player.fullName,
+          firstName: player.firstName,
+          lastName: player.lastName,
+          shortAddress: player.shortAddress,
+          gender: player.gender,
+          age: player.age,
+          imageUrl: player.imageUrl,
+          ratings: player.ratings,
+          enablePrivacy: player.enablePrivacy,
+          isPlayer1: player.isPlayer1,
+          verifiedEmail: player.verifiedEmail,
+          registered: player.registered,
+          showRatingBanner: player.showRatingBanner,
+          status: player.status,
+          sponsor: player.sponsor,
+          lucraConnected: player.lucraConnected,
+          Continent: country, // keep consistent
+        }));
+
+        await savePlayersToDB(filteredResults, country);
+        updatedResults.push(...filteredResults);
+
+        console.log(
+          `✅ Synced batch ${i / batchSize + 1} (${batch.length} IDs)`
+        );
+      } catch (batchError) {
+        console.error(
+          `❌ Failed batch ${i / batchSize + 1}:`,
+          batchError.message
+        );
+        failedBatches.push({
+          batchNumber: i / batchSize + 1,
+          error: batchError.message,
+          ids: batch,
+        });
+        // continue to next batch instead of crashing
+        continue;
+      }
     }
 
     res.status(200).json({
       country,
       totalUpdated: updatedResults.length,
-      message: "✅ Successfully synced players from DUPr API.",
+      failedBatches,
+      message: "✅ Sync completed with some skipped batches (if any).",
     });
   } catch (error) {
     console.error("❌ Sync Error:", error);
@@ -181,6 +204,7 @@ router.get("/sync-from-dupr/:country", async (req, res) => {
     });
   }
 });
+
 
 
 // 📥 Route to get players by continent
