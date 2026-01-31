@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/add-or-update", async (req, res) => {
   try {
     const {
+      tournamentId, // 👈 coming from frontend
       brandId,
       name,
       organizer,
@@ -37,18 +38,13 @@ router.post("/add-or-update", async (req, res) => {
     }
 
     if (!Array.isArray(locationCoords) || locationCoords.length !== 2) {
-      return res
-        .status(400)
-        .json({
-          message:
-            "Invalid location coordinates. Provide [latitude, longitude].",
-        });
+      return res.status(400).json({
+        message: "Invalid location coordinates. Provide [latitude, longitude].",
+      });
     }
 
-    // Optional: check if tournament with the same brandId already exists
-
-
-    const newTournament = new Tournament({
+    // 👇 data to save (EXCLUDES tournamentId)
+    const tournamentData = {
       brandId,
       name,
       organizer,
@@ -71,13 +67,34 @@ router.post("/add-or-update", async (req, res) => {
       imageUrl,
       description,
       locationCoords,
-    });
+    };
 
-    await newTournament.save();
+    let tournament = null;
 
-    res.status(201).json({
-      message: "Tournament added successfully",
-      tournament: newTournament,
+    // 🔁 TRY UPDATE if tournamentId exists
+    if (tournamentId) {
+      tournament = await Tournament.findByIdAndUpdate(
+        tournamentId, // 👈 match with _id
+        tournamentData,
+        { new: true },
+      );
+    }
+
+    // 🆕 CREATE if no update happened
+    if (!tournament) {
+      tournament = new Tournament(tournamentData);
+      await tournament.save();
+
+      return res.status(201).json({
+        message: "Tournament added successfully",
+        tournament,
+      });
+    }
+
+    // ✏️ UPDATE success
+    return res.status(200).json({
+      message: "Tournament updated successfully",
+      tournament,
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
