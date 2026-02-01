@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Link } from "react-router-dom";
+import imagelogo from './logo.png';
 import {
   Trophy,
   Users,
@@ -128,7 +129,7 @@ export default function Ranking() {
     player.ratingValue !== null ? player.ratingValue : "NR";
 
   const getImage = (url) =>
-    url && url.trim() !== "" ? url : "https://via.placeholder.com/40?text=👤";
+    url && url.trim() !== "" ? url : imagelogo;
 
   const getCountryCode = (shortAddress) => {
     if (!shortAddress) return "N/A";
@@ -272,7 +273,7 @@ export default function Ranking() {
                   <th className="px-4 py-3">Global Rank</th>
                   <th className="px-4 py-3">Rank by filters</th>
                   <th className="px-4 py-3">Player</th>
-                  <th className="px-4 py-3">DUPR ID</th>
+                  {/* <th className="px-4 py-3">DUPR ID</th> */}
                   <th className="px-4 py-3">Age</th>
                   <th className="px-4 py-3">Rating</th>
                   <th className="px-4 py-3">Continent</th>
@@ -333,7 +334,7 @@ export default function Ranking() {
                           </Link>
                         </div>
                       </td>
-                      <td className="px-4 py-3">{player.duprId}</td>
+                      {/* <td className="px-4 py-3">{player.duprId}</td> */}
                       <td className="px-4 py-3">{player.age ?? "N/A"}</td>
                       <td className="px-4 py-3">
                         <span className="bg-gradient-to-r from-emerald-500 to-green-600 text-white px-2 py-1 rounded-full font-bold text-xs">
