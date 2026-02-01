@@ -223,9 +223,11 @@ const TournamentForm = () => {
       ...data,
       prizeMoney: Number(data.prizeMoney),
       tier: Number(data.tier),
-      startDate: new Date(data.startDate).toISOString(),
-      endDate: new Date(data.endDate).toISOString(),
-      registrationEnd: new Date(data.registrationEnd).toISOString(),
+      startDate: data.startDate ? new Date(data.startDate).toISOString() : "",
+      endDate: data.endDate ? new Date(data.endDate).toISOString() : "",
+      registrationEnd: data.registrationEnd
+        ? new Date(data.registrationEnd).toISOString()
+        : "",
       categories: data.categories.map((cat) => ({
         ...cat,
         maxPlayer: Number(cat.maxPlayer),
