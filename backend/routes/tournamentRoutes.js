@@ -32,7 +32,7 @@ router.post("/add-or-update", async (req, res) => {
       description,
       locationCoords,
     } = req.body;
-
+    console.log("tournamneId my one ",tournamentId);
     if (!brandId) {
       return res.status(400).json({ message: "brandId is required" });
     }
@@ -72,7 +72,7 @@ router.post("/add-or-update", async (req, res) => {
     let tournament = null;
 
     // 🔁 TRY UPDATE if tournamentId exists
-    if (tournamentId) {
+    if (tournamentId != "addtournament") {
       tournament = await Tournament.findByIdAndUpdate(
         tournamentId, // 👈 match with _id
         tournamentData,
