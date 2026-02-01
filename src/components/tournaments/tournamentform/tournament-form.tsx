@@ -6,13 +6,15 @@ import BasicInfo2 from "./BasicInfo2";
 import BasicInfo3 from "./BasicInfo3";
 import BasicInfo4 from "./BasicInfo4";
 import Cookies from "js-cookie";
+import { useParams } from "react-router-dom";
 const API = import.meta.env.VITE_API; // Use the environment variable for API URL
 import { Navbar } from "@/components/layout/navbar";
-
-
 const TournamentForm = () => {
+  const { id } = useParams<{ id: string }>();
+  // console.log('hello', id);
   const [tournamentId, setTournamentId] = useState(null);
   const [formData, setFormData] = useState({
+    tournamentId: id || "",
     brandId: "",
     name: "",
     organizer: "",
@@ -43,7 +45,6 @@ const TournamentForm = () => {
     description: "",
     locationCoords: [0, 0],
   });
-
   const continents = [
     "Africa",
     "Antarctica",
@@ -84,6 +85,7 @@ const TournamentForm = () => {
 
         const tournament = data;
         setFormData({
+          tournamentId: tournamentId||"",
           brandId: tournament.brandId || "",
           name: tournament.name || "",
           organizer: tournament.organizer || "",
@@ -123,6 +125,7 @@ const TournamentForm = () => {
         console.error("Error fetching tournament data:", err);
         // Reset form to empty state
         setFormData({
+          tournamentId: tournamentId||"",
           brandId: "",
           name: "",
           organizer: "",

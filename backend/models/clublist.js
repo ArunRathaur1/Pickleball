@@ -7,8 +7,7 @@ const courtSchema = new mongoose.Schema({
     trim: true,
   },
   email: {
-    type: String,
-    required: true,
+    type: String
   },
   contact: {
     type: String,
