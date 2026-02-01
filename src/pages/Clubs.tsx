@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import Listview from "@/components/userclubs/listview";
+import { Footer } from "@/components/layout/footer";
 import Mapview from "@/components/userclubs/Mapview";
 import { useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_API; // Use the environment variable for API URL
@@ -171,6 +172,7 @@ export default function Clubs() {
           <Listview clubs={filteredClubs} />
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
