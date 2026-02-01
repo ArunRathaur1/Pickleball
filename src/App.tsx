@@ -33,6 +33,7 @@ import BrandDashboard from "./components/BrandLogin/Dashboard.tsx";
 import AddAthlete from "./components/athletes/AddAthlete.tsx";
 import Ranking from "./pages/Ranking/Ranking.tsx";
 import PlayerDescription from "./pages/Ranking/PlayerDescription.tsx";
+import AIChat from "./pages/AIChat.tsx";
 
 
 const App = () => {
@@ -70,6 +71,7 @@ const App = () => {
             <Route path="/update/brand/:id" element={<TournamentForm />} />
             <Route path="/athelete_update/:id" element={<AddAthlete />} />
             <Route path="/player/:duprid" element={<PlayerDescription />} />
+            <Route path="/aichat" element={<AIChat />} />
           </Routes>
         </BrowserRouter>
   );
