@@ -91,16 +91,28 @@ router.get("/:id", async (req, res) => {
 // ✅ Update a club by ID
 router.patch("/update/:id", async (req, res) => {
   try {
+    console.log("=== UPDATE REQUEST ===");
+    console.log("ID:", req.params.id);
+    console.log("Body:", req.body);
+
     const { locationCoordinates } = req.body;
 
-    if (
-      locationCoordinates &&
-      (!Array.isArray(locationCoordinates) || locationCoordinates.length !== 2)
-    ) {
-      return res.status(400).json({
-        message:
-          "Invalid locationCoordinates format. Must be an array of [latitude, longitude].",
-      });
+    // Validate coordinates if provided
+    if (locationCoordinates) {
+      if (
+        !Array.isArray(locationCoordinates) ||
+        locationCoordinates.length !== 2
+      ) {
+        return res.status(400).json({
+          message: "Invalid locationCoordinates format. Must be [lat, lon].",
+        });
+      }
+
+      if (locationCoordinates.some((c) => typeof c !== "number" || isNaN(c))) {
+        return res.status(400).json({
+          message: "Coordinates must be valid numbers.",
+        });
+      }
     }
 
     const updatedClub = await Clublist.findByIdAndUpdate(
@@ -109,21 +121,27 @@ router.patch("/update/:id", async (req, res) => {
       {
         new: true,
         runValidators: true,
-      }
+      },
     );
 
     if (!updatedClub) {
       return res.status(404).json({ message: "Club not found" });
     }
 
-    res
-      .status(200)
-      .json({ message: "Club updated successfully", club: updatedClub });
+    console.log("Updated successfully:", updatedClub);
+
+    res.status(200).json({
+      message: "Club updated successfully",
+      club: updatedClub,
+    });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    console.error("Update error:", error);
+    res.status(500).json({
+      message: "Server error",
+      error: error.message,
+    });
   }
 });
-
 // ✅ Delete a club by ID
 router.delete("/delete/:id", async (req, res) => {
   try {
