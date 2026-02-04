@@ -37,7 +37,7 @@ const BlogForm: React.FC<BlogFormProps> = ({
   });
 
   const [charCount, setCharCount] = useState(formData.description.length);
-  const MAX_CHARS = 500;
+  const MAX_CHARS = 5000;
 
   useEffect(() => {
     if (initialData) {
