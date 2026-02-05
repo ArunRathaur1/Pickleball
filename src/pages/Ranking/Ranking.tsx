@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Link } from "react-router-dom";
-import imagelogo from './logo.png';
+import imagelogo from "./logo.png";
 import {
   Trophy,
   Users,
@@ -29,6 +29,18 @@ const duprSortTypes = ["singles", "doubles"];
 const statuses = ["ALL", "Pending", "Approved"];
 const countries = ["ALL", "IN", "US", "UK", "CA", "AU", "DE", "FR"];
 
+// Age group filters
+const ageGroups = [
+  { label: "All Ages", minAge: null, maxAge: null },
+  { label: "Under 14", minAge: null, maxAge: 15 },
+  { label: "Under 16", minAge: null, maxAge: 17 },
+  { label: "Under 19", minAge: null, maxAge: 20 },
+  { label: "30+", minAge: 30, maxAge: null },
+  { label: "40+", minAge: 40, maxAge: null },
+  { label: "50+", minAge: 50, maxAge: null },
+  { label: "60+", minAge: 60, maxAge: null },
+];
+
 const countryNameMap = {
   ALL: "All Countries",
   IN: "India",
@@ -49,8 +61,11 @@ export default function Ranking() {
   const [currentPage, setCurrentPage] = useState(1);
   const [playerName, setPlayerName] = useState("");
   const [minAge, setminAge] = useState("");
+  const [maxAge, setMaxAge] = useState("");
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState("All Ages");
   const [players, setPlayers] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
+
   // ✅ Load filters from localStorage on mount
   useEffect(() => {
     const savedFilters = localStorage.getItem("filtersdata");
@@ -64,6 +79,8 @@ export default function Ranking() {
       setCurrentPage(parsed.currentPage || 1);
       setPlayerName(parsed.playerName || "");
       setminAge(parsed.minAge || "");
+      setMaxAge(parsed.maxAge || "");
+      setSelectedAgeGroup(parsed.selectedAgeGroup || "All Ages");
     }
   }, []);
 
@@ -78,6 +95,8 @@ export default function Ranking() {
       currentPage,
       playerName,
       minAge,
+      maxAge,
+      selectedAgeGroup,
     };
     localStorage.setItem("filtersdata", JSON.stringify(filters));
   }, [
@@ -89,7 +108,10 @@ export default function Ranking() {
     currentPage,
     playerName,
     minAge,
+    maxAge,
+    selectedAgeGroup,
   ]);
+
   const fetchPlayers = async () => {
     try {
       const query = new URLSearchParams();
@@ -99,9 +121,11 @@ export default function Ranking() {
       query.append("continent", selectedContinent);
       if (playerName) query.append("name", playerName);
       if (minAge) query.append("minAge", minAge.toString());
+      if (maxAge) query.append("maxAge", maxAge.toString());
       if (selectedCountry !== "ALL") query.append("country", selectedCountry);
       if (selectedStatus !== "ALL") query.append("status", selectedStatus);
-
+      console.log(query)
+      console.log(`${API}/ranking/filtered-players?${query}`);
       const res = await fetch(`${API}/ranking/filtered-players?${query}`);
       const data = await res.json();
       setPlayers(data.players || []);
@@ -123,13 +147,26 @@ export default function Ranking() {
     currentPage,
     playerName,
     minAge,
+    maxAge,
   ]);
+
+  // Handle age group selection
+  const handleAgeGroupChange = (e) => {
+    const selectedLabel = e.target.value;
+    setSelectedAgeGroup(selectedLabel);
+
+    const ageGroup = ageGroups.find((ag) => ag.label === selectedLabel);
+    if (ageGroup) {
+      setminAge(ageGroup.minAge !== null ? ageGroup.minAge.toString() : "");
+      setMaxAge(ageGroup.maxAge !== null ? ageGroup.maxAge.toString() : "");
+      setCurrentPage(1);
+    }
+  };
 
   const getRating = (player) =>
     player.ratingValue !== null ? player.ratingValue : "NR";
 
-  const getImage = (url) =>
-    url && url.trim() !== "" ? url : imagelogo;
+  const getImage = (url) => (url && url.trim() !== "" ? url : imagelogo);
 
   const getCountryCode = (shortAddress) => {
     if (!shortAddress) return "N/A";
@@ -195,12 +232,6 @@ export default function Ranking() {
                   setter: setSelectedCountry,
                   options: countries,
                 },
-                // {
-                //   label: "Status",
-                //   value: selectedStatus,
-                //   setter: setSelectedStatus,
-                //   options: statuses,
-                // },
                 {
                   label: "DUPR Type",
                   value: duprSortType,
@@ -225,13 +256,31 @@ export default function Ranking() {
                         {label === "Country"
                           ? countryNameMap[opt] || opt
                           : opt === "ALL"
-                          ? `All ${label}s`
-                          : opt}
+                            ? `All ${label}s`
+                            : opt}
                       </option>
                     ))}
                   </select>
                 </div>
               ))}
+
+              {/* Age Group Filter */}
+              <div>
+                <label className="block font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Age Group
+                </label>
+                <select
+                  value={selectedAgeGroup}
+                  onChange={handleAgeGroupChange}
+                  className="w-full px-2 py-1 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm"
+                >
+                  {ageGroups.map((ageGroup) => (
+                    <option key={ageGroup.label} value={ageGroup.label}>
+                      {ageGroup.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               {/* Player Name */}
               <div>
@@ -244,20 +293,6 @@ export default function Ranking() {
                   onChange={(e) => setPlayerName(e.target.value)}
                   className="w-full px-2 py-1 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm"
                   placeholder="Search by name"
-                />
-              </div>
-
-              {/* Min Age */}
-              <div>
-                <label className="block font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Min Age
-                </label>
-                <input
-                  type="number"
-                  value={minAge}
-                  onChange={(e) => setminAge(e.target.value)}
-                  className="w-full px-2 py-1 rounded-md border dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white text-sm"
-                  placeholder="Enter min age"
                 />
               </div>
             </div>
@@ -294,7 +329,7 @@ export default function Ranking() {
                       <td className="px-4 py-3">
                         <div
                           className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${getRankBadgeColor(
-                            rank
+                            rank,
                           )}`}
                         >
                           {getRankIcon(rank)}#{rank}
@@ -303,7 +338,7 @@ export default function Ranking() {
                       <td className="px-4 py-3">
                         <div
                           className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${getRankBadgeColor(
-                            rank
+                            rank,
                           )}`}
                         >
                           {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}

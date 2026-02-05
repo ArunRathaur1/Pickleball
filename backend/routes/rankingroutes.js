@@ -245,6 +245,7 @@ router.get("/filtered-players", async (req, res) => {
     status = "ALL",
     name = "",
     minAge = "",
+    maxAge = "",
     country = "",
   } = req.query;
 
@@ -273,10 +274,19 @@ router.get("/filtered-players", async (req, res) => {
     filter.fullName = { $regex: name.trim(), $options: "i" };
   }
 
-  // Min Age Filter
+  // Age Filter (supports both min and max)
   const parsedMinAge = parseInt(minAge);
-  if (!isNaN(parsedMinAge)) {
+  const parsedMaxAge = parseInt(maxAge);
+
+  if (!isNaN(parsedMinAge) && !isNaN(parsedMaxAge)) {
+    // Both min and max age specified
+    filter.age = { $gte: parsedMinAge, $lte: parsedMaxAge };
+  } else if (!isNaN(parsedMinAge)) {
+    // Only min age specified
     filter.age = { $gte: parsedMinAge };
+  } else if (!isNaN(parsedMaxAge)) {
+    // Only max age specified
+    filter.age = { $lte: parsedMaxAge };
   }
 
   // Country Filter from shortAddress
@@ -355,6 +365,7 @@ router.get("/filtered-players", async (req, res) => {
         status,
         name,
         minAge,
+        maxAge,
         country,
       },
       page: parseInt(page),
