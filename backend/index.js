@@ -1,0 +1,94 @@
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const passport = require("passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const dns = require("dns");
+
+// Force Node.js to use Google DNS to resolve MongoDB Atlas hosts
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+// Import Routes
+const userRoutes = require("./routes/userRoutes");
+const tournamentRoutes = require("./routes/tournamentRoutes");
+const athleteRoutes = require("./routes/athleteRoutes");
+const courtRoutes = require("./routes/courtRoutes");
+const adminRoutes = require("./routes/adminroute");
+const blogRoutes = require("./routes/blogRoutes");
+const airoutes = require("./routes/airoutes");
+const clublist = require("./routes/clublist");
+const newsletter = require("./routes/newsletterRoutes");
+const Instagram = require("./routes/Instagramroutes");
+const Inquary = require("./routes/inquary");
+const playerLoginRoutes = require("./routes/playerLogin");
+const BrandLogin = require("./routes/brandroute");
+const rankingRoutes = require("./routes/rankingroutes");
+
+require("./passport"); // Passport Config
+
+const app = express();
+
+// ✅ SESSION CONFIGURATION
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET || "default_secret_key",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      collectionName: "sessions",
+    }),
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000, // 1 Day
+      secure: false, // set true if using HTTPS
+      httpOnly: true,
+      sameSite: "lax",
+    },
+  })
+);
+
+// ✅ PASSPORT MIDDLEWARE
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ✅ MIDDLEWARES
+app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
+
+// ✅ ROUTES
+app.use("/users", userRoutes);
+app.use("/tournaments", tournamentRoutes);
+app.use("/athletes", athleteRoutes);
+app.use("/court", courtRoutes);
+app.use("/admin", adminRoutes);
+app.use("/blogs", blogRoutes);
+app.use("/airoutes", airoutes);
+app.use("/clublist", clublist);
+app.use("/ranking", rankingRoutes);
+app.use("/newsletter", newsletter);
+app.use("/instagram", Instagram);
+app.use("/inquary", Inquary);
+app.use("/playerlogin", playerLoginRoutes);
+app.use("/brand", BrandLogin);
+
+// ✅ PRINT MONGO_URI FOR DEBUG
+console.log("Connecting to MongoDB:", process.env.MONGO_URI);
+
+// ✅ CONNECT TO MONGODB
+mongoose
+  .connect(process.env.MONGO_URI) // removed deprecated options
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+
+// ✅ START SERVER
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));

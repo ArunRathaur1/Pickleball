@@ -1,0 +1,33 @@
+{
+  "status": "SUCCESS",
+  "results": [
+    {
+      "id": 7498959641,
+      "fullName": "Suryakumar Mishra",
+      "ratings": {
+        "singles": "NR",
+        "singlesVerified": "NR",
+        "singlesProvisional": false,
+        "doubles": "NR",
+        "doublesVerified": "NR",
+        "doublesProvisional": false,
+        "defaultRating": "DOUBLES",
+        "provisionalRatings": {
+          "singlesRating": null,
+          "doublesRating": null,
+          "coach": null
+        }
+      },
+      "enablePrivacy": false,
+      "isPlayer1": true,
+      "verifiedEmail": false,
+      "registrationType": "UNCLAIMED",
+      "registered": false,
+      "duprId": "GGM64D",
+      "showRatingBanner": false,
+      "status": "INACTIVE",
+      "sponsor": {},
+      "lucraConnected": false
+    }
+  ]
+}
