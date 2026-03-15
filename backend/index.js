@@ -80,7 +80,7 @@ app.use("/inquary", Inquary);
 app.use("/playerlogin", playerLoginRoutes);
 app.use("/brand", BrandLogin);
 
-// ✅ PRINT MONGO_URI FOR DEBUG
+// ✅ PRINT MONGO_URI FO R DEBUG
 console.log("Connecting to MongoDB:", process.env.MONGO_URI);
 
 // ✅ CONNECT TO MONGODB
